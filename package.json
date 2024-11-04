@@ -1,0 +1,20 @@
+{
+  "name": "@isle/editor",
+  "private": true,
+  "preinstall": "npx only-allow pnpm",
+  "author": "isboyjc",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^2.2.3"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=18"
+  }
+}

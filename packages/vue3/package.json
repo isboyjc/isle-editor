@@ -1,0 +1,24 @@
+{
+  "name": "@isle/editor-vue3",
+  "version": "0.0.1",
+  "description": "Isle Editor Vue3",
+  "main": "dist/index.js",
+  "module": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isboyjc/IsleEditor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/isboyjc/IsleEditor/issues"
+  },
+  "keywords": [],
+  "author": "isboyjc",
+  "license": "MIT"
+}
