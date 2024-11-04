@@ -1,0 +1,8 @@
+{
+  "name": "@isle/shared",
+  "version": "0.0.1",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "sideEffects": false
+}

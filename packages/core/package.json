@@ -1,15 +1,21 @@
 {
-  "name": "@isle/editor-core",
+  "name": "@isle/editor",
   "version": "0.0.1",
   "description": "Isle Editor Core",
-  "main": "dist/index.js",
-  "module": "",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "umd": "dist/index.umd.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && rollup -c"
+  },
+  "dependencies": {
+    "@isle/shared": "workspace:*"
   },
   "files": [
-    "dist",
-    "README.md"
+    "src",
+    "dist"
   ],
   "repository": {
     "type": "git",

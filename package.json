@@ -6,12 +6,28 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,md}\""
+    "turbo": "turbo"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
-    "turbo": "^2.2.3"
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "babel-loader": "^9.2.1",
+    "eslint": "^9.13.0",
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.29.0",
+    "prettier": "^3.3.3",
+    "rollup": "^4.24.4",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "turbo": "^2.2.3",
+    "vue-eslint-parser": "^9.4.3"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {

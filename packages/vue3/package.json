@@ -1,7 +1,7 @@
 {
   "name": "@isle/editor-vue3",
   "version": "0.0.1",
-  "description": "Isle Editor Vue3",
+  "description": "IsleEditor view for vue3",
   "main": "dist/index.js",
   "module": "",
   "scripts": {

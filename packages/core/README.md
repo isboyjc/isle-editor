@@ -1,11 +1,8 @@
-# IsleEditor
+# @isle/editor
 
 ## Introduction
 
 IsleEditor is a Notion style editor based on [Tiptap](https://github.com/ueberdosis/tiptap) and [ProseMirror](https://github.com/prosemirror).
-
-- `@isle/editor` Editor core
-- `@isle/editor-vue3` Editor view for vue3
 
 ## License
 

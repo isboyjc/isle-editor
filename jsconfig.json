@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "react",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "paths": {
+      "@isle/*": ["packages/*/src", "packages/*/dist"]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.vue"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/dist"
+  ]
+}
