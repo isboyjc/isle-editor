@@ -1,0 +1,75 @@
+@use 'config' as *;
+
+:root {
+  --#{$prefix}-color-white: rgba(250, 250, 250, 1);
+  --#{$prefix}-color-black: rgba(9, 9, 11, 1);
+  --#{$prefix}-theme-primary: var(--#{$prefix}-text-blue);
+  --#{$prefix}-theme-primary-val: var(--#{$prefix}-text-blue-val);
+  --#{$prefix}-theme-selected: #7ba5ff;
+
+  --#{$prefix}-text-default: var(--#{$prefix}-color-black);
+  --#{$prefix}-text-purple: rgba(147, 51, 234, 1);
+  --#{$prefix}-text-red: rgba(225, 29, 72, 1);
+  --#{$prefix}-text-yellow: rgba(234, 179, 8, 1);
+  --#{$prefix}-text-blue: rgba(37, 99, 235, 1);
+  --#{$prefix}-text-blue-val: 37, 99, 235;
+  --#{$prefix}-text-green: rgba(22, 163, 74, 1);
+  --#{$prefix}-text-orange: rgba(249, 115, 22, 1);
+  --#{$prefix}-text-pink: rgba(186, 64, 129, 1);
+  --#{$prefix}-text-gray: rgba(168, 162, 158, 1);
+
+  --#{$prefix}-background-default: var(--#{$prefix}-color-white);
+  --#{$prefix}-background-purple: rgba(246, 243, 248, 1);
+  --#{$prefix}-background-red: rgba(253, 235, 235, 1);
+  --#{$prefix}-background-yellow: rgba(251, 244, 162, 1);
+  --#{$prefix}-background-blue: rgba(193, 236, 249, 1);
+  --#{$prefix}-background-green: rgba(172, 247, 159, 1);
+  --#{$prefix}-background-orange: rgba(250, 235, 221, 1);
+  --#{$prefix}-background-pink: rgba(250, 241, 245, 1);
+  --#{$prefix}-background-gray: rgba(241, 241, 239, 1);
+
+  --#{$prefix}-color-border-val: 228, 228, 231;
+  --#{$prefix}-color-border: rgba(228, 228, 231, 1);
+
+  --#{$prefix}-color-text: var(--isle-color-black);
+  --#{$prefix}-color-text-1: rgba(51, 51, 51, 1);
+  --#{$prefix}-color-text-2: rgba(113, 113, 122, 1);
+  --#{$prefix}-color-text-inverse: var(--isle-color-white);
+
+  --#{$prefix}-font-size: 1rem;
+  --#{$prefix}-line-height: 1.625;
+  --#{$prefix}-margin: 1.2rem;
+  --#{$prefix}-margin-mini: 0.5rem;
+}
+
+[isle-theme='dark'] {
+  --#{$prefix}-theme-selected: #5496f5;
+
+  --#{$prefix}-text-default: var(--#{$prefix}-color-white);
+  --#{$prefix}-text-purple: rgba(147, 51, 234, 1);
+  --#{$prefix}-text-red: rgba(225, 29, 72, 1);
+  --#{$prefix}-text-yellow: rgba(234, 179, 8, 1);
+  --#{$prefix}-text-blue: rgba(59, 130, 246, 1);
+  --#{$prefix}-text-green: rgba(34, 197, 94, 1);
+  --#{$prefix}-text-orange: rgba(234, 88, 12, 1);
+  --#{$prefix}-text-pink: rgba(186, 64, 129, 1);
+  --#{$prefix}-text-gray: rgba(168, 162, 158, 1);
+
+  --#{$prefix}-background-default: var(--#{$prefix}-color-black);
+  --#{$prefix}-background-purple: rgba(63, 44, 75, 1);
+  --#{$prefix}-background-red: rgba(92, 26, 26, 1);
+  --#{$prefix}-background-yellow: rgba(92, 75, 26, 1);
+  --#{$prefix}-background-blue: rgba(26, 61, 92, 1);
+  --#{$prefix}-background-green: rgba(26, 92, 32, 1);
+  --#{$prefix}-background-orange: rgba(92, 58, 26, 1);
+  --#{$prefix}-background-pink: rgba(92, 26, 58, 1);
+  --#{$prefix}-background-gray: rgba(58, 58, 58, 1);
+
+  --#{$prefix}-color-border-val: 39, 39, 42;
+  --#{$prefix}-color-border: rgba(39, 39, 42, 1);
+
+  --#{$prefix}-color-text: var(--isle-color-white);
+  --#{$prefix}-color-text-1: rgba(229, 229, 229, 1);
+  --#{$prefix}-color-text-2: rgba(161, 161, 170, 1);
+  --#{$prefix}-color-text-inverse: var(--isle-color-black);
+}

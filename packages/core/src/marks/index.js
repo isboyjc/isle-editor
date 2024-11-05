@@ -1,0 +1,6 @@
+export { default as Bold } from './bold.js'
+export { default as Italic } from './italic.js'
+export { default as Strike } from './strike.js'
+export { default as Underline } from './underline.js'
+export { default as Superscript } from './superscript.js'
+export { default as Subscript } from './subscript.js'

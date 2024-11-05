@@ -1,0 +1,16 @@
+@use 'config' as *;
+
+.#{$prefix}.ProseMirror {
+  /* max-indent */
+  @for $i from 1 through 7 {
+    $indent-base: 1em;
+
+    [data-indent='#{$i}'] {
+      text-indent: $indent-base * $i;
+    }
+
+    [data-indent='#{$i}'] * {
+      text-indent: 0;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@use 'config' as *;
+
+@function var-name($type, $name) {
+  @return var(--#{$prefix}-#{$type}-#{$name});
+}

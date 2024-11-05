@@ -1,0 +1,68 @@
+@use 'config' as *;
+
+.#{$prefix}.ProseMirror {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  transition: all 0.3s;
+  font-size: var(--#{$prefix}-font-size);
+  line-height: var(--#{$prefix}-line-height);
+  flex: 1 1 0%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  white-space: break-spaces;
+  -webkit-font-variant-ligatures: none;
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0;
+  cursor: text;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+
+  &:focus-visible {
+    outline: none !important;
+  }
+
+  p {
+    line-height: inherit;
+    margin: 0;
+    margin: var(--#{$prefix}-margin-mini) 0;
+  }
+
+  // :nth-child(1) {
+  //   margin-top: 0;
+
+  //   > li:nth-child(1) {
+  //     margin-top: 0 !important;
+  //   }
+  // }
+
+  & [contenteditable='false'] {
+    white-space: normal;
+  }
+  & [contenteditable='false'] [contenteditable='true'] {
+    white-space: pre-wrap;
+  }
+  .ProseMirror-hideselection {
+    * {
+      caret-color: transparent;
+    }
+    *::selection {
+      background: transparent;
+    }
+    *::-moz-selection {
+      background: transparent;
+    }
+  }
+  @keyframes ProseMirror-cursor-blink {
+    to {
+      visibility: hidden;
+    }
+  }
+
+  .ProseMirror-gapcursor {
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    margin: 0;
+  }
+}

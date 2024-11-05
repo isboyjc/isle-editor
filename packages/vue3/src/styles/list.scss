@@ -1,0 +1,131 @@
+@use 'config' as *;
+
+.#{$prefix}.ProseMirror {
+  ol,
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul,
+  ul.#{$prefix}__bullet-list {
+    list-style-type: disc;
+  }
+  ol,
+  ol.#{$prefix}__ordered-list {
+    list-style-type: decimal;
+  }
+
+  > ul,
+  > ol {
+    margin: var(--#{$prefix}-margin) 0 !important;
+  }
+
+  // 无序列表, 有序列表
+  ul,
+  ol,
+  ul.#{$prefix}__bullet-list,
+  ol.#{$prefix}__ordered-list {
+    list-style-position: outside;
+    padding: 0 0 0 1.4em;
+    box-sizing: border-box;
+
+    li {
+      line-height: var(--#{$prefix}-line-height);
+      margin: var(--#{$prefix}-margin-mini) 0;
+
+      &:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      p {
+        margin: 0;
+        margin-bottom: var(--#{$prefix}-margin-mini);
+      }
+    }
+
+    ::marker {
+      font-weight: 400;
+      color: var(--#{$prefix}-color-text-1);
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+  }
+
+  // 任务列表
+  ul[data-type='taskList'] {
+    list-style: none;
+    padding: 0 0;
+    box-sizing: border-box;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      line-height: var(--#{$prefix}-line-height);
+      margin: var(--#{$prefix}-margin-mini) 0;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // ul[data-type='taskList'] li:first-child {
+  //   margin-top: 0;
+  // }
+
+  ul[data-type='taskList'] li > label {
+    user-select: none;
+  }
+
+  ul[data-type='taskList'] li > label input[type='checkbox'] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    color: var(--#{$prefix}-color-text-1);
+    cursor: pointer;
+    width: 1.05em;
+    height: 1.05em;
+    position: relative;
+    top: calc(
+      (var(--#{$prefix}-line-height) * var(--#{$prefix}-font-size) - 1.05em) /
+        2
+    );
+    border: 2px solid rgba(var(--#{$prefix}-color-border-val), 1);
+    margin: 0 0.5rem 0 0;
+    display: grid;
+    place-content: center;
+
+    &:active {
+      background-color: rgba(var(--#{$prefix}-color-border-val), 0.6);
+    }
+
+    &::before {
+      content: '';
+      width: 0.6em;
+      height: 0.6em;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em;
+      transform-origin: center;
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+
+    &:checked::before {
+      transform: scale(1);
+    }
+  }
+
+  ul[data-type='taskList']
+    li[data-checked='true']
+    > label
+    input[type='checkbox'] {
+    border: 2px solid var(--#{$prefix}-color-text-1);
+  }
+
+  ul[data-type='taskList'] li[data-checked='true'] > div > p {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+  }
+}

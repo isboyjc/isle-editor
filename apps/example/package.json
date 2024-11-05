@@ -11,6 +11,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@isle/editor": "workspace:*",
+    "@isle/vue3": "workspace:*",
+    "@isle/shared": "workspace:*",
     "pinia": "^2.2.4",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"

@@ -1,11 +1,14 @@
 {
-  "name": "@isle/editor-vue3",
+  "name": "@isle/vue3",
   "version": "0.0.1",
   "description": "IsleEditor view for vue3",
-  "main": "dist/index.js",
-  "module": "",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "umd": "dist/index.umd.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "build": "npm run clean && rollup -c"
   },
   "files": [
     "dist",
@@ -20,5 +23,13 @@
   },
   "keywords": [],
   "author": "isboyjc",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@isle/editor": "workspace:*",
+    "@isle/shared": "workspace:*",
+    "uuid": "^11.0.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  }
 }
