@@ -10,10 +10,7 @@ import Italic from '@tiptap/extension-italic'
 const source = {
   title: 'italic',
   desc: '*isle*',
-  sort: 2,
-  bubble: true,
-  icon: 'Italic',
-  command: ({ editor }) => editor.commands.toggleItalic(),
+  command: ({ editor }) => editor.chain().focus().toggleItalic().run(),
   isActive: ({ editor }) => editor.isActive('italic'),
   shortcutkeys: {
     mac: ['⌘', 'I'],

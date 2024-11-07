@@ -1,7 +1,8 @@
-import { Editor as TiptapEditor } from '@tiptap/core'
+import * as TipTap from '@tiptap/core'
 import { prefixClass } from './utils/prefix.js'
 
-export class Editor extends TiptapEditor {
+export * from '@tiptap/core'
+export class Editor extends TipTap.Editor {
   constructor(options = {}) {
     super(options)
 

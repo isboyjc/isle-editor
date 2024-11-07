@@ -17,6 +17,7 @@
     "@tiptap/extension-bubble-menu": "^2.9.1",
     "@tiptap/extension-bullet-list": "^2.9.1",
     "@tiptap/extension-character-count": "^2.9.1",
+    "@tiptap/extension-code": "^2.9.1",
     "@tiptap/extension-document": "^2.9.1",
     "@tiptap/extension-dropcursor": "^2.9.1",
     "@tiptap/extension-gapcursor": "^2.9.1",
@@ -32,8 +33,7 @@
     "@tiptap/extension-text": "^2.9.1",
     "@tiptap/extension-typography": "^2.9.1",
     "@tiptap/extension-underline": "^2.9.1",
-    "@tiptap/pm": "^2.9.1",
-    "prosemirror-state": "^1.4.3"
+    "@tiptap/pm": "^2.9.1"
   },
   "files": [
     "src",

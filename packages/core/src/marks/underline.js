@@ -10,10 +10,7 @@ import Underline from '@tiptap/extension-underline'
 const source = {
   title: 'underline',
   desc: '',
-  sort: 4,
-  bubble: true,
-  icon: 'Underline',
-  command: ({ editor }) => editor.commands.toggleUnderline(),
+  command: ({ editor }) => editor.chain().focus().toggleUnderline().run(),
   isActive: ({ editor }) => editor.isActive('underline'),
   shortcutkeys: {
     mac: ['⌘', 'U'],

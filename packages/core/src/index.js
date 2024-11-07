@@ -1,7 +1,3 @@
-import * as TiptapCore from '@tiptap/core'
-// Filter the Editor class and export it using inherited classes
-const { Editor: _Editor, ...rest } = TiptapCore
-export const { ...exportedProps } = rest
 export * from './editor.js'
 
 export * from './locales/index.js'

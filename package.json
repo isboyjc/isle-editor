@@ -17,6 +17,7 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
+    "@vitejs/plugin-vue": "^5.1.4",
     "babel-loader": "^9.2.1",
     "eslint": "^9.13.0",
     "eslint-define-config": "^2.1.0",
@@ -28,6 +29,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-sass": "^1.14.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.80.6",
     "turbo": "^2.2.3",
     "vue-eslint-parser": "^9.4.3"

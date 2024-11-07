@@ -10,10 +10,7 @@ import Subscript from '@tiptap/extension-subscript'
 const source = {
   title: 'subscript',
   desc: '',
-  sort: 6,
-  icon: 'Subscript',
-  bubble: true,
-  command: ({ editor }) => editor.commands.toggleSubscript(),
+  command: ({ editor }) => editor.chain().focus().toggleSubscript().run(),
   isActive: ({ editor }) => editor.isActive('subscript'),
   shortcutkeys: {
     mac: ['⌘', ','],

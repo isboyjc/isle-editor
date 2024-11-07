@@ -6,7 +6,7 @@
  * @LastEditors: isboyjc
  */
 import { Extension, isList } from '@tiptap/core'
-import { AllSelection, TextSelection } from 'prosemirror-state'
+import { AllSelection, TextSelection } from '@tiptap/pm/state'
 import { clamp } from '../utils/clamp.js'
 
 const source = {

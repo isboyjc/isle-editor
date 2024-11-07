@@ -10,10 +10,7 @@ import Bold from '@tiptap/extension-bold'
 const source = {
   title: 'bold',
   desc: '**isle**',
-  sort: 1,
-  bubble: true,
-  icon: 'Bold',
-  command: ({ editor }) => editor.commands.toggleBold(),
+  command: ({ editor }) => editor.chain().focus().toggleBold().run(),
   isActive: ({ editor }) => editor.isActive('bold'),
   shortcutkeys: {
     mac: ['⌘', 'B'],

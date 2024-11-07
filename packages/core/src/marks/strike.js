@@ -10,10 +10,7 @@ import Strike from '@tiptap/extension-strike'
 const source = {
   title: 'strike',
   desc: '~~isle~~',
-  sort: 3,
-  bubble: true,
-  icon: 'Strikethrough',
-  command: ({ editor }) => editor.commands.toggleStrike(),
+  command: ({ editor }) => editor.chain().focus().toggleStrike().run(),
   isActive: ({ editor }) => editor.isActive('strike'),
   shortcutkeys: {
     mac: ['⌘', 'Shift', 'S'],

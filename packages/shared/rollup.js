@@ -6,6 +6,8 @@ import autoExternal from 'rollup-plugin-auto-external'
 import sourcemaps from 'rollup-plugin-sourcemaps'
 import copy from 'rollup-plugin-copy'
 import sass from 'rollup-plugin-sass'
+import vue from '@vitejs/plugin-vue'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 export const baseConfig = ({ input = 'src/index.js', pkg }) => ({
   input,
@@ -33,6 +35,7 @@ export const baseConfig = ({ input = 'src/index.js', pkg }) => ({
       exports: 'named'
     }
   ],
+  external: ['vue'],
   plugins: [
     autoExternal({
       packagePath: './package.json'
@@ -49,6 +52,16 @@ export const baseConfig = ({ input = 'src/index.js', pkg }) => ({
       output: 'dist/style.css',
       // 压缩输出
       outputStyle: 'compressed'
+    }),
+    nodeResolve(),
+    vue({
+      // vue 插件配置
+      template: {
+        isProduction: true,
+        compilerOptions: {
+          whitespace: 'condense'
+        }
+      }
     })
   ]
 })

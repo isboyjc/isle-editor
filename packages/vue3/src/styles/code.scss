@@ -1,0 +1,14 @@
+@use 'config' as *;
+
+.#{$prefix}.ProseMirror {
+  code,
+  .#{$prefix}__code {
+    padding: 0.2em 0.4em;
+    line-height: normal;
+    font-size: 90%;
+    border-radius: 0.25rem;
+    background-color: rgba(var(--#{$prefix}-color-border-val), 0.55);
+    color: var(--#{$prefix}-text-red);
+    box-decoration-break: clone;
+  }
+}

@@ -10,10 +10,7 @@ import Superscript from '@tiptap/extension-superscript'
 const source = {
   title: 'superscript',
   desc: '',
-  sort: 7,
-  bubble: true,
-  icon: 'Superscript',
-  command: ({ editor }) => editor.commands.toggleSuperscript(),
+  command: ({ editor }) => editor.chain().focus().toggleSuperscript().run(),
   isActive: ({ editor }) => editor.isActive('superscript'),
   shortcutkeys: {
     mac: ['⌘', '.'],

@@ -1,8 +1,8 @@
 @use 'config' as *;
 
 :root {
-  --#{$prefix}-color-white: rgba(250, 250, 250, 1);
-  --#{$prefix}-color-black: rgba(9, 9, 11, 1);
+  --#{$prefix}-color-white: rgba(253, 253, 253, 1);
+  --#{$prefix}-color-black: rgba(3, 3, 5, 1);
   --#{$prefix}-theme-primary: var(--#{$prefix}-text-blue);
   --#{$prefix}-theme-primary-val: var(--#{$prefix}-text-blue-val);
   --#{$prefix}-theme-selected: #7ba5ff;

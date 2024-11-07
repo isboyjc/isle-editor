@@ -20,20 +20,21 @@
       </div>
     </div>
     <div class="max-w-42rem w-full mx-auto overflow-y-auto overflow-x-hidden flex flex-1">
+      <IsleEditorBubble v-if="editorEl?.editor" :editor="editorEl?.editor"></IsleEditorBubble>
       <IsleEditor ref="editorEl" v-model="content" :extensions="extensions" @update="editorUpdate"></IsleEditor>
     </div>
   </div>
 </template>
 
 <script setup>
-import { Heading, OrderedList, BulletList, TaskList, Blockquote, Divider, Bold, Italic, Strike, Underline, Subscript, Superscript } from '@isle/editor'
-import { IsleEditor } from '@isle/vue3'
+import { Heading, OrderedList, BulletList, TaskList, Blockquote, Divider, Bold, Italic, Strike, Underline, Subscript, Superscript, Code } from '@isle/editor'
+import { IsleEditor, IsleEditorBubble} from '@isle/vue3'
 import '@isle/vue3/dist/style.css'
 
 const content = ref(`<h1 class="isle-editor__title">H1 标题一</h1><h2 class="isle-editor__heading">H2 标题二</h2><h3 class="isle-editor__heading">H3 标题三</h3><h4 class="isle-editor__heading">H4 标题四</h4><h5 class="isle-editor__heading">H5 标题五</h5><h6 class="isle-editor__heading">H6 标题六</h6><p class="isle-editor__paragraph">段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意</p><ul class="isle-editor__bullet-list"><li><p class="isle-editor__paragraph">无序列表项</p><ul class="isle-editor__bullet-list"><li><p class="isle-editor__paragraph">无序列表项</p></li><li><p class="isle-editor__paragraph">无序列表项</p></li></ul></li><li><p class="isle-editor__paragraph">无序列表项</p></li><li><p class="isle-editor__paragraph">无序列表项</p></li></ul><ol class="isle-editor__ordered-list"><li><p class="isle-editor__paragraph">有序列表项</p><ol class="isle-editor__ordered-list"><li><p class="isle-editor__paragraph">有序列表项</p></li><li><p class="isle-editor__paragraph">有序列表项</p></li></ol></li><li><p class="isle-editor__paragraph">有序列表项</p></li><li><p class="isle-editor__paragraph">有序列表项</p></li></ol><ul class="isle-editor__task-list" data-type="taskList"><li data-checked="true" data-type="taskItem"><label><input type="checkbox" checked="checked"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p><ul class="isle-editor__task-list" data-type="taskList"><li data-checked="false" data-type="taskItem"><label><input type="checkbox"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li><li data-checked="false" data-type="taskItem"><label><input type="checkbox"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li><li data-checked="true" data-type="taskItem"><label><input type="checkbox" checked="checked"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li></ul></div></li><li data-checked="true" data-type="taskItem"><label><input type="checkbox" checked="checked"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li><li data-checked="true" data-type="taskItem"><label><input type="checkbox" checked="checked"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li></ul>`)
 const editorEl = ref(null)
 
-const extensions = [Heading, OrderedList, BulletList, TaskList, Blockquote, Divider, Bold, Italic, Strike, Underline, Subscript, Superscript]
+const extensions = [Heading, OrderedList, BulletList, TaskList, Blockquote, Divider, Italic, Strike, Underline, Subscript, Superscript, Bold, Code]
 
 const characters = ref(0)
 const words = ref(0)
@@ -44,6 +45,7 @@ function charactersCount(editor) {
 }
 
 function editorUpdate({ editor }) {
+  console.log('editorUpdate', editor)
   charactersCount(editor)
 }
 </script>
