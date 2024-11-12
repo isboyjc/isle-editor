@@ -8,6 +8,9 @@ import copy from 'rollup-plugin-copy'
 import sass from 'rollup-plugin-sass'
 import vue from '@vitejs/plugin-vue'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+// import terser from '@rollup/plugin-terser'
+import alias from '@rollup/plugin-alias'
+import path from 'path'
 
 export const baseConfig = ({ input = 'src/index.js', pkg }) => ({
   input,
@@ -37,6 +40,11 @@ export const baseConfig = ({ input = 'src/index.js', pkg }) => ({
   ],
   external: ['vue'],
   plugins: [
+    alias({
+      entries: [
+        { find: '@', replacement: path.resolve(process.cwd(), 'src')  }
+      ]
+    }),
     autoExternal({
       packagePath: './package.json'
     }),

@@ -85,13 +85,14 @@
     background-color: transparent;
     color: var(--#{$prefix}-color-text-1);
     cursor: pointer;
-    width: 1.05em;
-    height: 1.05em;
+    width: 1.1em;
+    height: 1.1em;
     position: relative;
     top: calc(
       (var(--#{$prefix}-line-height) * var(--#{$prefix}-font-size) - 1.05em) /
         2
     );
+    // border-radius: 0.15em;
     border: 2px solid rgba(var(--#{$prefix}-color-border-val), 1);
     margin: 0 0.5rem 0 0;
     display: grid;
@@ -103,8 +104,8 @@
 
     &::before {
       content: '';
-      width: 0.6em;
-      height: 0.6em;
+      width: 0.7em;
+      height: 0.7em;
       transform: scale(0);
       transition: 120ms transform ease-in-out;
       box-shadow: inset 1em 1em;
@@ -121,11 +122,14 @@
     li[data-checked='true']
     > label
     input[type='checkbox'] {
-    border: 2px solid var(--#{$prefix}-color-text-1);
+    border: 2px solid var(--#{$prefix}-theme-primary);
+    background-color: var(--#{$prefix}-theme-primary);
+    color: var(--#{$prefix}-color-white);
   }
 
   ul[data-type='taskList'] li[data-checked='true'] > div > p {
     text-decoration: line-through;
     text-decoration-thickness: 2px;
+    color: var(--#{$prefix}-color-text-2);
   }
 }

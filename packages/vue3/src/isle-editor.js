@@ -1,4 +1,4 @@
-import { Document, Text, Paragraph, Gapcursor, HardBreak, CharacterCount, History, Indent, Typography, CommandAKeymap, ListItem } from '@isle/editor'
+import { Document, Text, Paragraph, Gapcursor, HardBreak, CharacterCount, History, Indent, Typography, CommandAKeymap, ListItem, Selection } from '@isle/editor'
 import { defineComponent, ref, h, shallowRef, onMounted } from 'vue'
 // import { prefixClass } from '@isle/editor'
 import { v4 as uuidv4 } from 'uuid'
@@ -124,6 +124,7 @@ export default defineComponent({
       History,
       Indent,
       Typography,
+      // Selection,
       CommandAKeymap,
       props.extensions.some(
         v => v.name == 'orderedList' || v.name == 'bulletList'

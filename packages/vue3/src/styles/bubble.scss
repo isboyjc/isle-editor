@@ -1,22 +1,26 @@
 @use 'config' as *;
 
-.#{$prefix}-bubble-menu{
+.#{$prefix}-bubble-menu,
+.#{$prefix}-bubble-menu-link {
   width: auto;
   height: auto;
   padding: 0.2rem;
   border-radius: 0.5rem;
   display: inline-flex;
   flex-direction: row;
+  align-items: center;
   gap: 0.125rem;
   background-color: var(--#{$prefix}-background-default);
   border: 1px solid var(--#{$prefix}-color-border);
   box-sizing: border-box;
+}
 
+.#{$prefix}-bubble-menu{
   .#{$prefix}-bubble-menu__btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
+    min-width: 32px;
     height: 32px;
     border-radius: 0.375rem;
     border: none;
@@ -25,16 +29,68 @@
     cursor: pointer;
     color: var(--#{$prefix}-color-text-2);
 
+    &.red {
+      color: var(--#{$prefix}-text-red)!important;
+    }
+
     &.active {
       background-color: rgba(var(--#{$prefix}-color-border-val), 0.7);
-      color: var(--#{$prefix}-color-text-1);
+      color: var(--#{$prefix}-theme-primary)!important;
     }
     
     &:hover {
       background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
       color: var(--#{$prefix}-color-text-1);
     }
-    
-    .#{$prefix}-bubble-menu__icon {}
+
+    .#{$prefix}-bubble-menu__btn-text {
+      margin-left: 0.3rem;
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
+}
+
+.#{$prefix}-bubble-menu-link {
+  .#{$prefix}-bubble-menu-link__input {
+    width: 240px;
+    height: 32px;
+    border: none;
+    outline: none;
+    background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    padding-left: 0.5rem;
+    box-sizing: border-box;
+
+    .#{$prefix}-bubble-menu-link__icon {
+      margin-right: 0.5rem;
+      color: var(--#{$prefix}-color-text-1);
+    }
+
+    .#{$prefix}-bubble-menu-link__input-inner {
+      width: 100%;
+      height: 100%;
+      padding-right: 0.5rem;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      box-sizing: border-box;
+    }
+
+    .#{$prefix}-bubble-menu-link__input-inner:focus {
+      background-color: transparent;
+    }
+  }
+}
+
+.#{$prefix}-bubble-menu__divider {
+  width: 1px;
+  height: 24px;
+  margin: 0 0.05rem;
+  background-color: var(--#{$prefix}-color-border);
 }

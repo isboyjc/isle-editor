@@ -29,8 +29,7 @@
     "@isle/shared": "workspace:*",
     "@tiptap/pm": "^2.9.1",
     "lucide-vue-next": "^0.454.0",
-    "prosemirror-state": "^1.4.3",
-    "prosemirror-tables": "^1.6.1",
+    "tippy.js": "^6.3.7",
     "uuid": "^11.0.2"
   },
   "peerDependencies": {

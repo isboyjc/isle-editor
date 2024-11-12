@@ -23,6 +23,9 @@ importers:
       '@babel/preset-react':
         specifier: ^7.25.9
         version: 7.25.9(@babel/core@7.26.0)
+      '@rollup/plugin-alias':
+        specifier: ^5.1.1
+        version: 5.1.1(rollup@4.24.4)
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.26.0)(rollup@4.24.4)
@@ -32,6 +35,9 @@ importers:
       '@rollup/plugin-node-resolve':
         specifier: ^15.3.0
         version: 15.3.0(rollup@4.24.4)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.24.4)
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.8.7)(sass@1.80.6)(terser@5.36.0))(vue@3.5.12)
@@ -189,6 +195,9 @@ importers:
       '@tiptap/extension-italic':
         specifier: ^2.9.1
         version: 2.9.1(@tiptap/core@2.9.1(@tiptap/pm@2.9.1))
+      '@tiptap/extension-link':
+        specifier: ^2.9.1
+        version: 2.9.1(@tiptap/core@2.9.1(@tiptap/pm@2.9.1))(@tiptap/pm@2.9.1)
       '@tiptap/extension-list-item':
         specifier: ^2.9.1
         version: 2.9.1(@tiptap/core@2.9.1(@tiptap/pm@2.9.1))
@@ -239,12 +248,9 @@ importers:
       lucide-vue-next:
         specifier: ^0.454.0
         version: 0.454.0(vue@3.5.12)
-      prosemirror-state:
-        specifier: ^1.4.3
-        version: 1.4.3
-      prosemirror-tables:
-        specifier: ^1.6.1
-        version: 1.6.1
+      tippy.js:
+        specifier: ^6.3.7
+        version: 6.3.7
       uuid:
         specifier: ^11.0.2
         version: 11.0.2
@@ -1322,6 +1328,15 @@ packages:
   '@remirror/core-constants@3.0.0':
     resolution: {integrity: sha512-42aWfPrimMfDKDi4YegyS7x+/0tlzaqwPQCULLanv3DMIlu96KTJR0fM5isWX2UViOqlGnX6YFgqWepcX+XMNg==}
 
+  '@rollup/plugin-alias@5.1.1':
+    resolution: {integrity: sha512-PR9zDb+rOzkRb2VD+EuKB7UC41vU5DIwZ5qqCpk0KJudcWAyi8rvYOhS7+L5aZCspw1stTViLgN5v6FF1p5cgQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
   '@rollup/plugin-babel@6.0.4':
     resolution: {integrity: sha512-YF7Y52kFdFT/xVSuVdjkV5ZdX/3YtmX0QulG+x0taQOtJdHYzVU61aSSkAgVJ7NOv6qPkIYiJSgSWWN/DM5sGw==}
     engines: {node: '>=14.0.0'}
@@ -1349,6 +1364,15 @@ packages:
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.78.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/plugin-terser@0.4.4':
+    resolution: {integrity: sha512-XHeJC5Bgvs8LfukDwWZp7yeqin6ns8RTl2B9avbejt6tZqsqvVoWI7ZTQrcNsfKEDWBTnTxM8nMDkO2IFFbd0A==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.0.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -1525,6 +1549,12 @@ packages:
     resolution: {integrity: sha512-VkNA6Vz96+/+7uBlsgM7bDXXx4b62T1fDam/3UKifA72aD/fZckeWrbT7KrtdUbzuIniJSbA0lpTs5FY29+86Q==}
     peerDependencies:
       '@tiptap/core': ^2.7.0
+
+  '@tiptap/extension-link@2.9.1':
+    resolution: {integrity: sha512-yG+e3e8cCCN9dZjX4ttEe3e2xhh58ryi3REJV4MdiEkOT9QF75Bl5pUbMIS4tQ8HkOr04QBFMHKM12kbSxg1BA==}
+    peerDependencies:
+      '@tiptap/core': ^2.7.0
+      '@tiptap/pm': ^2.7.0
 
   '@tiptap/extension-list-item@2.9.1':
     resolution: {integrity: sha512-6O4NtYNR5N2Txi4AC0/4xMRJq9xd4+7ShxCZCDVL0WDVX37IhaqMO7LGQtA6MVlYyNaX4W1swfdJaqrJJ5HIUw==}
@@ -2539,6 +2569,9 @@ packages:
   linkify-it@5.0.0:
     resolution: {integrity: sha512-5aHCbzQRADcdP+ATqnDuhhJ/MRIqDkZX5pyjFHRRysS8vZ5AbqGEoFIb6pYHPZ+L/OC2Lc+xT8uHVVR5CAK/wQ==}
 
+  linkifyjs@4.1.3:
+    resolution: {integrity: sha512-auMesunaJ8yfkHvK4gfg1K0SaKX/6Wn9g2Aac/NwX+l5VdmFZzo/hdPGxEOETj+ryRa4/fiOPjeeKURSAJx1sg==}
+
   load-json-file@4.0.0:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
     engines: {node: '>=4'}
@@ -3048,6 +3081,9 @@ packages:
   slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+
+  smob@1.5.0:
+    resolution: {integrity: sha512-g6T+p7QO8npa+/hNx9ohv1E5pVCmWrVCUzUXJyLdMmftX6ER0oiWY/w9knEonLpnOp6b6FenKnMfR8gqwWdwig==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -4569,6 +4605,10 @@ snapshots:
 
   '@remirror/core-constants@3.0.0': {}
 
+  '@rollup/plugin-alias@5.1.1(rollup@4.24.4)':
+    optionalDependencies:
+      rollup: 4.24.4
+
   '@rollup/plugin-babel@6.0.4(@babel/core@7.26.0)(rollup@4.24.4)':
     dependencies:
       '@babel/core': 7.26.0
@@ -4598,6 +4638,14 @@ snapshots:
       deepmerge: 4.3.1
       is-module: 1.0.0
       resolve: 1.22.8
+    optionalDependencies:
+      rollup: 4.24.4
+
+  '@rollup/plugin-terser@0.4.4(rollup@4.24.4)':
+    dependencies:
+      serialize-javascript: 6.0.2
+      smob: 1.5.0
+      terser: 5.36.0
     optionalDependencies:
       rollup: 4.24.4
 
@@ -4718,6 +4766,12 @@ snapshots:
   '@tiptap/extension-italic@2.9.1(@tiptap/core@2.9.1(@tiptap/pm@2.9.1))':
     dependencies:
       '@tiptap/core': 2.9.1(@tiptap/pm@2.9.1)
+
+  '@tiptap/extension-link@2.9.1(@tiptap/core@2.9.1(@tiptap/pm@2.9.1))(@tiptap/pm@2.9.1)':
+    dependencies:
+      '@tiptap/core': 2.9.1(@tiptap/pm@2.9.1)
+      '@tiptap/pm': 2.9.1
+      linkifyjs: 4.1.3
 
   '@tiptap/extension-list-item@2.9.1(@tiptap/core@2.9.1(@tiptap/pm@2.9.1))':
     dependencies:
@@ -5913,6 +5967,8 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
+  linkifyjs@4.1.3: {}
+
   load-json-file@4.0.0:
     dependencies:
       graceful-fs: 4.2.11
@@ -6463,6 +6519,8 @@ snapshots:
       totalist: 3.0.1
 
   slash@3.0.0: {}
+
+  smob@1.5.0: {}
 
   source-map-js@1.2.1: {}
 

@@ -1,5 +1,4 @@
-import { Bold, Italic, Strikethrough as Strike, Subscript, Superscript, Underline, Code } from 'lucide-vue-next';
-
+import { Bold, Italic, Strikethrough as Strike, Subscript, Superscript, Underline, Code, Link, Unlink, Copy, Check, SquareArrowOutUpRight as OpenRight, SquarePen as Edit } from 'lucide-vue-next';
 const ICONS = {
   Bold,
   Italic, 
@@ -7,7 +6,13 @@ const ICONS = {
   Subscript, 
   Superscript, 
   Underline,
-  Code
+  Code,
+  Link,
+  Unlink, 
+  Copy, 
+  Check,
+  OpenRight,
+  Edit
 };
 
 export const getIcon = (name) => {

@@ -1,8 +1,8 @@
-import { BubbleMenuPlugin, prefixClass, isNodeSelection, isTextSelection } from '@isle/editor'
-import { AllSelection, TextSelection } from 'prosemirror-state'
-import { CellSelection } from 'prosemirror-tables'
-import { sortArrayByPropertyArray } from '../../utils/array.js'
-import { getIcon } from '../../icons/index.js'
+import { BubbleMenuPlugin, isNodeSelection, isTextSelection } from '@isle/editor'
+import { sortArrayByPropertyArray } from '@/utils/array'
+import BubbleSelector from './bubble-menu-selector'
+import BubbleLinkSelector from './bubble-menu-link-selector'
+
 import {
   defineComponent,
   h,
@@ -19,6 +19,7 @@ const BUBBLE_MENU_SORT = [
   'underline',
   'strike',
   'code',
+  'link',
   'subscript',
   'superscript',
 ]
@@ -38,7 +39,7 @@ export default defineComponent({
 
     updateDelay: {
       type: Number,
-      default: 100,
+      default: 60,
     },
 
     tippyOptions: {
@@ -46,7 +47,7 @@ export default defineComponent({
       default: () => ({
         appendTo: () => document.body,
         maxWidth: 'none',
-        moveTransition: 'transform 0.15s ease-out',
+        moveTransition: 'transform 0.02s ease-out',
         onHidden: () => {
           // console.log('IsleEditor bubbleMenu onhidden')
         }
@@ -62,19 +63,21 @@ export default defineComponent({
     const root = ref(null)
     const registered = ref(false)
 
-    // 判断当前选中是否为链接
+    // Determine whether the current selection is link
     const isLink = computed(() =>
       !props.editor ? false : props.editor.isActive('link')
     )
-    // 判断当前选中是否为表格
+    // Determine whether the current selection is table
     const isTable = computed(() =>
-      !props.editor ? false : props.editor.state.selection instanceof CellSelection
+      !props.editor ? false : /CellSelection$/.test(props.editor.state.selection.constructor.name)
     )
-    // 判断当前选中是否为文本
+    // Determine whether the current selection is text
+    // Why not use the TextSelection or AllSelection classes to determine if a selection instance belongs to that class?
+    // Because the TextSelection and AllSelection classes were prefixed with module private prefixes during the rollup packaging,
+    // it is not possible to correctly determine the
     const isText = computed(() =>!props.editor
       ? false
-      : props.editor.state.selection instanceof TextSelection ||
-        props.editor.state.selection instanceof AllSelection
+      : /TextSelection$/.test(props.editor.state.selection.constructor.name) || /AllSelection$/.test(props.editor.state.selection.constructor.name) || (typeof props.editor.state.selection.$cursor !== 'undefined' && typeof props.editor.state.selection.empty !== 'undefined' && typeof props.editor.state.selection.from === 'number' && typeof props.editor.state.selection.to === 'number')
     )
 
     const shouldShowDefault = ({ state, from, to, editor }) => {
@@ -83,7 +86,7 @@ export default defineComponent({
       const isEmptyTextBlock =
         !doc.textBetween(from, to).length && isTextSelection(state.selection)
     
-      // 内容为空或空文本块不展示气泡菜单
+      // Empty content or empty text blocks do not show bubble menus
       if (empty || isEmptyTextBlock) return false
     
       // 如果出现以下情况，则不显示气泡菜单：
@@ -96,8 +99,10 @@ export default defineComponent({
       if (editor.isActive('codeblock') || isNodeSelection(selection)) {
         return false
       }
-    
-      console.log(isText.value, isLink.value, isTable.value)
+      
+      console.log('isText', isText.value)
+      console.log('isLink', isLink.value)
+      console.log('isTable', isTable.value)
       return isText.value || isLink.value || isTable.value
     }
 
@@ -164,26 +169,14 @@ export default defineComponent({
       registered.value = false
     })
 
-    return () => h('div', { ref: root, class: `${prefixClass}-bubble-menu` }, [
-      ...bubbleMenus.value.map(menu => {
-        // 检查是否存在对应的具名插槽
-        const slotName = slots[menu.name]
-        
-        if (slotName) {
-          // 如果存在具名插槽，使用插槽内容
-          return slotName({
-            ...menu
-          })
-        }
-        
-        // 默认渲染逻辑
-        return h('button', {
-          class: [`${prefixClass}-bubble-menu__btn`, { active: menu?.isActive ? menu.isActive({ editor: props.editor }) : false }],
-          onClick: () => menu.command({editor: props.editor}),
-          onMouseDown: (evt) => evt.preventDefault()
-        }, [
-          h(getIcon(menu.name), { class: `${prefixClass}-bubble-menu__icon`, size: 17, strokeWidth: 2.5 })
-        ])
+    return () => h('div', { ref: root }, [
+      // 渲染基础气泡菜单
+      (isText.value && !isLink.value) && h(BubbleSelector, {
+        editor: props.editor,
+        menus: bubbleMenus.value
+      }, slots),
+      isLink.value && h(BubbleLinkSelector, {
+        editor: props.editor
       })
     ])
   }
