@@ -1,10 +1,3 @@
-/*
- * @LastEditTime: 2024-11-01 12:55:26
- * @Description: 撤销重做
- * @Date: 2024-04-30 20:15:35
- * @Author: isboyjc
- * @LastEditors: isboyjc
- */
 import { Extension } from '@tiptap/core'
 import { history, redo, undo } from '@tiptap/pm/history'
 
@@ -14,20 +7,14 @@ const source = {
     {
       title: 'undo',
       icon: 'Undo',
-      shortcutkeys: {
-        mac: ['⌘', 'Z'],
-        win: ['Ctrl', 'Z']
-      },
+      shortcutkeys: 'Mod-Z',
       command: ({ editor }) => editor.commands.undo(),
       isActive: ({ editor }) => editor.can().undo()
     },
     {
       title: 'redo',
       icon: 'Redo',
-      shortcutkeys: {
-        mac: ['⌘', 'Shift', 'Z'],
-        win: ['Ctrl', 'Shift', 'Z']
-      },
+      shortcutkeys: 'Mod-Shift-Z',
       command: ({ editor }) => editor.commands.redo(),
       isActive: ({ editor }) => editor.can().redo()
     }

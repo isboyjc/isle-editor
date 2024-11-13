@@ -1,10 +1,3 @@
-/*
- * @LastEditTime: 2024-10-31 19:29:31
- * @Description: 占位符
- * @Date: 2024-10-31 19:27:32
- * @Author: isboyjc
- * @LastEditors: isboyjc
- */
 import { Extension, isNodeEmpty } from '@tiptap/core'
 import { Plugin, PluginKey } from '@tiptap/pm/state'
 import { Decoration, DecorationSet } from '@tiptap/pm/view'

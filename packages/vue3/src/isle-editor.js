@@ -1,6 +1,5 @@
-import { Document, Text, Paragraph, Gapcursor, HardBreak, CharacterCount, History, Indent, Typography, CommandAKeymap, ListItem, Selection } from '@isle/editor'
+import { Document, Text, Paragraph, Gapcursor, HardBreak, CharacterCount, History, Indent, Typography, CommandAKeymap, ListItem, Selection, TextStyle } from '@isle/editor'
 import { defineComponent, ref, h, shallowRef, onMounted } from 'vue'
-// import { prefixClass } from '@isle/editor'
 import { v4 as uuidv4 } from 'uuid'
 import { Editor } from './editor.js'
 import './styles/index.scss'
@@ -124,8 +123,11 @@ export default defineComponent({
       History,
       Indent,
       Typography,
-      // Selection,
+      Selection,
       CommandAKeymap,
+      props.extensions.some(
+        v => v.name == 'color' || v.name == 'fontFamily'
+      ) && TextStyle,
       props.extensions.some(
         v => v.name == 'orderedList' || v.name == 'bulletList'
       ) && ListItem,

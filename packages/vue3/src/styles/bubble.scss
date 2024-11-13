@@ -1,7 +1,10 @@
 @use 'config' as *;
 
 .#{$prefix}-bubble-menu,
-.#{$prefix}-bubble-menu-link {
+.#{$prefix}-bubble-menu-link,
+.#{$prefix}-bubble-menu-color,
+.#{$prefix}-bubble-menu-background,
+.#{$prefix}-bubble-menu-style {
   width: auto;
   height: auto;
   padding: 0.2rem;
@@ -10,7 +13,7 @@
   flex-direction: row;
   align-items: center;
   gap: 0.125rem;
-  background-color: var(--#{$prefix}-background-default);
+  background-color: var(--#{$prefix}-color-background);
   border: 1px solid var(--#{$prefix}-color-border);
   box-sizing: border-box;
 }
@@ -27,20 +30,36 @@
     background-color: transparent;
     box-sizing: border-box;
     cursor: pointer;
-    color: var(--#{$prefix}-color-text-2);
-
-    &.red {
-      color: var(--#{$prefix}-text-red)!important;
-    }
+    color: var(--#{$prefix}-color-text-1);
 
     &.active {
       background-color: rgba(var(--#{$prefix}-color-border-val), 0.7);
       color: var(--#{$prefix}-theme-primary)!important;
     }
-    
+    &.semi-active {
+      background-color: rgba(var(--#{$prefix}-color-border-val), 0.7);
+    }
+    &.danger {
+      color: var(--#{$prefix}-text-red)!important;
+    }
+    &.success {
+      color: var(--#{$prefix}-text-green)!important;
+    }
+
     &:hover {
       background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
-      color: var(--#{$prefix}-color-text-1);
+      color: var(--#{$prefix}-color-text);
+    }
+
+    .#{$prefix}-bubble-menu__icon-box {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.375rem;
+      border: 1px solid var(--#{$prefix}-color-border);
+      box-sizing: border-box;
     }
 
     .#{$prefix}-bubble-menu__btn-text {
@@ -84,6 +103,111 @@
 
     .#{$prefix}-bubble-menu-link__input-inner:focus {
       background-color: transparent;
+    }
+  }
+}
+
+.#{$prefix}-bubble-menu-color,
+.#{$prefix}-bubble-menu-background,
+.#{$prefix}-bubble-menu-style {
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .#{$prefix}-bubble-menu-color__title,
+  .#{$prefix}-bubble-menu-background__title,
+  .#{$prefix}-bubble-menu-style__title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.mt-2 {
+      margin-top: 0.5rem;
+    }
+
+    .#{$prefix}-bubble-menu-color__title-text,
+    .#{$prefix}-bubble-menu-background__title-text,
+    .#{$prefix}-bubble-menu-style__title-text {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--#{$prefix}-color-text-2);
+    }
+
+    .#{$prefix}-bubble-menu-color__default,
+    .#{$prefix}-bubble-menu-background__default,
+    .#{$prefix}-bubble-menu-style__default {
+      width: 24px;
+      height: 14px;
+      border-radius: 0.175rem;
+      border: 1px solid var(--#{$prefix}-color-border);
+      cursor: pointer;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+  
+      &:hover {
+        background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+      }
+  
+      &::after,&::before {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+      }
+      &::after {
+        background: linear-gradient(
+          to bottom right, 
+          transparent calc(50% - 0.5px),
+          var(--#{$prefix}-color-border) calc(50% - 0.5px),
+          var(--#{$prefix}-color-border) calc(50% + 0.5px),
+          transparent calc(50% + 0.5px)
+        );
+      }
+      &::before{
+        background: linear-gradient(
+          to top right, 
+          transparent calc(50% - 0.5px),
+          var(--#{$prefix}-color-border) calc(50% - 0.5px),
+          var(--#{$prefix}-color-border) calc(50% + 0.5px),
+          transparent calc(50% + 0.5px)
+        );
+      }
+    }
+  }
+
+  .#{$prefix}-bubble-menu-color__box,
+  .#{$prefix}-bubble-menu-background__box,
+  .#{$prefix}-bubble-menu-style__box {
+    display: grid;
+    grid-template-columns: repeat(5, 24px);
+    grid-auto-rows: 24px;
+    gap: 0.5rem;
+
+    .#{$prefix}-bubble-menu-color__box-item,
+    .#{$prefix}-bubble-menu-background__box-item,
+    .#{$prefix}-bubble-menu-style__box-item {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.375rem;
+      border: 1px solid var(--#{$prefix}-color-border);
+      box-sizing: border-box;
+
+      &:hover {
+        background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+      }
+
+      svg {
+        filter: drop-shadow(0 0 1px var(--#{$prefix}-color-shadow));
+      }
     }
   }
 }

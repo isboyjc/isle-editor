@@ -14,21 +14,31 @@ export default defineComponent({
       type: Object,
       required: true
     },
-    triggerElement: {
-      type: Object,
-      required: true
+    isEdit: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props, { expose}) {
-    const rootRef = ref(null)
+    const linkTriggerRef = ref(null)
+    const linkContentRef = ref(null)
     const linkInputRef = ref(null)
     const tippyInstance = ref(null)
     const isShown = ref(false)
     const openInNewTab = ref(true)
 
+    watchEffect(() => {
+      if (props.isEdit) {
+        const linkData = props.editor.getAttributes('link')
+        if (linkInputRef.value && linkData.href) {
+          linkInputRef.value.value = linkData.href
+        }
+      }
+    })
+
     onMounted(() => {
-      tippyInstance.value = createTippy(props.triggerElement, {
-        content: rootRef.value,
+      tippyInstance.value = createTippy(linkTriggerRef.value, {
+        content: linkContentRef.value,
         trigger: 'click',
         hideOnClick: true,
         placement: 'bottom',
@@ -72,26 +82,42 @@ export default defineComponent({
       isShown
     })
 
-    return () => h('div', { ref: rootRef, class: `${prefixClass}-bubble-menu-link` }, [
-      h('div', { class: `${prefixClass}-bubble-menu-link__input` }, [
-        h(getIcon(props.menu?.name || 'link'), { class: `${prefixClass}-bubble-menu-link__icon`, size: 15, strokeWidth: 2.5 }),
-        h('input', {
-          ref: linkInputRef,
-          class: `${prefixClass}-bubble-menu-link__input-inner`,
-          placeholder: '请输入链接',
-          onFocus: () => {
-            console.log('focus')
-          },
-          onKeydown: (event) => {
-            if (event.key === 'Enter') {
-              const url = event.target.value
-              if (url && url.trim()) {
-                props.menu.command({ editor: props.editor, href: url, target: openInNewTab.value ? '_blank' : null })
-                tippyInstance.value?.hide()
+    return () => h('div', {}, [
+      h('div', {ref: linkTriggerRef }, [
+        props.isEdit ? (
+          h('button', {
+            class: [`${prefixClass}-bubble-menu__btn`, { active: isShown.value }],
+            onMouseDown: (evt) => evt.preventDefault()
+          }, [
+            h(getIcon('edit'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+          ])
+        ) : (
+          h('button', {
+            class: [`${prefixClass}-bubble-menu__btn`, { active: isShown.value }],
+            onMouseDown: (evt) => evt.preventDefault()
+          }, [
+            h(getIcon(props.menu.name), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+          ])
+        )
+      ]),
+      h('div', { ref: linkContentRef, class: `${prefixClass}-bubble-menu-link` }, [
+        h('div', { class: `${prefixClass}-bubble-menu-link__input` }, [
+          h(getIcon(props.menu.name || 'link'), { class: `${prefixClass}-bubble-menu-link__icon`, size: 15, strokeWidth: 2.5 }),
+          h('input', {
+            ref: linkInputRef,
+            class: `${prefixClass}-bubble-menu-link__input-inner`,
+            placeholder: '请输入链接',
+            onKeydown: (event) => {
+              if (event.key === 'Enter') {
+                const url = event.target.value
+                if (url && url.trim()) {
+                  props.menu.command({ editor: props.editor, href: url, target: openInNewTab.value ? '_blank' : null })
+                  tippyInstance.value?.hide()
+                }
               }
             }
-          }
-        })
+          })
+        ])
       ])
     ])
   }

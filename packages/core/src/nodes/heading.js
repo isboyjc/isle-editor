@@ -1,12 +1,5 @@
-/*
- * @LastEditTime: 2024-11-01 16:26:44
- * @Description: 标题
- * @Date: 2024-03-31 20:03:40
- * @Author: isboyjc
- * @LastEditors: isboyjc
- */
 import { mergeAttributes, Node, textblockTypeInputRule } from '@tiptap/core'
-import { prefixClass } from '../utils/prefix.js'
+import { prefixClass } from '@/utils/prefix.js'
 
 function command({ editor, range, level }) {
   range
@@ -35,10 +28,7 @@ const source = {
       desc: '# isle',
       command: ({ editor, range }) => command({ editor, range, level: 1 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 1 }),
-      shortcutkeys: {
-        mac: ['⌘', 'Alt', '1'],
-        win: ['Ctrl', 'Alt', '1']
-      }
+      shortcutkeys: 'Mod-Alt-1'
     },
     {
       title: 'heading2',
@@ -46,10 +36,7 @@ const source = {
       desc: '## isle',
       command: ({ editor, range }) => command({ editor, range, level: 2 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 2 }),
-      shortcutkeys: {
-        mac: ['⌘', 'Alt', '2'],
-        win: ['Ctrl', 'Alt', '2']
-      }
+      shortcutkeys: 'Mod-Alt-2'
     },
     {
       title: 'heading3',
@@ -57,10 +44,7 @@ const source = {
       desc: '### isle',
       command: ({ editor, range }) => command({ editor, range, level: 3 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 3 }),
-      shortcutkeys: {
-        mac: ['⌘', 'Alt', '3'],
-        win: ['Ctrl', 'Alt', '3']
-      }
+      shortcutkeys: 'Mod-Alt-3'
     },
     {
       title: 'heading4',
@@ -68,10 +52,7 @@ const source = {
       desc: '#### isle',
       command: ({ editor, range }) => command({ editor, range, level: 4 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 4 }),
-      shortcutkeys: {
-        mac: ['⌘', 'Alt', '4'],
-        win: ['Ctrl', 'Alt', '4']
-      }
+      shortcutkeys: 'Mod-Alt-4'
     },
     {
       title: 'heading5',
@@ -79,10 +60,7 @@ const source = {
       desc: '##### isle',
       command: ({ editor, range }) => command({ editor, range, level: 5 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 5 }),
-      shortcutkeys: {
-        mac: ['⌘', 'Alt', '5'],
-        win: ['Ctrl', 'Alt', '5']
-      }
+      shortcutkeys: 'Mod-Alt-5'
     },
     {
       title: 'heading6',
@@ -90,10 +68,7 @@ const source = {
       desc: '###### isle',
       command: ({ editor, range }) => command({ editor, range, level: 6 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 6 }),
-      shortcutkeys: {
-        mac: ['⌘', 'Alt', '6'],
-        win: ['Ctrl', 'Alt', '6']
-      }
+      shortcutkeys: 'Mod-Alt-6'
     }
   ]
 }

@@ -1,10 +1,3 @@
-/*
- * @LastEditTime: 2024-11-01 19:38:10
- * @Description: 分割线
- * @Date: 2024-04-01 20:34:11
- * @Author: isboyjc
- * @LastEditors: isboyjc
- */
 import { mergeAttributes, Node, nodeInputRule } from '@tiptap/core'
 import { NodeSelection, TextSelection } from '@tiptap/pm/state'
 import { prefixClass } from '../utils/prefix.js'

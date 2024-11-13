@@ -1,13 +1,6 @@
-/*
- * @LastEditTime: 2024-11-01 12:46:30
- * @Description: 缩进
- * @Date: 2024-04-02 04:27:26
- * @Author: isboyjc
- * @LastEditors: isboyjc
- */
 import { Extension, isList } from '@tiptap/core'
 import { AllSelection, TextSelection } from '@tiptap/pm/state'
-import { clamp } from '../utils/clamp.js'
+import { clamp } from '@/utils/clamp.js'
 
 const source = {
   title: 'indent',
@@ -18,19 +11,13 @@ const source = {
       title: 'indent',
       icon: 'IndentIncrease',
       command: ({ editor }) => editor.commands.indent(),
-      shortcutkeys: {
-        mac: ['Tab'],
-        win: ['Tab']
-      }
+      shortcutkeys: 'Tab'
     },
     {
       title: 'outdent',
       icon: 'IndentDecrease',
       command: ({ editor }) => editor.commands.outdent(),
-      shortcutkeys: {
-        mac: ['Shift', 'Tab'],
-        win: ['Shift', 'Tab']
-      }
+      shortcutkeys: 'Shift-Tab'
     }
   ]
 }

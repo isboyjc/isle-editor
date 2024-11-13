@@ -1,11 +1,16 @@
 import { defineComponent, ref, watchEffect } from 'vue'
 import { prefixClass } from '@isle/editor'
 import { getIcon } from '@/utils/icon'
+import BubbleLink from './bubble-menu-link'
 
 export default defineComponent({
   name: 'BubbleLinkSelector',
   props: {
     editor: {
+      type: Object,
+      required: true
+    },
+    menu: {
       type: Object,
       required: true
     }
@@ -26,7 +31,7 @@ export default defineComponent({
       copyOk.value = true
       setTimeout(() => {
         copyOk.value = false
-      }, 300)
+      }, 500)
     }
 
     function unLink() {
@@ -48,24 +53,19 @@ export default defineComponent({
         h('span', { class: `${prefixClass}-bubble-menu__btn-text` }, href.value)
       ]),
       h('div', { class: `${prefixClass}-bubble-menu__divider` }),
+      h(BubbleLink, { editor: props.editor, menu: props.menu, isEdit: true }),
       h('button', {
-        class: [`${prefixClass}-bubble-menu__btn`],
-        onMouseDown: (evt) => evt.preventDefault()
-      }, [
-        h(getIcon('edit'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
-      ]),
-      h('button', {
-        class: [`${prefixClass}-bubble-menu__btn`],
+        class: [`${prefixClass}-bubble-menu__btn`, copyOk.value ? 'success' : ''],
         onClick: clipboardLink,
         onMouseDown: (evt) => evt.preventDefault()
       }, [
         copyOk.value ? 
           h(getIcon('check'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 }) : 
-          h(getIcon('copy'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+          h(getIcon('copy'), { class: `${prefixClass}-bubble-menu__icon success`, size: 15, strokeWidth: 2.5 })
       ]),
       h('div', { class: `${prefixClass}-bubble-menu__divider` }),
       h('button', {
-        class: [`${prefixClass}-bubble-menu__btn`, 'red'],
+        class: [`${prefixClass}-bubble-menu__btn`, 'danger'],
         onClick: unLink,
         onMouseDown: (evt) => evt.preventDefault()
       }, [

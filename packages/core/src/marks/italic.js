@@ -7,22 +7,16 @@
  */
 import Italic from '@tiptap/extension-italic'
 
-const source = {
-  title: 'italic',
-  desc: '*isle*',
-  command: ({ editor }) => editor.chain().focus().toggleItalic().run(),
-  isActive: ({ editor }) => editor.isActive('italic'),
-  shortcutkeys: {
-    mac: ['⌘', 'I'],
-    win: ['Ctrl', 'I']
-  }
-}
-
 export default Italic.extend({
   addOptions() {
     return {
       ...this.parent?.(),
-      ...source
+      title: 'italic',
+      desc: '*isle*',
+      bubble: true,
+      command: ({ editor }) => editor.chain().focus().toggleItalic().run(),
+      isActive: ({ editor }) => editor.isActive('italic'),
+      shortcutkeys: 'Mod-I'
     }
   }
 })

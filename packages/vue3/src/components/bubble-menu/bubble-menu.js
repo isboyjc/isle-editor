@@ -20,6 +20,9 @@ const BUBBLE_MENU_SORT = [
   'strike',
   'code',
   'link',
+  'style',
+  'color',
+  'background',
   'subscript',
   'superscript',
 ]
@@ -134,26 +137,42 @@ export default defineComponent({
         return []
       }
   
-      const markExtensions = props.editor.extensionManager.extensions.filter(
-        item => item.type === 'mark'
-      )
+      let markExtensions = props.editor.extensionManager.extensions.filter(
+        v => v?.options?.bubble
+      ).map(v => ({
+        name: v.name,
+        ...v?.options
+      }))
+
+      // If both color and background extensions exist
+      // they are automatically merged into one extension with the name style.
+      const colorExtension = markExtensions.find(v => v.name === 'color')
+      const backgroundExtension = markExtensions.find(v => v.name === 'background')
+      if(colorExtension && backgroundExtension) {
+        markExtensions = markExtensions.filter(v => v.name !== 'color' && v.name !== 'background')
+        markExtensions.push({
+          name: 'style',
+          color: colorExtension,
+          background: backgroundExtension
+        })
+      }
       
+      // Sort the extensions according to the BUBBLE_MENU_SORT array
       const sortedExtensions = sortArrayByPropertyArray(
         markExtensions,
         BUBBLE_MENU_SORT,
         'name'
       )
-  
-      return sortedExtensions.map(item => ({
-        name: item.name,
-        ...item?.options
-      }))
+      
+      console.log(props.editor.extensionManager.extensions)
+      console.log(markExtensions)
+      console.log(sortedExtensions)
+      return sortedExtensions
     })
 
     const init = () => {
       if (!props?.editor) return
       registerPlugin()
-      console.log(bubbleMenus.value)
     }
 
     watch(() => props.editor, () => {
@@ -176,7 +195,8 @@ export default defineComponent({
         menus: bubbleMenus.value
       }, slots),
       isLink.value && h(BubbleLinkSelector, {
-        editor: props.editor
+        editor: props.editor,
+        menu: bubbleMenus.value.find(menu => menu.name === 'link')
       })
     ])
   }

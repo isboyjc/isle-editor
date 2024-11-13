@@ -2,30 +2,25 @@ import { Link } from '@tiptap/extension-link'
 import { getMarkRange } from '@tiptap/core'
 import { Plugin, PluginKey, TextSelection } from '@tiptap/pm/state'
 
-const source = {
-  title: 'link',
-  desc: '',
-  sort: 11,
-  bubble: true,
-  command: ({ editor, href = 'editor.islenote.com', target = '_blank', ...arg }) => {
-    editor.chain().focus().setLink({
-      href,
-      target,
-      ...arg
-    }).run()
-  },
-  isActive: ({ editor }) => editor.isActive('link')
-}
-
 export default Link.extend({
   addOptions() {
     return {
       ...this.parent?.(),
-      ...source
+      title: 'link',
+      desc: '',
+      bubble: true,
+      command: ({ editor, href = 'editor.islenote.com', target = '_blank', ...arg }) => {
+        editor.chain().focus().setLink({
+          href,
+          target,
+          ...arg
+        }).run()
+      },
+      isActive: ({ editor }) => editor.isActive('link')
     }
   },
 
-  
+
   addProseMirrorPlugins() {
     return [
       new Plugin({

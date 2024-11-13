@@ -4,7 +4,7 @@
   "preinstall": "npx only-allow pnpm",
   "author": "isboyjc",
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo build --filter=!example",
     "dev": "turbo dev",
     "turbo": "turbo"
   },

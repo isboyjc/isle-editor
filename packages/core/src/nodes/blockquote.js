@@ -1,10 +1,3 @@
-/*
- * @LastEditTime: 2024-11-01 19:38:27
- * @Description: 引用
- * @Date: 2024-04-01 04:09:00
- * @Author: isboyjc
- * @LastEditors: isboyjc
- */
 import { mergeAttributes, Node, wrappingInputRule } from '@tiptap/core'
 
 const source = {
@@ -17,10 +10,7 @@ const source = {
       : editor.commands.toggleBlockquote()
   },
   isActive: ({ editor }) => editor.isActive('blockquote'),
-  shortcutkeys: {
-    mac: ['⌘', 'Shift', 'B'],
-    win: ['Ctrl', 'Shift', 'B']
-  }
+  shortcutkeys: 'Mod-Shift-B'
 }
 
 export const inputRegex = /^\s*>\s$/

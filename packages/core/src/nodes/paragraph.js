@@ -1,12 +1,5 @@
-/*
- * @LastEditTime: 2024-10-31 19:34:18
- * @Description: 段落
- * @Date: 2024-03-31 20:03:40
- * @Author: isboyjc
- * @LastEditors: isboyjc
- */
 import { mergeAttributes, Node } from '@tiptap/core'
-import { prefixClass } from '../utils/prefix.js'
+import { prefixClass } from '@/utils/prefix.js'
 
 const source = {
   title: 'paragraph',
@@ -20,10 +13,7 @@ const source = {
   HTMLAttributes: {
     class: `${prefixClass}__paragraph`
   },
-  shortcutkeys: {
-    mac: ['⌘', 'Alt', '0'],
-    win: ['Ctrl', 'Alt', '0']
-  }
+  shortcutkeys: 'Mod-Alt-0'
 }
 
 export default Node.create({

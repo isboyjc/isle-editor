@@ -1,9 +1,10 @@
 import { defineComponent, ref, h, onMounted } from 'vue'
 import { prefixClass } from '@isle/editor'
 import { getIcon } from '@/utils/icon'
-import { createTippy } from '@/utils/tippy'
 import BubbleLink from './bubble-menu-link'
-
+import BubbleColor from './bubble-menu-color'
+import BubbleBackground from './bubble-menu-background'
+import BubbleStyle from './bubble-menu-style'
 export default defineComponent({
   name: 'BubbleSelector',
   props: {
@@ -17,10 +18,6 @@ export default defineComponent({
     }
   },
   setup(props, { slots }) {
-    const linkTriggerRef = ref(null)
-    const linkMenuBubbleRef = ref(null)
-    const linkMenu = props.menus.find(menu => menu.name === 'link')
-
     return () => h('div', {  class: `${prefixClass}-bubble-menu` }, [
       ...props.menus.map(menu => {
         // 检查是否存在对应的具名插槽
@@ -34,13 +31,19 @@ export default defineComponent({
         }
 
         if (menu.name === 'link') {
-          return h('button', {
-            ref: linkTriggerRef,
-            class: [`${prefixClass}-bubble-menu__btn`, { active: linkMenuBubbleRef.value?.isShown }],
-            onMouseDown: (evt) => evt.preventDefault()
-          }, [
-            h(getIcon(menu.name), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
-          ])
+          return h(BubbleLink, { editor: props.editor, menu: props.menus.find(menu => menu.name === 'link') })
+        }
+
+        if (menu.name === 'color') {
+          return h(BubbleColor, { editor: props.editor, menu: props.menus.find(menu => menu.name === 'color') })
+        }
+
+        if (menu.name === 'background') {
+          return h(BubbleBackground, { editor: props.editor, menu: props.menus.find(menu => menu.name === 'background') })
+        }
+
+        if (menu.name === 'style') {
+          return h(BubbleStyle, { editor: props.editor, menu: props.menus.find(menu => menu.name === 'style') })
         }
         
         // 默认渲染逻辑
@@ -52,7 +55,6 @@ export default defineComponent({
           h(getIcon(menu.name), { class: `${prefixClass}-bubble-menu__icon`, size: 16, strokeWidth: 2.5 })
         ])
       }),
-      linkTriggerRef.value && linkMenu && h(BubbleLink, { ref: linkMenuBubbleRef, triggerElement: linkTriggerRef.value, editor: props.editor, menu: linkMenu })
     ])
   }
 })

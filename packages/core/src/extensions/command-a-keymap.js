@@ -1,10 +1,3 @@
-/*
- * @LastEditTime: 2024-04-29 16:11:57
- * @Description: CMD+A
- * @Date: 2024-03-29 18:06:21
- * @Author: isboyjc
- * @LastEditors: isboyjc
- */
 import { Extension } from '@tiptap/core'
 
 const CommandAKeymap = Extension.create({
