@@ -1,10 +1,10 @@
 import { defineComponent, ref, h, onMounted, onBeforeUnmount, computed } from 'vue'
-import { prefixClass } from '@isle/editor'
+import { prefixClass, t } from '@isle/editor'
 import { getIcon } from '@/utils/icon'
 import { createTippy } from '@/utils/tippy'
 
 export default defineComponent({
-  name: 'BubbleColor',
+  name: 'ButtonStyle',
   props: {
     editor: {
       type: Object,
@@ -63,7 +63,7 @@ export default defineComponent({
       ]),
       h('div', { ref: contentRef, class: `${prefixClass}-bubble-menu-style` }, [
         h('div', { class: `${prefixClass}-bubble-menu-style__title` }, [
-          h('span', { class: `${prefixClass}-bubble-menu-style__title-text` }, props.menu.color.name.toUpperCase()),
+          h('span', { class: `${prefixClass}-bubble-menu-style__title-text` }, t(props.menu.color.name)),
           h('span', { class: `${prefixClass}-bubble-menu-style__default`, onClick: () => props.menu.color.command({ color: '', editor: props.editor }) })
         ]),
         h('div', { class: `${prefixClass}-bubble-menu-style__box` }, [
@@ -80,7 +80,7 @@ export default defineComponent({
           ))
         ]),
         h('div', { class: `${prefixClass}-bubble-menu-style__title mt-2` }, [
-          h('span', { class: `${prefixClass}-bubble-menu-style__title-text` }, props.menu.background.name.toUpperCase()),
+          h('span', { class: `${prefixClass}-bubble-menu-style__title-text` }, t(props.menu.background.name)),
           h('span', { class: `${prefixClass}-bubble-menu-style__default`, onClick: () => props.menu.background.command({ color: '', editor: props.editor }) })
         ]),
         h('div', { class: `${prefixClass}-bubble-menu-style__box` }, [

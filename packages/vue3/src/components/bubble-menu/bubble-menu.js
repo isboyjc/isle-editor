@@ -1,7 +1,7 @@
 import { BubbleMenuPlugin, isNodeSelection, isTextSelection } from '@isle/editor'
 import { sortArrayByPropertyArray } from '@/utils/array'
-import BubbleSelector from './bubble-menu-selector'
-import BubbleLinkSelector from './bubble-menu-link-selector'
+import BubbleSelector from './selector/bubble-menu-selector'
+import BubbleLinkSelector from './selector/bubble-menu-link-selector'
 
 import {
   defineComponent,
@@ -19,10 +19,11 @@ const BUBBLE_MENU_SORT = [
   'underline',
   'strike',
   'code',
-  'link',
   'style',
   'color',
   'background',
+  'textAlign',
+  'link',
   'subscript',
   'superscript',
 ]

@@ -2,8 +2,7 @@ import BulletList from '@tiptap/extension-bullet-list'
 import { prefixClass } from '../utils/prefix.js'
 
 const source = {
-  title: 'bulletlist',
-  icon: 'List',
+  title: 'bulletList',
   desc: '- isle',
   command: ({ editor, range }) => {
     range

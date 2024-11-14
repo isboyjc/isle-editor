@@ -4,7 +4,8 @@
 .#{$prefix}-bubble-menu-link,
 .#{$prefix}-bubble-menu-color,
 .#{$prefix}-bubble-menu-background,
-.#{$prefix}-bubble-menu-style {
+.#{$prefix}-bubble-menu-style,
+.#{$prefix}-bubble-menu-text-align {
   width: auto;
   height: auto;
   padding: 0.2rem;
@@ -18,7 +19,8 @@
   box-sizing: border-box;
 }
 
-.#{$prefix}-bubble-menu{
+.#{$prefix}-bubble-menu,
+.#{$prefix}-bubble-menu-text-align {
   .#{$prefix}-bubble-menu__btn {
     display: flex;
     align-items: center;
@@ -130,7 +132,7 @@
     .#{$prefix}-bubble-menu-color__title-text,
     .#{$prefix}-bubble-menu-background__title-text,
     .#{$prefix}-bubble-menu-style__title-text {
-      font-size: 0.875rem;
+      font-size: 10px;
       font-weight: 700;
       color: var(--#{$prefix}-color-text-2);
     }

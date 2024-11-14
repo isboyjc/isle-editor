@@ -2,7 +2,6 @@ import { mergeAttributes, Node, wrappingInputRule } from '@tiptap/core'
 
 const source = {
   title: 'blockquote',
-  icon: 'TextQuote',
   desc: '> isle',
   command: ({ editor, range }) => {
     range

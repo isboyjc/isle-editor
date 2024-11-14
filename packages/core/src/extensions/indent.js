@@ -5,17 +5,14 @@ import { clamp } from '@/utils/clamp.js'
 const source = {
   title: 'indent',
   // bubble: true,
-  sort: 12,
   list: [
     {
       title: 'indent',
-      icon: 'IndentIncrease',
       command: ({ editor }) => editor.commands.indent(),
       shortcutkeys: 'Tab'
     },
     {
       title: 'outdent',
-      icon: 'IndentDecrease',
       command: ({ editor }) => editor.commands.outdent(),
       shortcutkeys: 'Shift-Tab'
     }

@@ -4,7 +4,7 @@ import { createTippy } from '@/utils/tippy'
 import { getIcon } from '@/utils/icon'
 
 export default defineComponent({
-  name: 'BubbleLink',
+  name: 'ButtonLink',
   props: {
     editor: {
       type: Object,

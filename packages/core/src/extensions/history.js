@@ -6,14 +6,12 @@ const source = {
   list: [
     {
       title: 'undo',
-      icon: 'Undo',
       shortcutkeys: 'Mod-Z',
       command: ({ editor }) => editor.commands.undo(),
       isActive: ({ editor }) => editor.can().undo()
     },
     {
       title: 'redo',
-      icon: 'Redo',
       shortcutkeys: 'Mod-Shift-Z',
       command: ({ editor }) => editor.commands.redo(),
       isActive: ({ editor }) => editor.can().redo()

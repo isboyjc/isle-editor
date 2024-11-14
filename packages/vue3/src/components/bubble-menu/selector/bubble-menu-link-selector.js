@@ -1,7 +1,7 @@
 import { defineComponent, ref, watchEffect } from 'vue'
 import { prefixClass } from '@isle/editor'
 import { getIcon } from '@/utils/icon'
-import BubbleLink from './bubble-menu-link'
+import ButtonLink from '../special-button/button-link'
 
 export default defineComponent({
   name: 'BubbleLinkSelector',
@@ -53,7 +53,7 @@ export default defineComponent({
         h('span', { class: `${prefixClass}-bubble-menu__btn-text` }, href.value)
       ]),
       h('div', { class: `${prefixClass}-bubble-menu__divider` }),
-      h(BubbleLink, { editor: props.editor, menu: props.menu, isEdit: true }),
+      h(ButtonLink, { editor: props.editor, menu: props.menu, isEdit: true }),
       h('button', {
         class: [`${prefixClass}-bubble-menu__btn`, copyOk.value ? 'success' : ''],
         onClick: clipboardLink,

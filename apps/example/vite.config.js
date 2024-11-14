@@ -8,6 +8,11 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import {
+  ArcoResolver,
+  VueUseComponentsResolver,
+  VueUseDirectiveResolver
+} from 'unplugin-vue-components/resolvers'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import UnoCSS from 'unocss/vite'
 
@@ -28,18 +33,23 @@ export default defineConfig({
     }),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
-      imports: ['vue', 'pinia', 'vue-router'],
+      imports: ['vue', 'pinia', 'vue-router', 'vue-i18n', '@vueuse/core'],
       eslintrc: {
         enabled: true,
         filepath: './.eslintrc-auto-import.json',
         globalsPropValue: true
       },
-      resolvers: []
+      resolvers: [ArcoResolver()]
     }),
     Components({
-      dirs: ['src/components/', 'src/views/'],
+      dirs: ['src/components/', 'src/views/', 'src/layout'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       resolvers: [
+        ArcoResolver({
+          sideEffect: true
+        }),
+        VueUseComponentsResolver(),
+        VueUseDirectiveResolver(),
         IconsResolver({
           prefix: 'icon',
           customCollections: ['isle']

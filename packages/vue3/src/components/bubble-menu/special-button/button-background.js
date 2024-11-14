@@ -1,10 +1,10 @@
 import { defineComponent, ref, h, onMounted, onBeforeUnmount, computed } from 'vue'
-import { prefixClass } from '@isle/editor'
+import { prefixClass, t } from '@isle/editor'
 import { getIcon } from '@/utils/icon'
 import { createTippy } from '@/utils/tippy'
 
 export default defineComponent({
-  name: 'BubbleBackground',
+  name: 'ButtonBackground',
   props: {
     editor: {
       type: Object,
@@ -58,7 +58,7 @@ export default defineComponent({
       ]),
       h('div', { ref: backgroundContentRef, class: `${prefixClass}-bubble-menu-background` }, [
         h('div', { class: `${prefixClass}-bubble-menu-background__title` }, [
-          h('span', { class: `${prefixClass}-bubble-menu-background__title-text` }, props.menu.name.toUpperCase()),
+          h('span', { class: `${prefixClass}-bubble-menu-background__title-text` }, t(props.menu.name)),
           h('span', { class: `${prefixClass}-bubble-menu-background__default`, onClick: () => props.menu.command({ color: '', editor: props.editor }) })
         ]),
         h('div', { class: `${prefixClass}-bubble-menu-background__box` }, [

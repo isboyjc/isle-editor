@@ -3,7 +3,6 @@ import { prefixClass } from '@/utils/prefix.js'
 
 const source = {
   title: 'paragraph',
-  icon: 'Pilcrow',
   command: ({ editor, range }) => {
     range
       ? editor.chain().focus().deleteRange(range).setNode('paragraph').run()

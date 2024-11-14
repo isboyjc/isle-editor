@@ -12,14 +12,18 @@
   },
   "dependencies": {
     "@isle/editor": "workspace:*",
-    "@isle/vue3": "workspace:*",
     "@isle/shared": "workspace:*",
+    "@isle/vue3": "workspace:*",
+    "@vueuse/core": "^11.2.0",
     "pinia": "^2.2.4",
     "vue": "^3.5.12",
+    "vue-i18n": "^10.0.4",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
+    "@arco-design/web-vue": "^2.56.3",
     "@eslint/js": "^9.13.0",
+    "@iconify-json/lucide": "^1.2.14",
     "@unocss/transformer-directives": "^0.63.6",
     "@unocss/transformer-variant-group": "^0.63.6",
     "@vitejs/plugin-vue": "^5.1.4",

@@ -1,8 +1,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
-// import unocss style
+// 导入Unocss样式
 import 'virtual:uno.css'
+import '@arco-design/web-vue/dist/arco.css'
 
 import App from './App.vue'
 import router from './router'

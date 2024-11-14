@@ -11,6 +11,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 // import terser from '@rollup/plugin-terser'
 import alias from '@rollup/plugin-alias'
 import path from 'path'
+import json from '@rollup/plugin-json'
 
 export const baseConfig = ({ input = 'src/index.js', pkg }) => ({
   input,
@@ -48,6 +49,7 @@ export const baseConfig = ({ input = 'src/index.js', pkg }) => ({
     autoExternal({
       packagePath: './package.json'
     }),
+    json(),
     sourcemaps(),
     resolve(),
     commonjs(),

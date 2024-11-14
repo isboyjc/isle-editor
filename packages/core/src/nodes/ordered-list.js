@@ -2,8 +2,7 @@ import OrderedList from '@tiptap/extension-ordered-list'
 import { prefixClass } from '@/utils/prefix.js'
 
 const source = {
-  title: 'orderedlist',
-  icon: 'ListOrdered',
+  title: 'orderedList',
   desc: '1. isle',
   command: ({ editor, range }) => {
     range

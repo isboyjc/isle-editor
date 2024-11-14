@@ -14,8 +14,6 @@ function command({ editor, range, level }) {
 
 const source = {
   title: 'heading',
-  sort: 0,
-  icon: 'Heading',
   command: ({ editor, range, level }) => command({ editor, range, level }),
   isActive: ({ editor, level }) => editor.isActive('heading', { level }),
   HTMLAttributes: {
@@ -24,7 +22,6 @@ const source = {
   list: [
     {
       title: 'heading1',
-      icon: 'Heading1',
       desc: '# isle',
       command: ({ editor, range }) => command({ editor, range, level: 1 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 1 }),
@@ -32,7 +29,6 @@ const source = {
     },
     {
       title: 'heading2',
-      icon: 'Heading2',
       desc: '## isle',
       command: ({ editor, range }) => command({ editor, range, level: 2 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 2 }),
@@ -40,7 +36,6 @@ const source = {
     },
     {
       title: 'heading3',
-      icon: 'Heading3',
       desc: '### isle',
       command: ({ editor, range }) => command({ editor, range, level: 3 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 3 }),
@@ -48,7 +43,6 @@ const source = {
     },
     {
       title: 'heading4',
-      icon: 'Heading4',
       desc: '#### isle',
       command: ({ editor, range }) => command({ editor, range, level: 4 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 4 }),
@@ -56,7 +50,6 @@ const source = {
     },
     {
       title: 'heading5',
-      icon: 'Heading5',
       desc: '##### isle',
       command: ({ editor, range }) => command({ editor, range, level: 5 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 5 }),
@@ -64,7 +57,6 @@ const source = {
     },
     {
       title: 'heading6',
-      icon: 'Heading6',
       desc: '###### isle',
       command: ({ editor, range }) => command({ editor, range, level: 6 }),
       isActive: ({ editor }) => editor.isActive('heading', { level: 6 }),

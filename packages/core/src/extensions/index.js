@@ -11,3 +11,9 @@ export { default as Indent } from './indent.js'
 export { default as CommandAKeymap } from './command-a-keymap.js'
 export { default as BubbleMenu, BubbleMenuPlugin } from './bubble-menu.js'
 export { default as Selection } from './selection.js'
+export { default as UniqueID } from './unique-id.js'
+
+// Extension Implementation of Mark
+export { default as Color } from './color.js'
+export { default as FontFamily } from './font-family.js'
+export { default as TextAlign } from './text-align.js'

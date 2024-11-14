@@ -1,4 +1,19 @@
-import { Document, Text, Paragraph, Gapcursor, HardBreak, CharacterCount, History, Indent, Typography, CommandAKeymap, ListItem, Selection, TextStyle } from '@isle/editor'
+import { 
+  Document, 
+  Text, 
+  Paragraph, 
+  Gapcursor, 
+  HardBreak, 
+  CharacterCount, 
+  History, 
+  Indent, 
+  Typography, 
+  CommandAKeymap, 
+  ListItem, 
+  Selection, 
+  TextStyle,
+  prefixClass
+} from '@isle/editor'
 import { defineComponent, ref, h, shallowRef, onMounted } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { Editor } from './editor.js'
@@ -123,7 +138,7 @@ export default defineComponent({
       History,
       Indent,
       Typography,
-      Selection,
+      // Selection,
       CommandAKeymap,
       props.extensions.some(
         v => v.name == 'color' || v.name == 'fontFamily'
@@ -171,12 +186,24 @@ export default defineComponent({
       console.log(options?.editor.getHTML())
     
       checkEditorEmpty()
+
+      addHeadingIds(options?.editor)
     
       emit('update:modelValue', output)
     
       emit('update', {
         output,
         editor: options?.editor
+      })
+    }
+
+    function addHeadingIds(editor) {
+      editor.state.doc.descendants((node, pos) => {
+        if (node.type.name.startsWith('heading')) {
+          console.log(pos)
+          const id = `heading-${pos}`
+          editor.view.dom.querySelector(`h${node.attrs.level}`).id = id
+        }
       })
     }
 
@@ -268,6 +295,6 @@ export default defineComponent({
       isFocused,
       isEmpty
     })
-    return () => h('div', { ref: editorContainer }, slots.default?.())
+    return () => h('div', { ref: editorContainer, class: `${prefixClass}-editor-root` }, slots.default?.())
   },
 })

@@ -13,7 +13,12 @@ import {
   SquareArrowOutUpRight as OpenRight, 
   SquarePen as Edit,
   Baseline as Color,
-  PaintBucket as Background
+  PaintBucket as Background,
+  AlignLeft,
+  AlignCenter,
+  AlignRight,
+  AlignJustify,
+  Eraser as TextClear
 } from 'lucide-vue-next';
 const ICONS = {
   Bold,
@@ -30,7 +35,12 @@ const ICONS = {
   OpenRight,
   Edit,
   Color,
-  Background
+  Background,
+  AlignLeft,
+  AlignCenter,
+  AlignRight,
+  AlignJustify,
+  TextClear
 };
 
 export const getIcon = (name) => {
