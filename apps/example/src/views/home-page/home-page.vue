@@ -77,8 +77,8 @@ import '@isle/vue3/dist/style.css'
 const content = ref(`<h1 class="isle-editor__heading">H1 标题一</h1><h2 class="isle-editor__heading">H2 标题二</h2><h3 class="isle-editor__heading">H3 标题三</h3><h4 class="isle-editor__heading">H4 标题四</h4><h5 class="isle-editor__heading">H5 标题五</h5><h6 class="isle-editor__heading">H6 标题六</h6><p class="isle-editor__paragraph">段落示意段落示意段落示意<a target="_blank" rel="noopener noreferrer nofollow" href="https://www.baidu.com">段落示意段落</a>示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意段落示意</p><ul class="isle-editor__bullet-list"><li><p class="isle-editor__paragraph">无序列表项</p><ul class="isle-editor__bullet-list"><li><p class="isle-editor__paragraph">无序列表项</p></li><li><p class="isle-editor__paragraph">无序列表项</p></li></ul></li><li><p class="isle-editor__paragraph">无序列表项</p></li><li><p class="isle-editor__paragraph">无序列表项</p></li></ul><ol class="isle-editor__ordered-list"><li><p class="isle-editor__paragraph">有序列表项</p><ol class="isle-editor__ordered-list"><li><p class="isle-editor__paragraph">有序列表项</p></li><li><p class="isle-editor__paragraph">有序列表项</p></li></ol></li><li><p class="isle-editor__paragraph">有序列表项</p></li><li><p class="isle-editor__paragraph">有序列表项</p></li></ol><ul class="isle-editor__task-list" data-type="taskList"><li data-checked="true" data-type="taskItem"><label><input type="checkbox" checked="checked"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p><ul class="isle-editor__task-list" data-type="taskList"><li data-checked="false" data-type="taskItem"><label><input type="checkbox"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li><li data-checked="false" data-type="taskItem"><label><input type="checkbox"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li><li data-checked="true" data-type="taskItem"><label><input type="checkbox" checked="checked"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li></ul></div></li><li data-checked="true" data-type="taskItem"><label><input type="checkbox" checked="checked"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li><li data-checked="true" data-type="taskItem"><label><input type="checkbox" checked="checked"><span></span></label><div><p class="isle-editor__paragraph">任务列表项</p></div></li></ul>`)
 const editorEl = ref(null)
 
-const baseExtensions = [
-  Heading, 
+const extensions = [
+Heading, 
   OrderedList, 
   BulletList, 
   TaskList, 
@@ -99,11 +99,8 @@ const baseExtensions = [
   Background, 
   Color,
   TextAlign,
-]
-const extensions = [
-  ...baseExtensions,
   UniqueID.configure({
-    types: baseExtensions.map(item => item.name)
+    types: ['heading', 'paragraph']
   })
 ]
 

@@ -186,24 +186,12 @@ export default defineComponent({
       console.log(options?.editor.getHTML())
     
       checkEditorEmpty()
-
-      addHeadingIds(options?.editor)
     
       emit('update:modelValue', output)
     
       emit('update', {
         output,
         editor: options?.editor
-      })
-    }
-
-    function addHeadingIds(editor) {
-      editor.state.doc.descendants((node, pos) => {
-        if (node.type.name.startsWith('heading')) {
-          console.log(pos)
-          const id = `heading-${pos}`
-          editor.view.dom.querySelector(`h${node.attrs.level}`).id = id
-        }
       })
     }
 

@@ -10,19 +10,18 @@ export default Extension.create({
     return {
       attributeName: 'id',      
       types: ['paragraph'],                  
-      filterTransaction: null,     
-      injectNodeName: true,       
+      filterTransaction: null,         
       generateID: () => uuidv4(), 
     }
   },
 
   // 添加全局属性配置
   addGlobalAttributes() {
-    const { injectNodeName, attributeName, types } = this.options
-    // 配置 ID 属性
-    const attributes = [
+    const { attributeName, types } = this.options
+
+    return [
       {
-        types: types,  // '_' 表示所有类型
+        types: types,
         attributes: {
           [attributeName]: {
             default: null,
@@ -38,41 +37,18 @@ export default Extension.create({
         }
       }
     ]
-
-    // 如果启用节点名称注入，添加相关属性
-    if (injectNodeName) {
-      attributes.push({
-        types: types,  // '_' 表示所有类型
-        attributes: {
-          'data-name': {
-            default: null,
-            isRequired: true,
-            keepOnSplit: false,
-            parseHTML: element => element.getAttribute('data-name'),
-            renderHTML: attributes => ({
-              'data-name': attributes['data-name']
-            })
-          }
-        }
-      })
-    }
-
-    return attributes
   },
 
   // 编辑器初始化时执行
   onCreate() {
     const { tr, doc } = this.editor.state
-    const { attributeName, types, generateID, injectNodeName } = this.options
+    const { attributeName, types, generateID } = this.options
 
     // 遍历文档中的所有节点
     doc.descendants((node, pos) => {
       // 跳过文本节点 & 跳过不需要处理的节点类型
       if (node.isText || (Array.isArray(types) && !types?.includes(node.type.name)))
         return
-
-      if (injectNodeName)
-        tr.setNodeAttribute(pos, 'data-name', node.type.name)
 
       if (!node.attrs[attributeName])
         tr.setNodeAttribute(pos, attributeName, generateID())
@@ -84,7 +60,7 @@ export default Extension.create({
 
   // 添加 ProseMirror 插件
   addProseMirrorPlugins() {
-    const { attributeName, types, generateID, injectNodeName } = this.options
+    const { attributeName, types, generateID } = this.options
 
     return [
       new Plugin({
@@ -119,9 +95,6 @@ export default Extension.create({
             const newIds = newNodes.map(({ node }) => node.attrs[attributeName]).filter(item => !!item)
             // 处理每个新节点
             newNodes.forEach(({ node, pos }) => {
-              if (injectNodeName && !node.attrs['data-name'])
-                tr.setNodeAttribute(pos, 'data-name', node.type.name)
-
               if(node.attrs[attributeName]){
                 tr.setNodeAttribute(pos, attributeName, generateID())
                 return
