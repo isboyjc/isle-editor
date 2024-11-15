@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { prefixClass } from '@isle/editor'
+import { prefixClass } from '@isle-editor/core'
 
 export default defineComponent({
   name: 'IsleEditorToolbar',

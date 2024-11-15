@@ -1,7 +1,7 @@
 {
-  "name": "@isle/vue3",
+  "name": "@isle-editor/vue3",
   "version": "0.0.1",
-  "description": "IsleEditor view for vue3",
+  "description": "isle-editor view for vue3",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "umd": "dist/index.umd.js",
@@ -16,17 +16,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/isboyjc/IsleEditor.git"
+    "url": "git+https://github.com/isboyjc/isle-editor.git"
   },
   "bugs": {
-    "url": "https://github.com/isboyjc/IsleEditor/issues"
+    "url": "https://github.com/isboyjc/isle-editor/issues"
   },
   "keywords": [],
   "author": "isboyjc",
   "license": "MIT",
   "dependencies": {
-    "@isle/editor": "workspace:*",
-    "@isle/shared": "workspace:*",
+    "@isle-editor/core": "workspace:*",
+    "@isle-editor/shared": "workspace:*",
     "@tiptap/pm": "^2.9.1",
     "lucide-vue-next": "^0.454.0",
     "tippy.js": "^6.3.7",

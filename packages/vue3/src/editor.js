@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Editor as CoreEditor } from '@isle/editor'
+import { Editor as CoreEditor } from '@isle-editor/core'
 import {
   AppContext,
   ComponentInternalInstance,

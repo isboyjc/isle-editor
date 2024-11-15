@@ -13,7 +13,7 @@ import {
   Selection, 
   TextStyle,
   prefixClass
-} from '@isle/editor'
+} from '@isle-editor/core'
 import { defineComponent, ref, h, shallowRef, onMounted } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { Editor } from './editor.js'

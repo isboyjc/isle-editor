@@ -1,5 +1,5 @@
 {
-  "name": "@isle/editor",
+  "name": "@isle-editor/core",
   "private": true,
   "preinstall": "npx only-allow pnpm",
   "author": "isboyjc",

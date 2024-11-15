@@ -1,5 +1,5 @@
 import { defineComponent, ref, h, onMounted } from 'vue'
-import { prefixClass } from '@isle/editor'
+import { prefixClass } from '@isle-editor/core'
 import { getIcon } from '@/utils/icon'
 import ButtonLink from '../special-button/button-link'
 import ButtonColor from '../special-button/button-color'

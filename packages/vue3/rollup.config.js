@@ -1,4 +1,4 @@
-import { baseConfig } from '@isle/shared'
+import { baseConfig } from '@isle-editor/shared'
 import pkg from './package.json' assert { type: 'json' }
 
 

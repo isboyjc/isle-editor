@@ -1,4 +1,4 @@
-import { BubbleMenuPlugin, isNodeSelection, isTextSelection } from '@isle/editor'
+import { BubbleMenuPlugin, isNodeSelection, isTextSelection } from '@isle-editor/core'
 import { sortArrayByPropertyArray } from '@/utils/array'
 import BubbleSelector from './selector/bubble-menu-selector'
 import BubbleLinkSelector from './selector/bubble-menu-link-selector'

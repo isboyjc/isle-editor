@@ -1,5 +1,5 @@
 import { defineComponent, ref, watchEffect } from 'vue'
-import { prefixClass } from '@isle/editor'
+import { prefixClass } from '@isle-editor/core'
 import { getIcon } from '@/utils/icon'
 import ButtonLink from '../special-button/button-link'
 

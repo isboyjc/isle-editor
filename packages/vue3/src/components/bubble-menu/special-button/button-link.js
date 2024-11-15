@@ -1,5 +1,5 @@
 import { defineComponent, onMounted, onBeforeUnmount, nextTick } from 'vue'
-import { prefixClass } from '@isle/editor'
+import { prefixClass } from '@isle-editor/core'
 import { createTippy } from '@/utils/tippy'
 import { getIcon } from '@/utils/icon'
 
