@@ -1,4 +1,4 @@
-import { Extension, combineTransactionSteps, findChildrenInRange, getChangedRanges, findDuplicates } from '@tiptap/core'
+import { Extension, combineTransactionSteps, findChildrenInRange, getChangedRanges } from '@tiptap/core'
 import { Plugin, PluginKey } from '@tiptap/pm/state'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -81,7 +81,6 @@ export default Extension.create({
           }
 
           const tr = newState.tr
-
           const transform = combineTransactionSteps(oldState.doc, transactions)
           // 获取变更范围
           getChangedRanges(transform).forEach(({ newRange }) => {
@@ -92,17 +91,21 @@ export default Extension.create({
               node => types.includes(node.type.name)
             )
 
-            const newIds = newNodes.map(({ node }) => node.attrs[attributeName]).filter(item => !!item)
+            // const newIds = newNodes.map(({ node }) => node.attrs[attributeName]).filter(item => !!item)
+            const nodeIds = new Set()
             // 处理每个新节点
             newNodes.forEach(({ node, pos }) => {
-              if(node.attrs[attributeName]){
+              if(!node.attrs[attributeName]){
                 tr.setNodeAttribute(pos, attributeName, generateID())
                 return
               }
 
-              // 如果当前节点在变更范围内，并且新 ID 列表中包含当前节点的 ID，则生成新的 ID
-              if (tr.mapping.invert().mapResult(pos) && findDuplicates(newIds).includes(node.attrs[attributeName]))
+              if (nodeIds.has(node.attrs[attributeName])) {
                 tr.setNodeAttribute(pos, attributeName, generateID())
+                return
+              }
+
+              nodeIds.add(node.attrs[attributeName])
             })
           })
 

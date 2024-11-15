@@ -12,6 +12,7 @@ export { default as CommandAKeymap } from './command-a-keymap.js'
 export { default as BubbleMenu, BubbleMenuPlugin } from './bubble-menu.js'
 export { default as Selection } from './selection.js'
 export { default as UniqueID } from './unique-id.js'
+export { default as Toc } from './toc.js'
 
 // Extension Implementation of Mark
 export { default as Color } from './color.js'

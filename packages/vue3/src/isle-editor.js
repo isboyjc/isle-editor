@@ -12,6 +12,7 @@ import {
   ListItem, 
   Selection, 
   TextStyle,
+  Toc,
   prefixClass
 } from '@isle-editor/core'
 import { defineComponent, ref, h, shallowRef, onMounted } from 'vue'
@@ -146,6 +147,7 @@ export default defineComponent({
       props.extensions.some(
         v => v.name == 'orderedList' || v.name == 'bulletList'
       ) && ListItem,
+      Toc,
     ].filter(ext => {
       if(props.enableCoreExtensions === false) return false
       if(typeof props.enableCoreExtensions === 'object') {
