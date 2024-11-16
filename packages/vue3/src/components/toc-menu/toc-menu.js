@@ -33,20 +33,12 @@ export default defineComponent({
           h('div',
             {
               class: `${prefixClass}-toc-item-content`,
-              style: `padding-left: ${item.level * 12}px`
+              onClick: () => {
+                const pos = item.pos
+                props.editor?.commands.setTextSelection({ from: pos, to: pos })
+              }
             },
-            [
-              h('span', 
-                { 
-                  class: `${prefixClass}-toc-text`,
-                  onClick: () => {
-                    const pos = item.pos
-                    props.editor?.commands.setTextSelection({ from: pos, to: pos })
-                  }
-                }, 
-                item.text
-              )
-            ]
+            item.text
           ),
           ...children
         ]
@@ -60,7 +52,7 @@ export default defineComponent({
 
     return () => h('div', 
       { 
-        class: `${prefixClass}-toc-menu` 
+        class: `${prefixClass}-toc` 
       }, 
       [
         h('div', { class: `${prefixClass}-toc-title` }, '目录'),

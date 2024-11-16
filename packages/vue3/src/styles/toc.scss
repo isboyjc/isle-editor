@@ -1,0 +1,40 @@
+@use 'config' as *;
+
+.#{$prefix}-toc {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  .#{$prefix}-toc-title {
+    font-size: .75rem;
+    line-height: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+    color: var(--#{$prefix}-color-text-2);
+  }
+
+  .#{$prefix}-toc-item {
+    gap: 0.25rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+
+    .#{$prefix}-toc-item-content {
+      width: 100%;
+      font-weight: 500;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      padding: 0.25rem;
+      color: var(--#{$prefix}-color-text-2);
+      cursor: pointer;
+      border-radius: 0.25rem;
+      box-sizing: border-box;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+      }
+    }
+  }
+}
