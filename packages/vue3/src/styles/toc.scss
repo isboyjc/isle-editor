@@ -9,31 +9,40 @@
   .#{$prefix}-toc-title {
     font-size: .75rem;
     line-height: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     margin-bottom: .5rem;
     color: var(--#{$prefix}-color-text-2);
+    padding: 0.35rem;
+    box-sizing: border-box;
   }
 
-  .#{$prefix}-toc-item {
+  .#{$prefix}-toc-box {
     gap: 0.25rem;
-    padding-left: 1rem;
     box-sizing: border-box;
 
-    .#{$prefix}-toc-item-content {
+    .#{$prefix}-toc-item {
       width: 100%;
       font-weight: 500;
       font-size: 0.875rem;
       line-height: 1.25rem;
-      padding: 0.25rem;
-      color: var(--#{$prefix}-color-text-2);
+      padding: 0.35rem;
+      color: var(--#{$prefix}-color-text-3);
       cursor: pointer;
-      border-radius: 0.25rem;
+      border-radius: 0.35rem;
       box-sizing: border-box;
       transition: all 0.3s;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       &:hover {
+        color: var(--#{$prefix}-color-text-1);
         background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+      }
+      &.active{
+        color: var(--#{$prefix}-color-text)!important;
+        background-color: rgba(var(--#{$prefix}-color-border-val), 0.5)!important;
       }
     }
   }

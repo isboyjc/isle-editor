@@ -36,6 +36,7 @@
   --#{$prefix}-color-text: var(--#{$prefix}-color-black);
   --#{$prefix}-color-text-1: rgba(51, 51, 51, 1);
   --#{$prefix}-color-text-2: rgba(113, 113, 122, 1);
+  --#{$prefix}-color-text-3: rgba(115, 115, 115, 1);
   --#{$prefix}-color-text-inverse: var(--#{$prefix}-color-white);
 
   --#{$prefix}-color-background: var(--#{$prefix}-color-white);
@@ -81,7 +82,8 @@
 
   --#{$prefix}-color-text: var(--#{$prefix}-color-white);
   --#{$prefix}-color-text-1: rgba(229, 229, 229, 1);
-  --#{$prefix}-color-text-2: rgba(161, 161, 170, 1);
+  --#{$prefix}-color-text-2: rgba(212, 212, 212, 1);
+  --#{$prefix}-color-text-3: rgba(161, 161, 170, 1);
   --#{$prefix}-color-text-inverse: var(--#{$prefix}-color-black);
 
   --#{$prefix}-color-background: var(--#{$prefix}-color-black);

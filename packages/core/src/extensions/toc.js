@@ -89,7 +89,7 @@ export default Extension.create({
                 const { headingType, levels } = this.options
 
                 // 限制检查范围不超过文档大小
-                const endPos = Math.min(changes + 100, docSize)
+                const endPos = Math.min(changes + 5, docSize)
 
                 view.state.doc.nodesBetween(changes, endPos, (node) => {
                   if (node.type.name === headingType && levels.includes(node.attrs.level)) {

@@ -4,7 +4,7 @@
       class="w-320px h-full border-r-1 border-r-[var(--color-border-1)] border-r-solid box-border overflow-hidden transition-all duration-300" 
       :class="{ 'w-0px!': !showSidebar }"
     >
-      <IsleEditorToc v-if="editorEl?.editor" :editor="editorEl?.editor"></IsleEditorToc>
+      <IsleEditorToc v-if="editorEl?.editor" :scrollView="scrollViewRef" :editor="editorEl?.editor"></IsleEditorToc>
     </div>
     <div class="w-full h-full flex-1 flex flex-col">
       <div class="w-full h-52px border-b-1 border-b-[var(--color-border-1)] border-b-solid box-border flex justify-between">
@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="w-full h-full overflow-y-auto overflow-x-hidden flex-1">
+      <div ref="scrollViewRef" class="w-full h-full overflow-y-auto overflow-x-hidden flex-1">
         <div class="w-full border-b-1 border-b-[var(--color-border-1)] border-b-solid box-border">
           <IsleEditorToolbar v-if="editorEl?.editor" :editor="editorEl?.editor"></IsleEditorToolbar>
         </div>
@@ -71,13 +71,15 @@ import {
   Color, 
   Background,
   TextAlign,
-  UniqueID
+  UniqueID,
+  Toc
 } from '@isle-editor/core'
 import { IsleEditor, IsleEditorBubble, IsleEditorToolbar, IsleEditorToc } from '@isle-editor/vue3'
 import '@isle-editor/vue3/dist/style.css'
 
 const content = ref(`<h1 class="isle-editor__heading" data-id="80b0bdc9-ecfc-4ea6-a5b2-d52ab3095412">这是一个文章标题</h1><h2 class="isle-editor__heading" data-id="172ba60c-e992-40d4-8f64-452beae7fced">这里是前言</h2><p class="isle-editor__paragraph" data-id="c9ef1e42-a79d-45df-8c1d-230727dd2a18">这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文</p><p class="isle-editor__paragraph" data-id="e0aa481b-1481-4990-8887-b81c4e847b38">这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文</p><h2 class="isle-editor__heading" data-id="94a61c67-9a88-4497-8d1a-592b0455b559">这里是二级标题1</h2><p class="isle-editor__paragraph" data-id="54b132f9-6db4-435b-9bc3-785a55d37d5a">这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文</p><p class="isle-editor__paragraph" data-id="1a111be4-012e-472b-bb70-5c1cda981e6d">这里是正文这里是正文这里是正文这里是正文</p><h3 class="isle-editor__heading" data-id="8147aa5b-1c5d-41e6-805e-5ca14cf47178">这里是三级标题1</h3><p class="isle-editor__paragraph" data-id="5c6cd0a5-10dd-4748-a0cc-7e1105c833aa">是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里</p><h3 class="isle-editor__heading" data-id="0003298b-cc86-4e7c-9408-075744ff8faa">这里是三级标题 2</h3><p class="isle-editor__paragraph" data-id="b6af632f-6e73-452a-b80f-03d01f711b4c">是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里</p><ul class="isle-editor__bullet-list" data-id="6865b208-6bea-4478-a932-03f4d865572d"><li><p class="isle-editor__paragraph" data-id="9846b5cc-7a12-46fb-8c4a-1e56931bf7eb">是正文这里是正文这里</p></li><li><p class="isle-editor__paragraph" data-id="7ae5c0ec-806e-49c9-90e5-0f8248d35c82">是正文这里是正文这里</p></li><li><p class="isle-editor__paragraph" data-id="8c27a8cc-942b-4834-a435-20166cb02593">是正文这里是正文这里是正文这里是正文这里</p></li><li><p class="isle-editor__paragraph" data-id="d7065aba-8d6b-48d0-810f-ae24c68b84b3">是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里</p></li></ul><h2 class="isle-editor__heading" data-id="b965f0ad-43e1-4fa3-9018-53bd79246c13">这里是二级标题 2</h2><p class="isle-editor__paragraph" data-id="82dfeb2b-f797-41a7-9d82-eea35fdffd15">里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正</p><h3 class="isle-editor__heading" data-id="44fd7fdf-0d47-4aaf-baeb-859416161574">这里是三级级标题 1</h3><p class="isle-editor__paragraph" data-id="5d097f57-d98e-4966-9969-02e0603e59db">里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正</p><p class="isle-editor__paragraph" data-id="361da7dc-3d4e-4788-b224-611c669700e5"></p><h4 class="isle-editor__heading" data-id="219a1925-dd7a-407d-80f6-07dab7809094">这里是四级标题 1</h4><p class="isle-editor__paragraph" data-id="6d6673d5-1e7b-4229-815a-f1276423869e">里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正</p><h4 class="isle-editor__heading" data-id="73277281-81a4-4087-89bb-1ca90ca1fce5">这里是四级标题 2</h4><p class="isle-editor__paragraph" data-id="716a5062-0810-4700-ba5c-e3b0257d9a27">里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正</p><h5 class="isle-editor__heading" data-id="1eca2ed0-31cd-4565-bd70-0d5084aa310c">这里是五级标题</h5><p class="isle-editor__paragraph" data-id="b299ee0f-7e06-4572-800e-b8c31a1e7198">里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正</p><h3 class="isle-editor__heading" data-id="3555af04-f03c-40f1-8b16-55be5ac4b05b">这里是三级标题 2</h3><p class="isle-editor__paragraph" data-id="52195f69-431c-4b3a-9ca8-92cd66083028">里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正</p><p class="isle-editor__paragraph" data-id="14ff7beb-35d6-4faf-8a52-4c1eae7dfee4">里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正文这里是正</p>`)
 const editorEl = ref(null)
+const scrollViewRef = ref(null)
 
 const extensions = [
 Heading, 
@@ -103,6 +105,9 @@ Heading,
   TextAlign,
   UniqueID.configure({
     types: ['heading', 'paragraph', 'bulletList', 'orderedList', 'taskList']
+  }),
+  Toc.configure({
+    levels: [1, 2, 3]
   })
 ]
 
@@ -119,7 +124,7 @@ function editorUpdate({ editor }) {
   charactersCount(editor)
 }
 
-const showSidebar = ref(false)
+const showSidebar = ref(true)
 </script>
 
 <style></style>
