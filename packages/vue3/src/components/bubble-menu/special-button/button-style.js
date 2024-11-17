@@ -2,6 +2,7 @@ import { defineComponent, ref, h, onMounted, onBeforeUnmount, computed } from 'v
 import { prefixClass, t } from '@isle-editor/core'
 import { getIcon } from '@/utils/icon'
 import { createTippy } from '@/utils/tippy'
+import Tooltip from '@/components/tooltip'
 
 export default defineComponent({
   name: 'ButtonStyle',
@@ -52,15 +53,17 @@ export default defineComponent({
     })
 
     return () => h('div', {}, [
-      h('button', {
-        ref: triggerRef,
-        class: [`${prefixClass}-bubble-menu__btn`, { 'semi-active': isShown.value }],
-        onMouseDown: (evt) => evt.preventDefault()
-      }, [
-        h('div', { class: `${prefixClass}-bubble-menu__icon-box`, style: { color: activeColor.value?.color, background: activeBackground.value?.color } }, [
-          h(getIcon(props.menu.color.name || 'color'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+      h(Tooltip, { text: '文字样式', shortcutkeys: 'Mod-B', tippyOptions: { disabled: isShown.value } }, {
+        default: () => h('button', {
+          ref: triggerRef,
+          class: [`${prefixClass}-bubble-menu__btn`, { 'semi-active': isShown.value }],
+          onMouseDown: (evt) => evt.preventDefault()
+        }, [
+          h('div', { class: `${prefixClass}-bubble-menu__icon-box`, style: { color: activeColor.value?.color, background: activeBackground.value?.color } }, [
+            h(getIcon(props.menu.color.name || 'color'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+          ])
         ])
-      ]),
+      }),
       h('div', { ref: contentRef, class: `${prefixClass}-bubble-menu-style` }, [
         h('div', { class: `${prefixClass}-bubble-menu-style__title` }, [
           h('span', { class: `${prefixClass}-bubble-menu-style__title-text` }, t(props.menu.color.name)),

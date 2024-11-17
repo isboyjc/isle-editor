@@ -32,6 +32,7 @@
 
   --#{$prefix}-color-border-val: 228, 228, 231;
   --#{$prefix}-color-border: rgba(228, 228, 231, 1);
+  --#{$prefix}-color-border-inverse: rgba(39, 39, 42, 1);
 
   --#{$prefix}-color-text: var(--#{$prefix}-color-black);
   --#{$prefix}-color-text-1: rgba(51, 51, 51, 1);
@@ -79,6 +80,7 @@
 
   --#{$prefix}-color-border-val: 39, 39, 42;
   --#{$prefix}-color-border: rgba(39, 39, 42, 1);
+  --#{$prefix}-color-border-inverse: rgba(229, 229, 229, 1);
 
   --#{$prefix}-color-text: var(--#{$prefix}-color-white);
   --#{$prefix}-color-text-1: rgba(229, 229, 229, 1);

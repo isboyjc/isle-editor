@@ -1,4 +1,5 @@
 import tippy from 'tippy.js'
+import { h } from 'vue'
 
 export function createTippy(element, tippyOptions = {}) {
   return tippy(element, {
