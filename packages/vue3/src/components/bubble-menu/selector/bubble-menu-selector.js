@@ -1,11 +1,12 @@
 import { defineComponent, ref, h, onMounted } from 'vue'
-import { prefixClass } from '@isle-editor/core'
+import { prefixClass, t } from '@isle-editor/core'
 import { getIcon } from '@/utils/icon'
 import ButtonLink from '../special-button/button-link'
 import ButtonColor from '../special-button/button-color'
 import ButtonBackground from '../special-button/button-background'
 import ButtonStyle from '../special-button/button-style'
 import ButtonTextAlign from '../special-button/button-text-align'
+import Tooltip from '@/components/tooltip'
 
 export default defineComponent({
   name: 'BubbleSelector',
@@ -59,23 +60,27 @@ export default defineComponent({
         }
         
         // 默认渲染逻辑
-        return h('button', {
-          class: [`${prefixClass}-bubble-menu__btn`, { active: menu?.isActive({ editor: props.editor }) }],
-          onClick: () => menu.command({editor: props.editor}),
-          onMouseDown: (evt) => evt.preventDefault()
-        }, [
-          h(getIcon(menu.name), { class: `${prefixClass}-bubble-menu__icon`, size: 16, strokeWidth: 2.5 })
-        ])
+        return  h(Tooltip, { text: t(menu.title), shortcutkeys: menu.shortcutkeys }, {
+          default: () => h('button', {
+            class: [`${prefixClass}-bubble-menu__btn`, { active: menu?.isActive({ editor: props.editor }) }],
+            onClick: () => menu.command({editor: props.editor}),
+            onMouseDown: (evt) => evt.preventDefault()
+          }, [
+            h(getIcon(menu.name), { class: `${prefixClass}-bubble-menu__icon`, size: 16, strokeWidth: 2.5 })
+          ])
+        })
       }),
       slotSuffix && slotSuffix({ editor: props.editor }),
       h('div', { class: `${prefixClass}-bubble-menu__divider` }),
-      h('button', {
-        class: [`${prefixClass}-bubble-menu__btn`],
-        onClick: () => props.editor.chain().focus().unsetAllMarks().run(),
-        onMouseDown: (evt) => evt.preventDefault()
-      }, [
-        h(getIcon('textClear'), { class: `${prefixClass}-bubble-menu__icon`, size: 16, strokeWidth: 2.5 })
-      ]),
+      h(Tooltip, { text: t('textClear') }, {
+        default: () => h('button', {
+          class: [`${prefixClass}-bubble-menu__btn`],
+          onClick: () => props.editor.chain().focus().unsetAllMarks().run(),
+          onMouseDown: (evt) => evt.preventDefault()
+        }, [
+          h(getIcon('textClear'), { class: `${prefixClass}-bubble-menu__icon`, size: 16, strokeWidth: 2.5 })
+        ])
+      }),
       slotMore && slotMore({ editor: props.editor })
     ])
   }

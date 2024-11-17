@@ -1,5 +1,6 @@
 {
   "isleEditor": "岛屿编辑器",
+  "textStyle": "文字样式",
   "background": "背景颜色",
   "color": "文字颜色",
   "fontFamily": "字体",
@@ -12,6 +13,9 @@
   "strike": "删除线",
   "code": "行内代码",
   "link": "链接",
+  "linkPlaceholder": "请输入链接",
+  "openInNewTab": "在新标签页中打开",
+  "unlink": "取消链接",
   "subscript": "下标",
   "superscript": "上标",
   "heading": "标题",
@@ -31,8 +35,21 @@
   "outdent": "减少缩进",
   "undo": "撤销",
   "redo": "重做",
+  "textAlign": "文字对齐",
+  "alignLeft": "左对齐",
+  "alignCenter": "居中对齐",
+  "alignRight": "右对齐",
+  "alignJustify": "两端对齐",
+
+  "edit": "编辑",
+  "textClear": "清除",
+  "copy": "复制",
+  "paste": "粘贴",
+  "cancel": "取消",
+  "open": "打开",
 
   "fonts": {
+    "title": "字体",
     "SystemDefault": "系统默认",
     "MicrosoftYaHei": "微软雅黑",
     "SimSun": "宋体",

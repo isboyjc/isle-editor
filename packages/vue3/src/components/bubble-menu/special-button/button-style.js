@@ -53,7 +53,7 @@ export default defineComponent({
     })
 
     return () => h('div', {}, [
-      h(Tooltip, { text: '文字样式', shortcutkeys: 'Mod-B', tippyOptions: { disabled: isShown.value } }, {
+      h(Tooltip, { text: t('textStyle') }, {
         default: () => h('button', {
           ref: triggerRef,
           class: [`${prefixClass}-bubble-menu__btn`, { 'semi-active': isShown.value }],

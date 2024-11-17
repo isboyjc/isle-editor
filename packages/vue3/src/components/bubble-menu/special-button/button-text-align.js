@@ -2,6 +2,7 @@ import { defineComponent, ref, h, onMounted, onBeforeUnmount, computed } from 'v
 import { prefixClass, t } from '@isle-editor/core'
 import { getIcon } from '@/utils/icon'
 import { createTippy } from '@/utils/tippy'
+import Tooltip from '@/components/tooltip'
 
 export default defineComponent({
   name: 'ButtonTextAlign',
@@ -45,17 +46,21 @@ export default defineComponent({
     })
 
     return () => h('div', {}, [
-      h('button', {
-        ref: triggerRef,
-        class: [`${prefixClass}-bubble-menu__btn`, { 'semi-active': isShown.value }],
-        onMouseDown: (evt) => evt.preventDefault()
-      }, [
-        h(getIcon(activeAlign.value?.title || 'alignLeft'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
-      ]),
+      h(Tooltip, { text: t(props.menu.title) }, {
+        default: () => h('button', {
+          ref: triggerRef,
+          class: [`${prefixClass}-bubble-menu__btn`, { 'semi-active': isShown.value }],
+          onMouseDown: (evt) => evt.preventDefault()
+        }, [
+          h(getIcon(activeAlign.value?.title || 'alignLeft'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+        ])
+      }),
       h('div', { ref: contentRef, class: `${prefixClass}-bubble-menu-text-align` }, [
-        ...props.menu.list.map(item => h('button', { class: [`${prefixClass}-bubble-menu__btn`, { 'active': activeAlign.value?.title === item.title }], onClick: () => item.command({ editor: props.editor }) }, [
-          h(getIcon(item.title), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
-        ]))
+        ...props.menu.list.map(item => h(Tooltip, { text: t(item.title), shortcutkeys: item.shortcutkeys }, {
+          default: () => h('button', { class: [`${prefixClass}-bubble-menu__btn`, { 'active': activeAlign.value?.title === item.title }], onClick: () => item.command({ editor: props.editor }) }, [
+            h(getIcon(item.title), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+          ])
+        }))
       ])
     ])
   }

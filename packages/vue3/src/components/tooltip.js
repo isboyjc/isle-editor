@@ -27,13 +27,14 @@ export default defineComponent({
       
       tippyInstance = createTippy(triggerRef.value, {
         content: tooltipContent.value,
-        allowHTML: true,
+        allowHTML: false,
         duration: 0,
         getReferenceClientRect: null,
         interactive: true,
         trigger: 'mouseenter',
         placement: 'top',
         delay: [500, 250],
+        hideOnClick: true,
         appendTo: () => document.body,
         ...props.tippyOptions
       })

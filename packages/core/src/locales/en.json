@@ -1,5 +1,6 @@
 {
   "isleEditor": "Isle Editor",
+  "textStyle": "Text Style",
   "background": "Background Color",
   "color": "Text Color",
   "fontFamily": "Font",
@@ -12,6 +13,9 @@
   "strike": "Strike",
   "code": "Code",
   "link": "Link",
+  "linkPlaceholder": "Please enter the link",
+  "openInNewTab": "Open in new tab",
+  "unlink": "Unlink",
   "subscript": "Subscript",
   "superscript": "Superscript",
   "heading": "Heading",
@@ -31,8 +35,21 @@
   "outdent": "Decrease Indent",
   "undo": "Undo",
   "redo": "Redo",
+  "textAlign": "Text Align",
+  "alignLeft": "Align Left",
+  "alignCenter": "Align Center",
+  "alignRight": "Align Right",
+  "alignJustify": "Align Justify",
+
+  "edit": "Edit",
+  "textClear": "Clear",
+  "copy": "Copy",
+  "paste": "Paste",
+  "cancel": "Cancel",
+  "open": "Open",
 
   "fonts": {
+    "title": "Font",
     "SystemDefault": "System Default",
     "MicrosoftYaHei": "Microsoft YaHei",
     "SimSun": "SimSun",

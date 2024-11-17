@@ -1,7 +1,8 @@
 import { defineComponent, ref, watchEffect } from 'vue'
-import { prefixClass } from '@isle-editor/core'
+import { prefixClass, t } from '@isle-editor/core'
 import { getIcon } from '@/utils/icon'
 import ButtonLink from '../special-button/button-link'
+import Tooltip from '@/components/tooltip'
 
 export default defineComponent({
   name: 'BubbleLinkSelector',
@@ -44,33 +45,39 @@ export default defineComponent({
     }
 
     return () => h('div', { class: `${prefixClass}-bubble-menu` }, [
-      h('button', {
-        class: [`${prefixClass}-bubble-menu__btn`],
-        onClick: openLink,
-        onMouseDown: (evt) => evt.preventDefault()
-      }, [
-        h(getIcon('openRight'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 }),
-        h('span', { class: `${prefixClass}-bubble-menu__btn-text` }, href.value)
-      ]),
+      h(Tooltip, { text: t('openInNewTab') }, {
+        default: () => h('button', {
+          class: [`${prefixClass}-bubble-menu__btn`],
+          onClick: openLink,
+          onMouseDown: (evt) => evt.preventDefault()
+        }, [
+          h(getIcon('openRight'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 }),
+          h('span', { class: `${prefixClass}-bubble-menu__btn-text` }, href.value)
+        ])
+      }),
       h('div', { class: `${prefixClass}-bubble-menu__divider` }),
       h(ButtonLink, { editor: props.editor, menu: props.menu, isEdit: true }),
-      h('button', {
-        class: [`${prefixClass}-bubble-menu__btn`, copyOk.value ? 'success' : ''],
-        onClick: clipboardLink,
-        onMouseDown: (evt) => evt.preventDefault()
-      }, [
-        copyOk.value ? 
-          h(getIcon('check'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 }) : 
-          h(getIcon('copy'), { class: `${prefixClass}-bubble-menu__icon success`, size: 15, strokeWidth: 2.5 })
-      ]),
+      h(Tooltip, { text: t('copy') }, {
+        default: () => h('button', {
+          class: [`${prefixClass}-bubble-menu__btn`, copyOk.value ? 'success' : ''],
+          onClick: clipboardLink,
+          onMouseDown: (evt) => evt.preventDefault()
+        }, [
+          copyOk.value ? 
+            h(getIcon('check'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 }) : 
+            h(getIcon('copy'), { class: `${prefixClass}-bubble-menu__icon success`, size: 15, strokeWidth: 2.5 })
+        ]),
+      }),
       h('div', { class: `${prefixClass}-bubble-menu__divider` }),
-      h('button', {
-        class: [`${prefixClass}-bubble-menu__btn`, 'danger'],
-        onClick: unLink,
-        onMouseDown: (evt) => evt.preventDefault()
-      }, [
-        h(getIcon('unlink'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
-      ])
+      h(Tooltip, { text: t('unlink') }, {
+        default: () => h('button', {
+          class: [`${prefixClass}-bubble-menu__btn`, 'danger'],
+          onClick: unLink,
+          onMouseDown: (evt) => evt.preventDefault()
+        }, [
+          h(getIcon('unlink'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+        ])
+      }),
     ])
   }
 })

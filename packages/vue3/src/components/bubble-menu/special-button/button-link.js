@@ -1,7 +1,8 @@
 import { defineComponent, onMounted, onBeforeUnmount, nextTick } from 'vue'
-import { prefixClass } from '@isle-editor/core'
+import { prefixClass, t } from '@isle-editor/core'
 import { createTippy } from '@/utils/tippy'
 import { getIcon } from '@/utils/icon'
+import Tooltip from '@/components/tooltip'
 
 export default defineComponent({
   name: 'ButtonLink',
@@ -83,30 +84,32 @@ export default defineComponent({
     })
 
     return () => h('div', {}, [
-      h('div', {ref: linkTriggerRef }, [
-        props.isEdit ? (
-          h('button', {
-            class: [`${prefixClass}-bubble-menu__btn`, { active: isShown.value }],
-            onMouseDown: (evt) => evt.preventDefault()
-          }, [
-            h(getIcon('edit'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
-          ])
-        ) : (
-          h('button', {
-            class: [`${prefixClass}-bubble-menu__btn`, { active: isShown.value }],
-            onMouseDown: (evt) => evt.preventDefault()
-          }, [
-            h(getIcon(props.menu.name), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
-          ])
-        )
-      ]),
+      h(Tooltip, { text: props.isEdit ? t('edit') : t(props.menu.title) }, {
+        default: () => h('div', {ref: linkTriggerRef }, [
+          props.isEdit ? (
+            h('button', {
+              class: [`${prefixClass}-bubble-menu__btn`, { active: isShown.value }],
+              onMouseDown: (evt) => evt.preventDefault()
+            }, [
+              h(getIcon('edit'), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+            ])
+          ) : (
+            h('button', {
+              class: [`${prefixClass}-bubble-menu__btn`, { active: isShown.value }],
+              onMouseDown: (evt) => evt.preventDefault()
+            }, [
+              h(getIcon(props.menu.name), { class: `${prefixClass}-bubble-menu__icon`, size: 15, strokeWidth: 2.5 })
+            ])
+          )
+        ])
+      }),
       h('div', { ref: linkContentRef, class: `${prefixClass}-bubble-menu-link` }, [
         h('div', { class: `${prefixClass}-bubble-menu-link__input` }, [
           h(getIcon(props.menu.name || 'link'), { class: `${prefixClass}-bubble-menu-link__icon`, size: 15, strokeWidth: 2.5 }),
           h('input', {
             ref: linkInputRef,
             class: `${prefixClass}-bubble-menu-link__input-inner`,
-            placeholder: '请输入链接',
+            placeholder: t('linkPlaceholder'),
             onKeydown: (event) => {
               if (event.key === 'Enter') {
                 const url = event.target.value
