@@ -2,6 +2,7 @@ import { mergeAttributes, Node } from '@tiptap/core'
 import { prefixClass } from '@/utils/prefix.js'
 
 const source = {
+  slash: true,
   title: 'paragraph',
   command: ({ editor, range }) => {
     range

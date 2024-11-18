@@ -1,6 +1,7 @@
 import { mergeAttributes, Node, wrappingInputRule } from '@tiptap/core'
 
 const source = {
+  slash: true,
   title: 'blockquote',
   desc: '> isle',
   command: ({ editor, range }) => {

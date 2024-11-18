@@ -35,6 +35,7 @@
     "@tiptap/extension-typography": "^2.9.1",
     "@tiptap/extension-underline": "^2.9.1",
     "@tiptap/pm": "^2.9.1",
+    "@tiptap/suggestion": "^2.9.1",
     "i18next": "^23.16.5",
     "lodash": "^4.17.21",
     "uuid": "^11.0.2"

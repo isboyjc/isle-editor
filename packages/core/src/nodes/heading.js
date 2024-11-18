@@ -13,6 +13,7 @@ function command({ editor, range, level }) {
 }
 
 const source = {
+  slash: true,
   title: 'heading',
   command: ({ editor, range, level }) => command({ editor, range, level }),
   isActive: ({ editor, level }) => editor.isActive('heading', { level }),

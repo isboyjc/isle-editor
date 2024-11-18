@@ -3,8 +3,8 @@ import { NodeSelection, TextSelection } from '@tiptap/pm/state'
 import { prefixClass } from '../utils/prefix.js'
 
 const source = {
+  slash: true,
   title: 'divider',
-  icon: 'Divide',
   desc: '---',
   command: ({ editor, range }) => {
     range

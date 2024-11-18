@@ -33,9 +33,9 @@
         </div>
       </div>
       <div ref="scrollViewRef" class="w-full h-full overflow-y-auto overflow-x-hidden flex-1">
-        <div class="w-full border-b-1 border-b-[var(--color-border-1)] border-b-solid box-border">
+        <!-- <div class="w-full border-b-1 border-b-[var(--color-border-1)] border-b-solid box-border">
           <IsleEditorToolbar v-if="editorEl?.editor" :editor="editorEl?.editor"></IsleEditorToolbar>
-        </div>
+        </div> -->
         <div class="max-w-42rem w-full mx-auto flex flex-1 flex-col">
           <IsleEditorBubble v-if="editorEl?.editor" :editor="editorEl?.editor">
             <!-- @mousedown.prevent 阻止冒泡 保证按钮点击不失去页面焦点 -->
@@ -72,7 +72,9 @@ import {
   Background,
   TextAlign,
   UniqueID,
-  Toc
+  Toc,
+  CommandSlash,
+  createSlashSuggestion
 } from '@isle-editor/core'
 import { IsleEditor, IsleEditorBubble, IsleEditorToolbar, IsleEditorToc } from '@isle-editor/vue3'
 import '@isle-editor/vue3/dist/style.css'
@@ -108,7 +110,34 @@ Heading,
   }),
   Toc.configure({
     levels: [1, 2, 3]
-  })
+  }),
+  CommandSlash.configure(createSlashSuggestion({
+    items: ({ editor, query }) => {
+      console.log('slash items', editor, query)
+      const nodes = editor.extensionManager.extensions
+        .filter((item) => item?.options?.slash)
+      console.log('slash nodes', nodes)
+      return []
+    },
+    render: () => {
+      let component
+      let popup
+      return { 
+        onStart: () => {
+
+        },
+        onUpdate: () => {
+
+        },
+        onKeyDown: () => {
+
+        },
+        onExit: () => {
+
+        }
+      }
+    }
+  }))
 ]
 
 const characters = ref(0)
@@ -120,7 +149,7 @@ function charactersCount(editor) {
 }
 
 function editorUpdate({ editor }) {
-  console.log('editorUpdate', editor)
+  // console.log('editorUpdate', editor)
   charactersCount(editor)
 }
 

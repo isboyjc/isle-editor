@@ -3,6 +3,7 @@ import TaskItem from '@tiptap/extension-task-item'
 import { prefixClass } from '@/utils/prefix.js'
 
 const source = {
+  slash: true,
   title: 'taskList',
   desc: '[ ] [x]',
   command: ({ editor, range }) => {
