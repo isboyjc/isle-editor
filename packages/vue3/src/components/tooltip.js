@@ -1,6 +1,8 @@
 import { defineComponent, h, onMounted, onBeforeUnmount, ref, render, cloneVNode } from 'vue'
-import { createTippy } from '@/utils/tippy'
 import { prefixClass } from '@isle-editor/core'
+import { createTippy } from '@/utils/tippy'
+import { convertShortcutKeys } from '@/utils/shortcutkey'
+
 export default defineComponent({
   name: 'Tooltip',
   props: {
@@ -21,7 +23,7 @@ export default defineComponent({
       render(h('div', { class: `${prefixClass}-tooltip` }, [
         props.text && h('div', { class: `${prefixClass}-tooltip-text` }, props.text),
         props.shortcutkeys && h('div', { class: `${prefixClass}-tooltip-shortcutkeys` }, [
-          ...props.shortcutkeys.split('-').map(key => h('span', { class: `${prefixClass}-tooltip-shortcutkeys-key` }, key))
+          ...convertShortcutKeys(props.shortcutkeys).split('-').map(key => h('span', { class: `${prefixClass}-tooltip-shortcutkeys-key` }, key))
         ])
       ]), tooltipContent.value)
       

@@ -28,6 +28,7 @@ export default defineComponent({
 
     const copyOk = ref(false)
     function clipboardLink() {
+      props.editor.chain().focus().run()
       navigator.clipboard.writeText(href.value)
       copyOk.value = true
       setTimeout(() => {

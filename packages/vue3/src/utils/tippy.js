@@ -9,6 +9,7 @@ export function createTippy(element, tippyOptions = {}) {
     trigger: 'manual',
     placement: 'top',
     hideOnClick: 'toggle',
+    appendTo: document.body,
     ...tippyOptions
   })
 }
