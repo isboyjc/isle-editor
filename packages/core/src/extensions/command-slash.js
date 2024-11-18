@@ -24,22 +24,3 @@ export default Extension.create({
     ]
   }
 })
-
-
-export function createSlashSuggestion(options) {
-  return {
-    suggestion: {
-      char: '/',
-      command: ({ editor, range, props }) => {
-        props.command({ editor, range })
-      },
-      items: ({ editor, query }) => {
-        return []
-      },
-      render: () => {
-        return {}
-      },
-      ...options
-    }
-  }
-}

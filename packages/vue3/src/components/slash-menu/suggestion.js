@@ -1,6 +1,7 @@
 import IsleEditorSlash from './slash-menu'
 import { t } from '@isle-editor/core'
 import { VueRenderer } from '@/utils/render'
+import { createTippy } from '@/utils/tippy'
 
 export function createSlashSuggestion(options) {
   return {
@@ -19,9 +20,10 @@ export function createSlashSuggestion(options) {
 export function createSlashSuggestionItems() {
   return {
     items: ({ editor, query }) => {
-      const nodes = editor.extensionManager.extensions
-        .filter((item) => item?.options?.slash)
-      return nodes
+      // ({ editor, query }) => {
+      // const nodes = editor.extensionManager.extensions
+      //   .filter((item) => item?.options?.slash)
+      return []
     }
   }
 }
@@ -52,7 +54,7 @@ export function createSlashSuggestionRender(options = {}) {
             editor: props.editor
           })
 
-          popup = tippy('body', {
+          popup = createTippy('body', {
             getReferenceClientRect: props.clientRect,
             appendTo: () => document.body,
             content: renderer.element,
@@ -60,6 +62,7 @@ export function createSlashSuggestionRender(options = {}) {
             interactive: true,
             trigger: 'manual',
             placement: 'bottom-start',
+            hideOnClick: true,
             ...tippyOptions
           })
         },
@@ -86,7 +89,7 @@ export function createSlashSuggestionRender(options = {}) {
             popup?.[0].hide()
           }
 
-          return renderer.ref?.onKeyDown(props)
+          return renderer.ref?.onKeyDown && renderer.ref?.onKeyDown(props)
         },
 
         onExit: () => {

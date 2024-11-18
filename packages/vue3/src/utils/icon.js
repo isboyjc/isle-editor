@@ -18,7 +18,20 @@ import {
   AlignCenter,
   AlignRight,
   AlignJustify,
-  Eraser as TextClear
+  Eraser as TextClear,
+  Heading,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
+  TextQuote as Blockquote,
+  List as BulletList,
+  ListOrdered as OrderedList,
+  ListTodo as TaskList,
+  Pilcrow as Paragraph,
+  Divide as Divider
 } from 'lucide-vue-next';
 const ICONS = {
   Bold,
@@ -40,7 +53,20 @@ const ICONS = {
   AlignCenter,
   AlignRight,
   AlignJustify,
-  TextClear
+  TextClear,
+  Heading,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
+  Blockquote,
+  BulletList,
+  OrderedList,
+  TaskList,
+  Paragraph,
+  Divider
 };
 
 export const getIcon = (name) => {

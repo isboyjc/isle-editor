@@ -1,0 +1,15 @@
+@use 'config' as *;
+
+.#{$prefix}-slash-menu {
+  width: auto;
+  height: auto;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
+  background-color: var(--#{$prefix}-color-background);
+  border: 1px solid var(--#{$prefix}-color-border);
+  box-sizing: border-box;
+}

@@ -13,7 +13,6 @@ export { default as Selection } from './selection.js'
 export { default as UniqueID } from './unique-id.js'
 export { default as Toc } from './toc.js'
 export { default as CommandSlash } from './command-slash.js'
-export { createSlashSuggestion } from './command-slash.js'
 
 // Extension Implementation of Mark
 export { default as Color } from './color.js'
