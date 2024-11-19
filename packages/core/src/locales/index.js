@@ -1,15 +1,15 @@
 import Locales from 'i18next'
-import zhCN from './zh-CN.json'
+import zh from './zh.json'
 import en from './en.json'
 
 const NS = 'translation'
 
 Locales.init({
-  lng: 'zh-CN',
+  lng: 'zh',
   // debug: true,
   resources: {}, 
 })
-addLocale('zh-CN', zhCN)
+addLocale('zh', zh)
 addLocale('en', en)
 
 export function addLocale(lng, resources) {

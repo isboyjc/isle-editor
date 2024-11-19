@@ -1,6 +1,7 @@
 import { isMacOS } from './is'
 
 export function convertShortcutKeys(str){
+  if(!str) return ''
   const isMac = isMacOS()
   
   return str.toUpperCase()
