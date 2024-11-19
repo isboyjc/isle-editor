@@ -73,7 +73,8 @@ import {
   TextAlign,
   UniqueID,
   Toc,
-  CommandSlash
+  CommandSlash,
+  DragHandle
 } from '@isle-editor/core'
 import { IsleEditor, IsleEditorBubble, IsleEditorToolbar, IsleEditorToc, createSlashSuggestion } from '@isle-editor/vue3'
 import '@isle-editor/vue3/dist/style.css'
@@ -110,7 +111,8 @@ const extensions = [
   Toc.configure({
     levels: [1, 2, 3]
   }),
-  CommandSlash.configure(createSlashSuggestion())
+  CommandSlash.configure(createSlashSuggestion()),
+  DragHandle
 ]
 
 const characters = ref(0)

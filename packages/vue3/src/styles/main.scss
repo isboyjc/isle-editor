@@ -36,6 +36,10 @@
     margin: var(--#{$prefix}-margin-mini) 0;
   }
 
+  .ProseMirror-selectednode{
+    background-color: rgba(var(--#{$prefix}-theme-primary-val), 0.3);
+  }
+
   // :nth-child(1) {
   //   margin-top: 0;
 

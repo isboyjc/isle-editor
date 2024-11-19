@@ -1,4 +1,4 @@
-import { isMacOS } from './is'
+import { isMacOS } from '@isle-editor/core'
 
 export function convertShortcutKeys(str){
   if(!str) return ''
