@@ -74,7 +74,9 @@ import {
   UniqueID,
   Toc,
   CommandSlash,
-  DragHandle
+  DragHandle,
+  Placeholder,
+  t
 } from '@isle-editor/core'
 import { IsleEditor, IsleEditorBubble, IsleEditorToolbar, IsleEditorToc, createSlashSuggestion } from '@isle-editor/vue3'
 import '@isle-editor/vue3/dist/style.css'
@@ -112,7 +114,23 @@ const extensions = [
     levels: [1, 2, 3]
   }),
   CommandSlash.configure(createSlashSuggestion()),
-  DragHandle
+  DragHandle,
+  Placeholder.configure({
+    placeholder: ({node})=>{
+      switch (node.type.name) {
+        case 'heading': {
+          return t(`heading${node.attrs.level}`)
+        }
+        case 'bulletList':
+        case 'orderedList':
+        case 'taskList':
+        case 'codeBlock': {
+          return ''
+        }
+      }
+      return 'Write something, or "/" for commands'
+    }
+  }),
 ]
 
 const characters = ref(0)

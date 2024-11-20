@@ -1,23 +1,6 @@
 @use 'config' as *;
 
 .#{$prefix}.ProseMirror {
-  // p.#{$prefix}-title::before,
-  // p.#{$prefix}-empty:first-child::before {
-  //   content: attr(data-placeholder);
-  //   float: left;
-  //   color: var(--#{$prefix}-color-text-2);
-  //   pointer-events: none;
-  //   height: 0;
-  // }
-
-  // p.#{$prefix}-is-empty:first-of-type::before {
-  //   color: var(--#{$prefix}-color-text-2);
-  //   content: attr(data-placeholder);
-  //   float: left;
-  //   height: 0;
-  //   pointer-events: none;
-  // }
-
   .#{$prefix}-empty:first-child::before {
     content: attr(data-placeholder);
     float: left;
@@ -27,7 +10,8 @@
     height: 0;
     text-align: inherit;
   }
-  .#{$prefix}-is-empty::before {
+
+  .#{$prefix}-node-empty::before {
     content: attr(data-placeholder);
     float: left;
     color: var(--#{$prefix}-color-text-2);

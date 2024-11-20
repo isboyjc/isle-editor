@@ -47,6 +47,7 @@
   "paste": "Paste",
   "cancel": "Cancel",
   "open": "Open",
+  "empty": "Empty",
 
   "fonts": {
     "title": "Font",
@@ -59,5 +60,7 @@
     "CourierNew": "Courier New",
     "Georgia": "Georgia",
     "Arial": "Arial"
-  }
+  },
+
+  "placeholder": "Write something ..."
 }

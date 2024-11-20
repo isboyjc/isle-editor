@@ -1,5 +1,5 @@
 import { defineComponent, computed, h, watch, onMounted, onUnmounted } from 'vue'
-import { prefixClass } from '@isle-editor/core'
+import { prefixClass, t } from '@isle-editor/core'
 
 export default defineComponent({
   name: 'IsleEditorToc',
@@ -110,7 +110,7 @@ export default defineComponent({
                 scrollToTarget(item.id)
               }
             },
-            item.text
+            item.text?.trim() || t('empty')
           ),
           ...children
         ]

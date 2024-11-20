@@ -10,7 +10,6 @@ import {
   Indent, 
   Typography, 
   CommandAKeymap, 
-  Placeholder,
   ListItem, 
   Selection, 
   TextStyle,
@@ -140,29 +139,12 @@ export default defineComponent({
       History,
       Indent,
       Typography,
-      // Selection,
       Dropcursor.configure({
         width: 5,
         color: `rgba(var(--${prefixClass}-theme-primary-val), 0.3)`,
         class: `${prefixClass}-dropcursor`,
       }),
       CommandAKeymap,
-      // Placeholder.configure({
-      //   placeholder: ({node})=>{
-      //     switch (node.type.name) {
-      //       case 'heading': {
-      //         return `Heading ${node.attrs.level}`
-      //       }
-      //       case 'bulletList':
-      //       case 'orderedList':
-      //       case 'taskList':
-      //       case 'codeBlock': {
-      //         return ''
-      //       }
-      //     }
-      //     return 'Write something, or "/" for commands'
-      //   }
-      // }),
       props.extensions.some(
         v => v.name == 'color' || v.name == 'fontFamily'
       ) && TextStyle,
