@@ -26,11 +26,13 @@
   "license": "MIT",
   "dependencies": {
     "@isle-editor/core": "workspace:*",
-    "@isle-editor/shared": "workspace:*",
     "@tiptap/pm": "^2.9.1",
     "lucide-vue-next": "^0.454.0",
     "tippy.js": "^6.3.7",
     "uuid": "^11.0.2"
+  },
+  "devDependencies": {
+    "@isle-editor/shared": "workspace:*"
   },
   "peerDependencies": {
     "vue": "^3.0.0"

@@ -1,12 +1,32 @@
 {
-  "name": "@isle-editor/core",
+  "name": "root",
   "private": true,
   "preinstall": "npx only-allow pnpm",
   "author": "isboyjc",
   "scripts": {
-    "build": "turbo build --filter=!example",
+    "prepare": "husky",
+    "commit": "git-cz",
+    "build:playground": "turbo build --filter=playground",
+    "build": "turbo build",
+    "dev:playground": "turbo dev --filter=playground",
     "dev": "turbo dev",
     "turbo": "turbo"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-git"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "prettier --write"
+    ],
+    "*.{css,less,scss,sass}": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -14,6 +34,9 @@
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
+    "@changesets/cli": "^2.27.10",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.1",
@@ -22,10 +45,16 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@vitejs/plugin-vue": "^5.1.4",
     "babel-loader": "^9.2.1",
+    "commitizen": "^4.3.1",
+    "commitlint": "^19.6.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-git": "^1.11.0",
     "eslint": "^9.13.0",
     "eslint-define-config": "^2.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.29.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "rollup": "^4.24.4",
     "rollup-plugin-auto-external": "^2.0.0",
