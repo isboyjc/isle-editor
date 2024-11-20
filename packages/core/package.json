@@ -42,7 +42,7 @@
     "uuid": "^11.0.2"
   },
   "devDependencies": {
-    "@isle-editor/shared": "workspace:*"
+    "@isle-editor/shared": "workspace:"
   },
   "files": [
     "src",

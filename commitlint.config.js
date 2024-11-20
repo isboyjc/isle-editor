@@ -18,7 +18,10 @@ module.exports = {
         "revert",
       ],
     ],
+    "type-empty": [2, "never"],
+    "subject-empty": [2, "never"],
     "subject-case": [0],
+    "scope-case": [2, "always", "lowerCase"],
   },
   prompt: {
     messages: {
@@ -26,7 +29,7 @@ module.exports = {
       scope: "Denote the SCOPE of this change (optional) [范围]:",
       customScope: "Denote the SCOPE of this change [自定义范围]:",
       subject:
-        "Write a SHORT, IMPERATIVE tense description of the change [描述]:\n",
+        "Write a SHORT, IMPERATIVE tense description of the change [简短描述]:\n",
       body: 'Provide a LONGER description of the change (optional). Use "|" to break new line [详细描述]:\n',
       breaking:
         'List any BREAKING CHANGES (optional). Use "|" to break new line [非兼容性重大变更]:\n',

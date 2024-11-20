@@ -4,6 +4,6 @@
   "private": true,
   "sideEffects": false,
   "exports": {
-    "./rollup": "./rollup.js"
+    "./rollup": "./rollup/index.js"
   }
 }

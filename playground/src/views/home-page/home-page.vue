@@ -64,9 +64,14 @@
         ref="scrollViewRef"
         class="w-full h-full overflow-y-auto overflow-x-hidden flex-1"
       >
-        <!-- <div class="w-full border-b-1 border-b-[var(--color-border-1)] border-b-solid box-border">
-          <IsleEditorToolbar v-if="editorEl?.editor" :editor="editorEl?.editor"></IsleEditorToolbar>
-        </div> -->
+        <div
+          class="w-full border-b-1 border-b-[var(--color-border-1)] border-b-solid box-border"
+        >
+          <IsleEditorToolbar
+            v-if="editorEl?.editor"
+            :editor="editorEl?.editor"
+          ></IsleEditorToolbar>
+        </div>
         <div class="max-w-42rem w-full mx-auto flex flex-1 flex-col">
           <IsleEditorBubble v-if="editorEl?.editor" :editor="editorEl?.editor">
             <!-- @mousedown.prevent 阻止冒泡 保证按钮点击不失去页面焦点 -->

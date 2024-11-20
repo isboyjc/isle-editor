@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "husky",
     "commit": "git-cz",
+    "changelog": "changeset",
     "build:playground": "turbo build --filter=playground",
     "build": "turbo build",
     "dev:playground": "turbo dev --filter=playground",
