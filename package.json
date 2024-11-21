@@ -3,31 +3,34 @@
   "private": true,
   "preinstall": "npx only-allow pnpm",
   "author": "isboyjc",
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ],
   "scripts": {
+    "postplop": "pnpm i",
     "prepare": "husky",
-    "commit": "git-cz",
-    "changelog": "changeset",
-    "build:playground": "turbo build --filter=playground",
-    "build": "turbo build",
-    "dev:playground": "turbo dev --filter=playground",
-    "dev": "turbo dev",
-    "turbo": "turbo"
+    "commit": "git add . && git-cz",
+    "changeset": "changeset",
+    "version": "changeset version && pnpm postplop",
+    "clean": "rimraf node_modules **/*/node_modules",
+    "eslint": "eslint . --ext .ts,.vue,.js,.tsx",
+    "build:play": "turbo run build --filter=playground",
+    "build:core": "turbo run build --filter=@isle-editor/core",
+    "build:vue3": "turbo run build --filter=@isle-editor/vue3",
+    "build": "turbo run build",
+    "dev:play": "turbo run dev --filter=playground",
+    "dev": "turbo run dev",
+    "turbo": "turbo",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,md,sass,css}\"",
+    "lint:staged": "lint-staged",
+    "lint": "eslint --cache --quiet --no-error-on-unmatched-pattern ./",
+    "lint:fix": "eslint --fix --cache --quiet --no-error-on-unmatched-pattern ./"
   },
   "config": {
     "commitizen": {
       "path": "cz-git"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,vue}": [
-      "prettier --write"
-    ],
-    "*.{css,less,scss,sass}": [
-      "prettier --write"
-    ],
-    "*.md": [
-      "prettier --write"
-    ]
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -55,7 +58,9 @@
     "eslint-plugin-vue": "^9.29.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
+    "pnpm": "^9.14.2",
     "prettier": "^3.3.3",
+    "rimraf": "^3.0.2",
     "rollup": "^4.24.4",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-copy": "^3.5.0",

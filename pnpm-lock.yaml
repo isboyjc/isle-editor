@@ -83,9 +83,15 @@ importers:
       lint-staged:
         specifier: ^15.2.10
         version: 15.2.10
+      pnpm:
+        specifier: ^9.14.2
+        version: 9.14.2
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
+      rimraf:
+        specifier: ^3.0.2
+        version: 3.0.2
       rollup:
         specifier: ^4.24.4
         version: 4.27.0
@@ -203,10 +209,6 @@ importers:
       uuid:
         specifier: ^11.0.2
         version: 11.0.3
-    devDependencies:
-      '@isle-editor/shared':
-        specifier: 'workspace:'
-        version: link:../../shared
 
   packages/vue3:
     dependencies:
@@ -228,10 +230,6 @@ importers:
       vue:
         specifier: ^3.0.0
         version: 3.5.13(typescript@5.6.3)
-    devDependencies:
-      '@isle-editor/shared':
-        specifier: 'workspace:'
-        version: link:../../shared
 
   playground:
     dependencies:
@@ -3624,6 +3622,11 @@ packages:
   pkg-types@1.2.1:
     resolution: {integrity: sha512-sQoqa8alT3nHjGuTjuKgOnvjo4cljkufdtLMnO2LBP/wRwuDlo1tkaEdMxCRhyGRPacv/ztlZgDPm2b7FAmEvw==}
 
+  pnpm@9.14.2:
+    resolution: {integrity: sha512-biuvd9Brk2IpQVLIUcTyeO3jerHro6Vf2jF6SheyCfTbuXP7JQp3q8Rjo0H8sfF/F8+iQJHE6zGc2g2bhCeDhw==}
+    engines: {node: '>=18.12'}
+    hasBin: true
+
   postcss-selector-parser@6.1.2:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
     engines: {node: '>=4'}
@@ -3810,6 +3813,11 @@ packages:
 
   rfdc@1.4.1:
     resolution: {integrity: sha512-q1b3N5QkRUWUl7iyylaaj3kOpIT0N2i9MqIEQXP73GVsN9cw3fdx8X63cEmWhJGi2PPCF23Ijp7ktmd39rawIA==}
+
+  rimraf@3.0.2:
+    resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
+    hasBin: true
 
   rollup-plugin-auto-external@2.0.0:
     resolution: {integrity: sha512-HQM3ZkZYfSam1uoZtAB9sK26EiAsfs1phrkf91c/YX+S07wugyRXSigBxrIwiLr5EPPilKYmoMxsrnlGBsXnuQ==}
@@ -8058,6 +8066,8 @@ snapshots:
       mlly: 1.7.3
       pathe: 1.1.2
 
+  pnpm@9.14.2: {}
+
   postcss-selector-parser@6.1.2:
     dependencies:
       cssesc: 3.0.0
@@ -8280,6 +8290,10 @@ snapshots:
   reusify@1.0.4: {}
 
   rfdc@1.4.1: {}
+
+  rimraf@3.0.2:
+    dependencies:
+      glob: 7.2.3
 
   rollup-plugin-auto-external@2.0.0(rollup@4.27.0):
     dependencies:
