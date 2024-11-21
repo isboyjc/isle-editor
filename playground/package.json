@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@isle-editor/core": "workspace:*",
-    "@isle-editor/shared": "workspace:*",
     "@isle-editor/vue3": "workspace:*",
     "@vueuse/core": "^11.2.0",
     "pinia": "^2.2.4",

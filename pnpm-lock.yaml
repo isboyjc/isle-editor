@@ -236,9 +236,6 @@ importers:
       '@isle-editor/core':
         specifier: workspace:*
         version: link:../packages/core
-      '@isle-editor/shared':
-        specifier: workspace:*
-        version: link:../shared
       '@isle-editor/vue3':
         specifier: workspace:*
         version: link:../packages/vue3
