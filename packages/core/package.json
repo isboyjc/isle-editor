@@ -41,6 +41,9 @@
     "lodash": "^4.17.21",
     "uuid": "^11.0.2"
   },
+  "devDependencies": {
+    "@isle-editor/shared": "workspace:*"
+  },
   "files": [
     "src",
     "dist"

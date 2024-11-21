@@ -7,7 +7,7 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [],
+  "ignore": ["@isle-editor/shared"],
   "privatePackages": {
     "version": true,
     "tag": false
