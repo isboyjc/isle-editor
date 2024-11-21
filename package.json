@@ -26,7 +26,9 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,md,sass,css}\"",
     "lint:staged": "lint-staged",
     "lint": "eslint --cache --quiet --no-error-on-unmatched-pattern ./",
-    "lint:fix": "eslint --fix --cache --quiet --no-error-on-unmatched-pattern ./"
+    "lint:fix": "eslint --fix --cache --quiet --no-error-on-unmatched-pattern ./",
+    "dev:docs": "turbo run dev --filter=docs",
+    "build:docs": "turbo run build --filter=docs"
   },
   "config": {
     "commitizen": {
