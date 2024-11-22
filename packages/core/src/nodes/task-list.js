@@ -1,35 +1,36 @@
-import TaskList from '@tiptap/extension-task-list'
-import TaskItem from '@tiptap/extension-task-item'
-import { prefixClass } from '@/utils/prefix.js'
+import TaskList from "@tiptap/extension-task-list";
+import TaskItem from "@tiptap/extension-task-item";
+import { prefixClass } from "@/utils/prefix.js";
 
 const source = {
   slash: true,
-  title: 'taskList',
-  desc: '[ ] [x]',
+  name: "taskList",
+  desc: "[ ] [x]",
+  toolbar: true,
   command: ({ editor, range }) => {
     range
       ? editor.chain().focus().deleteRange(range).toggleTaskList().run()
-      : editor.commands.toggleTaskList()
+      : editor.commands.toggleTaskList();
   },
-  isActive: ({ editor }) => editor.isActive('taskList'),
-  shortcutkeys: 'Mod-Shift-9',
+  isActive: ({ editor }) => editor.isActive("taskList"),
+  shortcutkeys: "Mod-Shift-9",
   HTMLAttributes: {
-    class: `${prefixClass}__task-list`
-  }
-}
+    class: `${prefixClass}__task-list`,
+  },
+};
 
 export default TaskList.extend({
   addOptions() {
     return {
       ...this.parent?.(),
-      ...source
-    }
+      ...source,
+    };
   },
   addExtensions() {
     return [
       TaskItem.configure({
-        nested: true
-      })
-    ]
-  }
-})
+        nested: true,
+      }),
+    ];
+  },
+});

@@ -1,11 +1,16 @@
-import { h } from "vue";
-import Theme from "vitepress/theme";
+import DefaultTheme from "vitepress/theme";
 import { IsleEditor } from "@isle-editor/vue3";
 import "@isle-editor/vue3/dist/style.css";
+import {
+  AntDesignContainer,
+  ElementPlusContainer,
+} from "@vitepress-demo-preview/component";
+import "@vitepress-demo-preview/component/dist/style.css";
 
 export default {
-  extends: Theme,
+  extends: DefaultTheme,
   enhanceApp({ app }) {
-    app.use(IsleEditor);
+    app.component("IsleEditor", IsleEditor);
+    app.component("demo-preview", ElementPlusContainer);
   },
 };

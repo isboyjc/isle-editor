@@ -1,15 +1,16 @@
-import Underline from '@tiptap/extension-underline'
+import Underline from "@tiptap/extension-underline";
 
 export default Underline.extend({
   addOptions() {
     return {
       ...this.parent?.(),
-      title: 'underline',
-      desc: '',
+      name: "underline",
+      desc: "",
       bubble: true,
+      toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleUnderline().run(),
-      isActive: ({ editor }) => editor.isActive('underline'),
-      shortcutkeys: 'Mod-U'
-    }
-  }
-})
+      isActive: ({ editor }) => editor.isActive("underline"),
+      shortcutkeys: "Mod-U",
+    };
+  },
+});

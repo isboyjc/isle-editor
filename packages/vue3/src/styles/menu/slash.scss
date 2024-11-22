@@ -1,4 +1,4 @@
-@use 'config' as *;
+@use "../config" as *;
 
 .#{$prefix}-slash-menu {
   width: auto;
@@ -21,7 +21,7 @@
     display: none;
   }
   -ms-overflow-style: none;
-  scrollbar-width: none; 
+  scrollbar-width: none;
 
   &__item {
     min-width: 200px;
@@ -54,7 +54,8 @@
       align-items: center;
       gap: 0.5rem;
 
-      &-icon {}
+      &-icon {
+      }
 
       &-title {
         font-size: 0.875rem;
@@ -71,7 +72,7 @@
         font-size: 0.65rem;
         display: flex;
         gap: 0.1rem;
-    
+
         &-key {
           display: inline-flex;
           justify-content: center;

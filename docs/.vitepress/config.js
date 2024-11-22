@@ -1,4 +1,8 @@
 import { defineConfig } from "vitepress";
+import {
+  containerPreview,
+  componentPreview,
+} from "@vitepress-demo-preview/plugin";
 
 export default defineConfig({
   title: "Isle Editor",
@@ -31,5 +35,12 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/isboyjc/isle-editor" },
     ],
+  },
+
+  markdown: {
+    config(md) {
+      md.use(containerPreview);
+      md.use(componentPreview);
+    },
   },
 });

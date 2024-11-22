@@ -1,0 +1,39 @@
+@use "../config" as *;
+
+.#{$prefix}-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 0.375rem;
+  border: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: var(--#{$prefix}-color-text-1);
+
+  &.active {
+    background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+    color: var(--#{$prefix}-theme-primary) !important;
+  }
+  &.semi-active {
+    background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+  }
+  &.danger {
+    color: var(--#{$prefix}-text-red) !important;
+  }
+  &.success {
+    color: var(--#{$prefix}-text-green) !important;
+  }
+  &.disabled {
+    color: var(--#{$prefix}-color-border) !important;
+    background-color: transparent !important;
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+    color: var(--#{$prefix}-color-text);
+  }
+}

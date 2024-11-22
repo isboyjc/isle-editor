@@ -12,7 +12,7 @@ import { createTippy } from "@/utils/tippy";
 import { convertShortcutKeys } from "@/utils/shortcutkey";
 
 export default defineComponent({
-  name: "IsleTooltip",
+  name: "ITooltip",
   props: {
     text: String,
     shortcutkeys: String,

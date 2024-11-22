@@ -22,6 +22,8 @@ Using yarn:
 yarn add @isle-editor/vue3
 ```
 
+<preview path="../components/test.vue"></preview>
+
 ## Basic Usage
 
 1. Import and register the editor component:

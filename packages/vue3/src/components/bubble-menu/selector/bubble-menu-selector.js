@@ -1,87 +1,135 @@
-import { defineComponent, ref, h, onMounted } from 'vue'
-import { prefixClass, t } from '@isle-editor/core'
-import { getIcon } from '@/utils/icon'
-import ButtonLink from '../special-button/button-link'
-import ButtonColor from '../special-button/button-color'
-import ButtonBackground from '../special-button/button-background'
-import ButtonStyle from '../special-button/button-style'
-import ButtonTextAlign from '../special-button/button-text-align'
-import Tooltip from '@/components/tooltip'
+import { defineComponent, h } from "vue";
+import { prefixClass, t } from "@isle-editor/core";
+import { getIcon } from "@/utils/icon";
+import ButtonLink from "../special-button/button-link";
+import ButtonColor from "../special-button/button-color";
+import ButtonBackground from "../special-button/button-background";
+import ButtonStyle from "../special-button/button-style";
+import ButtonTextAlign from "../special-button/button-text-align";
+import { ITooltip, IButton, IDivider } from "@/components/ui";
 
 export default defineComponent({
-  name: 'BubbleSelector',
+  name: "BubbleSelector",
   props: {
     menus: {
       type: Array,
-      required: true
+      required: true,
     },
     editor: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props, { slots }) {
-    const slotPrefix = slots['prefix']
-    const slotSuffix = slots['suffix']
-    const slotMore = slots['more']
+    const slotPrefix = slots["prefix"];
+    const slotSuffix = slots["suffix"];
+    const slotMore = slots["more"];
 
-    return () => h('div', {  class: `${prefixClass}-bubble-menu` }, [
-      slotPrefix && slotPrefix({ editor: props.editor }),
-      ...props.menus.map(menu => {
-        // 检查是否存在对应的具名插槽
-        const slotName = slots[menu.name]
-        
-        if (slotName) {
-          // 如果存在具名插槽，使用插槽内容
-          return slotName({
-            editor: props.editor,
-            ...menu
-          })
-        }
+    const textClear = {
+      name: "textClear",
+      command: ({ editor }) => editor.chain().focus().unsetAllMarks().run(),
+      isActive: () => null,
+    };
 
-        if (menu.name === 'link') {
-          return h(ButtonLink, { editor: props.editor, menu: props.menus.find(menu => menu.name === 'link') })
-        }
+    return () =>
+      h("div", { class: `${prefixClass}-bubble-menu` }, [
+        slotPrefix && slotPrefix({ editor: props.editor }),
+        ...props.menus.map((menu) => {
+          // 检查是否存在对应的具名插槽
+          const slotName = slots[menu.name];
 
-        if (menu.name === 'color') {
-          return h(ButtonColor, { editor: props.editor, menu: props.menus.find(menu => menu.name === 'color') })
-        }
+          if (slotName) {
+            // 如果存在具名插槽，使用插槽内容
+            return slotName({
+              editor: props.editor,
+              ...menu,
+            });
+          }
 
-        if (menu.name === 'background') {
-          return h(ButtonBackground, { editor: props.editor, menu: props.menus.find(menu => menu.name === 'background') })
-        }
+          if (menu.name === "|") {
+            return h(IDivider, {
+              type: "vertical",
+              style: { height: "1.5rem" },
+            });
+          }
 
-        if (menu.name === 'style') {
-          return h(ButtonStyle, { editor: props.editor, menu: props.menus.find(menu => menu.name === 'style') })
-        }
+          if (menu.name === "link") {
+            return h(ButtonLink, {
+              editor: props.editor,
+              menu: props.menus.find((menu) => menu.name === "link"),
+            });
+          }
 
-        if (menu.name === 'textAlign') {
-          return h(ButtonTextAlign, { editor: props.editor, menu: props.menus.find(menu => menu.name === 'textAlign') })
-        }
-        
-        // 默认渲染逻辑
-        return  h(Tooltip, { text: t(menu.title), shortcutkeys: menu.shortcutkeys }, {
-          default: () => h('button', {
-            class: [`${prefixClass}-bubble-menu__btn`, { active: menu?.isActive({ editor: props.editor }) }],
-            onClick: () => menu.command({editor: props.editor}),
-            onMouseDown: (evt) => evt.preventDefault()
-          }, [
-            h(getIcon(menu.name), { class: `${prefixClass}-bubble-menu__icon`, size: 16, strokeWidth: 2.5 })
-          ])
-        })
-      }),
-      slotSuffix && slotSuffix({ editor: props.editor }),
-      h('div', { class: `${prefixClass}-bubble-menu__divider` }),
-      h(Tooltip, { text: t('textClear') }, {
-        default: () => h('button', {
-          class: [`${prefixClass}-bubble-menu__btn`],
-          onClick: () => props.editor.chain().focus().unsetAllMarks().run(),
-          onMouseDown: (evt) => evt.preventDefault()
-        }, [
-          h(getIcon('textClear'), { class: `${prefixClass}-bubble-menu__icon`, size: 16, strokeWidth: 2.5 })
-        ])
-      }),
-      slotMore && slotMore({ editor: props.editor })
-    ])
-  }
-})
+          if (menu.name === "color") {
+            return h(ButtonColor, {
+              editor: props.editor,
+              menu: props.menus.find((menu) => menu.name === "color"),
+            });
+          }
+
+          if (menu.name === "background") {
+            return h(ButtonBackground, {
+              editor: props.editor,
+              menu: props.menus.find((menu) => menu.name === "background"),
+            });
+          }
+
+          if (menu.name === "style") {
+            return h(ButtonStyle, {
+              editor: props.editor,
+              menu: props.menus.find((menu) => menu.name === "style"),
+            });
+          }
+
+          if (menu.name === "textAlign") {
+            return h(ButtonTextAlign, {
+              editor: props.editor,
+              menu: props.menus.find((menu) => menu.name === "textAlign"),
+            });
+          }
+
+          // 默认渲染逻辑
+          return h(
+            ITooltip,
+            { text: t(menu.name), shortcutkeys: menu.shortcutkeys },
+            {
+              default: () =>
+                h(
+                  IButton,
+                  {
+                    disabled:
+                      props.editor.isActive("code") && menu.name !== "code",
+                    active: menu?.isActive({ editor: props.editor }),
+                    onClick: () => menu.command({ editor: props.editor }),
+                  },
+                  {
+                    icon: () =>
+                      h(getIcon(menu.name), { size: 16, strokeWidth: 2.5 }),
+                  },
+                ),
+            },
+          );
+        }),
+        slotSuffix && slotSuffix({ editor: props.editor }),
+        h(IDivider, { type: "vertical", style: { height: "1.5rem" } }),
+        h(
+          ITooltip,
+          { text: t("textClear") },
+          {
+            default: () =>
+              h(
+                IButton,
+                {
+                  onClick: () => textClear.command({ editor: props.editor }),
+                },
+                {
+                  icon: () =>
+                    h(getIcon(textClear.name), { size: 16, strokeWidth: 2.5 }),
+                },
+              ),
+          },
+        ),
+        slotMore && slotMore({ editor: props.editor }),
+      ]);
+  },
+});

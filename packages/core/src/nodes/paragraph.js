@@ -1,47 +1,47 @@
-import { mergeAttributes, Node } from '@tiptap/core'
-import { prefixClass } from '@/utils/prefix.js'
+import { mergeAttributes, Node } from "@tiptap/core";
+import { prefixClass } from "@/utils/prefix.js";
 
 const source = {
   slash: true,
-  title: 'paragraph',
+  name: "paragraph",
   command: ({ editor, range }) => {
     range
-      ? editor.chain().focus().deleteRange(range).setNode('paragraph').run()
-      : editor.commands.setParagraph()
+      ? editor.chain().focus().deleteRange(range).setNode("paragraph").run()
+      : editor.commands.setParagraph();
   },
-  isActive: ({ editor }) => editor.isActive('paragraph'),
+  isActive: ({ editor }) => editor.isActive("paragraph"),
   HTMLAttributes: {
-    class: `${prefixClass}__paragraph`
+    class: `${prefixClass}__paragraph`,
   },
-  shortcutkeys: 'Mod-Alt-0'
-}
+  shortcutkeys: "Mod-Alt-0",
+};
 
 export default Node.create({
-  name: 'paragraph',
+  name: "paragraph",
 
   priority: 1000,
 
   addOptions() {
     return {
       HTMLAttributes: {},
-      ...source
-    }
+      ...source,
+    };
   },
 
-  group: 'block',
+  group: "block",
 
-  content: 'inline*',
+  content: "inline*",
 
   parseHTML() {
-    return [{ tag: 'p' }]
+    return [{ tag: "p" }];
   },
 
   renderHTML({ HTMLAttributes }) {
     return [
-      'p',
+      "p",
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
-      0
-    ]
+      0,
+    ];
   },
 
   addCommands() {
@@ -49,14 +49,14 @@ export default Node.create({
       setParagraph:
         () =>
         ({ commands }) => {
-          return commands.setNode(this.name)
-        }
-    }
+          return commands.setNode(this.name);
+        },
+    };
   },
 
   addKeyboardShortcuts() {
     return {
-      'Mod-Alt-0': () => this.editor.commands.setParagraph()
-    }
-  }
-})
+      "Mod-Alt-0": () => this.editor.commands.setParagraph(),
+    };
+  },
+});

@@ -1,46 +1,47 @@
-import { mergeAttributes, Node, wrappingInputRule } from '@tiptap/core'
+import { mergeAttributes, Node, wrappingInputRule } from "@tiptap/core";
 
 const source = {
   slash: true,
-  title: 'blockquote',
-  desc: '> isle',
+  name: "blockquote",
+  desc: "> isle",
+  toolbar: true,
   command: ({ editor, range }) => {
     range
       ? editor.chain().focus().deleteRange(range).toggleBlockquote().run()
-      : editor.commands.toggleBlockquote()
+      : editor.chain().focus().toggleBlockquote().run();
   },
-  isActive: ({ editor }) => editor.isActive('blockquote'),
-  shortcutkeys: 'Mod-Shift-B'
-}
+  isActive: ({ editor }) => editor.isActive("blockquote"),
+  shortcutkeys: "Mod-Shift-B",
+};
 
-export const inputRegex = /^\s*>\s$/
+export const inputRegex = /^\s*>\s$/;
 
 export default Node.create({
-  name: 'blockquote',
+  name: "blockquote",
 
   addOptions() {
     return {
       HTMLAttributes: {},
-      ...source
-    }
+      ...source,
+    };
   },
 
-  content: 'block+',
+  content: "block+",
 
-  group: 'block',
+  group: "block",
 
   defining: true,
 
   parseHTML() {
-    return [{ tag: 'blockquote' }]
+    return [{ tag: "blockquote" }];
   },
 
   renderHTML({ HTMLAttributes }) {
     return [
-      'blockquote',
+      "blockquote",
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
-      0
-    ]
+      0,
+    ];
   },
 
   addCommands() {
@@ -48,33 +49,33 @@ export default Node.create({
       setBlockquote:
         () =>
         ({ commands }) => {
-          return commands.wrapIn(this.name)
+          return commands.wrapIn(this.name);
         },
       toggleBlockquote:
         () =>
         ({ commands }) => {
-          return commands.toggleWrap(this.name)
+          return commands.toggleWrap(this.name);
         },
       unsetBlockquote:
         () =>
         ({ commands }) => {
-          return commands.lift(this.name)
-        }
-    }
+          return commands.lift(this.name);
+        },
+    };
   },
 
   addKeyboardShortcuts() {
     return {
-      'Mod-Shift-b': () => this.editor.commands.toggleBlockquote()
-    }
+      "Mod-Shift-b": () => this.editor.commands.toggleBlockquote(),
+    };
   },
 
   addInputRules() {
     return [
       wrappingInputRule({
         find: inputRegex,
-        type: this.type
-      })
-    ]
-  }
-})
+        type: this.type,
+      }),
+    ];
+  },
+});

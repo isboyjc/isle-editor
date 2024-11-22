@@ -1,5 +1,5 @@
 {
-  "name": "@isle-editor/shared",
+  "name": "shared",
   "type": "module",
   "private": true,
   "sideEffects": false,

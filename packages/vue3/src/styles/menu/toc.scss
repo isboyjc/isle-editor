@@ -1,4 +1,4 @@
-@use 'config' as *;
+@use "../config" as *;
 
 .#{$prefix}-toc {
   width: 100%;
@@ -7,11 +7,11 @@
   box-sizing: border-box;
 
   .#{$prefix}-toc-title {
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 1rem;
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     color: var(--#{$prefix}-color-text-2);
     padding: 0.35rem;
     box-sizing: border-box;
@@ -40,9 +40,12 @@
         color: var(--#{$prefix}-color-text-1);
         background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
       }
-      &.active{
-        color: var(--#{$prefix}-color-text)!important;
-        background-color: rgba(var(--#{$prefix}-color-border-val), 0.5)!important;
+      &.active {
+        color: var(--#{$prefix}-color-text) !important;
+        background-color: rgba(
+          var(--#{$prefix}-color-border-val),
+          0.5
+        ) !important;
       }
     }
   }

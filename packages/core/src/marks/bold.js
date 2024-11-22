@@ -1,15 +1,16 @@
-import Bold from '@tiptap/extension-bold'
+import Bold from "@tiptap/extension-bold";
 
 export default Bold.extend({
   addOptions() {
     return {
       ...this.parent?.(),
-      title: 'bold',
-      desc: '**isle**',
+      name: "bold",
+      desc: "**isle**",
       bubble: true,
+      toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleBold().run(),
-      isActive: ({ editor }) => editor.isActive('bold'),
-      shortcutkeys: 'Mod-B'
-    }
-  }
-})
+      isActive: ({ editor }) => editor.isActive("bold"),
+      shortcutkeys: "Mod-B",
+    };
+  },
+});

@@ -19,6 +19,7 @@
     "build:play": "turbo run build --filter=playground",
     "build:core": "turbo run build --filter=@isle-editor/core",
     "build:vue3": "turbo run build --filter=@isle-editor/vue3",
+    "build:packages": "turbo run build --filter=@isle-editor/*",
     "build": "turbo run build",
     "dev:play": "turbo run dev --filter=playground",
     "dev": "turbo run dev",

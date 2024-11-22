@@ -1,32 +1,33 @@
-import { Extension } from '@tiptap/core'
-import { history, redo, undo } from '@tiptap/pm/history'
+import { Extension } from "@tiptap/core";
+import { history, redo, undo } from "@tiptap/pm/history";
 
 const source = {
-  title: 'history',
+  name: "history",
+  toolbar: true,
   list: [
     {
-      title: 'undo',
-      shortcutkeys: 'Mod-Z',
+      name: "undo",
+      shortcutkeys: "Mod-Z",
       command: ({ editor }) => editor.commands.undo(),
-      isActive: ({ editor }) => editor.can().undo()
+      isActive: ({ editor }) => editor.can().undo(),
     },
     {
-      title: 'redo',
-      shortcutkeys: 'Mod-Shift-Z',
+      name: "redo",
+      shortcutkeys: "Mod-Shift-Z",
       command: ({ editor }) => editor.commands.redo(),
-      isActive: ({ editor }) => editor.can().redo()
-    }
-  ]
-}
+      isActive: ({ editor }) => editor.can().redo(),
+    },
+  ],
+};
 
 export default Extension.create({
-  name: 'history',
+  name: "history",
   addOptions() {
     return {
       depth: 100,
       newGroupDelay: 500,
-      ...source
-    }
+      ...source,
+    };
   },
 
   addCommands() {
@@ -39,29 +40,29 @@ export default Extension.create({
       undo:
         () =>
         ({ state, dispatch }) => {
-          return undo(state, dispatch)
+          return undo(state, dispatch);
         },
       redo:
         () =>
         ({ state, dispatch }) => {
-          return redo(state, dispatch)
-        }
-    }
+          return redo(state, dispatch);
+        },
+    };
   },
 
   addProseMirrorPlugins() {
-    return [history(this.options)]
+    return [history(this.options)];
   },
 
   addKeyboardShortcuts() {
     return {
-      'Mod-z': () => this.editor.commands.undo(),
-      'Shift-Mod-z': () => this.editor.commands.redo(),
-      'Mod-y': () => this.editor.commands.redo(),
+      "Mod-z": () => this.editor.commands.undo(),
+      "Shift-Mod-z": () => this.editor.commands.redo(),
+      "Mod-y": () => this.editor.commands.redo(),
 
       // Russian keyboard layouts
-      'Mod-я': () => this.editor.commands.undo(),
-      'Shift-Mod-я': () => this.editor.commands.redo()
-    }
-  }
-})
+      "Mod-я": () => this.editor.commands.undo(),
+      "Shift-Mod-я": () => this.editor.commands.redo(),
+    };
+  },
+});

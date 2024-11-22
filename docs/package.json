@@ -9,7 +9,10 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
+    "@isle-editor/core": "workspace:*",
     "@isle-editor/vue3": "workspace:*",
+    "@vitepress-demo-preview/component": "^2.3.2",
+    "@vitepress-demo-preview/plugin": "^1.2.3",
     "@vueuse/core": "^10.9.0"
   },
   "devDependencies": {

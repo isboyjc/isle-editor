@@ -1,15 +1,16 @@
-import Subscript from '@tiptap/extension-subscript'
+import Subscript from "@tiptap/extension-subscript";
 
 export default Subscript.extend({
   addOptions() {
     return {
       ...this.parent?.(),
-      title: 'subscript',
-      desc: '',
+      name: "subscript",
+      desc: "",
       bubble: true,
+      toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleSubscript().run(),
-      isActive: ({ editor }) => editor.isActive('subscript'),
-      shortcutkeys: 'Mod-,'
-    }
-  }
-})
+      isActive: ({ editor }) => editor.isActive("subscript"),
+      shortcutkeys: "Mod-,",
+    };
+  },
+});
