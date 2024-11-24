@@ -6,7 +6,6 @@ export default Subscript.extend({
       ...this.parent?.(),
       name: "subscript",
       desc: "",
-      bubble: true,
       toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleSubscript().run(),
       isActive: ({ editor }) => editor.isActive("subscript"),
