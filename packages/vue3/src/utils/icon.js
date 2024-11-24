@@ -36,6 +36,7 @@ import {
   Redo,
   Indent,
   Outdent,
+  WrapText as HardBreak,
 } from "lucide-vue-next";
 const ICONS = {
   Bold,
@@ -75,6 +76,7 @@ const ICONS = {
   Redo,
   Indent,
   Outdent,
+  HardBreak,
 };
 
 export const getIcon = (name) => {

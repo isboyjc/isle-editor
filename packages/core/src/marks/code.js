@@ -12,6 +12,7 @@ export default Code.extend({
       toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleCode().run(),
       isActive: ({ editor }) => editor.isActive("code"),
+      isDisabled: ({ editor }) => !editor.can().toggleCode(),
       shortcutkeys: "Mod-E",
       HTMLAttributes: {
         class: `${prefixClass}__code`,

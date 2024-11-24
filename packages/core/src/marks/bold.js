@@ -10,6 +10,7 @@ export default Bold.extend({
       toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleBold().run(),
       isActive: ({ editor }) => editor.isActive("bold"),
+      isDisabled: ({ editor }) => !editor.can().toggleBold(),
       shortcutkeys: "Mod-B",
     };
   },

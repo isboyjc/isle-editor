@@ -33,6 +33,7 @@
   "divider": "分割线",
   "indent": "增加缩进",
   "outdent": "减少缩进",
+  "hardBreak": "换行",
   "undo": "撤销",
   "redo": "重做",
   "textAlign": "文字对齐",

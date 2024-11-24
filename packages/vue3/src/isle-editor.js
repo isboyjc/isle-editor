@@ -88,35 +88,10 @@ export default defineComponent({
       type: Object,
       default: () => {},
     },
-    // 是否启用核心扩展
-    enableCoreExtensions: {
-      type: [Boolean, Object],
-      default: true,
-    },
-    // 是否展示标题块
-    title: {
-      type: Boolean,
-      default: false,
-    },
     // 拼写检查是否开启 - ProseMirror 不提供内置拼写检查，此依托于浏览器内置拼写检查
     spellcheck: {
       type: Boolean,
       default: false,
-    },
-    // 字符配置
-    characters: {
-      type: Object,
-      default: () => ({
-        // 字符限制
-        limit: null,
-        // 计算模式 textSize | nodeSize
-        mode: "textSize",
-        // 文本字符数计算
-        textCounter: (text) => [...new Intl.Segmenter().segment(text)].length,
-        // 文本单词数计算
-        wordCounter: (text) =>
-          text.split(/\s+/).filter((word) => word !== "").length,
-      }),
     },
   },
   emits: [
@@ -145,48 +120,16 @@ export default defineComponent({
     // 是否为空
     const isEmpty = ref(false);
 
-    // 核心扩展 - 默认配置扩展
-    const coreExtensions = props.enableCoreExtensions
-      ? [
-          Document.configure({
-            title: props.title,
-          }),
-          Text,
-          Paragraph,
-          Gapcursor,
-          HardBreak,
-          CharacterCount.configure({
-            ...props.characters,
-          }),
-          History,
-          Indent,
-          Typography,
-          Dropcursor.configure({
-            width: 5,
-            color: `rgba(var(--${prefixClass}-theme-primary-val), 0.3)`,
-            class: `${prefixClass}-dropcursor`,
-          }),
-          CommandAKeymap,
-          props.extensions.some(
-            (v) => v.name == "color" || v.name == "fontFamily",
-          ) && TextStyle,
-          props.extensions.some(
-            (v) => v.name == "orderedList" || v.name == "bulletList",
-          ) && ListItem,
-        ].filter((ext) => {
-          if (props.enableCoreExtensions === false) return false;
-          if (typeof props.enableCoreExtensions === "object") {
-            return props.enableCoreExtensions[ext.name] !== false;
-          }
-          return true;
-        })
-      : [];
+    // props.extensions.some(
+    //   (v) => v.name == "color" || v.name == "fontFamily",
+    // ) && TextStyle,
+    // props.extensions.some(
+    //   (v) => v.name == "orderedList" || v.name == "bulletList",
+    // ) && ListItem,
 
-    const extensions = [...coreExtensions, ...props.extensions].filter(
-      (ext) => {
-        return ["extension", "node", "mark"].includes(ext?.type);
-      },
-    );
+    const extensions = [...props.extensions].filter((ext) => {
+      return ["extension", "node", "mark"].includes(ext?.type);
+    });
 
     // 合并默认 editorProps & spellcheck 配置
     const editorProps = {
@@ -199,6 +142,9 @@ export default defineComponent({
 
     // 获取字符数
     const getCharacters = (params = {}) => {
+      if (!editor.value?.storage?.characterCount) {
+        return new Error("characterCount extension is not enabled");
+      }
       return {
         characters: editor.value.storage.characterCount.characters(params),
         words: editor.value.storage.characterCount.words(params),

@@ -40,6 +40,7 @@ export default defineComponent({
               success: props.success,
             },
           ],
+          // disabled: props.disabled,
           onMouseDown: (evt) => evt.preventDefault(),
         },
         [slots.icon && slots.icon(), slots.default && slots.default()],

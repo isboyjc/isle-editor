@@ -9,6 +9,7 @@ export default Extension.create({
       defaultAlignment: "left",
       name: "textAlign",
       bubble: true,
+      toolbar: true,
       types: ["heading", "paragraph"],
       list: [
         {

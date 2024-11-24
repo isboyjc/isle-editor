@@ -98,7 +98,8 @@ export default defineComponent({
                   IButton,
                   {
                     disabled:
-                      props.editor.isActive("code") && menu.name !== "code",
+                      menu?.isDisabled &&
+                      menu?.isDisabled({ editor: props.editor }),
                     active: menu?.isActive({ editor: props.editor }),
                     onClick: () => menu.command({ editor: props.editor }),
                   },

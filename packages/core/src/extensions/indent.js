@@ -1,24 +1,5 @@
 import { Extension, isList } from "@tiptap/core";
-import { AllSelection, TextSelection } from "@tiptap/pm/state";
 import { clamp } from "@/utils/clamp.js";
-
-const source = {
-  name: "indent",
-  // bubble: true,
-  toolbar: true,
-  list: [
-    {
-      name: "indent",
-      command: ({ editor }) => editor.commands.indent(),
-      shortcutkeys: "Tab",
-    },
-    {
-      name: "outdent",
-      command: ({ editor }) => editor.commands.outdent(),
-      shortcutkeys: "Shift-Tab",
-    },
-  ],
-};
 
 const IndentProps = {
   max: 7,
@@ -28,15 +9,65 @@ const IndentProps = {
   less: -1,
 };
 
-const Indent = Extension.create({
+export default Extension.create({
   name: "indent",
 
   addOptions() {
     return {
-      types: ["paragraph", "heading", "blockquote"],
+      types: ["paragraph", "heading"],
       minIndent: IndentProps.min,
       maxIndent: IndentProps.max,
-      ...source,
+      name: "indent",
+      toolbar: true,
+      list: [
+        {
+          name: "indent",
+          command: ({ editor }) => editor.chain().focus().indent().run(),
+          isDisabled: ({ editor }) => {
+            const { selection } = editor.state;
+            const { from, to } = selection;
+            let canIndent = false;
+            const types = editor.extensionManager.extensions.find(
+              (ext) => ext.name === "indent",
+            ).options.types;
+
+            editor.state.doc.nodesBetween(from, to, (node) => {
+              if (types.includes(node.type.name)) {
+                canIndent = (node.attrs.indent || 0) < IndentProps.max;
+                return false;
+              }
+              return true;
+            });
+
+            return !canIndent;
+          },
+          shortcutkeys: "Tab",
+        },
+        {
+          name: "outdent",
+          command: ({ editor }) => editor.chain().focus().outdent().run(),
+          isDisabled: ({ editor }) => {
+            const { selection } = editor.state;
+            const { from, to } = selection;
+            let canOutdent = false;
+            const types = editor.extensionManager.extensions.find(
+              (ext) => ext.name === "indent",
+            ).options.types;
+
+            editor.state.doc.nodesBetween(from, to, (node) => {
+              if (types.includes(node.type.name)) {
+                // 检查是否达到最小缩进级别
+                canOutdent = (node.attrs.indent || 0) > IndentProps.min;
+                return false;
+              }
+              return true;
+            });
+
+            return !canOutdent;
+          },
+          shortcutkeys: "Shift-Tab",
+        },
+      ],
     };
   },
 
@@ -88,7 +119,10 @@ function updateIndentLevel(tr, delta, types, editor) {
   const { doc, selection } = tr;
   if (!doc || !selection) return tr;
   if (
-    !(selection instanceof TextSelection || selection instanceof AllSelection)
+    !(
+      /TextSelection$/.test(selection.constructor.name) ||
+      /AllSelection$/.test(selection.constructor.name)
+    )
   )
     return tr;
   const { from, to } = selection;
@@ -138,5 +172,3 @@ function createIndentCommand({ delta, types }) {
     return true;
   };
 }
-
-export default Indent;

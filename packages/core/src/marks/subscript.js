@@ -10,6 +10,7 @@ export default Subscript.extend({
       toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleSubscript().run(),
       isActive: ({ editor }) => editor.isActive("subscript"),
+      isDisabled: ({ editor }) => !editor.can().toggleSubscript(),
       shortcutkeys: "Mod-,",
     };
   },

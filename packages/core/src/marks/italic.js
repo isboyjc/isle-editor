@@ -10,6 +10,7 @@ export default Italic.extend({
       toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleItalic().run(),
       isActive: ({ editor }) => editor.isActive("italic"),
+      isDisabled: ({ editor }) => !editor.can().toggleItalic(),
       shortcutkeys: "Mod-I",
     };
   },

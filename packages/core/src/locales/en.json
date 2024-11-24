@@ -33,6 +33,7 @@
   "divider": "Divider",
   "indent": "Increase Indent",
   "outdent": "Decrease Indent",
+  "hardBreak": "Hard Break",
   "undo": "Undo",
   "redo": "Redo",
   "textAlign": "Text Align",

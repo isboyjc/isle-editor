@@ -11,6 +11,7 @@ const source = {
       : editor.chain().focus().toggleBlockquote().run();
   },
   isActive: ({ editor }) => editor.isActive("blockquote"),
+  isDisabled: ({ editor }) => !editor.can().toggleBlockquote(),
   shortcutkeys: "Mod-Shift-B",
 };
 

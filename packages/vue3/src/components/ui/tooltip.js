@@ -5,7 +5,6 @@ import {
   onBeforeUnmount,
   ref,
   render,
-  cloneVNode,
 } from "vue";
 import { prefixClass } from "@isle-editor/core";
 import { createTippy } from "@/utils/tippy";
@@ -19,6 +18,10 @@ export default defineComponent({
     tippyOptions: {
       type: Object,
       default: () => ({}),
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props, { slots }) {
@@ -54,7 +57,7 @@ export default defineComponent({
         duration: 0,
         getReferenceClientRect: null,
         interactive: true,
-        trigger: "mouseenter",
+        trigger: props.disabled ? "manual" : "mouseenter",
         placement: "top",
         delay: [500, 250],
         hideOnClick: true,

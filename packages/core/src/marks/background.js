@@ -33,6 +33,7 @@ export default Mark.create({
           editor.chain().focus().setBackground({ color }).run();
         }
       },
+      isDisabled: ({ editor }) => !editor.can().toggleBackground(),
       isActive: ({ editor, color }) => editor.isActive("background", { color }),
       colors: [
         {

@@ -1,66 +1,67 @@
-import { prefixClass } from '@/utils/prefix.js'
-import { Extension } from '@tiptap/core'
+import { prefixClass } from "@/utils/prefix.js";
+import { Extension } from "@tiptap/core";
 
 export default Extension.create({
-  name: 'color',
+  name: "color",
 
   addOptions() {
     return {
-      types: ['textStyle'],
-      title: 'color',
-      desc: '',
+      types: ["textStyle"],
+      title: "color",
+      desc: "",
       bubble: true,
-      command: ({ editor, color = '' }) => {
-        if (editor.isActive('textStyle', { color })) {
-          editor.chain().focus().unsetColor().run()
+      command: ({ editor, color = "" }) => {
+        if (editor.isActive("textStyle", { color })) {
+          editor.chain().focus().unsetColor().run();
         } else {
-          editor.chain().focus().setColor(color).run()
+          editor.chain().focus().setColor(color).run();
         }
       },
-      isActive: ({ editor, color }) => editor.isActive('textStyle', { color }),
+      isDisabled: ({ editor }) => !editor.can().setColor(),
+      isActive: ({ editor, color }) => editor.isActive("textStyle", { color }),
       colors: [
         {
-          name: 'white',
-          color: `var(--${prefixClass}-text-white)`
+          name: "white",
+          color: `var(--${prefixClass}-text-white)`,
         },
         {
-          name: 'black',
-          color: `var(--${prefixClass}-text-black)`
+          name: "black",
+          color: `var(--${prefixClass}-text-black)`,
         },
         {
-          name: 'purple',
-          color: `var(--${prefixClass}-text-purple)`
+          name: "purple",
+          color: `var(--${prefixClass}-text-purple)`,
         },
         {
-          name: 'red',
-          color: `var(--${prefixClass}-text-red)`
+          name: "red",
+          color: `var(--${prefixClass}-text-red)`,
         },
         {
-          name: 'yellow',
-          color: `var(--${prefixClass}-text-yellow)`
+          name: "yellow",
+          color: `var(--${prefixClass}-text-yellow)`,
         },
         {
-          name: 'blue',
-          color: `var(--${prefixClass}-text-blue)`
+          name: "blue",
+          color: `var(--${prefixClass}-text-blue)`,
         },
         {
-          name: 'green',
-          color: `var(--${prefixClass}-text-green)`
+          name: "green",
+          color: `var(--${prefixClass}-text-green)`,
         },
         {
-          name: 'orange',
-          color: `var(--${prefixClass}-text-orange)`
+          name: "orange",
+          color: `var(--${prefixClass}-text-orange)`,
         },
         {
-          name: 'pink',
-          color: `var(--${prefixClass}-text-pink)`
+          name: "pink",
+          color: `var(--${prefixClass}-text-pink)`,
         },
         {
-          name: 'gray',
-          color: `var(--${prefixClass}-text-gray)`
-        }
-      ]
-    }
+          name: "gray",
+          color: `var(--${prefixClass}-text-gray)`,
+        },
+      ],
+    };
   },
 
   addGlobalAttributes() {
@@ -70,35 +71,37 @@ export default Extension.create({
         attributes: {
           color: {
             default: null,
-            parseHTML: element => element.style.color?.replace(/['"]+/g, ''),
-            renderHTML: attributes => {
+            parseHTML: (element) => element.style.color?.replace(/['"]+/g, ""),
+            renderHTML: (attributes) => {
               if (!attributes.color) {
-                return {}
+                return {};
               }
 
               return {
                 style: `color: ${attributes.color}`,
-              }
+              };
             },
           },
         },
       },
-    ]
+    ];
   },
 
   addCommands() {
     return {
-      setColor: color => ({ chain }) => {
-        return chain()
-          .setMark('textStyle', { color })
-          .run()
-      },
-      unsetColor: () => ({ chain }) => {
-        return chain()
-          .setMark('textStyle', { color: null })
-          .removeEmptyTextStyle()
-          .run()
-      },
-    }
+      setColor:
+        (color) =>
+        ({ chain }) => {
+          return chain().setMark("textStyle", { color }).run();
+        },
+      unsetColor:
+        () =>
+        ({ chain }) => {
+          return chain()
+            .setMark("textStyle", { color: null })
+            .removeEmptyTextStyle()
+            .run();
+        },
+    };
   },
-})
+});

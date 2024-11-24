@@ -61,17 +61,17 @@
         </div>
       </div>
       <div
+        class="w-full border-b-1 border-b-[var(--color-border-1)] border-b-solid box-border"
+      >
+        <IsleEditorToolbar
+          v-if="editorEl?.editor"
+          :editor="editorEl?.editor"
+        ></IsleEditorToolbar>
+      </div>
+      <div
         ref="scrollViewRef"
         class="w-full h-full overflow-y-auto overflow-x-hidden flex-1"
       >
-        <div
-          class="w-full border-b-1 border-b-[var(--color-border-1)] border-b-solid box-border"
-        >
-          <IsleEditorToolbar
-            v-if="editorEl?.editor"
-            :editor="editorEl?.editor"
-          ></IsleEditorToolbar>
-        </div>
         <div class="max-w-42rem w-full mx-auto flex flex-1 flex-col">
           <IsleEditorBubble v-if="editorEl?.editor" :editor="editorEl?.editor">
             <!-- @mousedown.prevent 阻止冒泡 保证按钮点击不失去页面焦点 -->
@@ -95,6 +95,8 @@
 
 <script setup>
 import {
+  BasicKit,
+  NotionKit,
   Heading,
   OrderedList,
   BulletList,
@@ -135,51 +137,58 @@ const editorEl = ref(null)
 const scrollViewRef = ref(null)
 
 const extensions = [
-  Heading,
-  OrderedList,
-  BulletList,
-  TaskList,
-  Blockquote,
-  Divider,
-  Italic,
-  Strike,
-  Underline,
-  Subscript.configure({
-    bubble: false
-  }),
-  Superscript.configure({
-    bubble: false
-  }),
-  Bold,
-  Code,
-  Link,
-  Background,
-  Color,
-  TextAlign,
-  UniqueID.configure({
-    types: ['heading', 'paragraph', 'bulletList', 'orderedList', 'taskList']
-  }),
-  Toc.configure({
-    levels: [1, 2, 3]
-  }),
-  CommandSlash.configure(createSlashSuggestion()),
-  DragHandle,
-  Placeholder.configure({
-    placeholder: ({ node }) => {
-      switch (node.type.name) {
-        case 'heading': {
-          return t(`heading${node.attrs.level}`)
-        }
-        case 'bulletList':
-        case 'orderedList':
-        case 'taskList':
-        case 'codeBlock': {
-          return ''
-        }
-      }
-      return 'Write something, or "/" for commands'
+  // BasicKit.configure({}),
+  NotionKit.configure({
+    commandSlash: createSlashSuggestion(),
+    uniqueID: {
+      types: ['heading', 'paragraph', 'bulletList', 'orderedList', 'taskList']
     }
   })
+  // Heading,
+  // OrderedList,
+  // BulletList,
+  // TaskList,
+  // Blockquote,
+  // Divider,
+  // Italic,
+  // Strike,
+  // Underline,
+  // Subscript.configure({
+  //   bubble: false
+  // }),
+  // Superscript.configure({
+  //   bubble: false
+  // }),
+  // Bold,
+  // Code,
+  // Link,
+  // Background,
+  // Color,
+  // TextAlign,
+  // UniqueID.configure({
+  //   types: ['heading', 'paragraph', 'bulletList', 'orderedList', 'taskList']
+  // }),
+  // Toc.configure({
+  //   levels: [1, 2, 3]
+  // }),
+  // CommandSlash.configure(createSlashSuggestion()),
+  // DragHandle,
+  // Placeholder.configure({
+  //   placeholder: ({ node }) => {
+  //     switch (node.type.name) {
+  //       case 'heading': {
+  //         return t(`heading${node.attrs.level}`)
+  //       }
+  //       case 'bulletList':
+  //       case 'orderedList':
+  //       case 'taskList':
+  //       case 'codeBlock': {
+  //         return ''
+  //       }
+  //     }
+  //     return 'Write something, or "/" for commands'
+  //   }
+  // })
 ]
 
 const characters = ref(0)

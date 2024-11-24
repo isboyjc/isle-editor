@@ -4,7 +4,9 @@ export function sortArrayByPropertyArray(array, sortOrder, key) {
 
   sortOrder.forEach((order) => {
     if (order === "|") {
-      result.push({ [key]: "|" }); // 插入特殊元素
+      if (result.length === 0 || result[result.length - 1][key] !== "|") {
+        result.push({ [key]: "|" }); // 仅插入一个连续的 '|'
+      }
     } else {
       const index = array.findIndex((item) => item[key] === order);
       if (index !== -1) {

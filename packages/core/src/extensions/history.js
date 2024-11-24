@@ -9,13 +9,13 @@ const source = {
       name: "undo",
       shortcutkeys: "Mod-Z",
       command: ({ editor }) => editor.commands.undo(),
-      isActive: ({ editor }) => editor.can().undo(),
+      isDisabled: ({ editor }) => !editor.can().undo(),
     },
     {
       name: "redo",
       shortcutkeys: "Mod-Shift-Z",
       command: ({ editor }) => editor.commands.redo(),
-      isActive: ({ editor }) => editor.can().redo(),
+      isDisabled: ({ editor }) => !editor.can().redo(),
     },
   ],
 };

@@ -14,7 +14,6 @@ const TOOLBAR_MENU_SORT = [
   "style",
   "color",
   "background",
-  "textAlign",
   "link",
   "subscript",
   "superscript",
@@ -23,9 +22,13 @@ const TOOLBAR_MENU_SORT = [
   "orderedList",
   "taskList",
   "|",
+  "textAlign",
+  "|",
   "blockquote",
+  "hardBreak",
   "indent",
   "outdent",
+  "|",
   "divider",
 ];
 
@@ -51,6 +54,7 @@ export default defineComponent({
         .filter((v) => v?.options?.toolbar)
         .map((v) => ({
           name: v.name,
+          type: v.type,
           ...v?.options,
         }));
 
@@ -75,7 +79,11 @@ export default defineComponent({
             });
           }
 
-          if (v.name === "history" || v.name === "indent") {
+          if (
+            v.name === "history" ||
+            v.name === "indent" ||
+            v.name === "textAlign"
+          ) {
             return v.list.map((item) =>
               h(
                 ITooltip,
@@ -85,9 +93,12 @@ export default defineComponent({
                     h(
                       IButton,
                       {
-                        disabled:
+                        active:
                           item?.isActive &&
-                          !item?.isActive({ editor: props.editor }),
+                          item?.isActive({ editor: props.editor }),
+                        disabled:
+                          item?.isDisabled &&
+                          item?.isDisabled({ editor: props.editor }),
                         onClick: () => item.command({ editor: props.editor }),
                       },
                       {
@@ -108,9 +119,10 @@ export default defineComponent({
                 h(
                   IButton,
                   {
+                    active:
+                      v?.isActive && v?.isActive({ editor: props.editor }),
                     disabled:
-                      props.editor.isActive("code") && v.name !== "code",
-                    active: v.isActive({ editor: props.editor }),
+                      v?.isDisabled && v?.isDisabled({ editor: props.editor }),
                     onClick: () => v.command({ editor: props.editor }),
                   },
                   {

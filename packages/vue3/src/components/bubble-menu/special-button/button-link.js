@@ -102,7 +102,9 @@ export default defineComponent({
                 h(
                   IButton,
                   {
-                    disabled: props.editor.isActive("code"),
+                    disabled:
+                      props.menu?.isDisabled &&
+                      props.menu?.isDisabled({ editor: props.editor }),
                     semiActive: isShown.value,
                   },
                   {

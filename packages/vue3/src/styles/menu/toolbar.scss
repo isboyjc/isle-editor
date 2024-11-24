@@ -6,14 +6,8 @@
   padding: 0.2rem;
   display: inline-flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.125rem;
   box-sizing: border-box;
-
-  &__separator {
-    width: 1px;
-    height: 24px;
-    margin: 0 0.05rem;
-    background-color: var(--#{$prefix}-color-border);
-  }
 }

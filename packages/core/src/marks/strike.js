@@ -10,6 +10,7 @@ export default Strike.extend({
       toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleStrike().run(),
       isActive: ({ editor }) => editor.isActive("strike"),
+      isDisabled: ({ editor }) => !editor.can().toggleStrike(),
       shortcutkeys: "Mod-Shift-S",
     };
   },

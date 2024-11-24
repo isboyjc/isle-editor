@@ -123,9 +123,9 @@ export default defineComponent({
         return false;
       }
 
-      console.log("isText", isText.value);
-      console.log("isLink", isLink.value);
-      console.log("isTable", isTable.value);
+      // console.log("isText", isText.value);
+      // console.log("isLink", isLink.value);
+      // console.log("isTable", isTable.value);
       return isText.value || isLink.value || isTable.value;
     };
 
