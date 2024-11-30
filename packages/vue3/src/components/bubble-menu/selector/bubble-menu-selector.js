@@ -23,7 +23,6 @@ export default defineComponent({
   setup(props, { slots }) {
     const slotPrefix = slots["prefix"];
     const slotSuffix = slots["suffix"];
-    const slotMore = slots["more"];
 
     return () =>
       h("div", { class: `${prefixClass}-bubble-menu` }, [
