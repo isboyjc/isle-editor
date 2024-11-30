@@ -8,7 +8,6 @@ import {
 } from "vue";
 import { prefixClass } from "@isle-editor/core";
 import { createTippy } from "@/utils/tippy";
-import { sticky } from "tippy.js";
 
 export default defineComponent({
   name: "ITrigger",
@@ -55,15 +54,10 @@ export default defineComponent({
     onMounted(() => {
       tippyInstance = createTippy(triggerRef.value, {
         content: tooltipContent.value,
-        allowHTML: false,
         trigger: "click",
         hideOnClick: true,
         placement: "bottom",
-        getReferenceClientRect: null,
-        interactive: true,
-        sticky: true,
-        plugins: [sticky],
-        appendTo: () => document.body,
+        appendTo: "parent",
         ...props.tippyOptions,
       });
 
@@ -71,21 +65,20 @@ export default defineComponent({
     });
 
     onBeforeUnmount(() => {
-      if (tippyInstance) {
-        tippyInstance.destroy();
-      }
+      if (tippyInstance) tippyInstance.destroy();
     });
 
     expose({ hide, show, enable, disable, setProps });
 
-    return () =>
+    return () => [
       h("div", { ref: triggerRef, class: `${prefixClass}-trigger__btn` }, [
         slots.default?.(),
-        h(
-          "div",
-          { ref: tooltipContent, class: `${prefixClass}-trigger__content` },
-          [slots.content?.()],
-        ),
-      ]);
+      ]),
+      h(
+        "div",
+        { ref: tooltipContent, class: `${prefixClass}-trigger__content` },
+        [slots.content?.()],
+      ),
+    ];
   },
 });
