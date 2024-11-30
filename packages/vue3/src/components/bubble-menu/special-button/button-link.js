@@ -1,16 +1,7 @@
-import {
-  defineComponent,
-  onMounted,
-  onBeforeUnmount,
-  nextTick,
-  watchEffect,
-  h,
-  ref,
-} from "vue";
+import { defineComponent, nextTick, watchEffect, h, ref } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { createTippy } from "@/utils/tippy";
 import { getIcon } from "@/utils/icon";
-import { ITooltip, IButton, IDivider } from "@/components/ui";
+import { ITooltip, IButton, ITrigger } from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonLink",
@@ -28,11 +19,9 @@ export default defineComponent({
       default: false,
     },
   },
-  setup(props, { expose }) {
-    const linkTriggerRef = ref(null);
-    const linkContentRef = ref(null);
+  setup(props) {
+    const triggerRef = ref(null);
     const linkInputRef = ref(null);
-    const tippyInstance = ref(null);
     const isShown = ref(false);
     const openInNewTab = ref(true);
 
@@ -45,110 +34,100 @@ export default defineComponent({
       }
     });
 
-    onMounted(() => {
-      tippyInstance.value = createTippy(linkTriggerRef.value, {
-        content: linkContentRef.value,
-        trigger: "click",
-        hideOnClick: true,
-        placement: "bottom",
-        // getReferenceClientRect: () => {
-        //   Get the coordinates of the selection so that the bubble menu follows the selection.
-        //   const { view } = props.editor
-        //   const { from, to } = props.editor.state.selection
-        //   if (from === to) return null
-        //   const domRect = view.coordsAtPos(from)
-        //   const domRectEnd = view.coordsAtPos(to)
-        //   return {
-        //     top: domRect.top,
-        //     bottom: domRect.bottom,
-        //     left: domRect.left,
-        //     right: domRectEnd.right,
-        //     width: domRectEnd.right - domRect.left,
-        //     height: domRect.bottom - domRect.top,
-        //   }
-        // },
-        // appendTo: document.body,
-        onShown: () => {
-          isShown.value = true;
-
-          nextTick(() => {
-            linkInputRef.value.focus();
-          });
-        },
-        onHide: () => {
-          isShown.value = false;
-        },
-      });
-    });
-
-    onBeforeUnmount(() => {
-      tippyInstance.value && tippyInstance.value.destroy();
-    });
-
-    expose({
-      show: () => tippyInstance.value?.show(),
-      hide: () => tippyInstance.value?.hide(),
-      isShown,
-    });
+    // getReferenceClientRect: () => {
+    //   Get the coordinates of the selection so that the bubble menu follows the selection.
+    //   const { view } = props.editor
+    //   const { from, to } = props.editor.state.selection
+    //   if (from === to) return null
+    //   const domRect = view.coordsAtPos(from)
+    //   const domRectEnd = view.coordsAtPos(to)
+    //   return {
+    //     top: domRect.top,
+    //     bottom: domRect.bottom,
+    //     left: domRect.left,
+    //     right: domRectEnd.right,
+    //     width: domRectEnd.right - domRect.left,
+    //     height: domRect.bottom - domRect.top,
+    //   }
+    // },
 
     return () =>
-      h("div", {}, [
-        h(
-          ITooltip,
-          { text: props.isEdit ? t("edit") : t(props.menu.name) },
-          {
-            default: () =>
-              h("div", { ref: linkTriggerRef }, [
-                h(
-                  IButton,
-                  {
-                    disabled:
-                      props.menu?.isDisabled &&
-                      props.menu?.isDisabled({ editor: props.editor }),
-                    semiActive: isShown.value,
-                  },
-                  {
-                    icon: () =>
-                      h(getIcon(props.isEdit ? "edit" : props.menu.name), {
-                        size: 15,
-                        strokeWidth: 2.5,
-                      }),
-                  },
-                ),
-              ]),
+      h(
+        ITrigger,
+        {
+          ref: triggerRef,
+          disabled:
+            props.menu?.isDisabled &&
+            props.menu?.isDisabled({ editor: props.editor }),
+          tippyOptions: {
+            onShown: () => {
+              isShown.value = true;
+
+              nextTick(() => {
+                linkInputRef.value.focus();
+              });
+            },
+            onHide: () => {
+              isShown.value = false;
+            },
           },
-        ),
-        h(
-          "div",
-          { ref: linkContentRef, class: `${prefixClass}-bubble-menu-link` },
-          [
-            h("div", { class: `${prefixClass}-bubble-menu-link__input` }, [
-              h(getIcon(props.menu.name || "link"), {
-                class: `${prefixClass}-bubble-menu-link__icon`,
-                size: 15,
-                strokeWidth: 2.5,
-              }),
-              h("input", {
-                ref: linkInputRef,
-                class: `${prefixClass}-bubble-menu-link__input-inner`,
-                placeholder: t("linkPlaceholder"),
-                onKeydown: (event) => {
-                  if (event.key === "Enter") {
-                    const url = event.target.value;
-                    if (url && url.trim()) {
-                      props.menu.command({
-                        editor: props.editor,
-                        href: url,
-                        target: openInNewTab.value ? "_blank" : null,
-                      });
-                      tippyInstance.value?.hide();
+        },
+        {
+          default: () =>
+            h(
+              ITooltip,
+              {
+                text: props.isEdit ? t("edit") : t(props.menu.name),
+              },
+              {
+                default: () =>
+                  h(
+                    IButton,
+                    {
+                      disabled:
+                        props.menu?.isDisabled &&
+                        props.menu?.isDisabled({ editor: props.editor }),
+                      semiActive: isShown.value,
+                    },
+                    {
+                      icon: () =>
+                        h(getIcon(props.isEdit ? "edit" : props.menu.name), {
+                          size: 15,
+                          strokeWidth: 2.5,
+                        }),
+                    },
+                  ),
+              },
+            ),
+          content: () =>
+            h("div", { class: `${prefixClass}-bubble-menu-link` }, [
+              h("div", { class: `${prefixClass}-bubble-menu-link__input` }, [
+                h(getIcon(props.menu.name || "link"), {
+                  class: `${prefixClass}-bubble-menu-link__icon`,
+                  size: 15,
+                  strokeWidth: 2.5,
+                }),
+                h("input", {
+                  ref: linkInputRef,
+                  class: `${prefixClass}-bubble-menu-link__input-inner`,
+                  placeholder: t("linkPlaceholder"),
+                  onKeydown: (event) => {
+                    if (event.key === "Enter") {
+                      const url = event.target.value;
+                      if (url && url.trim()) {
+                        props.menu.command({
+                          editor: props.editor,
+                          href: url,
+                          target: openInNewTab.value ? "_blank" : null,
+                        });
+                        triggerRef.value.hide();
+                      }
                     }
-                  }
-                },
-              }),
+                  },
+                }),
+              ]),
             ]),
-          ],
-        ),
-      ]);
+        },
+      );
   },
 });

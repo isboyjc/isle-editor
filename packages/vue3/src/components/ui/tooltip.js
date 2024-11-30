@@ -4,6 +4,7 @@ import {
   onMounted,
   onBeforeUnmount,
   ref,
+  watch,
   render,
 } from "vue";
 import { prefixClass } from "@isle-editor/core";
@@ -28,6 +29,25 @@ export default defineComponent({
     let tippyInstance = null;
     const tooltipContent = ref(null);
     const triggerRef = ref(null);
+
+    watch(
+      () => props.disabled,
+      () => (props.disabled ? disable() : enable()),
+    );
+
+    // 是否启用实例
+    function enable() {
+      if (tippyInstance) {
+        tippyInstance.enable();
+      }
+    }
+
+    // 是否禁用实例
+    function disable() {
+      if (tippyInstance) {
+        tippyInstance.disable();
+      }
+    }
 
     onMounted(() => {
       tooltipContent.value = document.createElement("div");
@@ -57,13 +77,14 @@ export default defineComponent({
         duration: 0,
         getReferenceClientRect: null,
         interactive: true,
-        trigger: props.disabled ? "manual" : "mouseenter",
+        trigger: "mouseenter",
         placement: "top",
         delay: [500, 250],
         hideOnClick: true,
         appendTo: () => document.body,
         ...props.tippyOptions,
       });
+      props.disabled && disable();
     });
 
     onBeforeUnmount(() => {

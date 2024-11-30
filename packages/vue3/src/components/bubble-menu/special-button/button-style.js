@@ -1,15 +1,7 @@
-import {
-  defineComponent,
-  ref,
-  h,
-  onMounted,
-  onBeforeUnmount,
-  computed,
-} from "vue";
+import { defineComponent, ref, h, computed } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
 import { getIcon } from "@/utils/icon";
-import { createTippy } from "@/utils/tippy";
-import { ITooltip, IButton } from "@/components/ui";
+import { ITooltip, IButton, ITrigger } from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonStyle",
@@ -24,9 +16,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const triggerRef = ref(null);
-    const contentRef = ref(null);
-    const tippyInstance = ref(null);
     const isShown = ref(false);
 
     const activeColor = computed(() => {
@@ -43,137 +32,133 @@ export default defineComponent({
       );
     });
 
-    onMounted(() => {
-      tippyInstance.value = createTippy(triggerRef.value, {
-        content: contentRef.value,
-        trigger: "click",
-        hideOnClick: true,
-        placement: "bottom",
-        onShown: () => {
-          isShown.value = true;
-        },
-        onHide: () => {
-          isShown.value = false;
-        },
-      });
-    });
-
-    onBeforeUnmount(() => {
-      tippyInstance.value && tippyInstance.value.destroy();
-    });
-
     return () =>
-      h("div", {}, [
-        h(
-          ITooltip,
-          { text: t("textStyle") },
-          {
-            default: () =>
-              h("div", { ref: triggerRef }, [
-                h(
-                  IButton,
-                  {
-                    disabled:
-                      props.menu.color?.isDisabled &&
-                      props.menu.color?.isDisabled({ editor: props.editor }),
-                    semiActive: isShown.value,
-                  },
-                  {
-                    icon: () =>
-                      h(
-                        "div",
-                        {
-                          class: `${prefixClass}-bubble-menu__icon-box`,
-                          style: {
-                            color: activeColor.value?.color,
-                            background: activeBackground.value?.color,
-                          },
-                        },
-                        [
-                          h(getIcon(props.menu.color.name || "color"), {
-                            size: 15,
-                            strokeWidth: 2.5,
-                          }),
-                        ],
-                      ),
-                  },
-                ),
-              ]),
+      h(
+        ITrigger,
+        {
+          disabled:
+            props.menu.color?.isDisabled &&
+            props.menu.color?.isDisabled({ editor: props.editor }),
+          tippyOptions: {
+            onShown: () => {
+              isShown.value = true;
+            },
+            onHide: () => {
+              isShown.value = false;
+            },
           },
-        ),
-        h(
-          "div",
-          { ref: contentRef, class: `${prefixClass}-bubble-menu-style` },
-          [
-            h("div", { class: `${prefixClass}-bubble-menu-style__title` }, [
-              h(
-                "span",
-                { class: `${prefixClass}-bubble-menu-style__title-text` },
-                t(props.menu.color.name),
-              ),
-              h("span", {
-                class: `${prefixClass}-bubble-menu-style__title-default`,
-                onClick: () =>
-                  props.menu.color.command({ color: "", editor: props.editor }),
-              }),
-            ]),
-            h("div", { class: `${prefixClass}-bubble-menu-style__box` }, [
-              ...props.menu.color.colors.map(({ color }) =>
-                h(
-                  "div",
-                  {
-                    class: `${prefixClass}-bubble-menu-style__box-item`,
-                    style: { color },
-                    onClick: () =>
-                      props.menu.color.command({
-                        color: color,
-                        editor: props.editor,
-                      }),
-                  },
-                  [
-                    h(getIcon(props.menu.color.name), {
-                      class: `${prefixClass}-bubble-menu-style__box-item-icon`,
-                      size: 14,
-                      strokeWidth: 2,
-                    }),
-                  ],
-                ),
-              ),
-            ]),
+        },
+        {
+          default: () =>
             h(
-              "div",
-              { class: `${prefixClass}-bubble-menu-style__title mt-2` },
-              [
+              ITooltip,
+              { text: t("textStyle") },
+              {
+                default: () =>
+                  h(
+                    IButton,
+                    {
+                      disabled:
+                        props.menu.color?.isDisabled &&
+                        props.menu.color?.isDisabled({ editor: props.editor }),
+                      semiActive: isShown.value,
+                    },
+                    {
+                      icon: () =>
+                        h(
+                          "div",
+                          {
+                            class: `${prefixClass}-bubble-menu__icon-box`,
+                            style: {
+                              color: activeColor.value?.color,
+                              background: activeBackground.value?.color,
+                            },
+                          },
+                          [
+                            h(getIcon(props.menu.color.name || "color"), {
+                              size: 15,
+                              strokeWidth: 2.5,
+                            }),
+                          ],
+                        ),
+                    },
+                  ),
+              },
+            ),
+          content: () =>
+            h("div", { class: `${prefixClass}-bubble-menu-style` }, [
+              h("div", { class: `${prefixClass}-bubble-menu-style__title` }, [
                 h(
                   "span",
                   { class: `${prefixClass}-bubble-menu-style__title-text` },
-                  t(props.menu.background.name),
+                  t(props.menu.color.name),
                 ),
                 h("span", {
-                  class: `${prefixClass}-bubble-menu-style__default`,
+                  class: `${prefixClass}-bubble-menu-style__title-default`,
                   onClick: () =>
-                    props.menu.background.command({
+                    props.menu.color.command({
                       color: "",
                       editor: props.editor,
                     }),
                 }),
-              ],
-            ),
-            h("div", { class: `${prefixClass}-bubble-menu-style__box` }, [
-              ...props.menu.background.colors.map(({ color }) =>
-                h("div", {
-                  class: `${prefixClass}-bubble-menu-style__box-item`,
-                  style: { background: color },
-                  onClick: () =>
-                    props.menu.background.command({
-                      color: color,
-                      editor: props.editor,
-                    }),
-                }),
+              ]),
+              h("div", { class: `${prefixClass}-bubble-menu-style__box` }, [
+                ...props.menu.color.colors.map(({ color }) =>
+                  h(
+                    "div",
+                    {
+                      class: `${prefixClass}-bubble-menu-style__box-item`,
+                      style: { color },
+                      onClick: () =>
+                        props.menu.color.command({
+                          color: color,
+                          editor: props.editor,
+                        }),
+                    },
+                    [
+                      h(getIcon(props.menu.color.name), {
+                        class: `${prefixClass}-bubble-menu-style__box-item-icon`,
+                        size: 14,
+                        strokeWidth: 2,
+                      }),
+                    ],
+                  ),
+                ),
+              ]),
+              h(
+                "div",
+                { class: `${prefixClass}-bubble-menu-style__title mt-2` },
+                [
+                  h(
+                    "span",
+                    { class: `${prefixClass}-bubble-menu-style__title-text` },
+                    t(props.menu.background.name),
+                  ),
+                  h("span", {
+                    class: `${prefixClass}-bubble-menu-style__title-default`,
+                    onClick: () =>
+                      props.menu.background.command({
+                        color: "",
+                        editor: props.editor,
+                      }),
+                  }),
+                ],
               ),
+              h("div", { class: `${prefixClass}-bubble-menu-style__box` }, [
+                ...props.menu.background.colors.map(({ color }) =>
+                  h("div", {
+                    class: `${prefixClass}-bubble-menu-style__box-item`,
+                    style: { background: color },
+                    onClick: () =>
+                      props.menu.background.command({
+                        color: color,
+                        editor: props.editor,
+                      }),
+                  }),
+                ),
+              ]),
             ]),
-          ],
-        ),
-      ]);
+        },
+      );
   },
 });

@@ -91,7 +91,10 @@ export default defineComponent({
           // 默认渲染逻辑
           return h(
             ITooltip,
-            { text: t(menu.name), shortcutkeys: menu.shortcutkeys },
+            {
+              text: t(menu.name),
+              shortcutkeys: menu.shortcutkeys,
+            },
             {
               default: () =>
                 h(

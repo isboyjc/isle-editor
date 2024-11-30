@@ -1,15 +1,7 @@
-import {
-  defineComponent,
-  ref,
-  h,
-  onMounted,
-  onBeforeUnmount,
-  computed,
-} from "vue";
+import { defineComponent, ref, h, computed } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
 import { getIcon } from "@/utils/icon";
-import { createTippy } from "@/utils/tippy";
-import { ITooltip, IButton } from "@/components/ui";
+import { ITooltip, IButton, ITrigger } from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonBackground",
@@ -24,9 +16,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const backgroundTriggerRef = ref(null);
-    const backgroundContentRef = ref(null);
-    const tippyInstance = ref(null);
     const isShown = ref(false);
 
     const activeColor = computed(() => {
@@ -35,98 +24,100 @@ export default defineComponent({
       );
     });
 
-    onMounted(() => {
-      tippyInstance.value = createTippy(backgroundTriggerRef.value, {
-        content: backgroundContentRef.value,
-        trigger: "click",
-        hideOnClick: true,
-        placement: "bottom",
-        onShown: () => {
-          isShown.value = true;
-        },
-        onHide: () => {
-          isShown.value = false;
-        },
-      });
-    });
-
-    onBeforeUnmount(() => {
-      tippyInstance.value && tippyInstance.value.destroy();
-    });
-
     return () =>
-      h("div", {}, [
-        h(
-          ITooltip,
-          { text: t(props.menu.name) },
-          {
-            default: () =>
-              h("div", { ref: backgroundTriggerRef }, [
-                h(
-                  IButton,
-                  {
-                    disabled:
-                      props.menu?.isDisabled &&
-                      props.menu?.isDisabled({ editor: props.editor }),
-                    semiActive: isShown.value,
-                  },
-                  {
-                    icon: () =>
-                      h(
-                        "div",
-                        {
-                          class: `${prefixClass}-bubble-menu__icon-box`,
-                          style: { backgroundColor: activeColor.value?.color },
-                        },
-                        [
-                          h(getIcon(props.menu.name || "background"), {
-                            size: 15,
-                            strokeWidth: 2.5,
-                          }),
-                        ],
-                      ),
-                  },
-                ),
-              ]),
+      h(
+        ITrigger,
+        {
+          tippyOptions: {
+            onShown: () => {
+              isShown.value = true;
+            },
+            onHide: () => {
+              isShown.value = false;
+            },
           },
-        ),
-        h(
-          "div",
-          {
-            ref: backgroundContentRef,
-            class: `${prefixClass}-bubble-menu-background`,
-          },
-          [
+        },
+        {
+          default: () =>
+            h(
+              ITooltip,
+              { text: t(props.menu.name) },
+              {
+                default: () =>
+                  h(
+                    IButton,
+                    {
+                      disabled:
+                        props.menu?.isDisabled &&
+                        props.menu?.isDisabled({ editor: props.editor }),
+                      semiActive: isShown.value,
+                    },
+                    {
+                      icon: () =>
+                        h(
+                          "div",
+                          {
+                            class: `${prefixClass}-bubble-menu__icon-box`,
+                            style: {
+                              backgroundColor: activeColor.value?.color,
+                            },
+                          },
+                          [
+                            h(getIcon(props.menu.name || "background"), {
+                              size: 15,
+                              strokeWidth: 2.5,
+                            }),
+                          ],
+                        ),
+                    },
+                  ),
+              },
+            ),
+          content: () =>
             h(
               "div",
-              { class: `${prefixClass}-bubble-menu-background__title` },
+              {
+                class: `${prefixClass}-bubble-menu-background`,
+              },
               [
                 h(
-                  "span",
-                  {
-                    class: `${prefixClass}-bubble-menu-background__title-text`,
-                  },
-                  t(props.menu.name),
+                  "div",
+                  { class: `${prefixClass}-bubble-menu-background__title` },
+                  [
+                    h(
+                      "span",
+                      {
+                        class: `${prefixClass}-bubble-menu-background__title-text`,
+                      },
+                      t(props.menu.name),
+                    ),
+                    h("span", {
+                      class: `${prefixClass}-bubble-menu-background__title-default`,
+                      onClick: () =>
+                        props.menu.command({ color: "", editor: props.editor }),
+                    }),
+                  ],
                 ),
-                h("span", {
-                  class: `${prefixClass}-bubble-menu-background__title-default`,
-                  onClick: () =>
-                    props.menu.command({ color: "", editor: props.editor }),
-                }),
+                h(
+                  "div",
+                  { class: `${prefixClass}-bubble-menu-background__box` },
+                  [
+                    ...props.menu.colors.map(({ color }) =>
+                      h("div", {
+                        class: `${prefixClass}-bubble-menu-background__box-item`,
+                        style: { backgroundColor: color },
+                        onClick: () =>
+                          props.menu.command({
+                            color: color,
+                            editor: props.editor,
+                          }),
+                      }),
+                    ),
+                  ],
+                ),
               ],
             ),
-            h("div", { class: `${prefixClass}-bubble-menu-background__box` }, [
-              ...props.menu.colors.map(({ color }) =>
-                h("div", {
-                  class: `${prefixClass}-bubble-menu-background__box-item`,
-                  style: { backgroundColor: color },
-                  onClick: () =>
-                    props.menu.command({ color: color, editor: props.editor }),
-                }),
-              ),
-            ]),
-          ],
-        ),
-      ]);
+        },
+      );
   },
 });
