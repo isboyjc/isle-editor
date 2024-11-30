@@ -32,12 +32,10 @@ export default defineComponent({
       () => (props.disabled ? disable() : enable()),
     );
 
-    // 是否启用实例
     function enable() {
       if (tippyInstance) tippyInstance.enable();
     }
 
-    // 是否禁用实例
     function disable() {
       if (tippyInstance) tippyInstance.disable();
     }
@@ -48,6 +46,10 @@ export default defineComponent({
 
     function show() {
       if (tippyInstance) tippyInstance.show();
+    }
+
+    function setProps(props = {}) {
+      if (tippyInstance) tippyInstance.setProps(props);
     }
 
     onMounted(() => {
@@ -72,7 +74,7 @@ export default defineComponent({
       }
     });
 
-    expose({ hide, show, enable, disable });
+    expose({ hide, show, enable, disable, setProps });
 
     return () =>
       h("div", { ref: triggerRef, class: `${prefixClass}-trigger__btn` }, [

@@ -35,18 +35,24 @@ export default defineComponent({
       () => (props.disabled ? disable() : enable()),
     );
 
-    // 是否启用实例
     function enable() {
-      if (tippyInstance) {
-        tippyInstance.enable();
-      }
+      if (tippyInstance) tippyInstance.enable();
     }
 
-    // 是否禁用实例
     function disable() {
-      if (tippyInstance) {
-        tippyInstance.disable();
-      }
+      if (tippyInstance) tippyInstance.disable();
+    }
+
+    function hide() {
+      if (tippyInstance) tippyInstance.hide();
+    }
+
+    function show() {
+      if (tippyInstance) tippyInstance.show();
+    }
+
+    function setProps(props = {}) {
+      if (tippyInstance) tippyInstance.setProps(props);
     }
 
     onMounted(() => {
@@ -92,6 +98,8 @@ export default defineComponent({
         tippyInstance.destroy();
       }
     });
+
+    expose({ hide, show, enable, disable, setProps });
 
     return () => h("div", { ref: triggerRef }, [slots.default?.()]);
   },
