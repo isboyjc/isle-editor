@@ -5,7 +5,6 @@ import {
   onBeforeUnmount,
   ref,
   watch,
-  render,
 } from "vue";
 import { prefixClass } from "@isle-editor/core";
 import { createTippy } from "@/utils/tippy";
@@ -25,7 +24,7 @@ export default defineComponent({
       default: false,
     },
   },
-  setup(props, { slots }) {
+  setup(props, { slots, expose }) {
     let tippyInstance = null;
     const tooltipContent = ref(null);
     const triggerRef = ref(null);
@@ -56,27 +55,6 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      tooltipContent.value = document.createElement("div");
-      render(
-        h("div", { class: `${prefixClass}-tooltip` }, [
-          props.text &&
-            h("div", { class: `${prefixClass}-tooltip-text` }, props.text),
-          props.shortcutkeys &&
-            h("div", { class: `${prefixClass}-tooltip-shortcutkeys` }, [
-              ...convertShortcutKeys(props.shortcutkeys)
-                .split("-")
-                .map((key) =>
-                  h(
-                    "span",
-                    { class: `${prefixClass}-tooltip-shortcutkeys-key` },
-                    key,
-                  ),
-                ),
-            ]),
-        ]),
-        tooltipContent.value,
-      );
-
       tippyInstance = createTippy(triggerRef.value, {
         content: tooltipContent.value,
         allowHTML: false,
@@ -101,6 +79,25 @@ export default defineComponent({
 
     expose({ hide, show, enable, disable, setProps });
 
-    return () => h("div", { ref: triggerRef }, [slots.default?.()]);
+    return () =>
+      h("div", { ref: triggerRef }, [
+        slots.default?.(),
+        h("div", { ref: tooltipContent, class: `${prefixClass}-tooltip` }, [
+          props.text &&
+            h("div", { class: `${prefixClass}-tooltip-text` }, props.text),
+          props.shortcutkeys &&
+            h("div", { class: `${prefixClass}-tooltip-shortcutkeys` }, [
+              ...convertShortcutKeys(props.shortcutkeys)
+                .split("-")
+                .map((key) =>
+                  h(
+                    "span",
+                    { class: `${prefixClass}-tooltip-shortcutkeys-key` },
+                    key,
+                  ),
+                ),
+            ]),
+        ]),
+      ]);
   },
 });

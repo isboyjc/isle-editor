@@ -5,10 +5,10 @@ import {
   onBeforeUnmount,
   ref,
   watch,
-  render,
 } from "vue";
 import { prefixClass } from "@isle-editor/core";
 import { createTippy } from "@/utils/tippy";
+import { sticky } from "tippy.js";
 
 export default defineComponent({
   name: "ITrigger",
@@ -61,6 +61,8 @@ export default defineComponent({
         placement: "bottom",
         getReferenceClientRect: null,
         interactive: true,
+        sticky: true,
+        plugins: [sticky],
         appendTo: () => document.body,
         ...props.tippyOptions,
       });
