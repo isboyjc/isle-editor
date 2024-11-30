@@ -9,6 +9,7 @@ export default Link.extend({
       name: "link",
       desc: "",
       bubble: true,
+      toolbar: true,
       command: ({
         editor,
         href = "editor.islenote.com",

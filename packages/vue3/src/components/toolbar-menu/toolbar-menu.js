@@ -2,9 +2,15 @@ import { defineComponent, computed, h } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
 import { IButton, IDivider, ITooltip } from "@/components/ui";
 import { getIcon, sortArrayByPropertyArray } from "@/utils";
+import ButtonLink from "@/components/special-button/button-link";
+import ButtonColor from "@/components/special-button/button-color";
+import ButtonBackground from "@/components/special-button/button-background";
+// import ButtonStyle from "@/components/special-button/button-style";
 
 const TOOLBAR_MENU_SORT = [
   "history",
+  "|",
+  "textClear",
   "|",
   "bold",
   "italic",
@@ -14,9 +20,10 @@ const TOOLBAR_MENU_SORT = [
   "style",
   "color",
   "background",
-  "link",
   "subscript",
   "superscript",
+  "|",
+  "link",
   "|",
   "bulletList",
   "orderedList",
@@ -58,6 +65,12 @@ export default defineComponent({
           ...v?.options,
         }));
 
+      toolbarExtensions.push({
+        name: "textClear",
+        command: ({ editor }) => editor.chain().focus().unsetAllMarks().run(),
+        isActive: () => null,
+      });
+
       // Sort the extensions according to the BUBBLE_MENU_SORT array
       const sortedExtensions = sortArrayByPropertyArray(
         toolbarExtensions,
@@ -71,8 +84,8 @@ export default defineComponent({
     console.log(toolbarMenus.value);
     return () =>
       h("div", { class: `${prefixClass}-toolbar-menu` }, [
-        toolbarMenus.value.map((v) => {
-          if (v.name === "|") {
+        toolbarMenus.value.map((menu) => {
+          if (menu.name === "|") {
             return h(IDivider, {
               type: "vertical",
               style: { height: "1.5rem" },
@@ -80,11 +93,11 @@ export default defineComponent({
           }
 
           if (
-            v.name === "history" ||
-            v.name === "indent" ||
-            v.name === "textAlign"
+            menu.name === "history" ||
+            menu.name === "indent" ||
+            menu.name === "textAlign"
           ) {
-            return v.list.map((item) =>
+            return menu.list.map((item) =>
               h(
                 ITooltip,
                 { text: t(item.name), shortcutkeys: item.shortcutkeys },
@@ -111,23 +124,47 @@ export default defineComponent({
             );
           }
 
+          if (menu.name === "link") {
+            return h(ButtonLink, {
+              editor: props.editor,
+              menu,
+              toolbar: true,
+            });
+          }
+
+          if (menu.name === "color") {
+            return h(ButtonColor, {
+              editor: props.editor,
+              menu,
+            });
+          }
+
+          if (menu.name === "background") {
+            return h(ButtonBackground, {
+              editor: props.editor,
+              menu,
+            });
+          }
+
           return h(
             ITooltip,
-            { text: t(v.name), shortcutkeys: v.shortcutkeys },
+            { text: t(menu.name), shortcutkeys: menu.shortcutkeys },
             {
               default: () =>
                 h(
                   IButton,
                   {
                     active:
-                      v?.isActive && v?.isActive({ editor: props.editor }),
+                      menu?.isActive &&
+                      menu?.isActive({ editor: props.editor }),
                     disabled:
-                      v?.isDisabled && v?.isDisabled({ editor: props.editor }),
-                    onClick: () => v.command({ editor: props.editor }),
+                      menu?.isDisabled &&
+                      menu?.isDisabled({ editor: props.editor }),
+                    onClick: () => menu.command({ editor: props.editor }),
                   },
                   {
                     icon: () =>
-                      h(getIcon(v.name), { size: 15, strokeWidth: 2.5 }),
+                      h(getIcon(menu.name), { size: 15, strokeWidth: 2.5 }),
                   },
                 ),
             },

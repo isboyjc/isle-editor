@@ -150,12 +150,6 @@ export default defineComponent({
       registered.value = true;
     };
 
-    const textClear = {
-      name: "textClear",
-      command: ({ editor }) => editor.chain().focus().unsetAllMarks().run(),
-      isActive: () => null,
-    };
-
     const bubbleMenus = computed(() => {
       if (!props.editor?.extensionManager?.extensions) {
         return [];
@@ -185,7 +179,11 @@ export default defineComponent({
         });
       }
 
-      markExtensions.push(textClear);
+      markExtensions.push({
+        name: "textClear",
+        command: ({ editor }) => editor.chain().focus().unsetAllMarks().run(),
+        isActive: () => null,
+      });
 
       // Sort the extensions according to the BUBBLE_MENU_SORT array
       const sortedExtensions = sortArrayByPropertyArray(

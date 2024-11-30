@@ -18,6 +18,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    toolbar: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props) {
     const triggerRef = ref(null);
@@ -26,12 +30,11 @@ export default defineComponent({
     const openInNewTab = ref(true);
 
     watchEffect(() => {
-      if (props.isEdit) {
-        const linkData = props.editor.getAttributes("link");
-        if (linkInputRef.value && linkData.href) {
-          linkInputRef.value.value = linkData.href;
-        }
-      }
+      const linkData = props.editor.getAttributes("link");
+      nextTick(() => {
+        linkInputRef.value.value = "";
+        if (linkData.href) linkInputRef.value.value = linkData.href;
+      });
     });
 
     // getReferenceClientRect: () => {
@@ -69,6 +72,12 @@ export default defineComponent({
             },
             onHide: () => {
               isShown.value = false;
+
+              linkInputRef.value.value = "";
+
+              nextTick(() => {
+                props.editor.commands.focus();
+              });
             },
           },
         },
@@ -88,13 +97,24 @@ export default defineComponent({
                         props.menu?.isDisabled &&
                         props.menu?.isDisabled({ editor: props.editor }),
                       semiActive: isShown.value,
+                      active:
+                        props.toolbar &&
+                        props.menu?.isActive &&
+                        props.menu?.isActive({
+                          editor: props.editor,
+                        }),
                     },
                     {
                       icon: () =>
-                        h(getIcon(props.isEdit ? "edit" : props.menu.name), {
-                          size: 15,
-                          strokeWidth: 2.5,
-                        }),
+                        props.isEdit
+                          ? h(getIcon("edit"), {
+                              size: 15,
+                              strokeWidth: 2.5,
+                            })
+                          : h(getIcon(props.menu.name), {
+                              size: 14,
+                              strokeWidth: 2.5,
+                            }),
                     },
                   ),
               },

@@ -76,7 +76,7 @@ export default defineComponent({
                           },
                           [
                             h(getIcon(props.menu.color.name || "color"), {
-                              size: 15,
+                              size: 13,
                               strokeWidth: 2.5,
                             }),
                           ],

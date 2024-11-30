@@ -49,35 +49,35 @@ export default defineComponent({
           if (menu.name === "link") {
             return h(ButtonLink, {
               editor: props.editor,
-              menu: props.menus.find((menu) => menu.name === "link"),
+              menu,
             });
           }
 
           if (menu.name === "color") {
             return h(ButtonColor, {
               editor: props.editor,
-              menu: props.menus.find((menu) => menu.name === "color"),
+              menu,
             });
           }
 
           if (menu.name === "background") {
             return h(ButtonBackground, {
               editor: props.editor,
-              menu: props.menus.find((menu) => menu.name === "background"),
+              menu,
             });
           }
 
           if (menu.name === "style") {
             return h(ButtonStyle, {
               editor: props.editor,
-              menu: props.menus.find((menu) => menu.name === "style"),
+              menu,
             });
           }
 
           if (menu.name === "textAlign") {
             return h(ButtonTextAlign, {
               editor: props.editor,
-              menu: props.menus.find((menu) => menu.name === "textAlign"),
+              menu,
             });
           }
 

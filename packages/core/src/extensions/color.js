@@ -10,6 +10,7 @@ export default Extension.create({
       title: "color",
       desc: "",
       bubble: true,
+      toolbar: true,
       command: ({ editor, color = "" }) => {
         if (editor.isActive("textStyle", { color })) {
           editor.chain().focus().unsetColor().run();

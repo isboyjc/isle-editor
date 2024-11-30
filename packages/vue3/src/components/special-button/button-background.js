@@ -64,7 +64,7 @@ export default defineComponent({
                           },
                           [
                             h(getIcon(props.menu.name || "background"), {
-                              size: 15,
+                              size: 13,
                               strokeWidth: 2.5,
                             }),
                           ],
