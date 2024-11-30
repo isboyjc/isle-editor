@@ -25,12 +25,6 @@ export default defineComponent({
     const slotSuffix = slots["suffix"];
     const slotMore = slots["more"];
 
-    const textClear = {
-      name: "textClear",
-      command: ({ editor }) => editor.chain().focus().unsetAllMarks().run(),
-      isActive: () => null,
-    };
-
     return () =>
       h("div", { class: `${prefixClass}-bubble-menu` }, [
         slotPrefix && slotPrefix({ editor: props.editor }),
@@ -115,25 +109,6 @@ export default defineComponent({
           );
         }),
         slotSuffix && slotSuffix({ editor: props.editor }),
-        h(IDivider, { type: "vertical", style: { height: "1.5rem" } }),
-        h(
-          ITooltip,
-          { text: t("textClear") },
-          {
-            default: () =>
-              h(
-                IButton,
-                {
-                  onClick: () => textClear.command({ editor: props.editor }),
-                },
-                {
-                  icon: () =>
-                    h(getIcon(textClear.name), { size: 16, strokeWidth: 2.5 }),
-                },
-              ),
-          },
-        ),
-        slotMore && slotMore({ editor: props.editor }),
       ]);
   },
 });

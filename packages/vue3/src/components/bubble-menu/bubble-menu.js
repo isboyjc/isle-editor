@@ -30,6 +30,8 @@ const BUBBLE_MENU_SORT = [
   "link",
   "subscript",
   "superscript",
+  "|",
+  "textClear",
 ];
 
 export default defineComponent({
@@ -148,6 +150,12 @@ export default defineComponent({
       registered.value = true;
     };
 
+    const textClear = {
+      name: "textClear",
+      command: ({ editor }) => editor.chain().focus().unsetAllMarks().run(),
+      isActive: () => null,
+    };
+
     const bubbleMenus = computed(() => {
       if (!props.editor?.extensionManager?.extensions) {
         return [];
@@ -177,6 +185,8 @@ export default defineComponent({
         });
       }
 
+      markExtensions.push(textClear);
+
       // Sort the extensions according to the BUBBLE_MENU_SORT array
       const sortedExtensions = sortArrayByPropertyArray(
         markExtensions,
@@ -184,9 +194,6 @@ export default defineComponent({
         "name",
       );
 
-      console.log(props.editor.extensionManager.extensions);
-      console.log(markExtensions);
-      console.log(sortedExtensions);
       return sortedExtensions;
     });
 
