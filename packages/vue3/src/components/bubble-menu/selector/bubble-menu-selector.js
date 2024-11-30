@@ -1,11 +1,11 @@
 import { defineComponent, h } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
 import { getIcon } from "@/utils/icon";
-import ButtonLink from "../special-button/button-link";
-import ButtonColor from "../special-button/button-color";
-import ButtonBackground from "../special-button/button-background";
-import ButtonStyle from "../special-button/button-style";
-import ButtonTextAlign from "../special-button/button-text-align";
+import ButtonLink from "@/components/special-button/button-link";
+import ButtonColor from "@/components/special-button/button-color";
+import ButtonBackground from "@/components/special-button/button-background";
+import ButtonStyle from "@/components/special-button/button-style";
+import ButtonTextAlign from "@/components/special-button/button-text-align";
 import { ITooltip, IButton, IDivider } from "@/components/ui";
 
 export default defineComponent({

@@ -57,7 +57,7 @@ export default defineComponent({
                         h(
                           "div",
                           {
-                            class: `${prefixClass}-bubble-menu__icon-box`,
+                            class: `${prefixClass}-special-button__icon-box`,
                             style: { color: activeColor.value?.color },
                           },
                           [
@@ -72,25 +72,31 @@ export default defineComponent({
               },
             ),
           content: () =>
-            h("div", { class: `${prefixClass}-bubble-menu-color` }, [
-              h("div", { class: `${prefixClass}-bubble-menu-color__title` }, [
-                h(
-                  "span",
-                  { class: `${prefixClass}-bubble-menu-color__title-text` },
-                  t(props.menu.name),
-                ),
-                h("span", {
-                  class: `${prefixClass}-bubble-menu-color__title-default`,
-                  onClick: () =>
-                    props.menu.command({ color: "", editor: props.editor }),
-                }),
-              ]),
-              h("div", { class: `${prefixClass}-bubble-menu-color__box` }, [
+            h("div", { class: `${prefixClass}-special-button__color` }, [
+              h(
+                "div",
+                { class: `${prefixClass}-special-button__color-title` },
+                [
+                  h(
+                    "span",
+                    {
+                      class: `${prefixClass}-special-button__color-title-text`,
+                    },
+                    t(props.menu.name),
+                  ),
+                  h("span", {
+                    class: `${prefixClass}-special-button__color-title-default`,
+                    onClick: () =>
+                      props.menu.command({ color: "", editor: props.editor }),
+                  }),
+                ],
+              ),
+              h("div", { class: `${prefixClass}-special-button__color-box` }, [
                 ...props.menu.colors.map(({ color }) =>
                   h(
                     "div",
                     {
-                      class: `${prefixClass}-bubble-menu-color__box-item`,
+                      class: `${prefixClass}-special-button__color-box-item`,
                       style: { color },
                       onClick: () =>
                         props.menu.command({
@@ -100,7 +106,7 @@ export default defineComponent({
                     },
                     [
                       h(getIcon(props.menu.name), {
-                        class: `${prefixClass}-bubble-menu-color__box-item-icon`,
+                        class: `${prefixClass}-special-button__color-box-item-icon`,
                         size: 14,
                         strokeWidth: 2,
                       }),

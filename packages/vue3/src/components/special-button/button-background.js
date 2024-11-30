@@ -57,7 +57,7 @@ export default defineComponent({
                         h(
                           "div",
                           {
-                            class: `${prefixClass}-bubble-menu__icon-box`,
+                            class: `${prefixClass}-special-button__icon-box`,
                             style: {
                               backgroundColor: activeColor.value?.color,
                             },
@@ -77,22 +77,22 @@ export default defineComponent({
             h(
               "div",
               {
-                class: `${prefixClass}-bubble-menu-background`,
+                class: `${prefixClass}-special-button__background`,
               },
               [
                 h(
                   "div",
-                  { class: `${prefixClass}-bubble-menu-background__title` },
+                  { class: `${prefixClass}-special-button__background-title` },
                   [
                     h(
                       "span",
                       {
-                        class: `${prefixClass}-bubble-menu-background__title-text`,
+                        class: `${prefixClass}-special-button__background-title-text`,
                       },
                       t(props.menu.name),
                     ),
                     h("span", {
-                      class: `${prefixClass}-bubble-menu-background__title-default`,
+                      class: `${prefixClass}-special-button__background-title-default`,
                       onClick: () =>
                         props.menu.command({ color: "", editor: props.editor }),
                     }),
@@ -100,11 +100,11 @@ export default defineComponent({
                 ),
                 h(
                   "div",
-                  { class: `${prefixClass}-bubble-menu-background__box` },
+                  { class: `${prefixClass}-special-button__background-box` },
                   [
                     ...props.menu.colors.map(({ color }) =>
                       h("div", {
-                        class: `${prefixClass}-bubble-menu-background__box-item`,
+                        class: `${prefixClass}-special-button__background-box-item`,
                         style: { backgroundColor: color },
                         onClick: () =>
                           props.menu.command({

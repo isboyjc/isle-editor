@@ -59,7 +59,7 @@ export default defineComponent({
               },
             ),
           content: () =>
-            h("div", { class: `${prefixClass}-bubble-menu-text-align` }, [
+            h("div", { class: `${prefixClass}-special-button__text-align` }, [
               ...props.menu.list.map((item) =>
                 h(
                   ITooltip,

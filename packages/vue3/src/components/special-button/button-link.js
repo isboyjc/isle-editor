@@ -100,16 +100,16 @@ export default defineComponent({
               },
             ),
           content: () =>
-            h("div", { class: `${prefixClass}-bubble-menu-link` }, [
-              h("div", { class: `${prefixClass}-bubble-menu-link__input` }, [
+            h("div", { class: `${prefixClass}-special-button__link` }, [
+              h("div", { class: `${prefixClass}-special-button__link-input` }, [
                 h(getIcon(props.menu.name || "link"), {
-                  class: `${prefixClass}-bubble-menu-link__icon`,
+                  class: `${prefixClass}-special-button__link-input-icon`,
                   size: 15,
                   strokeWidth: 2.5,
                 }),
                 h("input", {
                   ref: linkInputRef,
-                  class: `${prefixClass}-bubble-menu-link__input-inner`,
+                  class: `${prefixClass}-special-button__link-input-inner`,
                   placeholder: t("linkPlaceholder"),
                   onKeydown: (event) => {
                     if (event.key === "Enter") {

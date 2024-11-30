@@ -1,7 +1,7 @@
 import { defineComponent, ref, watchEffect, h } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
 import { getIcon } from "@/utils/icon";
-import ButtonLink from "../special-button/button-link";
+import ButtonLink from "@/components/special-button/button-link";
 import { ITooltip, IDivider, IButton } from "@/components/ui";
 
 export default defineComponent({
