@@ -14,6 +14,7 @@ export default Extension.create({
         editor.chain().focus().setFontFamily(fontFamily).run(),
       isActive: ({ editor, fontFamily }) =>
         editor.isActive("textStyle", { fontFamily }),
+      isDisabled: ({ editor }) => !editor.can().setFontFamily(),
       fonts: [
         // 无衬线字体（Sans-serif）
         // {

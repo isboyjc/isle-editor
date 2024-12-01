@@ -30,6 +30,11 @@ export default defineComponent({
         ITrigger,
         {
           ref: triggerRef,
+          disabled:
+            props.menu.isDisabled &&
+            props.menu.isDisabled({
+              editor: props.editor,
+            }),
           tippyOptions: {
             placement: "top",
             onShown: () => {
@@ -50,6 +55,11 @@ export default defineComponent({
                   h(
                     IButton,
                     {
+                      disabled:
+                        props.menu.isDisabled &&
+                        props.menu.isDisabled({
+                          editor: props.editor,
+                        }),
                       semiActive: isShown.value,
                     },
                     {
