@@ -54,6 +54,15 @@ export default defineComponent({
                           size: 15,
                           strokeWidth: 2.5,
                         }),
+                      default: () =>
+                        h(getIcon("down"), {
+                          style: {
+                            marginLeft: "0.1rem",
+                            marginTop: "0.1rem",
+                          },
+                          size: 8,
+                          strokeWidth: 3,
+                        }),
                     },
                   ),
               },

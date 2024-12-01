@@ -12,8 +12,9 @@ import {
   Check,
   SquareArrowOutUpRight as OpenRight,
   SquarePen as Edit,
-  Baseline as Color,
+  Palette as Color,
   PaintBucket as Background,
+  Baseline as Style,
   AlignLeft,
   AlignCenter,
   AlignRight,
@@ -37,6 +38,7 @@ import {
   Indent,
   Outdent,
   WrapText as HardBreak,
+  ChevronDown as Down,
 } from "lucide-vue-next";
 const ICONS = {
   Bold,
@@ -54,6 +56,7 @@ const ICONS = {
   Edit,
   Color,
   Background,
+  Style,
   AlignLeft,
   AlignCenter,
   AlignRight,
@@ -77,6 +80,7 @@ const ICONS = {
   Indent,
   Outdent,
   HardBreak,
+  Down,
 };
 
 export const getIcon = (name) => {

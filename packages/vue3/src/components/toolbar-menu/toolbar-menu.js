@@ -3,9 +3,10 @@ import { prefixClass, t } from "@isle-editor/core";
 import { IButton, IDivider, ITooltip } from "@/components/ui";
 import { getIcon, sortArrayByPropertyArray } from "@/utils";
 import ButtonLink from "@/components/special-button/button-link";
+import ButtonTextAlign from "@/components/special-button/button-text-align";
 import ButtonColor from "@/components/special-button/button-color";
 import ButtonBackground from "@/components/special-button/button-background";
-// import ButtonStyle from "@/components/special-button/button-style";
+import ButtonStyle from "@/components/special-button/button-style";
 
 const TOOLBAR_MENU_SORT = [
   "history",
@@ -17,19 +18,18 @@ const TOOLBAR_MENU_SORT = [
   "underline",
   "strike",
   "code",
-  "style",
-  "color",
-  "background",
   "subscript",
   "superscript",
   "|",
+  "style",
+  "color",
+  "background",
+  "textAlign",
   "link",
   "|",
   "bulletList",
   "orderedList",
   "taskList",
-  "|",
-  "textAlign",
   "|",
   "blockquote",
   "hardBreak",
@@ -65,6 +65,23 @@ export default defineComponent({
           ...v?.options,
         }));
 
+      // If both color and background extensions exist
+      // they are automatically merged into one extension with the name style.
+      const colorExtension = toolbarExtensions.find((v) => v.name === "color");
+      const backgroundExtension = toolbarExtensions.find(
+        (v) => v.name === "background",
+      );
+      if (colorExtension && backgroundExtension) {
+        toolbarExtensions = toolbarExtensions.filter(
+          (v) => v.name !== "color" && v.name !== "background",
+        );
+        toolbarExtensions.push({
+          name: "style",
+          color: colorExtension,
+          background: backgroundExtension,
+        });
+      }
+
       toolbarExtensions.push({
         name: "textClear",
         command: ({ editor }) => editor.chain().focus().unsetAllMarks().run(),
@@ -92,11 +109,7 @@ export default defineComponent({
             });
           }
 
-          if (
-            menu.name === "history" ||
-            menu.name === "indent" ||
-            menu.name === "textAlign"
-          ) {
+          if (menu.name === "history" || menu.name === "indent") {
             return menu.list.map((item) =>
               h(
                 ITooltip,
@@ -132,6 +145,13 @@ export default defineComponent({
             });
           }
 
+          if (menu.name === "textAlign") {
+            return h(ButtonTextAlign, {
+              editor: props.editor,
+              menu,
+            });
+          }
+
           if (menu.name === "color") {
             return h(ButtonColor, {
               editor: props.editor,
@@ -141,6 +161,13 @@ export default defineComponent({
 
           if (menu.name === "background") {
             return h(ButtonBackground, {
+              editor: props.editor,
+              menu,
+            });
+          }
+
+          if (menu.name === "style") {
+            return h(ButtonStyle, {
               editor: props.editor,
               menu,
             });

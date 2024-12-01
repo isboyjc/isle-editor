@@ -75,12 +75,21 @@ export default defineComponent({
                             },
                           },
                           [
-                            h(getIcon(props.menu.color.name || "color"), {
+                            h(getIcon(props.menu.name || "color"), {
                               size: 13,
                               strokeWidth: 2.5,
                             }),
                           ],
                         ),
+                      default: () =>
+                        h(getIcon("down"), {
+                          style: {
+                            marginLeft: "0.1rem",
+                            marginTop: "0.1rem",
+                          },
+                          size: 8,
+                          strokeWidth: 3,
+                        }),
                     },
                   ),
               },
