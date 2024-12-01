@@ -28,6 +28,9 @@ export default defineComponent({
       h(
         ITrigger,
         {
+          disabled:
+            props.menu?.isDisabled &&
+            props.menu?.isDisabled({ editor: props.editor }),
           tippyOptions: {
             onShown: () => {
               isShown.value = true;
