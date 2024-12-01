@@ -18,6 +18,8 @@ import {
 } from "vue";
 
 const BUBBLE_MENU_SORT = [
+  "fontFamily",
+  "|",
   "bold",
   "italic",
   "underline",

@@ -6,6 +6,7 @@ import {
   DragHandle,
   Color,
   TextAlign,
+  FontFamily,
 } from "@/extensions";
 import {
   Heading,
@@ -127,6 +128,10 @@ export default BasicKit.extend({
 
     if (this.options.textStyle !== false) {
       extensions.push(TextStyle.configure(this.options?.textStyle));
+    }
+
+    if (this.options.fontFamily !== false) {
+      extensions.push(FontFamily.configure(this.options?.fontFamily));
     }
 
     if (this.options.background !== false) {

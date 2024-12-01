@@ -31,6 +31,11 @@
     background-color: transparent !important;
     cursor: not-allowed;
   }
+  &.long {
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+  }
 
   &:hover {
     background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);

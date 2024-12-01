@@ -12,11 +12,20 @@
     box-sizing: border-box;
   }
 
+  &__text-box {
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.875rem;
+  }
+
   &__link,
   &__color,
   &__background,
   &__style,
-  &__text-align {
+  &__text-align,
+  &__font-family {
     width: auto;
     height: auto;
     padding: 0.2rem;
@@ -159,5 +168,12 @@
         }
       }
     }
+  }
+
+  &__font-family {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 }

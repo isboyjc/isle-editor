@@ -99,7 +99,7 @@ export default defineComponent({
                   h("span", {
                     class: `${prefixClass}-special-button__color-title-default`,
                     onClick: () =>
-                      props.menu.command({ color: "", editor: props.editor }),
+                      props.editor.chain().focus().unsetColor().run(),
                   }),
                 ],
               ),

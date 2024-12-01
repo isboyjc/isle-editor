@@ -1,4 +1,4 @@
-@use 'config' as *;
+@use "config" as *;
 
 .#{$prefix}-editor-root {
   width: 100%;
@@ -21,9 +21,10 @@
   white-space: break-spaces;
   -webkit-font-variant-ligatures: none;
   font-variant-ligatures: none;
-  font-feature-settings: 'liga' 0;
+  font-feature-settings: "liga" 0;
   cursor: text;
   padding: 1rem 2rem;
+  font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
   box-sizing: border-box;
 
   &:focus-visible {
@@ -36,7 +37,7 @@
     margin: var(--#{$prefix}-margin-mini) 0;
   }
 
-  .ProseMirror-selectednode{
+  .ProseMirror-selectednode {
     background-color: rgba(var(--#{$prefix}-theme-primary-val), 0.3);
   }
 
@@ -48,10 +49,10 @@
   //   }
   // }
 
-  & [contenteditable='false'] {
+  & [contenteditable="false"] {
     white-space: normal;
   }
-  & [contenteditable='false'] [contenteditable='true'] {
+  & [contenteditable="false"] [contenteditable="true"] {
     white-space: pre-wrap;
   }
   .ProseMirror-hideselection {

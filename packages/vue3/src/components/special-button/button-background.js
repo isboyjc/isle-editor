@@ -106,7 +106,7 @@ export default defineComponent({
                     h("span", {
                       class: `${prefixClass}-special-button__background-title-default`,
                       onClick: () =>
-                        props.menu.command({ color: "", editor: props.editor }),
+                        props.editor.chain().focus().unsetBackground().run(),
                     }),
                   ],
                 ),

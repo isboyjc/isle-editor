@@ -7,11 +7,14 @@ import ButtonTextAlign from "@/components/special-button/button-text-align";
 import ButtonColor from "@/components/special-button/button-color";
 import ButtonBackground from "@/components/special-button/button-background";
 import ButtonStyle from "@/components/special-button/button-style";
+import ButtonFontFamily from "@/components/special-button/button-font-family";
 
 const TOOLBAR_MENU_SORT = [
   "history",
   "|",
   "textClear",
+  "|",
+  "fontFamily",
   "|",
   "bold",
   "italic",
@@ -168,6 +171,13 @@ export default defineComponent({
 
           if (menu.name === "style") {
             return h(ButtonStyle, {
+              editor: props.editor,
+              menu,
+            });
+          }
+
+          if (menu.name === "fontFamily") {
+            return h(ButtonFontFamily, {
               editor: props.editor,
               menu,
             });

@@ -6,6 +6,7 @@ import ButtonColor from "@/components/special-button/button-color";
 import ButtonBackground from "@/components/special-button/button-background";
 import ButtonStyle from "@/components/special-button/button-style";
 import ButtonTextAlign from "@/components/special-button/button-text-align";
+import ButtonFontFamily from "@/components/special-button/button-font-family";
 import { ITooltip, IButton, IDivider } from "@/components/ui";
 
 export default defineComponent({
@@ -76,6 +77,13 @@ export default defineComponent({
 
           if (menu.name === "textAlign") {
             return h(ButtonTextAlign, {
+              editor: props.editor,
+              menu,
+            });
+          }
+
+          if (menu.name === "fontFamily") {
+            return h(ButtonFontFamily, {
               editor: props.editor,
               menu,
             });

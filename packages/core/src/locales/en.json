@@ -52,7 +52,7 @@
 
   "fonts": {
     "title": "Font",
-    "SystemDefault": "System Default",
+    "Default": "Default Font",
     "MicrosoftYaHei": "Microsoft YaHei",
     "SimSun": "SimSun",
     "SimHei": "SimHei",

@@ -110,10 +110,7 @@ export default defineComponent({
                   h("span", {
                     class: `${prefixClass}-special-button__style-title-default`,
                     onClick: () =>
-                      props.menu.color.command({
-                        color: "",
-                        editor: props.editor,
-                      }),
+                      props.editor.chain().focus().unsetColor().run(),
                   }),
                 ],
               ),
@@ -154,10 +151,7 @@ export default defineComponent({
                   h("span", {
                     class: `${prefixClass}-special-button__style-title-default`,
                     onClick: () =>
-                      props.menu.background.command({
-                        color: "",
-                        editor: props.editor,
-                      }),
+                      props.editor.chain().focus().unsetBackground().run(),
                   }),
                 ],
               ),

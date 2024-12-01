@@ -24,6 +24,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    long: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, { slots }) {
     return () =>
@@ -38,6 +42,7 @@ export default defineComponent({
               "semi-active": props.semiActive,
               danger: props.danger,
               success: props.success,
+              long: props.long,
             },
           ],
           // disabled: props.disabled,
