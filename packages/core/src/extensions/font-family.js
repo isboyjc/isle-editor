@@ -17,10 +17,6 @@ export default Extension.create({
       isDisabled: ({ editor }) => !editor.can().setFontFamily(),
       fonts: [
         // 无衬线字体（Sans-serif）
-        // {
-        //   label: "Default",
-        //   value: '',
-        // },
         {
           label: "MicrosoftYaHei",
           value: '"Microsoft YaHei", "PingFang SC", sans-serif',

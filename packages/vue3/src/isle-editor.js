@@ -1,20 +1,4 @@
-import {
-  Document,
-  Text,
-  Paragraph,
-  Gapcursor,
-  Dropcursor,
-  HardBreak,
-  CharacterCount,
-  History,
-  Indent,
-  Typography,
-  CommandAKeymap,
-  ListItem,
-  // Selection,
-  TextStyle,
-  prefixClass,
-} from "@isle-editor/core";
+import { prefixClass } from "@isle-editor/core";
 import {
   defineComponent,
   ref,
