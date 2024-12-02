@@ -86,29 +86,32 @@ export default defineComponent({
             ),
           content: () =>
             h("div", { class: `${prefixClass}-special-button__font-family` }, [
-              h(
-                IButton,
-                {
-                  long: true,
-                  active: !activeFont.value?.value,
-                  onClick: () => {
-                    props.editor.chain().focus().unsetFontFamily().run();
-                    triggerRef.value?.hide();
-                  },
-                },
-                {
-                  default: () =>
-                    h(
-                      "span",
-                      {
-                        class: `${prefixClass}-special-button__font-family-btn-text`,
+              ...props.menu.fonts.map((item) => {
+                if (item.label === "Default") {
+                  return h(
+                    IButton,
+                    {
+                      long: true,
+                      active: !activeFont.value?.value,
+                      onClick: () => {
+                        props.editor.chain().focus().unsetFontFamily().run();
+                        triggerRef.value?.hide();
                       },
-                      t(`fonts.Default`),
-                    ),
-                },
-              ),
-              ...props.menu.fonts.map((item) =>
-                h(
+                    },
+                    {
+                      default: () =>
+                        h(
+                          "span",
+                          {
+                            class: `${prefixClass}-special-button__font-family-btn-text`,
+                          },
+                          t(`fonts.${item.label}`),
+                        ),
+                    },
+                  );
+                }
+
+                return h(
                   IButton,
                   {
                     long: true,
@@ -134,8 +137,8 @@ export default defineComponent({
                         t(`fonts.${item.label}`),
                       ),
                   },
-                ),
-              ),
+                );
+              }),
             ]),
         },
       );

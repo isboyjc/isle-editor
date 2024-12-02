@@ -18,6 +18,10 @@ export default Extension.create({
       fonts: [
         // 无衬线字体（Sans-serif）
         {
+          label: "Default",
+          value: "",
+        },
+        {
           label: "MicrosoftYaHei",
           value: '"Microsoft YaHei", "PingFang SC", sans-serif',
         },
