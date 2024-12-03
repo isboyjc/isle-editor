@@ -7,6 +7,15 @@
       "inputs": ["rollup.config.js", "src/**"],
       "outputs": ["dist/**"]
     },
+    "docs#build": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "**/*.md",
+        "**/*.vue",
+        ".vitepress/**"
+      ],
+      "outputs": [".vitepress/dist/**"]
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },
