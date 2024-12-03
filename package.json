@@ -75,8 +75,8 @@
     "turbo": "^2.2.3",
     "vue-eslint-parser": "^9.4.3"
   },
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@9.6.0",
   "engines": {
-    "node": ">=18"
+    "node": "^20.0.0"
   }
 }
