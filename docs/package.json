@@ -1,6 +1,32 @@
 {
-  "name": "docs",
-  "version": "1.0.0",
+  "name": "isle-editor",
+  "version": "0.0.1",
+  "keywords": [
+    "isle",
+    "editor",
+    "isle-editor",
+    "IsleEditor",
+    "isle editor",
+    "rich text editor",
+    "md editor",
+    "markdown editor",
+    "block editor",
+    "wysiwyg",
+    "wysiwyg editor",
+    "vue editor",
+    "vue rich text editor",
+    "vue wysiwyg",
+    "vue wysiwyg editor",
+    "react editor",
+    "react rich text editor",
+    "react wysiwyg",
+    "react wysiwyg editor",
+    "tiptap",
+    "tiptap editor",
+    "prosemirror",
+    "prosemirror editor"
+  ],
+  "author": "isboyjc",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,9 +39,16 @@
     "@isle-editor/vue3": "workspace:*",
     "@vitepress-demo-preview/component": "^2.3.2",
     "@vitepress-demo-preview/plugin": "^1.2.3",
-    "@vueuse/core": "^10.9.0"
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/motion": "^2.2.6"
   },
   "devDependencies": {
-    "vitepress": "1.0.0-rc.44"
+    "@unocss/transformer-directives": "^0.63.6",
+    "@unocss/transformer-variant-group": "^0.63.6",
+    "unocss": "^0.63.6",
+    "unplugin-icons": "^0.20.0",
+    "unplugin-vue-components": "^0.27.4",
+    "vitepress": "1.0.0-rc.44",
+    "vue": "^3.5.12"
   }
 }

@@ -17,19 +17,19 @@
     "clean": "rimraf node_modules **/*/node_modules",
     "eslint": "eslint . --ext .ts,.vue,.js,.tsx",
     "build:play": "turbo run build --filter=playground",
+    "build:docs": "turbo run build --filter=docs",
     "build:core": "turbo run build --filter=@isle-editor/core",
     "build:vue3": "turbo run build --filter=@isle-editor/vue3",
     "build:packages": "turbo run build --filter=@isle-editor/*",
     "build": "turbo run build",
+    "dev:docs": "turbo run dev --filter=docs",
     "dev:play": "turbo run dev --filter=playground",
     "dev": "turbo run dev",
     "turbo": "turbo",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,md,sass,css}\"",
     "lint:staged": "lint-staged",
     "lint": "eslint --cache --quiet --no-error-on-unmatched-pattern ./",
-    "lint:fix": "eslint --fix --cache --quiet --no-error-on-unmatched-pattern ./",
-    "dev:docs": "turbo run dev --filter=docs",
-    "build:docs": "turbo run build --filter=docs"
+    "lint:fix": "eslint --fix --cache --quiet --no-error-on-unmatched-pattern ./"
   },
   "config": {
     "commitizen": {
