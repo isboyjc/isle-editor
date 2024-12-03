@@ -3,7 +3,7 @@
   "textStyle": "Text Style",
   "background": "Background Color",
   "color": "Text Color",
-  "fontFamily": "Font",
+  "fontFamily": "Font Family",
   "fontSize": "Font Size",
   "lineHeight": "Line Height",
   "letterSpacing": "Letter Spacing",
@@ -51,7 +51,6 @@
   "empty": "Empty",
 
   "fonts": {
-    "title": "Font",
     "Default": "Default Font",
     "MicrosoftYaHei": "Microsoft YaHei",
     "SimSun": "SimSun",
@@ -61,6 +60,14 @@
     "CourierNew": "Courier New",
     "Georgia": "Georgia",
     "Arial": "Arial"
+  },
+
+  "sizes":{
+    "tiny": "Tiny",
+    "small": "Small",
+    "normal": "Normal (Default)",
+    "large": "Large",
+    "huge": "Huge"
   },
 
   "placeholder": "Write something ..."

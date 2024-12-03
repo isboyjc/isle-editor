@@ -25,7 +25,8 @@
   &__background,
   &__style,
   &__text-align,
-  &__font-family {
+  &__font-family,
+  &__font-size {
     width: auto;
     height: auto;
     padding: 0.2rem;
@@ -170,7 +171,8 @@
     }
   }
 
-  &__font-family {
+  &__font-family,
+  &__font-size {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

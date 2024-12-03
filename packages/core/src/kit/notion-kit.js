@@ -7,6 +7,7 @@ import {
   Color,
   TextAlign,
   FontFamily,
+  FontSize,
 } from "@/extensions";
 import {
   Heading,
@@ -132,6 +133,10 @@ export default BasicKit.extend({
 
     if (this.options.fontFamily !== false) {
       extensions.push(FontFamily.configure(this.options?.fontFamily));
+    }
+
+    if (this.options.fontSize !== false) {
+      extensions.push(FontSize.configure(this.options?.fontSize));
     }
 
     if (this.options.background !== false) {

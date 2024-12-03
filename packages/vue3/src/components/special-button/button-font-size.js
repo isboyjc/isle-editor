@@ -4,7 +4,7 @@ import { getIcon } from "@/utils/icon";
 import { ITooltip, IButton, ITrigger } from "@/components/ui";
 
 export default defineComponent({
-  name: "ButtonFontFamily",
+  name: "ButtonFontSize",
   props: {
     editor: {
       type: Object,
@@ -20,8 +20,8 @@ export default defineComponent({
     const isShown = ref(false);
 
     const activeFont = computed(() => {
-      return props.menu.fonts?.find((v) =>
-        props.menu?.isActive({ editor: props.editor, fontFamily: v.value }),
+      return props.menu.sizes?.find((v) =>
+        props.menu?.isActive({ editor: props.editor, fontSize: v.value }),
       );
     });
 
@@ -71,8 +71,8 @@ export default defineComponent({
                           },
                           t(
                             activeFont.value?.label
-                              ? `fonts.${activeFont.value?.label}`
-                              : "fontFamily",
+                              ? `sizes.${activeFont.value?.label}`
+                              : "fontSize",
                           ),
                         ),
                         h(getIcon("down"), {
@@ -89,8 +89,8 @@ export default defineComponent({
               },
             ),
           content: () =>
-            h("div", { class: `${prefixClass}-special-button__font-family` }, [
-              ...props.menu.fonts.map((item) => {
+            h("div", { class: `${prefixClass}-special-button__font-size` }, [
+              ...props.menu.sizes.map((item) => {
                 if (!item.value) {
                   return h(
                     IButton,
@@ -98,7 +98,7 @@ export default defineComponent({
                       long: true,
                       active: !activeFont.value?.value,
                       onClick: () => {
-                        props.editor.chain().focus().unsetFontFamily().run();
+                        props.editor.chain().focus().unsetFontSize().run();
                         triggerRef.value?.hide();
                       },
                     },
@@ -107,9 +107,9 @@ export default defineComponent({
                         h(
                           "span",
                           {
-                            class: `${prefixClass}-special-button__font-family-btn-text`,
+                            class: `${prefixClass}-special-button__font-size-btn-text`,
                           },
-                          t(`fonts.${item.label}`),
+                          t(`sizes.${item.label}`),
                         ),
                     },
                   );
@@ -123,7 +123,7 @@ export default defineComponent({
                     onClick: () => {
                       props.menu.command({
                         editor: props.editor,
-                        fontFamily: item.value,
+                        fontSize: item.value,
                       });
                       triggerRef.value?.hide();
                     },
@@ -133,12 +133,13 @@ export default defineComponent({
                       h(
                         "span",
                         {
-                          class: `${prefixClass}-special-button__font-family-btn-text`,
+                          class: `${prefixClass}-special-button__font-size-btn-text`,
                           style: {
-                            fontFamily: item.value,
+                            fontSize:
+                              props.menu?.type === "simple" ? item.value : "",
                           },
                         },
-                        t(`fonts.${item.label}`),
+                        t(`sizes.${item.label}`),
                       ),
                   },
                 );

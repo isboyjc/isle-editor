@@ -19,6 +19,7 @@ import {
 
 const BUBBLE_MENU_SORT = [
   "fontFamily",
+  "fontSize",
   "|",
   "bold",
   "italic",

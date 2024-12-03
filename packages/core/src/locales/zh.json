@@ -4,7 +4,7 @@
   "background": "背景颜色",
   "color": "文字颜色",
   "fontFamily": "字体",
-  "fontSize": "字体大小",
+  "fontSize": "字号",
   "lineHeight": "行高",
   "letterSpacing": "字间距",
   "bold": "加粗",
@@ -51,7 +51,6 @@
   "empty": "空",
 
   "fonts": {
-    "title": "字体",
     "Default": "默认字体",
     "MicrosoftYaHei": "微软雅黑",
     "SimSun": "宋体",
@@ -61,6 +60,14 @@
     "CourierNew": "新宋体",
     "Georgia": "Georgia",
     "Arial": "Arial"
+  },
+
+  "sizes":{
+    "tiny": "超小",
+    "small": "小",
+    "normal": "中（默认）",
+    "large": "大",
+    "huge": "超大"
   },
 
   "placeholder": "写点什么 ..."
