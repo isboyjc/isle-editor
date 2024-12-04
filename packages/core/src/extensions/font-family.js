@@ -8,8 +8,6 @@ export default Extension.create({
       types: ["textStyle"],
       name: "fontFamily",
       desc: "",
-      toolbar: true,
-      bubble: true,
       command: ({ editor, fontFamily }) =>
         editor.chain().focus().setFontFamily(fontFamily).run(),
       isActive: ({ editor, fontFamily }) =>

@@ -83,8 +83,6 @@ export default Extension.create({
       types: ["textStyle"],
       name: "fontSize",
       desc: "",
-      toolbar: true,
-      bubble: true,
       command: ({ editor, fontSize }) =>
         editor.chain().focus().setFontSize(fontSize).run(),
       isActive: ({ editor, fontSize }) =>

@@ -6,8 +6,6 @@ export default Bold.extend({
       ...this.parent?.(),
       name: "bold",
       desc: "**isle**",
-      bubble: true,
-      toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleBold().run(),
       isActive: ({ editor }) => editor.isActive("bold"),
       isDisabled: ({ editor }) => !editor.can().toggleBold(),

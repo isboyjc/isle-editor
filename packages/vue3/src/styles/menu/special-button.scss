@@ -23,7 +23,6 @@
   &__link,
   &__color,
   &__background,
-  &__style,
   &__text-align,
   &__font-family,
   &__font-size {
@@ -76,8 +75,7 @@
   }
 
   &__color,
-  &__background,
-  &__style {
+  &__background {
     padding: 0.75rem;
     display: flex;
     flex-direction: column;

@@ -4,7 +4,6 @@ const source = {
   slash: true,
   name: "blockquote",
   desc: "> isle",
-  toolbar: true,
   command: ({ editor, range }) => {
     range
       ? editor.chain().focus().deleteRange(range).toggleBlockquote().run()

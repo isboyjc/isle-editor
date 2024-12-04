@@ -1,12 +1,11 @@
 import { defineComponent, computed, h } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
 import { IButton, IDivider, ITooltip } from "@/components/ui";
-import { getIcon, sortArrayByPropertyArray } from "@/utils";
+import { getIcon, isString, isObject } from "@/utils";
 import ButtonLink from "@/components/special-button/button-link";
 import ButtonTextAlign from "@/components/special-button/button-text-align";
 import ButtonColor from "@/components/special-button/button-color";
 import ButtonBackground from "@/components/special-button/button-background";
-import ButtonStyle from "@/components/special-button/button-style";
 import ButtonFontFamily from "@/components/special-button/button-font-family";
 import ButtonFontSize from "@/components/special-button/button-font-size";
 
@@ -26,7 +25,6 @@ const TOOLBAR_MENU_SORT = [
   "subscript",
   "superscript",
   "|",
-  "style",
   "color",
   "background",
   "textAlign",
@@ -56,57 +54,58 @@ export default defineComponent({
       default: () => TOOLBAR_MENU_SORT,
     },
   },
-  setup(props) {
+  setup(props, { slots }) {
+    const slotPrefix = slots["prefix"];
+    const slotSuffix = slots["suffix"];
+
     const toolbarMenus = computed(() => {
-      if (!props.editor?.extensionManager?.extensions) {
-        return [];
-      }
+      return props.sort
+        .map((menu) => {
+          if (isString(menu)) {
+            if (menu === "|") return { name: "|" };
+            if (menu === "textClear") {
+              return {
+                name: "textClear",
+                command: ({ editor }) =>
+                  editor.chain().focus().unsetAllMarks().run(),
+                isActive: () => null,
+              };
+            }
+            const extension = props.editor.extensionManager.extensions.find(
+              (ext) => ext.name === menu,
+            );
+            if (extension) {
+              return {
+                name: menu,
+                ...extension?.options,
+              };
+            }
 
-      let toolbarExtensions = props.editor.extensionManager.extensions
-        .filter((v) => v?.options?.toolbar)
-        .map((v) => ({
-          name: v.name,
-          type: v.type,
-          ...v?.options,
-        }));
+            return null;
+          }
 
-      // If both color and background extensions exist
-      // they are automatically merged into one extension with the name style.
-      const colorExtension = toolbarExtensions.find((v) => v.name === "color");
-      const backgroundExtension = toolbarExtensions.find(
-        (v) => v.name === "background",
-      );
-      if (colorExtension && backgroundExtension) {
-        toolbarExtensions = toolbarExtensions.filter(
-          (v) => v.name !== "color" && v.name !== "background",
-        );
-        toolbarExtensions.push({
-          name: "style",
-          color: colorExtension,
-          background: backgroundExtension,
-        });
-      }
-
-      toolbarExtensions.push({
-        name: "textClear",
-        command: ({ editor }) => editor.chain().focus().unsetAllMarks().run(),
-        isActive: () => null,
-      });
-
-      // Sort the extensions according to the BUBBLE_MENU_SORT array
-      const sortedExtensions = sortArrayByPropertyArray(
-        toolbarExtensions,
-        props.sort,
-        "name",
-      );
-
-      return sortedExtensions;
+          if (isObject(menu)) {
+            return menu;
+          }
+        })
+        .filter(Boolean);
     });
 
-    console.log(toolbarMenus.value);
     return () =>
       h("div", { class: `${prefixClass}-toolbar-menu` }, [
+        slotPrefix && slotPrefix({ editor: props.editor }),
         toolbarMenus.value.map((menu) => {
+          // 检查是否存在对应的具名插槽
+          const slotName = slots[menu.name];
+
+          if (slotName) {
+            // 如果存在具名插槽，使用插槽内容
+            return slotName({
+              editor: props.editor,
+              ...menu,
+            });
+          }
+
           if (menu.name === "|") {
             return h(IDivider, {
               type: "vertical",
@@ -171,13 +170,6 @@ export default defineComponent({
             });
           }
 
-          if (menu.name === "style") {
-            return h(ButtonStyle, {
-              editor: props.editor,
-              menu,
-            });
-          }
-
           if (menu.name === "fontFamily") {
             return h(ButtonFontFamily, {
               editor: props.editor,
@@ -216,6 +208,7 @@ export default defineComponent({
             },
           );
         }),
+        slotSuffix && slotSuffix({ editor: props.editor }),
       ]);
   },
 });

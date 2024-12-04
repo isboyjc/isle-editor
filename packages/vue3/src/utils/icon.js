@@ -12,7 +12,7 @@ import {
   Check,
   SquareArrowOutUpRight as OpenRight,
   SquarePen as Edit,
-  Palette as Color,
+  Baseline as Color,
   PaintBucket as Background,
   Baseline as Style,
   AlignLeft,

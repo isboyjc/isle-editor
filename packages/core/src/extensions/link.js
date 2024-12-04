@@ -8,8 +8,6 @@ export default Link.extend({
       ...this.parent?.(),
       name: "link",
       desc: "",
-      bubble: true,
-      toolbar: true,
       command: ({
         editor,
         href = "editor.islenote.com",

@@ -8,8 +8,6 @@ export default Code.extend({
       ...this.parent?.(),
       name: "code",
       desc: "`isle`",
-      bubble: true,
-      toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleCode().run(),
       isActive: ({ editor }) => editor.isActive("code"),
       isDisabled: ({ editor }) => !editor.can().toggleCode(),

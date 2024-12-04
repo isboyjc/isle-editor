@@ -18,7 +18,6 @@ export default Extension.create({
       minIndent: IndentProps.min,
       maxIndent: IndentProps.max,
       name: "indent",
-      toolbar: true,
       list: [
         {
           name: "indent",

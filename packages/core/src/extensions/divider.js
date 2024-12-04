@@ -6,7 +6,6 @@ const source = {
   slash: true,
   name: "divider",
   desc: "---",
-  toolbar: true,
   command: ({ editor, range }) => {
     range
       ? editor.chain().focus().deleteRange(range).setDivider().run()

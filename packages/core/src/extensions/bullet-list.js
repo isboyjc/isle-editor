@@ -5,7 +5,6 @@ const source = {
   slash: true,
   name: "bulletList",
   desc: "- isle",
-  toolbar: true,
   command: ({ editor, range }) => {
     range
       ? editor.chain().focus().deleteRange(range).toggleBulletList().run()

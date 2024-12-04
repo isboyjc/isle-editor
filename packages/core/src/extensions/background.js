@@ -23,8 +23,6 @@ export default Mark.create({
     return {
       name: "background",
       desc: "",
-      bubble: true,
-      toolbar: true,
       multicolor: true,
       HTMLAttributes: {},
       command: ({ editor, color = "" }) => {

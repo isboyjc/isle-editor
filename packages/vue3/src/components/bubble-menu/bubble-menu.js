@@ -3,7 +3,7 @@ import {
   isNodeSelection,
   isTextSelection,
 } from "@isle-editor/core";
-import { sortArrayByPropertyArray } from "@/utils/array";
+import { isString, isObject } from "@/utils";
 import BubbleSelector from "./selector/bubble-menu-selector";
 import BubbleLinkSelector from "./selector/bubble-menu-link-selector";
 
@@ -26,13 +26,10 @@ const BUBBLE_MENU_SORT = [
   "underline",
   "strike",
   "code",
-  "style",
   "color",
   "background",
-  "textAlign",
   "link",
-  "subscript",
-  "superscript",
+  "textAlign",
   "|",
   "textClear",
 ];
@@ -154,48 +151,36 @@ export default defineComponent({
     };
 
     const bubbleMenus = computed(() => {
-      if (!props.editor?.extensionManager?.extensions) {
-        return [];
-      }
+      return props.sort
+        .map((menu) => {
+          if (isString(menu)) {
+            if (menu === "|") return { name: "|" };
+            if (menu === "textClear") {
+              return {
+                name: "textClear",
+                command: ({ editor }) =>
+                  editor.chain().focus().unsetAllMarks().run(),
+                isActive: () => null,
+              };
+            }
+            const extension = props.editor.extensionManager.extensions.find(
+              (ext) => ext.name === menu,
+            );
+            if (extension) {
+              return {
+                name: menu,
+                ...extension?.options,
+              };
+            }
 
-      let markExtensions = props.editor.extensionManager.extensions
-        .filter((v) => v?.options?.bubble)
-        .map((v) => ({
-          name: v.name,
-          ...v?.options,
-        }));
-
-      // If both color and background extensions exist
-      // they are automatically merged into one extension with the name style.
-      const colorExtension = markExtensions.find((v) => v.name === "color");
-      const backgroundExtension = markExtensions.find(
-        (v) => v.name === "background",
-      );
-      if (colorExtension && backgroundExtension) {
-        markExtensions = markExtensions.filter(
-          (v) => v.name !== "color" && v.name !== "background",
-        );
-        markExtensions.push({
-          name: "style",
-          color: colorExtension,
-          background: backgroundExtension,
-        });
-      }
-
-      markExtensions.push({
-        name: "textClear",
-        command: ({ editor }) => editor.chain().focus().unsetAllMarks().run(),
-        isActive: () => null,
-      });
-
-      // Sort the extensions according to the BUBBLE_MENU_SORT array
-      const sortedExtensions = sortArrayByPropertyArray(
-        markExtensions,
-        props.sort,
-        "name",
-      );
-
-      return sortedExtensions;
+            return null;
+          }
+          if (isObject(menu)) {
+            return menu;
+          }
+          return null;
+        })
+        .filter(Boolean);
     });
 
     const init = () => {
@@ -222,7 +207,8 @@ export default defineComponent({
     return () =>
       h("div", { ref: root }, [
         // 渲染基础气泡菜单
-        isText.value &&
+        bubbleMenus.value.length > 0 &&
+          isText.value &&
           !isLink.value &&
           h(
             BubbleSelector,
@@ -235,7 +221,9 @@ export default defineComponent({
         isLink.value &&
           h(BubbleLinkSelector, {
             editor: props.editor,
-            menu: bubbleMenus.value.find((menu) => menu.name === "link"),
+            menu: props.editor.extensionManager.extensions.find(
+              (menu) => menu.name === "link",
+            )?.options,
           }),
       ]);
   },

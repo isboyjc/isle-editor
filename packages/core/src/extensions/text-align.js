@@ -8,8 +8,6 @@ export default Extension.create({
       alignments: ["left", "center", "right", "justify"],
       defaultAlignment: "left",
       name: "textAlign",
-      bubble: true,
-      toolbar: true,
       types: ["heading", "paragraph"],
       list: [
         {

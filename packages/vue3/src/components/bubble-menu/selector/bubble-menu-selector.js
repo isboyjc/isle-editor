@@ -4,7 +4,6 @@ import { getIcon } from "@/utils/icon";
 import ButtonLink from "@/components/special-button/button-link";
 import ButtonColor from "@/components/special-button/button-color";
 import ButtonBackground from "@/components/special-button/button-background";
-import ButtonStyle from "@/components/special-button/button-style";
 import ButtonTextAlign from "@/components/special-button/button-text-align";
 import ButtonFontFamily from "@/components/special-button/button-font-family";
 import ButtonFontSize from "@/components/special-button/button-font-size";
@@ -64,13 +63,6 @@ export default defineComponent({
 
           if (menu.name === "background") {
             return h(ButtonBackground, {
-              editor: props.editor,
-              menu,
-            });
-          }
-
-          if (menu.name === "style") {
-            return h(ButtonStyle, {
               editor: props.editor,
               menu,
             });

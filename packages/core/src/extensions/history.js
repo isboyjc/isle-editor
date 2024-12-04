@@ -3,7 +3,6 @@ import { history, redo, undo } from "@tiptap/pm/history";
 
 const source = {
   name: "history",
-  toolbar: true,
   list: [
     {
       name: "undo",

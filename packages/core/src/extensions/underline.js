@@ -6,8 +6,6 @@ export default Underline.extend({
       ...this.parent?.(),
       name: "underline",
       desc: "",
-      bubble: true,
-      toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleUnderline().run(),
       isActive: ({ editor }) => editor.isActive("underline"),
       isDisabled: ({ editor }) => !editor.can().toggleUnderline(),

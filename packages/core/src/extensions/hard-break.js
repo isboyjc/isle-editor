@@ -8,7 +8,6 @@ export default Node.create({
       keepMarks: true,
       HTMLAttributes: {},
       name: "hardBreak",
-      toolbar: true,
       command: ({ editor }) => editor.chain().focus().setHardBreak().run(),
       isActive: ({ editor }) => editor.isActive("hardBreak"),
       isDisabled: ({ editor }) => !editor.can().setHardBreak(),

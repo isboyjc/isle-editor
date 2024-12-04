@@ -6,8 +6,6 @@ export default Strike.extend({
       ...this.parent?.(),
       name: "strike",
       desc: "~~isle~~",
-      bubble: true,
-      toolbar: true,
       command: ({ editor }) => editor.chain().focus().toggleStrike().run(),
       isActive: ({ editor }) => editor.isActive("strike"),
       isDisabled: ({ editor }) => !editor.can().toggleStrike(),

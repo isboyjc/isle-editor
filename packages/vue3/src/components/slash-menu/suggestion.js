@@ -1,20 +1,19 @@
-import IsleEditorSlash from './slash-menu'
-import { t } from '@isle-editor/core'
-import { VueRenderer } from '@/utils/render'
-import { createTippy } from '@/utils/tippy'
+import IsleEditorSlash from "./slash-menu";
+import { VueRenderer } from "@/utils/render";
+import { createTippy } from "@/utils/tippy";
 
 export function createSlashSuggestion(options) {
   return {
     suggestion: {
-      char: '/',
+      char: "/",
       command: ({ editor, range, props }) => {
-        props.command({ editor, range })
+        props.command({ editor, range });
       },
       ...createSlashSuggestionItems(),
       ...createSlashSuggestionRender(),
-      ...options
-    }
-  }
+      ...options,
+    },
+  };
 }
 
 export function createSlashSuggestionItems() {
@@ -23,9 +22,9 @@ export function createSlashSuggestionItems() {
       // ({ editor, query }) => {
       // const nodes = editor.extensionManager.extensions
       //   .filter((item) => item?.options?.slash)
-      return []
-    }
-  }
+      return [];
+    },
+  };
 }
 
 export function createSlashSuggestionRender(options = {}) {
@@ -33,70 +32,71 @@ export function createSlashSuggestionRender(options = {}) {
     component = IsleEditorSlash,
     tippyOptions = {},
     handleKeyDown,
-  } = options
+  } = options;
 
   return {
     render: () => {
-      let renderer
-      let popup
-      
+      let renderer;
+      let popup;
+
       return {
         onStart: (props) => {
-          const { selection } = props.editor.state
-          const parentNode = selection.$from.node(selection.$from.depth)
+          const { selection } = props.editor.state;
+          const parentNode = selection.$from.node(selection.$from.depth);
 
-          if (parentNode.type.name === 'codeBlock') {
-            return false
+          if (parentNode.type.name === "codeBlock") {
+            return false;
           }
 
           renderer = new VueRenderer(component, {
             props,
-            editor: props.editor
-          })
+            editor: props.editor,
+          });
 
-          popup = createTippy('body', {
+          popup = createTippy("body", {
             getReferenceClientRect: props.clientRect,
             appendTo: () => document.body,
             content: renderer.element,
             showOnCreate: true,
             interactive: true,
-            trigger: 'manual',
-            placement: 'bottom-start',
+            trigger: "manual",
+            placement: "bottom-start",
             hideOnClick: true,
-            ...tippyOptions
-          })
+            ...tippyOptions,
+          });
         },
 
         onUpdate: (props) => {
-          renderer?.updateProps(props)
-          popup && popup?.[0].setProps({
-            getReferenceClientRect: props.clientRect
-          })
+          renderer?.updateProps(props);
+          popup &&
+            popup?.[0].setProps({
+              getReferenceClientRect: props.clientRect,
+            });
         },
 
         onKeyDown: (props) => {
           if (handleKeyDown) {
-            return handleKeyDown(props, { popup, renderer })
+            return handleKeyDown(props, { popup, renderer });
           }
 
           // 默认键盘处理逻辑
-          if (props.event.key === 'Escape') {
-            popup?.[0].hide()
-            return true
+          if (props.event.key === "Escape") {
+            popup?.[0].hide();
+            return true;
           }
 
-          if (props.event.key === 'Enter') {
-            popup?.[0].hide()
+          if (props.event.key === "Enter") {
+            popup?.[0].hide();
           }
 
-          return renderer.ref?.onKeyDown && renderer.ref?.onKeyDown(props)
+          return renderer.ref?.onKeyDown && renderer.ref?.onKeyDown(props);
         },
 
         onExit: () => {
-          popup?.[0].destroy()
-          renderer?.destroy()
-        }
-      }
+          popup?.[0].destroy();
+          renderer?.destroy();
+        },
+      };
     },
-  }
+  };
 }

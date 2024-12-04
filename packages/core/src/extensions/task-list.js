@@ -6,7 +6,6 @@ const source = {
   slash: true,
   name: "taskList",
   desc: "[ ] [x]",
-  toolbar: true,
   command: ({ editor, range }) => {
     range
       ? editor.chain().focus().deleteRange(range).toggleTaskList().run()
