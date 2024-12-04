@@ -1,61 +1,50 @@
 # Introduction
 
-## What is Isle Editor?
+## What is isle-editor?
 
-Isle Editor is a modern rich text editor built for Vue.js applications. It provides a powerful and flexible editing experience while maintaining excellent performance and extensibility.
+`isle-editor` is an open-source web editor that supports rich text, block-based, and `markdown` editing. It's efficient and ready to use out of the box, built on top of [prosemirror](https://github.com/prosemirror) and [tiptap](https://github.com/ueberdosis/tiptap).
+
+With `isle-editor` we want to make it easy for developers to add text editing to their apps. `isle-editor` is `new` compared to open-source editors on the market, and it supports the popular `Notion Style` style in addition to the normal rich text style.
+
+You can output `HTML` as a normal rich text editor or `JSON` as a block editor.
+
+Considering the extensibility, you can use our built-in combo extensions to build the editor quickly, or you can selectively use our core extensions to customize your editor step by step, and you can also customize the extensions to enrich the functionality of the editor.
+
+## Why choose isle-editor?
+
+`prosemirror` is a powerful and flexible open source rich text editor framework, it provides a set of core tools and `API` for building highly customizable rich text editor. `tiptap` is based on `prosemirror` implementation of an open source modern rich text editor framework, it `prosemirror` provides a higher level of encapsulation and default implementation, making it easier to use.
+
+Both `prosemirror` and `tiptap` are headless, i.e., they don't depend on any frameworks, and while you can use `tiptap` to greatly simplify the development of your editor, it is still complex because `tiptap` doesn't provide a `UI` view, and there is a lot of processing that needs to be done for the editor when developing it, including implementation of the extensions, and view-layer processing.
+
+The goal of `isle-editor` is to provide developers with a fully out-of-the-box rich text editor that can be quickly integrated into existing projects without complex configuration. We reuse the core implementation of `tiptap` because it is relatively reliable, and we provide multiple versions of the `UI` view and more core extensions that allow users to use it out-of-the-box based on configuration.
+
+You can use `isle-editor` in any framework and quickly integrate it into existing projects without complex configuration. (Currently we only support `vue` views, more framework views are in the queue, or you can submit your code on [GitHub](https://github.com/isboyjc/isle-editor) to help us implement view support for more frameworks).
+
+Although `isle-editor` currently only supports `Vue` views, its core extensions are fully integrated with `tiptap`, so if you are developing a project using `tiptap`, you can use our core extensions seamlessly. You can also refer to the `isle-editor` source code as we expect it to be a best practice for `tiptap`.
 
 ## Features
 
-- **Vue 3 Integration**: Built from the ground up with Vue 3
-- **TypeScript Support**: Full TypeScript support for better development experience
-- **Modular Architecture**: Easily extend and customize editor features
-- **Rich Text Editing**: Support for basic formatting, lists, tables, and more
-- **Collaborative Editing**: Built-in support for real-time collaboration
-- **Markdown Support**: Import and export Markdown content
-- **Theme Customization**: Easily customize the editor's appearance
+- **Ready to Use**: Simple to integrate with just a few lines of code, no complex configuration needed.
+- **Extensible**: Rich set of plug-and-play extensions and view components, with support for customization.
+- **Customizable**: Supports custom theme styling, comes with built-in light and dark themes.
+- **Multilingual**: Supports multilingual editing, with built-in English and Chinese support, extensible for more languages.
+- **Flexible**: Supports various editing modes including block editing, rich text, WYSIWYG, Markdown, and Notion Style editing.
+- **High Performance**: Built on ProseMirror and TipTap for smooth editing experience.
 
-## Project Structure
+## Use Cases
 
-The project is organized as a monorepo using pnpm workspaces:
+isle-editor is suitable for various scenarios:
 
-\`\`\`
-isle-editor/
-├── packages/
-│ ├── core/ # Core editor functionality
-│ └── vue3/ # Vue 3 specific implementation
-├── shared/ # Shared utilities and configurations
-├── playground/ # Development playground
-└── docs/ # Documentation
-\`\`\`
+- **Content Creation**: Blogs, documentation, notes, and other content creation scenarios
+- **Collaborative Editing**: Team collaboration and real-time editing scenarios
+- **Rich Text Editing**: Support for images, videos, tables, and other rich text content
+- **Custom Editors**: Can be customized to create specialized editors for specific needs
 
-## Packages
+## Quick Demo
 
-### @isle-editor/core
+Visit our [online playground](https://playground.islenote.com) to quickly experience isle-editor in action.
 
-The core package contains the fundamental editor functionality, including:
+## Next Steps
 
-- Text manipulation
-- Selection management
-- Command system
-- Extension system
-
-### @isle-editor/vue3
-
-The Vue 3 package provides:
-
-- Vue 3 components
-- Vue-specific utilities
-- Component styling
-- Event handling
-
-### @isle-editor/shared
-
-Shared utilities and configurations used across packages:
-
-- Build configurations
-- ESLint rules
-- Common utilities
-
-## Getting Started
-
-Check out our [Getting Started](/guide/getting-started) guide to begin using Isle Editor in your project.
+- Check out the [Installation Guide](/guide/installation) to get started
+- Read the [Quick Start](/guide/quick-start) to learn basic usage
