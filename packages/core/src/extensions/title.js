@@ -1,28 +1,28 @@
-import { Node, mergeAttributes } from '@tiptap/core'
-import { prefixClass } from '@/utils/prefix.js'
+import { Node, mergeAttributes } from "@tiptap/core";
+import { prefixClass } from "@/utils/prefix.js";
 
 export default Node.create({
-  name: 'title',
+  name: "title",
   // schema
-  content: 'inline*',
+  content: "inline*",
   draggable: false,
-  group: 'block',
+  group: "block",
   addOptions() {
     return {
       ...this.parent?.(),
       HTMLAttributes: {
-        class: `${prefixClass}__title`
-      }
-    }
+        class: `${prefixClass}__title`,
+      },
+    };
   },
   parseHTML() {
-    return [{ tag: 'h1' }]
+    return [{ tag: "h1" }];
   },
   renderHTML({ HTMLAttributes }) {
     return [
-      'h1',
+      "h1",
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
-      0
-    ]
-  }
-})
+      0,
+    ];
+  },
+});

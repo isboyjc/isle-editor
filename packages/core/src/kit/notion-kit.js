@@ -8,8 +8,6 @@ import {
   TextAlign,
   FontFamily,
   FontSize,
-} from "@/extensions";
-import {
   Heading,
   Blockquote,
   Divider,
@@ -17,8 +15,6 @@ import {
   BulletList,
   TaskList,
   ListItem,
-} from "@/nodes";
-import {
   Bold,
   Italic,
   Underline,
@@ -29,7 +25,7 @@ import {
   Link,
   Background,
   TextStyle,
-} from "@/marks";
+} from "@/extensions";
 
 export default BasicKit.extend({
   name: "notionKit",

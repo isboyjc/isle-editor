@@ -9,8 +9,10 @@ import {
   Dropcursor,
   CharacterCount,
   Placeholder,
+  Text,
+  Paragraph,
+  HardBreak,
 } from "@/extensions";
-import { Text, Paragraph, HardBreak } from "@/nodes";
 import { prefixClass } from "@/utils";
 
 export default Extension.create({
