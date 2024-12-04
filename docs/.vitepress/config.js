@@ -185,7 +185,7 @@ export default defineConfig({
             text: "指南",
             items: [
               {
-                text: "介绍",
+                text: "开始",
                 items: [
                   { text: "介绍", link: "/zh/guide/introduction" },
                   { text: "安装", link: "/zh/guide/installation" },
