@@ -83,7 +83,7 @@ export default defineConfig({
               },
             ],
           },
-          { text: "Playground", link: "https://editor.islenote.com" },
+          { text: "Playground", link: "https://playground.islenote.com" },
           {
             text: "About",
             items: [
@@ -194,7 +194,7 @@ export default defineConfig({
               },
             ],
           },
-          { text: "演示", link: "https://editor.islenote.com" },
+          { text: "演示", link: "https://playground.islenote.com" },
           {
             text: "关于",
             items: [
