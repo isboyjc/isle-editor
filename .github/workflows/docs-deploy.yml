@@ -40,5 +40,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FOR_DOCS }}
-          working-directory: ./docs/.vitepress/dist # VitePress 构建输出目录
-          # vercel-args: '--prod' # 部署到生产环境
+          working-directory: ./docs/.vitepress/dist
+          vercel-args: '--prod'
