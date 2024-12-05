@@ -19,25 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Install Dependencies
-        run: pnpm install
-
-      - name: Build Packages
-        run: pnpm build:packages
-
-      - name: Build Playground
-        run: pnpm build:play
-
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
         with:
@@ -45,5 +26,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FOR_PLAYGROUND }}
-          working-directory: ./playground/dist
+          working-directory: ./
           vercel-args: '--prod'
