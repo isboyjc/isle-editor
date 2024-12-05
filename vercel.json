@@ -1,34 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "docs/.vitepress/dist/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "playground/dist/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "projects": {
-    "docs": {
-      "buildCommand": false,
-      "devCommand": false,
-      "installCommand": false,
-      "outputDirectory": "docs/.vitepress/dist"
-    },
-    "playground": {
-      "buildCommand": false,
-      "devCommand": false,
-      "installCommand": false,
-      "outputDirectory": "playground/dist"
-    }
-  },
-  "git": {
-    "deploymentEnabled": {
-      "main": false,
-      "preview": false,
-      "production": false
-    }
+  "public": false,
+  "github": {
+    "enabled": false
   }
 }
