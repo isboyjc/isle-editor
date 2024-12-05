@@ -200,7 +200,6 @@ function charactersCount(editor) {
 }
 
 function editorUpdate({ editor }) {
-  // console.log('editorUpdate', editor)
   charactersCount(editor)
 }
 
