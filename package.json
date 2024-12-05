@@ -13,7 +13,7 @@
     "commit": "git add . && git-cz",
     "changeset": "changeset",
     "version": "changeset version && pnpm postplop",
-    "publish": "pnpm build && pnpm changeset publish",
+    "publish": "pnpm changeset publish",
     "clean": "rimraf node_modules **/*/node_modules",
     "eslint": "eslint . --ext .ts,.vue,.js,.tsx",
     "build:play": "turbo run build --filter=playground",
