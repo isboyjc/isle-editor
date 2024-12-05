@@ -27,4 +27,3 @@ jobs:
           working-directory: ./
           vercel-args: '--prod'
           github-comment: false
-          github-deployment: false
