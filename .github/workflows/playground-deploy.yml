@@ -45,5 +45,5 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FOR_PLAYGROUND }}
           working-directory: ./playground/dist
-          vercel-args: '--prod --yes'
+          vercel-args: '--prod'
           alias-domains: playground.islenote.com
