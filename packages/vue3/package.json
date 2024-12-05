@@ -26,7 +26,6 @@
   "license": "MIT",
   "dependencies": {
     "@isle-editor/core": "workspace:*",
-    "@tiptap/pm": "^2.9.1",
     "lucide-vue-next": "^0.454.0",
     "tippy.js": "^6.3.7",
     "uuid": "^11.0.2"
