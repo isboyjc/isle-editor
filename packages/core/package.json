@@ -1,6 +1,6 @@
 {
   "name": "@isle-editor/core",
-  "version": "0.0.4",
+  "version": "0.0.2",
   "description": "Isle Editor Core",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
