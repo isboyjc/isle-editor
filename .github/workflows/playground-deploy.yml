@@ -22,9 +22,10 @@ jobs:
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
         with:
-          github-token: ${{ secrets.ACCESS_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FOR_PLAYGROUND }}
           working-directory: ./
           vercel-args: '--prod'
+          github-comment: false
+          github-deployment: false
