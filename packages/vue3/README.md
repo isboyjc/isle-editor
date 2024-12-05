@@ -1,4 +1,4 @@
-# @isle-editor/core
+# @isle-editor/vue3
 
 ## Introduction
 
