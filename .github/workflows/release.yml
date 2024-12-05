@@ -41,4 +41,5 @@ jobs:
         with:
           publish: pnpm changeset publish
         env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
