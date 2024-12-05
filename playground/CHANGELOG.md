@@ -1,5 +1,13 @@
 # playground
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [cf154d2]
+  - @isle-editor/core@0.0.5
+  - @isle-editor/vue3@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes
