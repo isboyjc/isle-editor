@@ -34,17 +34,29 @@ jobs:
       - name: Build Docs
         run: pnpm build:docs
 
-      - name: Install Vercel CLI
-        run: npm install --global vercel@latest
+      - name: Create Vercel config
+        run: |
+          echo '{
+            "version": 2,
+            "builds": [
+              {
+                "src": "**",
+                "use": "@vercel/static"
+              }
+            ]
+          }' > ./docs/.vitepress/dist/vercel.json
 
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Create package.json for static deployment
+        run: |
+          echo '{"name":"docs","version":"1.0.0","scripts":{"start":"serve"},"dependencies":{"serve":"^14.0.0"}}' > ./docs/.vitepress/dist/package.json
 
       - name: Deploy to Vercel
-        run: |
-          vercel deploy ./docs/.vitepress/dist \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --prod \
-            --yes \
-            --scope=${{ secrets.VERCEL_ORG_ID }} \
-            --name=isle-editor-docs
+        uses: amondnet/vercel-action@v25
+        with:
+          github-token: ${{ secrets.ACCESS_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FOR_DOCS }}
+          working-directory: ./docs/.vitepress/dist
+          vercel-args: '--prod'
+          alias-domains: editor.islenote.com

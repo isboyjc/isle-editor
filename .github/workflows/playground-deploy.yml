@@ -38,17 +38,29 @@ jobs:
       - name: Build Playground
         run: pnpm build:play
 
-      - name: Install Vercel CLI
-        run: npm install --global vercel@latest
+      - name: Create Vercel config
+        run: |
+          echo '{
+            "version": 2,
+            "builds": [
+              {
+                "src": "**",
+                "use": "@vercel/static"
+              }
+            ]
+          }' > ./playground/dist/vercel.json
 
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Create package.json for static deployment
+        run: |
+          echo '{"name":"playground","version":"1.0.0","scripts":{"start":"serve"},"dependencies":{"serve":"^14.0.0"}}' > ./playground/dist/package.json
 
       - name: Deploy to Vercel
-        run: |
-          vercel deploy ./playground/dist \
-            --token=${{ secrets.VERCEL_TOKEN }} \
-            --prod \
-            --yes \
-            --scope=${{ secrets.VERCEL_ORG_ID }} \
-            --name=isle-editor-playground
+        uses: amondnet/vercel-action@v25
+        with:
+          github-token: ${{ secrets.ACCESS_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FOR_PLAYGROUND }}
+          working-directory: ./playground/dist
+          vercel-args: '--prod'
+          alias-domains: playground.islenote.com
