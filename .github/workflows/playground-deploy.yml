@@ -36,7 +36,7 @@ jobs:
         run: pnpm build:packages
 
       - name: Build Playground
-        run: pnpm playground:build
+        run: pnpm build:play
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
