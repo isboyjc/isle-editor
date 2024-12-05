@@ -52,6 +52,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Verify npm token
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
