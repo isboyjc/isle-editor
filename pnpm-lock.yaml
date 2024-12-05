@@ -249,10 +249,6 @@ importers:
       uuid:
         specifier: ^11.0.2
         version: 11.0.3
-    devDependencies:
-      shared:
-        specifier: workspace:*
-        version: link:../../shared
 
   packages/vue3:
     dependencies:
@@ -274,10 +270,6 @@ importers:
       vue:
         specifier: ^3.0.0
         version: 3.5.13(typescript@5.6.3)
-    devDependencies:
-      shared:
-        specifier: workspace:*
-        version: link:../../shared
 
   playground:
     dependencies:
@@ -1630,42 +1622,36 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
-    libc: [glibc]
 
   '@parcel/watcher-linux-arm-musl@2.5.0':
     resolution: {integrity: sha512-6uHywSIzz8+vi2lAzFeltnYbdHsDm3iIB57d4g5oaB9vKwjb6N6dRIgZMujw4nm5r6v9/BQH0noq6DzHrqr2pA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
-    libc: [musl]
 
   '@parcel/watcher-linux-arm64-glibc@2.5.0':
     resolution: {integrity: sha512-BfNjXwZKxBy4WibDb/LDCriWSKLz+jJRL3cM/DllnHH5QUyoiUNEp3GmL80ZqxeumoADfCCP19+qiYiC8gUBjA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   '@parcel/watcher-linux-arm64-musl@2.5.0':
     resolution: {integrity: sha512-S1qARKOphxfiBEkwLUbHjCY9BWPdWnW9j7f7Hb2jPplu8UZ3nes7zpPOW9bkLbHRvWM0WDTsjdOTUgW0xLBN1Q==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   '@parcel/watcher-linux-x64-glibc@2.5.0':
     resolution: {integrity: sha512-d9AOkusyXARkFD66S6zlGXyzx5RvY+chTP9Jp0ypSTC9d4lzyRs9ovGf/80VCxjKddcUvnsGwCHWuF2EoPgWjw==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@parcel/watcher-linux-x64-musl@2.5.0':
     resolution: {integrity: sha512-iqOC+GoTDoFyk/VYSFHwjHhYrk8bljW6zOhPuhi5t9ulqiYq1togGJB5e3PwYVFFfeVgc6pbz3JdQyDoBszVaA==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@parcel/watcher-win32-arm64@2.5.0':
     resolution: {integrity: sha512-twtft1d+JRNkM5YbmexfcH/N4znDtjgysFaV9zvZmmJezQsKpkfLYJ+JFV3uygugK6AtIM2oADPkB2AdhBrNig==}
@@ -1809,55 +1795,46 @@ packages:
     resolution: {integrity: sha512-FMXxMZ7qnMULwgdmGSFVlOduAhFyqDPoK1A2Q8HBkzGYX9SMFU3ITKfLdIiCzTaaj/pt1OiEbpF2szUw6Kh++Q==}
     cpu: [arm]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.27.0':
     resolution: {integrity: sha512-0315TiPsJfOY+jAwEeqxcy9yVcAy/jg99GrMcd/L7CRESzi1vhyLPbnkDnz7giaEttSRf/d3llJYfoC+44Nl3A==}
     cpu: [arm]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.27.0':
     resolution: {integrity: sha512-4zCKY5E9djPyHzvoCWIouFsuAvg+dk+rNia8lz1bjKpzKz02QvK4JPHyjcDT8CFR2J/aA98WccCirdDOy+VDWQ==}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.27.0':
     resolution: {integrity: sha512-6St9rrPSLbYBbbJAClpU4gmnO7cdZCMMzx2MT0UCIIIevoLAmsCDOAG6t3J/RgN4CPUpdaGr/UnPqQTHZ4oDwA==}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-linux-powerpc64le-gnu@4.27.0':
     resolution: {integrity: sha512-dIBfp8NDrgvwUJxyqFv7501coIba+7xxBJy1gQEF0RGkIKa3Tq0Mh3sF9hmstDLtaMt7gL2aXsCNG9SCKyVVZg==}
     cpu: [ppc64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-gnu@4.27.0':
     resolution: {integrity: sha512-Pu7xLHRy+5UjFCKR/vWsbFmiBYUC9993v99YoKWhAgK4VsdNuWHPs17NuCJEtVsZpYCNVPbRyBpQw58Ma8BmeA==}
     cpu: [riscv64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-s390x-gnu@4.27.0':
     resolution: {integrity: sha512-2Q9qQnk/eWdvXzzHl22y7tpDHREppFUh7N6cCs70HZEbQSgB7wd/2S/B05SSiyAiIn5BL+fYiASLds5bz0IQFw==}
     cpu: [s390x]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.27.0':
     resolution: {integrity: sha512-CNnqMZ4Yz0Ga0A75qux7DNChq0P9oAWn2S7yjZPRC+AaEF8Ysw5K/1lzT25/a3reJ4V2abcShIVG+tfZHb1UrQ==}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.27.0':
     resolution: {integrity: sha512-dS1+eCbbao54XB+wLW6uuwRkChq4L0UfKhd3wvt6s+EN1rTIi24ee5Lk3HfRGq9J2jsRm12/AGKLA0kd82Sp/g==}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-win32-arm64-msvc@4.27.0':
     resolution: {integrity: sha512-VrYQHY5+Y71OU/uOSRE9lLhph16bbuWGrMwGwZDPxCUXUW5NgLA+K+q0kv7rafHRlnrsZSVcMOkZskzTNnR3ZQ==}

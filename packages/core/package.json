@@ -1,6 +1,6 @@
 {
   "name": "@isle-editor/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Isle Editor Core",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -39,9 +39,6 @@
     "i18next": "^23.16.5",
     "lodash": "^4.17.21",
     "uuid": "^11.0.2"
-  },
-  "devDependencies": {
-    "shared": "workspace:*"
   },
   "files": [
     "src",

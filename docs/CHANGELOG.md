@@ -1,4 +1,4 @@
-# playground
+# docs
 
 ## 0.0.2
 
@@ -7,9 +7,3 @@
 - Updated dependencies
   - @isle-editor/core@0.0.2
   - @isle-editor/vue3@0.0.2
-
-## 0.0.1
-
-### Patch Changes
-
-- 8e2d4e1: add IsleEditorToolbar demo

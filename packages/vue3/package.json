@@ -1,6 +1,6 @@
 {
   "name": "@isle-editor/vue3",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "isle-editor view for vue3",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -30,9 +30,6 @@
     "lucide-vue-next": "^0.454.0",
     "tippy.js": "^6.3.7",
     "uuid": "^11.0.2"
-  },
-  "devDependencies": {
-    "shared": "workspace:*"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
