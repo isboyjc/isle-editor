@@ -34,22 +34,6 @@ jobs:
       - name: Build Docs
         run: pnpm build:docs
 
-      - name: Create Vercel config
-        run: |
-          echo '{
-            "version": 2,
-            "builds": [
-              {
-                "src": "**",
-                "use": "@vercel/static"
-              }
-            ]
-          }' > ./docs/.vitepress/dist/vercel.json
-
-      - name: Create package.json for static deployment
-        run: |
-          echo '{"name":"docs","version":"1.0.0","scripts":{"start":"serve"},"dependencies":{"serve":"^14.0.0"}}' > ./docs/.vitepress/dist/package.json
-
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
         with:
@@ -59,4 +43,3 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FOR_DOCS }}
           working-directory: ./docs/.vitepress/dist
           vercel-args: '--prod'
-          alias-domains: editor.islenote.com

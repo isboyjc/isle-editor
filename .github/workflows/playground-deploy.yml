@@ -38,22 +38,6 @@ jobs:
       - name: Build Playground
         run: pnpm build:play
 
-      - name: Create Vercel config
-        run: |
-          echo '{
-            "version": 2,
-            "builds": [
-              {
-                "src": "**",
-                "use": "@vercel/static"
-              }
-            ]
-          }' > ./playground/dist/vercel.json
-
-      - name: Create package.json for static deployment
-        run: |
-          echo '{"name":"playground","version":"1.0.0","scripts":{"start":"serve"},"dependencies":{"serve":"^14.0.0"}}' > ./playground/dist/package.json
-
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
         with:
@@ -63,4 +47,3 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FOR_PLAYGROUND }}
           working-directory: ./playground/dist
           vercel-args: '--prod'
-          alias-domains: playground.islenote.com
