@@ -57,10 +57,18 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Build packages
-        run: pnpm build:packages
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Publish packages
         run: pnpm run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Push tags
+        if: success()
+        run: git push --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
