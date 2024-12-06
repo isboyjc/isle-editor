@@ -65,7 +65,7 @@
   "sizes":{
     "tiny": "Tiny",
     "small": "Small",
-    "normal": "Normal (Default)",
+    "normal": "Normal",
     "large": "Large",
     "huge": "Huge"
   },

@@ -96,49 +96,6 @@
         font-weight: 500;
         color: var(--#{$prefix}-text-color-2);
       }
-
-      &-default {
-        width: 24px;
-        height: 14px;
-        border-radius: 0.175rem;
-        border: 1px solid var(--#{$prefix}-border-color);
-        cursor: pointer;
-        box-sizing: border-box;
-        position: relative;
-        overflow: hidden;
-
-        &:hover {
-          background-color: rgba(var(--#{$prefix}-border-color-val), 0.5);
-        }
-
-        &::after,
-        &::before {
-          content: "";
-          position: absolute;
-          width: 200%;
-          height: 200%;
-          top: -50%;
-          left: -50%;
-        }
-        &::after {
-          background: linear-gradient(
-            to bottom right,
-            transparent calc(50% - 0.5px),
-            var(--#{$prefix}-border-color) calc(50% - 0.5px),
-            var(--#{$prefix}-border-color) calc(50% + 0.5px),
-            transparent calc(50% + 0.5px)
-          );
-        }
-        &::before {
-          background: linear-gradient(
-            to top right,
-            transparent calc(50% - 0.5px),
-            var(--#{$prefix}-border-color) calc(50% - 0.5px),
-            var(--#{$prefix}-border-color) calc(50% + 0.5px),
-            transparent calc(50% + 0.5px)
-          );
-        }
-      }
     }
 
     &-box {

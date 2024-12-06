@@ -20,9 +20,8 @@ export default defineComponent({
     const isShown = ref(false);
 
     const activeFont = computed(() => {
-      return props.menu.fonts?.find((v) =>
-        props.menu?.isActive({ editor: props.editor, fontFamily: v.value }),
-      );
+      const attrs = props.editor.getAttributes("textStyle");
+      return props.menu.fonts.find((v) => v.value === (attrs.fontFamily || ""));
     });
 
     return () =>
@@ -70,7 +69,7 @@ export default defineComponent({
                             class: `${prefixClass}-special-button__text-box`,
                           },
                           t(
-                            activeFont.value?.label
+                            activeFont.value?.value
                               ? `fonts.${activeFont.value?.label}`
                               : "fontFamily",
                           ),
@@ -91,30 +90,6 @@ export default defineComponent({
           content: () =>
             h("div", { class: `${prefixClass}-special-button__font-family` }, [
               ...props.menu.fonts.map((item) => {
-                if (!item.value) {
-                  return h(
-                    IButton,
-                    {
-                      long: true,
-                      active: !activeFont.value?.value,
-                      onClick: () => {
-                        props.editor.chain().focus().unsetFontFamily().run();
-                        triggerRef.value?.hide();
-                      },
-                    },
-                    {
-                      default: () =>
-                        h(
-                          "span",
-                          {
-                            class: `${prefixClass}-special-button__font-family-btn-text`,
-                          },
-                          t(`fonts.${item.label}`),
-                        ),
-                    },
-                  );
-                }
-
                 return h(
                   IButton,
                   {

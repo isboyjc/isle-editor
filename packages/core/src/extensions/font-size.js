@@ -83,8 +83,13 @@ export default Extension.create({
       types: ["textStyle"],
       name: "fontSize",
       desc: "",
-      command: ({ editor, fontSize }) =>
-        editor.chain().focus().setFontSize(fontSize).run(),
+      command: ({ editor, fontSize }) => {
+        if (editor.isActive("textStyle", { fontSize }) || !fontSize) {
+          editor.chain().focus().unsetFontSize().run();
+        } else {
+          editor.chain().focus().setFontSize(fontSize).run();
+        }
+      },
       isActive: ({ editor, fontSize }) =>
         editor.isActive("textStyle", { fontSize }),
       isDisabled: ({ editor }) => !editor.can().setFontSize(),

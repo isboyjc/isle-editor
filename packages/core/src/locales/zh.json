@@ -65,7 +65,7 @@
   "sizes":{
     "tiny": "超小",
     "small": "小",
-    "normal": "中（默认）",
+    "normal": "中",
     "large": "大",
     "huge": "超大"
   },

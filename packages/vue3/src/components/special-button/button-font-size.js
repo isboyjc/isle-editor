@@ -20,9 +20,8 @@ export default defineComponent({
     const isShown = ref(false);
 
     const activeFont = computed(() => {
-      return props.menu.sizes?.find((v) =>
-        props.menu?.isActive({ editor: props.editor, fontSize: v.value }),
-      );
+      const attrs = props.editor.getAttributes("textStyle");
+      return props.menu.sizes?.find((v) => v.value === (attrs.fontSize || ""));
     });
 
     return () =>
@@ -70,7 +69,7 @@ export default defineComponent({
                             class: `${prefixClass}-special-button__text-box`,
                           },
                           t(
-                            activeFont.value?.label
+                            activeFont.value?.value
                               ? `sizes.${activeFont.value?.label}`
                               : "fontSize",
                           ),
@@ -91,30 +90,6 @@ export default defineComponent({
           content: () =>
             h("div", { class: `${prefixClass}-special-button__font-size` }, [
               ...props.menu.sizes.map((item) => {
-                if (!item.value) {
-                  return h(
-                    IButton,
-                    {
-                      long: true,
-                      active: !activeFont.value?.value,
-                      onClick: () => {
-                        props.editor.chain().focus().unsetFontSize().run();
-                        triggerRef.value?.hide();
-                      },
-                    },
-                    {
-                      default: () =>
-                        h(
-                          "span",
-                          {
-                            class: `${prefixClass}-special-button__font-size-btn-text`,
-                          },
-                          t(`sizes.${item.label}`),
-                        ),
-                    },
-                  );
-                }
-
                 return h(
                   IButton,
                   {

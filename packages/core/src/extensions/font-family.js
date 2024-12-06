@@ -8,8 +8,13 @@ export default Extension.create({
       types: ["textStyle"],
       name: "fontFamily",
       desc: "",
-      command: ({ editor, fontFamily }) =>
-        editor.chain().focus().setFontFamily(fontFamily).run(),
+      command: ({ editor, fontFamily }) => {
+        if (editor.isActive("textStyle", { fontFamily }) || !fontFamily) {
+          editor.chain().focus().unsetFontFamily().run();
+        } else {
+          editor.chain().focus().setFontFamily(fontFamily).run();
+        }
+      },
       isActive: ({ editor, fontFamily }) =>
         editor.isActive("textStyle", { fontFamily }),
       isDisabled: ({ editor }) => !editor.can().setFontFamily(),
