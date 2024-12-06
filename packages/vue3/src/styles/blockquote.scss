@@ -1,10 +1,10 @@
-@use 'config' as *;
+@use "config" as *;
 
 .#{$prefix}.ProseMirror {
   blockquote {
     padding-left: 0.6rem !important;
-    border-left: 0.3rem solid var(--#{$prefix}-color-border);
-    color: var(--#{$prefix}-color-text-secondary) !important;
+    border-left: 0.3rem solid var(--#{$prefix}-border-color);
+    color: var(--#{$prefix}-text-color-secondary) !important;
     margin: var(--#{$prefix}-margin) 0;
   }
 }

@@ -1,4 +1,4 @@
-@use 'config' as *;
+@use "config" as *;
 
 .#{$prefix}.ProseMirror {
   ol,
@@ -47,14 +47,14 @@
 
     ::marker {
       font-weight: 400;
-      color: var(--#{$prefix}-color-text-1);
+      color: var(--#{$prefix}-text-color-1);
       font-size: 0.875rem;
       font-weight: 700;
     }
   }
 
   // 任务列表
-  ul[data-type='taskList'] {
+  ul[data-type="taskList"] {
     list-style: none;
     padding: 0 0;
     box-sizing: border-box;
@@ -75,35 +75,34 @@
   //   margin-top: 0;
   // }
 
-  ul[data-type='taskList'] li > label {
+  ul[data-type="taskList"] li > label {
     user-select: none;
   }
 
-  ul[data-type='taskList'] li > label input[type='checkbox'] {
+  ul[data-type="taskList"] li > label input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
     background-color: transparent;
-    color: var(--#{$prefix}-color-text-1);
+    color: var(--#{$prefix}-text-color-1);
     cursor: pointer;
     width: 1.1em;
     height: 1.1em;
     position: relative;
     top: calc(
-      (var(--#{$prefix}-line-height) * var(--#{$prefix}-font-size) - 1.05em) /
-        2
+      (var(--#{$prefix}-line-height) * var(--#{$prefix}-font-size) - 1.05em) / 2
     );
     // border-radius: 0.15em;
-    border: 2px solid rgba(var(--#{$prefix}-color-border-val), 1);
+    border: 2px solid rgba(var(--#{$prefix}-border-color-val), 1);
     margin: 0 0.5rem 0 0;
     display: grid;
     place-content: center;
 
     &:active {
-      background-color: rgba(var(--#{$prefix}-color-border-val), 0.6);
+      background-color: rgba(var(--#{$prefix}-border-color-val), 0.6);
     }
 
     &::before {
-      content: '';
+      content: "";
       width: 0.7em;
       height: 0.7em;
       transform: scale(0);
@@ -118,16 +117,16 @@
     }
   }
 
-  ul[data-type='taskList']
-    li[data-checked='true']
+  ul[data-type="taskList"]
+    li[data-checked="true"]
     > label
-    input[type='checkbox'] {
+    input[type="checkbox"] {
     border: 2px solid var(--#{$prefix}-theme-primary);
     background-color: var(--#{$prefix}-theme-primary);
     color: var(--#{$prefix}-color-white);
   }
 
-  ul[data-type='taskList'] li[data-checked='true'] > div > p {
+  ul[data-type="taskList"] li[data-checked="true"] > div > p {
     text-decoration: line-through;
     text-decoration-thickness: 2px;
     color: var(--#{$prefix}-color-text-2);

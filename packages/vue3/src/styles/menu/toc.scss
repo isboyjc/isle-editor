@@ -12,7 +12,7 @@
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
-    color: var(--#{$prefix}-color-text-2);
+    color: var(--#{$prefix}-text-color-2);
     padding: 0.35rem;
     box-sizing: border-box;
   }
@@ -27,7 +27,7 @@
       font-size: 0.875rem;
       line-height: 1.25rem;
       padding: 0.35rem;
-      color: var(--#{$prefix}-color-text-3);
+      color: var(--#{$prefix}-text-color-3);
       cursor: pointer;
       border-radius: 0.35rem;
       box-sizing: border-box;
@@ -37,13 +37,13 @@
       white-space: nowrap;
 
       &:hover {
-        color: var(--#{$prefix}-color-text-1);
-        background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+        color: var(--#{$prefix}-text-color-1);
+        background-color: rgba(var(--#{$prefix}-border-color-val), 0.5);
       }
       &.active {
-        color: var(--#{$prefix}-color-text) !important;
+        color: var(--#{$prefix}-text-color) !important;
         background-color: rgba(
-          var(--#{$prefix}-color-border-val),
+          var(--#{$prefix}-border-color-val),
           0.5
         ) !important;
       }

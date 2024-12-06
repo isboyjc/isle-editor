@@ -1,6 +1,11 @@
-import { defineComponent, h, ref, onMounted } from "vue";
+import { defineComponent, h } from "vue";
 import { prefixClass } from "@isle-editor/core";
-import { getAllColors, standardColors } from "@/utils";
+import {
+  getPickerAllColorsFlat,
+  getAllStandardColors,
+  getRecentColors,
+  addRecentColor,
+} from "@/utils";
 
 export default defineComponent({
   name: "IColorPicker",
@@ -17,7 +22,7 @@ export default defineComponent({
       type: String,
       default: "Standard Color",
     },
-    recentColorName: {
+    recentUseName: {
       type: String,
       default: "Recent Use",
     },
@@ -26,10 +31,10 @@ export default defineComponent({
       default: "ICOLORPICKER-RECENTCOLORS",
     },
   },
-  emits: ["select"],
+  emits: ["change"],
 
   setup(props, { emit }) {
-    const recentColors = ref([]);
+    const recentColors = getRecentColors(props.storageKey);
     const isShowRecentColor = computed(() => recentColors.value.length);
 
     function recentColorsRender() {
@@ -40,7 +45,7 @@ export default defineComponent({
               {
                 class: `${prefixClass}-color-picker__title`,
               },
-              props.recentColorName,
+              props.recentUseName,
             ),
             h(
               "div",
@@ -59,37 +64,14 @@ export default defineComponent({
         : [];
     }
 
-    onMounted(() => {
-      const stored = localStorage.getItem(props.storageKey);
-      if (stored && Array.isArray(JSON.parse(stored))) {
-        recentColors.value = JSON.parse(stored).slice(0, 9);
-      } else {
-        recentColors.value = [];
-      }
-    });
-
     const handleColorSelect = (color) => {
       if (color) {
-        const colorIndex = recentColors.value.indexOf(color);
-        if (colorIndex > -1) {
-          recentColors.value.splice(colorIndex, 1);
-        }
-
-        recentColors.value.unshift(color);
-
-        if (recentColors.value.length > 9) {
-          recentColors.value = recentColors.value.slice(0, 9);
-        }
-
-        localStorage.setItem(
-          props.storageKey,
-          JSON.stringify(recentColors.value),
-        );
+        addRecentColor(color, props.storageKey);
       }
-      emit("select", color);
+      emit("change", color);
     };
 
-    const allColors = getAllColors();
+    const allColors = getPickerAllColorsFlat();
 
     return () =>
       h(
@@ -131,7 +113,7 @@ export default defineComponent({
             {
               class: `${prefixClass}-color-picker__standard`,
             },
-            standardColors.map((color) => {
+            getAllStandardColors().map((color) => {
               return h("div", {
                 class: [`${prefixClass}-color-picker__standard-item`],
                 style: { backgroundColor: color },

@@ -1,7 +1,7 @@
 import { defineComponent, ref, h, computed } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon } from "@/utils/icon";
-import { ITooltip, IButton, ITrigger } from "@/components/ui";
+import { getIcon, getColors } from "@/utils";
+import { ITooltip, IButton, ITrigger, IColorPicker } from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonColor",
@@ -19,10 +19,73 @@ export default defineComponent({
     const isShown = ref(false);
 
     const activeColor = computed(() => {
-      return props.menu.colors.find((v) =>
-        props.menu.isActive({ editor: props.editor, color: v.color }),
-      );
+      const attrs = props.editor.getAttributes("textStyle");
+      return attrs?.color || "";
     });
+
+    function defaultModelRender() {
+      return h("div", { class: `${prefixClass}-special-button__color` }, [
+        h("div", { class: `${prefixClass}-special-button__color-title` }, [
+          h(
+            "span",
+            {
+              class: `${prefixClass}-special-button__color-title-text`,
+            },
+            t(props.menu.name),
+          ),
+        ]),
+        h("div", { class: `${prefixClass}-special-button__color-box` }, [
+          ...getColors().map(({ color }) =>
+            h(
+              "div",
+              {
+                class: `${prefixClass}-special-button__color-box-item`,
+                style: {
+                  color,
+                  borderColor: activeColor.value === color ? color : "",
+                },
+                onClick: () =>
+                  props.menu.command({
+                    color: color,
+                    editor: props.editor,
+                  }),
+              },
+              [
+                h(getIcon(props.menu.name), {
+                  class: `${prefixClass}-special-button__color-box-item-icon`,
+                  size: 14,
+                  strokeWidth: 2,
+                }),
+              ],
+            ),
+          ),
+        ]),
+      ]);
+    }
+
+    function pickerModelRender() {
+      return h("div", { class: `${prefixClass}-special-button__color` }, [
+        h(IColorPicker, {
+          defaultColorName: t("colors.defaultColor"),
+          standardColorName: t("colors.standardColor"),
+          recentUseName: t("colors.recentUse"),
+          storageKey: "ICOLORPICKER-RECENT-COLOR",
+          onChange: (color) => {
+            if (color) {
+              props.menu.command({
+                color: color,
+                editor: props.editor,
+              });
+            } else {
+              props.menu.command({
+                color: "",
+                editor: props.editor,
+              });
+            }
+          },
+        }),
+      ]);
+    }
 
     return () =>
       h(
@@ -61,7 +124,7 @@ export default defineComponent({
                           "div",
                           {
                             class: `${prefixClass}-special-button__icon-box`,
-                            style: { color: activeColor.value?.color },
+                            style: { color: activeColor.value },
                           },
                           [
                             h(getIcon(props.menu.name || "color"), {
@@ -84,49 +147,9 @@ export default defineComponent({
               },
             ),
           content: () =>
-            h("div", { class: `${prefixClass}-special-button__color` }, [
-              h(
-                "div",
-                { class: `${prefixClass}-special-button__color-title` },
-                [
-                  h(
-                    "span",
-                    {
-                      class: `${prefixClass}-special-button__color-title-text`,
-                    },
-                    t(props.menu.name),
-                  ),
-                  h("span", {
-                    class: `${prefixClass}-special-button__color-title-default`,
-                    onClick: () =>
-                      props.editor.chain().focus().unsetColor().run(),
-                  }),
-                ],
-              ),
-              h("div", { class: `${prefixClass}-special-button__color-box` }, [
-                ...props.menu.colors.map(({ color }) =>
-                  h(
-                    "div",
-                    {
-                      class: `${prefixClass}-special-button__color-box-item`,
-                      style: { color },
-                      onClick: () =>
-                        props.menu.command({
-                          color: color,
-                          editor: props.editor,
-                        }),
-                    },
-                    [
-                      h(getIcon(props.menu.name), {
-                        class: `${prefixClass}-special-button__color-box-item-icon`,
-                        size: 14,
-                        strokeWidth: 2,
-                      }),
-                    ],
-                  ),
-                ),
-              ]),
-            ]),
+            props.menu?.type === "picker"
+              ? pickerModelRender()
+              : defaultModelRender(),
         },
       );
   },

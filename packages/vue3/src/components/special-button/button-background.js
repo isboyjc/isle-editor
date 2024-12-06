@@ -1,7 +1,7 @@
 import { defineComponent, ref, h, computed } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon } from "@/utils/icon";
-import { ITooltip, IButton, ITrigger } from "@/components/ui";
+import { getIcon, getColors } from "@/utils";
+import { ITooltip, IButton, ITrigger, IColorPicker } from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonBackground",
@@ -19,10 +19,79 @@ export default defineComponent({
     const isShown = ref(false);
 
     const activeColor = computed(() => {
-      return props.menu.colors.find((v) =>
-        props.menu.isActive({ editor: props.editor, color: v.color }),
-      );
+      const attrs = props.editor.getAttributes("background");
+      return attrs?.background || "";
     });
+
+    function defaultModelRender() {
+      return h(
+        "div",
+        {
+          class: `${prefixClass}-special-button__background`,
+        },
+        [
+          h(
+            "div",
+            { class: `${prefixClass}-special-button__background-title` },
+            [
+              h(
+                "span",
+                {
+                  class: `${prefixClass}-special-button__background-title-text`,
+                },
+                t(props.menu.name),
+              ),
+            ],
+          ),
+          h("div", { class: `${prefixClass}-special-button__background-box` }, [
+            ...getColors().map(({ background, color }) =>
+              h("div", {
+                class: `${prefixClass}-special-button__background-box-item`,
+                style: {
+                  backgroundColor: background,
+                  borderColor: activeColor.value === background ? color : "",
+                },
+                onClick: () =>
+                  props.menu.command({
+                    background,
+                    editor: props.editor,
+                  }),
+              }),
+            ),
+          ]),
+        ],
+      );
+    }
+
+    function pickerModelRender() {
+      return h(
+        "div",
+        {
+          class: `${prefixClass}-special-button__background`,
+        },
+        [
+          h(IColorPicker, {
+            defaultColorName: t("colors.defaultColor"),
+            standardColorName: t("colors.standardColor"),
+            recentUseName: t("colors.recentUse"),
+            storageKey: "ICOLORPICKER-RECENT-BACKGROUND",
+            onChange: (color) => {
+              if (color) {
+                props.menu.command({
+                  background: color,
+                  editor: props.editor,
+                });
+              } else {
+                props.menu.command({
+                  background: "",
+                  editor: props.editor,
+                });
+              }
+            },
+          }),
+        ],
+      );
+    }
 
     return () =>
       h(
@@ -62,7 +131,7 @@ export default defineComponent({
                           {
                             class: `${prefixClass}-special-button__icon-box`,
                             style: {
-                              backgroundColor: activeColor.value?.color,
+                              backgroundColor: activeColor.value,
                             },
                           },
                           [
@@ -86,49 +155,9 @@ export default defineComponent({
               },
             ),
           content: () =>
-            h(
-              "div",
-              {
-                class: `${prefixClass}-special-button__background`,
-              },
-              [
-                h(
-                  "div",
-                  { class: `${prefixClass}-special-button__background-title` },
-                  [
-                    h(
-                      "span",
-                      {
-                        class: `${prefixClass}-special-button__background-title-text`,
-                      },
-                      t(props.menu.name),
-                    ),
-                    h("span", {
-                      class: `${prefixClass}-special-button__background-title-default`,
-                      onClick: () =>
-                        props.editor.chain().focus().unsetBackground().run(),
-                    }),
-                  ],
-                ),
-                h(
-                  "div",
-                  { class: `${prefixClass}-special-button__background-box` },
-                  [
-                    ...props.menu.colors.map(({ color }) =>
-                      h("div", {
-                        class: `${prefixClass}-special-button__background-box-item`,
-                        style: { backgroundColor: color },
-                        onClick: () =>
-                          props.menu.command({
-                            color: color,
-                            editor: props.editor,
-                          }),
-                      }),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            props.menu?.type === "picker"
+              ? pickerModelRender()
+              : defaultModelRender(),
         },
       );
   },

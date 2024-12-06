@@ -70,5 +70,13 @@
     "huge": "超大"
   },
 
+  "colors":{
+    "defaultColor": "默认颜色",
+    "baseColor": "基础颜色",
+    "standardColor": "标准颜色",
+    "recentUse": "最近使用",
+    "palette": "调色板"
+  },
+
   "placeholder": "写点什么 ..."
 }

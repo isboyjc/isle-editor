@@ -6,7 +6,7 @@
   &__title {
     font-size: 0.85em;
     font-weight: 500;
-    color: var(--#{$prefix}-color-text-2);
+    color: var(--#{$prefix}-text-color-3);
     margin-top: 0.7rem;
     margin-bottom: 0.4rem;
   }
@@ -16,18 +16,18 @@
     height: 28px;
     font-size: 0.85em;
     border-radius: 0.3rem;
-    border: 1px solid var(--#{$prefix}-color-border);
+    border: 1px solid var(--#{$prefix}-border-color);
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     margin-bottom: 0.7rem;
-    color: var(--#{$prefix}-color-text-1);
+    color: var(--#{$prefix}-text-color-1);
 
     &:hover {
-      color: var(--#{$prefix}-color-text);
-      background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+      color: var(--#{$prefix}-text-color);
+      background-color: rgba(var(--#{$prefix}-border-color-val), 0.5);
     }
   }
 
@@ -46,16 +46,11 @@
       border-radius: 0.3rem;
       cursor: pointer;
       transition: transform 0.2s ease;
-      border: 1px solid rgba(var(--#{$prefix}-color-border-val), 0.5);
+      border: 1px solid rgba(var(--#{$prefix}-border-color-val), 0.5);
       box-sizing: border-box;
 
       &:hover {
         transform: scale(1.15);
-      }
-
-      &--active {
-        border: 2px solid var(--#{$prefix}-color-primary);
-        transform: scale(1.1);
       }
     }
   }

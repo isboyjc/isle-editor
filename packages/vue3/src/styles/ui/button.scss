@@ -11,23 +11,23 @@
   background-color: transparent;
   box-sizing: border-box;
   cursor: pointer;
-  color: var(--#{$prefix}-color-text-1);
+  color: var(--#{$prefix}-text-color-1);
 
   &.active {
-    background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+    background-color: rgba(var(--#{$prefix}-border-color-val), 0.5);
     color: var(--#{$prefix}-theme-primary) !important;
   }
   &.semi-active {
-    background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
+    background-color: rgba(var(--#{$prefix}-border-color-val), 0.5);
   }
   &.danger {
-    color: var(--#{$prefix}-text-red) !important;
+    color: var(--#{$prefix}-color-red) !important;
   }
   &.success {
-    color: var(--#{$prefix}-text-green) !important;
+    color: var(--#{$prefix}-color-green) !important;
   }
   &.disabled {
-    color: var(--#{$prefix}-color-border) !important;
+    color: var(--#{$prefix}-border-color) !important;
     background-color: transparent !important;
     cursor: not-allowed;
   }
@@ -38,7 +38,7 @@
   }
 
   &:hover {
-    background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
-    color: var(--#{$prefix}-color-text);
+    background-color: rgba(var(--#{$prefix}-border-color-val), 0.5);
+    color: var(--#{$prefix}-text-color);
   }
 }

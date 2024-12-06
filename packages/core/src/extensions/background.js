@@ -1,4 +1,3 @@
-import { prefixClass } from "@/utils/prefix.js";
 import {
   Mark,
   markInputRule,
@@ -23,59 +22,19 @@ export default Mark.create({
     return {
       name: "background",
       desc: "",
+      type: "default", // picker
       multicolor: true,
       HTMLAttributes: {},
-      command: ({ editor, color = "" }) => {
-        if (editor.isActive("background", { color }) || !color) {
+      command: ({ editor, background = "" }) => {
+        if (editor.isActive("background", { background }) || !background) {
           editor.chain().focus().unsetBackground().run();
         } else {
-          editor.chain().focus().setBackground({ color }).run();
+          editor.chain().focus().setBackground({ background }).run();
         }
       },
       isDisabled: ({ editor }) => !editor.can().toggleBackground(),
-      isActive: ({ editor, color }) => editor.isActive("background", { color }),
-      colors: [
-        {
-          name: "white",
-          color: `var(--${prefixClass}-background-white)`,
-        },
-        {
-          name: "black",
-          color: `var(--${prefixClass}-background-black)`,
-        },
-        {
-          name: "purple",
-          color: `var(--${prefixClass}-background-purple)`,
-        },
-        {
-          name: "red",
-          color: `var(--${prefixClass}-background-red)`,
-        },
-        {
-          name: "yellow",
-          color: `var(--${prefixClass}-background-yellow)`,
-        },
-        {
-          name: "blue",
-          color: `var(--${prefixClass}-background-blue)`,
-        },
-        {
-          name: "green",
-          color: `var(--${prefixClass}-background-green)`,
-        },
-        {
-          name: "orange",
-          color: `var(--${prefixClass}-background-orange)`,
-        },
-        {
-          name: "pink",
-          color: `var(--${prefixClass}-background-pink)`,
-        },
-        {
-          name: "gray",
-          color: `var(--${prefixClass}-background-gray)`,
-        },
-      ],
+      isActive: ({ editor, background }) =>
+        editor.isActive("background", { background }),
       shortcutkeys: "Mod-Shift-H",
     };
   },
@@ -86,18 +45,19 @@ export default Mark.create({
     }
 
     return {
-      color: {
+      background: {
         default: null,
         parseHTML: (element) =>
-          element.getAttribute("data-color") || element.style.backgroundColor,
+          element.getAttribute("data-background-color") ||
+          element.style.backgroundColor,
         renderHTML: (attributes) => {
-          if (!attributes.color) {
+          if (!attributes.background) {
             return {};
           }
 
           return {
-            "data-color": attributes.color,
-            style: `background-color: ${attributes.color}; color: inherit`,
+            "data-background-color": attributes.background,
+            style: `background-color: ${attributes.background}; color: inherit`,
           };
         },
       },

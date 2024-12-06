@@ -10,8 +10,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.25rem;
-  background-color: var(--#{$prefix}-color-background);
-  border: 1px solid var(--#{$prefix}-color-border);
+  background-color: var(--#{$prefix}-background-color);
+  border: 1px solid var(--#{$prefix}-border-color);
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
@@ -35,27 +35,24 @@
     font-weight: 500;
     padding: 0 0.375rem;
     border-radius: 0.375rem;
-    color: var(--#{$prefix}-color-text-2);
+    color: var(--#{$prefix}-text-color-2);
     box-sizing: border-box;
     cursor: pointer;
 
     &:hover {
-      background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
-      color: var(--#{$prefix}-color-text);
+      background-color: rgba(var(--#{$prefix}-border-color-val), 0.5);
+      color: var(--#{$prefix}-text-color);
     }
 
     &.active {
-      background-color: rgba(var(--#{$prefix}-color-border-val), 0.5);
-      color: var(--#{$prefix}-color-text);
+      background-color: rgba(var(--#{$prefix}-border-color-val), 0.5);
+      color: var(--#{$prefix}-text-color);
     }
 
     &-left {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-
-      &-icon {
-      }
 
       &-title {
         font-size: 0.875rem;

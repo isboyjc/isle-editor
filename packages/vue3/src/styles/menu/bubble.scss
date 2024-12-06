@@ -9,8 +9,8 @@
   flex-direction: row;
   align-items: center;
   gap: 0.125rem;
-  background-color: var(--#{$prefix}-color-background);
-  border: 1px solid var(--#{$prefix}-color-border);
+  background-color: var(--#{$prefix}-background-color);
+  border: 1px solid var(--#{$prefix}-border-color);
   box-sizing: border-box;
 
   &__btn-text {

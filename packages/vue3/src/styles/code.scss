@@ -1,4 +1,4 @@
-@use 'config' as *;
+@use "config" as *;
 
 .#{$prefix}.ProseMirror {
   code,
@@ -7,8 +7,8 @@
     line-height: normal;
     font-size: 90%;
     border-radius: 0.25rem;
-    background-color: rgba(var(--#{$prefix}-color-border-val), 0.55);
-    color: var(--#{$prefix}-text-red);
+    background-color: rgba(var(--#{$prefix}-border-color-val), 0.55);
+    color: var(--#{$prefix}-text-color);
     box-decoration-break: clone;
   }
 }

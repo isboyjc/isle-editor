@@ -70,5 +70,13 @@
     "huge": "Huge"
   },
 
+  "colors": {
+    "defaultColor": "Default Color",
+    "baseColor": "Base Color",
+    "standardColor": "Standard Color",
+    "recentUse": "Recent Use",
+    "palette": "Palette"
+  },
+
   "placeholder": "Write something ..."
 }
