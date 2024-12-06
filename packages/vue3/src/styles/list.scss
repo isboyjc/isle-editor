@@ -129,6 +129,6 @@
   ul[data-type="taskList"] li[data-checked="true"] > div > p {
     text-decoration: line-through;
     text-decoration-thickness: 2px;
-    color: var(--#{$prefix}-color-text-2);
+    color: var(--#{$prefix}-text-color-2);
   }
 }
