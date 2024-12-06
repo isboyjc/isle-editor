@@ -1,7 +1,7 @@
 import { Extension } from "@tiptap/core";
 
 const SIZE_TYPES = {
-  simple: [
+  default: [
     {
       label: "tiny",
       value: "0.65em",
@@ -93,9 +93,9 @@ export default Extension.create({
       isActive: ({ editor, fontSize }) =>
         editor.isActive("textStyle", { fontSize }),
       isDisabled: ({ editor }) => !editor.can().setFontSize(),
-      type: "simple",
+      type: "default",
       get sizes() {
-        return SIZE_TYPES[this.type] || SIZE_TYPES.simple;
+        return SIZE_TYPES[this.type] || SIZE_TYPES.default;
       },
     };
   },

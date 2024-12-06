@@ -1,8 +1,8 @@
 import { defineComponent, h } from "vue";
 import { prefixClass } from "@isle-editor/core";
 import {
-  getPickerAllColorsFlat,
-  getAllStandardColors,
+  getPickerColorsFlat,
+  getPickerStandardColors,
   getRecentColors,
   addRecentColor,
 } from "@/utils";
@@ -71,7 +71,7 @@ export default defineComponent({
       emit("change", color);
     };
 
-    const allColors = getPickerAllColorsFlat();
+    const allColors = getPickerColorsFlat();
 
     return () =>
       h(
@@ -113,7 +113,7 @@ export default defineComponent({
             {
               class: `${prefixClass}-color-picker__standard`,
             },
-            getAllStandardColors().map((color) => {
+            getPickerStandardColors().map((color) => {
               return h("div", {
                 class: [`${prefixClass}-color-picker__standard-item`],
                 style: { backgroundColor: color },

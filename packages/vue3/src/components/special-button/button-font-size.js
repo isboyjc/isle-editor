@@ -111,7 +111,7 @@ export default defineComponent({
                           class: `${prefixClass}-special-button__font-size-btn-text`,
                           style: {
                             fontSize:
-                              props.menu?.type === "simple" ? item.value : "",
+                              props.menu?.type === "default" ? item.value : "",
                           },
                         },
                         t(`sizes.${item.label}`),

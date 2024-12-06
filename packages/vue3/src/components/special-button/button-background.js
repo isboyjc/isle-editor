@@ -1,6 +1,6 @@
 import { defineComponent, ref, h, computed } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon, getColors } from "@/utils";
+import { getIcon, getDefaultColors } from "@/utils";
 import { ITooltip, IButton, ITrigger, IColorPicker } from "@/components/ui";
 
 export default defineComponent({
@@ -44,7 +44,7 @@ export default defineComponent({
             ],
           ),
           h("div", { class: `${prefixClass}-special-button__background-box` }, [
-            ...getColors().map(({ background, color }) =>
+            ...getDefaultColors().map(({ background, color }) =>
               h("div", {
                 class: `${prefixClass}-special-button__background-box-item`,
                 style: {
