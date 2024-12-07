@@ -52,11 +52,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Verify npm token
-        run: npm whoami
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Configure Git
         run: |
           git config --global user.name 'github-actions[bot]'
