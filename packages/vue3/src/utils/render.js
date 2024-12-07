@@ -7,7 +7,7 @@ import {
   provide,
   ref,
 } from "vue";
-import { NodeView } from "@tiptap/core";
+import { NodeView } from "@isle-editor/core";
 
 /**
  * This class is used to render Vue components inside the editor.
