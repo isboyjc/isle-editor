@@ -1,0 +1,21 @@
+@use "config" as *;
+
+.#{$prefix}.ProseMirror {
+  pre {
+    white-space: pre-wrap;
+    color: var(--isle-editor-text-color-secondary);
+    background-color: rgba(var(--isle-editor-border-color-val), 0.2);
+    border-radius: 0.4rem;
+    border: 1px solid rgba(var(--isle-editor-border-color-val), 0.5);
+    font-weight: 500;
+    font-family: "JetBrainsMono", monospace;
+    padding: 1.25rem;
+
+    code {
+      background: none;
+      color: inherit;
+      font-size: 0.8rem;
+      padding: 0;
+    }
+  }
+}

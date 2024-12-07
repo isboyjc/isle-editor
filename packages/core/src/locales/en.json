@@ -30,6 +30,7 @@
   "bulletList": "Bullet List",
   "orderedList": "Ordered List",
   "taskList": "Task List",
+  "codeBlock": "Code Block",
   "divider": "Divider",
   "indent": "Increase Indent",
   "outdent": "Decrease Indent",

@@ -121,7 +121,7 @@ export default defineComponent({
       //   console.log(selection.node)
       //   return !!node.attrs?.src
       // }
-      if (editor.isActive("codeblock") || isNodeSelection(selection)) {
+      if (editor.isActive("codeBlock") || isNodeSelection(selection)) {
         return false;
       }
 

@@ -41,3 +41,4 @@ export { default as TaskList } from "./task-list.js";
 export { default as Blockquote } from "./blockquote.js";
 export { default as Divider } from "./divider.js";
 export { default as HardBreak } from "./hard-break.js";
+export { default as CodeBlock } from "./code-block.js";

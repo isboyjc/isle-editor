@@ -30,6 +30,7 @@
   "bulletList": "无序列表",
   "orderedList": "有序列表",
   "taskList": "任务列表",
+  "codeBlock": "代码块",
   "divider": "分割线",
   "indent": "增加缩进",
   "outdent": "减少缩进",

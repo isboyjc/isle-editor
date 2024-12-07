@@ -29,6 +29,7 @@ const TOOLBAR_MENU_SORT = [
   "background",
   "textAlign",
   "link",
+  "codeBlock",
   "|",
   "bulletList",
   "orderedList",

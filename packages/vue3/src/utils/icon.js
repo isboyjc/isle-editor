@@ -39,6 +39,7 @@ import {
   Outdent,
   WrapText as HardBreak,
   ChevronDown as Down,
+  CodeXml as CodeBlock,
 } from "lucide-vue-next";
 const ICONS = {
   Bold,
@@ -81,6 +82,7 @@ const ICONS = {
   Outdent,
   HardBreak,
   Down,
+  CodeBlock,
 };
 
 export const getIcon = (name) => {

@@ -25,6 +25,7 @@ import {
   Link,
   Background,
   TextStyle,
+  CodeBlock,
 } from "@/extensions";
 
 export default BasicKit.extend({
@@ -137,6 +138,10 @@ export default BasicKit.extend({
 
     if (this.options.background !== false) {
       extensions.push(Background.configure(this.options?.background));
+    }
+
+    if (this.options.codeBlock !== false) {
+      extensions.push(CodeBlock.configure(this.options?.codeBlock));
     }
 
     return extensions;
