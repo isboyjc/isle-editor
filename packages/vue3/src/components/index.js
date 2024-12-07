@@ -1,3 +1,4 @@
+export * from "./node-view";
 export * from "./ui";
 export * from "./toc-menu";
 export * from "./bubble-menu";
