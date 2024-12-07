@@ -20,4 +20,9 @@
     height: 0;
     text-align: inherit;
   }
+
+  pre.#{$prefix}-node-empty::before {
+    color: var(--#{$prefix}-text-color-3);
+    font-weight: 400;
+  }
 }
