@@ -1,5 +1,11 @@
 # @isle-editor/core
 
+## 0.0.7
+
+### Patch Changes
+
+- 61f5344: feat: ✨ add codeBlock for ext
+
 ## 0.0.6
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @isle-editor/vue3
 
+## 0.0.7
+
+### Patch Changes
+
+- 61f5344: feat: ✨ add codeBlock for ext
+- 6a06ba3: feat: ✨ add node view
+- 9bd62bb: fix: 🐛 update nodeview components export
+- 4ea8b24: fix: 🐛 update package
+- 4c54e79: style: 💄 update placeholder for codeblock
+- Updated dependencies [61f5344]
+  - @isle-editor/core@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes

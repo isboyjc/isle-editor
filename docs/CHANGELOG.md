@@ -1,5 +1,17 @@
 # docs
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies [61f5344]
+- Updated dependencies [6a06ba3]
+- Updated dependencies [9bd62bb]
+- Updated dependencies [4ea8b24]
+- Updated dependencies [4c54e79]
+  - @isle-editor/core@0.0.7
+  - @isle-editor/vue3@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes
