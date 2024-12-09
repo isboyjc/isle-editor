@@ -40,6 +40,7 @@ import {
   WrapText as HardBreak,
   ChevronDown as Down,
   CodeXml as CodeBlock,
+  Table,
 } from "lucide-vue-next";
 const ICONS = {
   Bold,
@@ -83,6 +84,7 @@ const ICONS = {
   HardBreak,
   Down,
   CodeBlock,
+  Table,
 };
 
 export const getIcon = (name) => {

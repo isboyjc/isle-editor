@@ -26,6 +26,7 @@ import {
   Background,
   TextStyle,
   CodeBlock,
+  Table,
 } from "@/extensions";
 
 export default BasicKit.extend({
@@ -142,6 +143,10 @@ export default BasicKit.extend({
 
     if (this.options.codeBlock !== false) {
       extensions.push(CodeBlock.configure(this.options?.codeBlock));
+    }
+
+    if (this.options.table !== false) {
+      extensions.push(Table.configure(this.options?.table));
     }
 
     return extensions;

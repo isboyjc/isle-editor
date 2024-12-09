@@ -1,0 +1,63 @@
+@use "config" as *;
+
+.#{$prefix}.ProseMirror {
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+    margin-top: var(--#{$prefix}-margin);
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    td,
+    th {
+      min-width: 1em;
+      vertical-align: top;
+      box-sizing: border-box;
+      position: relative;
+      border: 1px solid rgba(var(--isle-editor-border-color-val), 1);
+      padding: 3px 5px;
+      box-sizing: border-box;
+
+      > * {
+        margin-bottom: 0;
+      }
+    }
+
+    th {
+      font-weight: bold;
+      text-align: left;
+      background-color: rgba(var(--isle-editor-border-color-val), 0.4);
+    }
+
+    .selectedCell:after {
+      z-index: 2;
+      position: absolute;
+      content: "";
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(var(--isle-editor-theme-primary-val), 0.3);
+      pointer-events: none;
+    }
+
+    .column-resize-handle {
+      position: absolute;
+      right: -2px;
+      top: 0;
+      bottom: -2px;
+      width: 4px;
+      background-color: var(--isle-editor-theme-selected);
+      cursor: col-resize;
+    }
+    .column-resize-handle:visited {
+      cursor: col-resize;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}

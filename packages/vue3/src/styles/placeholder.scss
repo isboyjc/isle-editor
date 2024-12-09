@@ -11,7 +11,8 @@
     text-align: inherit;
   }
 
-  .#{$prefix}-node-empty::before {
+  pre.#{$prefix}-node-empty::before,
+  p.#{$prefix}-node-empty::before {
     content: attr(data-placeholder);
     float: left;
     color: var(--#{$prefix}-text-color-2);

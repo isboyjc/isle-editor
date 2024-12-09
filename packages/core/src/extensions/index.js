@@ -42,3 +42,4 @@ export { default as Blockquote } from "./blockquote.js";
 export { default as Divider } from "./divider.js";
 export { default as HardBreak } from "./hard-break.js";
 export { default as CodeBlock } from "./code-block.js";
+export { default as Table } from "./table.js";
