@@ -51,17 +51,15 @@ export default defineComponent({
                     {
                       icon: () =>
                         h(getIcon(activeAlign.value?.name || "alignLeft"), {
-                          size: 15,
-                          strokeWidth: 2.5,
+                          style: { fontSize: "13px" },
                         }),
                       default: () =>
                         h(getIcon("down"), {
                           style: {
                             marginLeft: "0.1rem",
                             marginTop: "0.1rem",
+                            fontSize: "8px",
                           },
-                          size: 8,
-                          strokeWidth: 3,
                         }),
                     },
                   ),
@@ -84,8 +82,7 @@ export default defineComponent({
                         {
                           icon: () =>
                             h(getIcon(item?.name), {
-                              size: 15,
-                              strokeWidth: 2.5,
+                              style: { fontSize: "13px" },
                             }),
                         },
                       ),

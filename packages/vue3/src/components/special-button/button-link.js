@@ -108,12 +108,10 @@ export default defineComponent({
                       icon: () =>
                         props.isEdit
                           ? h(getIcon("edit"), {
-                              size: 15,
-                              strokeWidth: 2.5,
+                              style: { fontSize: "13px" },
                             })
                           : h(getIcon(props.menu.name), {
-                              size: 14,
-                              strokeWidth: 2.5,
+                              style: { fontSize: "12px" },
                             }),
                     },
                   ),
@@ -124,8 +122,7 @@ export default defineComponent({
               h("div", { class: `${prefixClass}-special-button__link-input` }, [
                 h(getIcon(props.menu.name || "link"), {
                   class: `${prefixClass}-special-button__link-input-icon`,
-                  size: 15,
-                  strokeWidth: 2.5,
+                  style: { fontSize: "13px" },
                 }),
                 h("input", {
                   ref: linkInputRef,

@@ -26,7 +26,6 @@
   "license": "MIT",
   "dependencies": {
     "@isle-editor/core": "workspace:*",
-    "lucide-vue-next": "^0.454.0",
     "tippy.js": "^6.3.7",
     "uuid": "^11.0.2"
   },
@@ -36,5 +35,9 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.14",
+    "@iconify-json/tabler": "^1.2.10"
   }
 }

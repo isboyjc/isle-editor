@@ -273,9 +273,6 @@ importers:
       '@isle-editor/core':
         specifier: workspace:*
         version: link:../core
-      lucide-vue-next:
-        specifier: ^0.454.0
-        version: 0.454.0(vue@3.5.13(typescript@5.7.2))
       tippy.js:
         specifier: ^6.3.7
         version: 6.3.7
@@ -285,6 +282,13 @@ importers:
       vue:
         specifier: ^3.0.0
         version: 3.5.13(typescript@5.7.2)
+    devDependencies:
+      '@iconify-json/lucide':
+        specifier: ^1.2.14
+        version: 1.2.17
+      '@iconify-json/tabler':
+        specifier: ^1.2.10
+        version: 1.2.10
 
   playground:
     dependencies:
@@ -319,6 +323,9 @@ importers:
       '@iconify-json/lucide':
         specifier: ^1.2.14
         version: 1.2.17
+      '@iconify-json/tabler':
+        specifier: ^1.2.10
+        version: 1.2.10
       '@unocss/transformer-directives':
         specifier: ^0.63.6
         version: 0.63.6
@@ -1537,6 +1544,9 @@ packages:
 
   '@iconify-json/lucide@1.2.17':
     resolution: {integrity: sha512-y+4P1DxD2h4d4fGYxikUdMf0o21DD0GIE/YIgixEBIXKbE90LTOFqmoxkGyPpaGk3vT2qE2w/28+sdmBMFsd5w==}
+
+  '@iconify-json/tabler@1.2.10':
+    resolution: {integrity: sha512-P58U/e0rZNYptzMjnExcFOtSt712xJnqwJI7KoF4iaUJ7EeFQNJawjUXT8X1rvbLMUk/O/fgrzAfhD163XuckA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3733,11 +3743,6 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
-
-  lucide-vue-next@0.454.0:
-    resolution: {integrity: sha512-UeThgLHm5sZyVTBIE1pcFn2jJsZTKe7AWo94lY2OMQAgYTKgPnrj1QLlSco2lU+kE7iFWl/stNLSsbxfoWCd6A==}
-    peerDependencies:
-      vue: '>=3.0.1'
 
   magic-string@0.30.14:
     resolution: {integrity: sha512-5c99P1WKTed11ZC0HMJOj6CDIue6F8ySu+bJL+85q1zBEIY8IklrJ1eiKC2NDRh3Ct3FcvmJPyQHb9erXMTJNw==}
@@ -6481,6 +6486,10 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
+  '@iconify-json/tabler@1.2.10':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify/types@2.0.0': {}
 
   '@iconify/utils@2.1.33':
@@ -8891,10 +8900,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  lucide-vue-next@0.454.0(vue@3.5.13(typescript@5.7.2)):
-    dependencies:
-      vue: 3.5.13(typescript@5.7.2)
 
   magic-string@0.30.14:
     dependencies:

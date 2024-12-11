@@ -109,7 +109,7 @@ export default defineComponent({
                   },
                   {
                     icon: () =>
-                      h(getIcon(menu.name), { size: 15, strokeWidth: 2.5 }),
+                      h(getIcon(menu.name), { style: { fontSize: "13px" } }),
                   },
                 ),
             },

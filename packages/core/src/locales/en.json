@@ -44,6 +44,21 @@
   "alignJustify": "Align Justify",
   "table": "Table",
 
+  "tables": {
+    "addTable": "Add Table",
+    "deleteTable": "Delete Table",
+    "addColumnBefore": "Add Column Before",
+    "addColumnAfter": "Add Column After",
+    "deleteColumn": "Delete Column",
+    "addRowBefore": "Add Row Before",
+    "addRowAfter": "Add Row After",
+    "deleteRow": "Delete Row",
+    "mergeCells": "Merge Cells",
+    "splitCell": "Split Cell",
+    "headerRow": "Toggle Header Row",
+    "headerCol": "Toggle Header Column"
+  },
+
   "edit": "Edit",
   "textClear": "Clear",
   "copy": "Copy",

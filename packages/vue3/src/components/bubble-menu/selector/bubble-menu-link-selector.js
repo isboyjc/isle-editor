@@ -59,7 +59,7 @@ export default defineComponent({
                 },
                 {
                   icon: () =>
-                    h(getIcon("openRight"), { size: 15, strokeWidth: 2.5 }),
+                    h(getIcon("openRight"), { style: { fontSize: "12px" } }),
                   default: () =>
                     h(
                       "span",
@@ -86,8 +86,7 @@ export default defineComponent({
                 {
                   icon: () =>
                     h(getIcon(copyOk.value ? "check" : "copy"), {
-                      size: 15,
-                      strokeWidth: 2.5,
+                      style: { fontSize: "12px" },
                     }),
                 },
               ),
@@ -107,7 +106,7 @@ export default defineComponent({
                 },
                 {
                   icon: () =>
-                    h(getIcon("unlink"), { size: 15, strokeWidth: 2.5 }),
+                    h(getIcon("unlink"), { style: { fontSize: "12px" } }),
                 },
               ),
           },

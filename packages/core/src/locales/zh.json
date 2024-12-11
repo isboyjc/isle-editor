@@ -44,6 +44,21 @@
   "alignJustify": "两端对齐",
   "table": "表格",
 
+  "tables": {
+    "addTable": "添加表格",
+    "deleteTable": "删除表格",
+    "addColumnBefore": "在左侧添加列",
+    "addColumnAfter": "在右侧添加列",
+    "deleteColumn": "删除列",
+    "addRowBefore": "在上方添加行",
+    "addRowAfter": "在下方添加行",
+    "deleteRow": "删除行",
+    "mergeCells": "合并单元格",
+    "splitCell": "拆分单元格",
+    "headerRow": "切换标题行",
+    "headerCol": "切换标题列"
+  },
+
   "edit": "编辑",
   "textClear": "清除",
   "copy": "复制",

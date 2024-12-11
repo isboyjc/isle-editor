@@ -142,8 +142,7 @@ export default defineComponent({
                       [
                         h(getIcon(item.name), {
                           class: `${prefixClass}-slash-menu__item-left-icon`,
-                          size: 16,
-                          strokeWidth: 2.5,
+                          style: { fontSize: "13px" },
                         }),
                         h(
                           "span",

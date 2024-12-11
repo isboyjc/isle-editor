@@ -136,8 +136,7 @@ export default defineComponent({
                           },
                           [
                             h(getIcon(props.menu.name || "background"), {
-                              size: 13,
-                              strokeWidth: 2.5,
+                              style: { fontSize: "12px" },
                             }),
                           ],
                         ),
@@ -146,9 +145,8 @@ export default defineComponent({
                           style: {
                             marginLeft: "0.1rem",
                             marginTop: "0.1rem",
+                            fontSize: "8px",
                           },
-                          size: 8,
-                          strokeWidth: 3,
                         }),
                     },
                   ),

@@ -1,5 +1,9 @@
 @use "config" as *;
 
+.#{$prefix}.ProseMirror.resize-cursor {
+  cursor: col-resize;
+}
+
 .#{$prefix}.ProseMirror {
   table {
     border-collapse: collapse;
@@ -16,7 +20,7 @@
       vertical-align: top;
       box-sizing: border-box;
       position: relative;
-      border: 1px solid rgba(var(--isle-editor-border-color-val), 1);
+      border: 1px solid rgba(var(--#{$prefix}-border-color-val), 1);
       padding: 3px 5px;
       box-sizing: border-box;
 
@@ -28,7 +32,7 @@
     th {
       font-weight: bold;
       text-align: left;
-      background-color: rgba(var(--isle-editor-border-color-val), 0.4);
+      background-color: rgba(var(--#{$prefix}-border-color-val), 0.4);
     }
 
     .selectedCell:after {
@@ -39,7 +43,7 @@
       right: 0;
       top: 0;
       bottom: 0;
-      background: rgba(var(--isle-editor-theme-primary-val), 0.3);
+      background: rgba(var(--#{$prefix}-theme-primary-val), 0.4);
       pointer-events: none;
     }
 
@@ -49,11 +53,7 @@
       top: 0;
       bottom: -2px;
       width: 4px;
-      background-color: var(--isle-editor-theme-selected);
-      cursor: col-resize;
-    }
-    .column-resize-handle:visited {
-      cursor: col-resize;
+      background-color: rgba(var(--#{$prefix}-theme-primary-val), 0.5);
     }
 
     p {

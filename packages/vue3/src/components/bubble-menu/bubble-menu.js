@@ -6,6 +6,7 @@ import {
 import { isString, isObject } from "@/utils";
 import BubbleSelector from "./selector/bubble-menu-selector";
 import BubbleLinkSelector from "./selector/bubble-menu-link-selector";
+import BubbleTableSelector from "./selector/bubble-menu-table-selector";
 
 import {
   defineComponent,
@@ -223,6 +224,13 @@ export default defineComponent({
             editor: props.editor,
             menu: props.editor.extensionManager.extensions.find(
               (menu) => menu.name === "link",
+            )?.options,
+          }),
+        isTable.value &&
+          h(BubbleTableSelector, {
+            editor: props.editor,
+            menu: props.editor.extensionManager.extensions.find(
+              (menu) => menu.name === "table",
             )?.options,
           }),
       ]);
