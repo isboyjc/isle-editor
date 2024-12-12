@@ -39,10 +39,12 @@
     "@isle-editor/vue3": "workspace:*",
     "@vitepress-demo-preview/component": "^2.3.2",
     "@vitepress-demo-preview/plugin": "^1.2.3",
-    "@vueuse/core": "^10.9.0",
+    "@vueuse/core": "^10.11.1",
     "@vueuse/motion": "^2.2.6"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.14",
+    "@iconify-json/tabler": "^1.2.10",
     "@unocss/transformer-directives": "^0.63.6",
     "@unocss/transformer-variant-group": "^0.63.6",
     "unocss": "^0.63.6",
