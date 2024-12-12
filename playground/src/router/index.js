@@ -5,8 +5,13 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import('@/views/home-page/home-page.vue')
+      name: 'notion',
+      component: () => import('@/views/notion-page/notion-page.vue')
+    },
+    {
+      path: '/rich-text',
+      name: 'richText',
+      component: () => import('@/views/rich-text-page/rich-text-page.vue')
     }
   ]
 })
