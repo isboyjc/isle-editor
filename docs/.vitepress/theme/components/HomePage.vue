@@ -120,17 +120,30 @@
         </div>
       </div>
     </section>
-    <section class="w-full h-100vh"></section>
+    <section class="w-full mt-40">
+      <div class="w-full min-h-250px grid grid-cols-12 gap-5">
+        <div class="col-span-12" uno-md="col-span-4">
+          <BaseEditor :locale="locale" :theme="isDark ? 'dark' : 'light'" />
+        </div>
+        <div class="col-span-12" uno-md="col-span-8">
+          <RichTextEditor :locale="locale" :theme="isDark ? 'dark' : 'light'" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup>
 import { useData } from "vitepress";
 import { useParallax } from "@vueuse/core";
-import { ref, reactive, watch, onMounted } from "vue";
+import { ref, reactive, watch, onMounted, computed } from "vue";
 import { t, routerPath } from "../locale";
 
 const { lang, isDark } = useData();
+const locale = computed(() => {
+  if (!lang.value) return "en";
+  return lang.value.split("-")[0];
+});
 
 const stars = ref(0);
 const getGithubStars = async () => {

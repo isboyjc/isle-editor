@@ -12,8 +12,7 @@
 </template>
 
 <script setup>
-import { RichTextKit } from '@isle-editor/core'
-import { IsleEditor, IsleEditorToolbar } from '@isle-editor/vue3'
+import { IsleEditor, IsleEditorToolbar, RichTextKit } from '@isle-editor/vue3'
 
 const content = ref('')
 const extensions = [RichTextKit.configure({})]

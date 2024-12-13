@@ -95,8 +95,6 @@
 
 <script setup>
 import {
-  BasicKit,
-  NotionKit,
   Heading,
   OrderedList,
   BulletList,
@@ -122,6 +120,8 @@ import {
   t
 } from '@isle-editor/core'
 import {
+  BasicKit,
+  NotionKit,
   IsleEditor,
   IsleEditorBubble,
   IsleEditorToolbar,

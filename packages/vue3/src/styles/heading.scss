@@ -1,4 +1,4 @@
-@use 'config' as *;
+@use "config" as *;
 
 .#{$prefix}.ProseMirror {
   h1,
@@ -8,7 +8,9 @@
   h5,
   h6 {
     font-weight: 700;
-    margin-bottom: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
   }
   h1 {
     font-size: 1.875rem;

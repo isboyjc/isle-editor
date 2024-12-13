@@ -1,15 +1,14 @@
-import Placeholder from '@tiptap/extension-placeholder'
-import { prefixClass } from '@/utils/prefix'
-import { t } from '@/locales'
+import Placeholder from "@tiptap/extension-placeholder";
+import { prefixClass } from "@/utils/prefix";
 
 export default Placeholder.extend({
   addOptions() {
     return {
       emptyEditorClass: `${prefixClass}-empty`,
       emptyNodeClass: `${prefixClass}-node-empty`,
-      placeholder: t('placeholder'),
+      placeholder: "",
       showOnlyCurrent: true,
-      showOnlyWhenEditable: true
-    }
-  }
-})
+      showOnlyWhenEditable: true,
+    };
+  },
+});

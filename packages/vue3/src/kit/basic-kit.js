@@ -1,4 +1,4 @@
-import { Extension } from "@tiptap/core";
+import { Extension } from "@isle-editor/core";
 import {
   Document,
   Gapcursor,
@@ -12,8 +12,9 @@ import {
   Text,
   Paragraph,
   HardBreak,
-} from "@/extensions";
-import { prefixClass } from "@/utils";
+  prefixClass,
+  t,
+} from "@isle-editor/core";
 
 export default Extension.create({
   name: "basicKit",
@@ -74,7 +75,13 @@ export default Extension.create({
     }
 
     if (this.options.placeholder !== false) {
-      extensions.push(Placeholder.configure(this.options?.placeholder));
+      extensions.push(
+        Placeholder.configure(
+          this.options?.placeholder || {
+            placeholder: t("placeholder"),
+          },
+        ),
+      );
     }
 
     return extensions;

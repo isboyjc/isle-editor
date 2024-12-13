@@ -1,4 +1,4 @@
-import { defineComponent, h } from "vue";
+import { defineComponent, h, computed } from "vue";
 import { prefixClass } from "@isle-editor/core";
 import {
   getPickerColorsFlat,

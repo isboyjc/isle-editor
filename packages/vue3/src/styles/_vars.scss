@@ -15,18 +15,18 @@
   --#{$prefix}-color-gray: #787774;
   --#{$prefix}-color-brown: #9f6b53;
 
-  --#{$prefix}-background-base: var(--#{$prefix}-color-white);
-  --#{$prefix}-background-white: var(--#{$prefix}-color-white);
-  --#{$prefix}-background-black: var(--#{$prefix}-color-black);
-  --#{$prefix}-background-purple: rgba(246, 243, 248, 1);
-  --#{$prefix}-background-red: rgba(253, 235, 235, 1);
-  --#{$prefix}-background-yellow: rgba(251, 243, 219, 1);
-  --#{$prefix}-background-blue: rgba(231, 243, 248, 1);
-  --#{$prefix}-background-green: rgba(237, 243, 236, 1);
-  --#{$prefix}-background-orange: rgba(250, 235, 221, 1);
-  --#{$prefix}-background-pink: rgba(250, 241, 245, 1);
-  --#{$prefix}-background-gray: rgba(241, 241, 239, 1);
-  --#{$prefix}-background-brown: rgba(244, 238, 238, 1);
+  --#{$prefix}-bg-base: var(--#{$prefix}-color-white);
+  --#{$prefix}-bg-white: var(--#{$prefix}-color-white);
+  --#{$prefix}-bg-black: var(--#{$prefix}-color-black);
+  --#{$prefix}-bg-purple: rgba(246, 243, 248, 1);
+  --#{$prefix}-bg-red: rgba(253, 235, 235, 1);
+  --#{$prefix}-bg-yellow: rgba(251, 243, 219, 1);
+  --#{$prefix}-bg-blue: rgba(231, 243, 248, 1);
+  --#{$prefix}-bg-green: rgba(237, 243, 236, 1);
+  --#{$prefix}-bg-orange: rgba(250, 235, 221, 1);
+  --#{$prefix}-bg-pink: rgba(250, 241, 245, 1);
+  --#{$prefix}-bg-gray: rgba(241, 241, 239, 1);
+  --#{$prefix}-bg-brown: rgba(244, 238, 238, 1);
 
   --#{$prefix}-theme-primary: var(--#{$prefix}-color-blue);
   --#{$prefix}-theme-primary-val: var(--#{$prefix}-color-blue-val);
@@ -41,10 +41,12 @@
   --#{$prefix}-text-color-3: rgba(135, 135, 134, 1);
   --#{$prefix}-text-color-inverse: var(--#{$prefix}-color-white);
 
-  --#{$prefix}-background-color: var(--#{$prefix}-color-white);
-  --#{$prefix}-background-color-1: rgba(247, 247, 247, 1);
-  --#{$prefix}-background-color-2: rgba(239, 239, 239, 1);
-  --#{$prefix}-background-color-inverse: var(--#{$prefix}-color-black);
+  --#{$prefix}-bg-color: var(--#{$prefix}-color-white);
+  --#{$prefix}-bg-color-1: rgba(247, 247, 247, 1);
+  --#{$prefix}-bg-color-2: rgba(239, 239, 239, 1);
+  --#{$prefix}-bg-color-inverse: var(--#{$prefix}-color-black);
+  --#{$prefix}-bg-color-inverse-1: rgba(39, 39, 42, 1);
+  --#{$prefix}-bg-color-inverse-2: rgba(55, 55, 65, 1);
 
   --#{$prefix}-shadow-color: rgba(0, 0, 0, 0.5);
 
@@ -67,18 +69,18 @@
   --#{$prefix}-color-gray: #a8a29e;
   --#{$prefix}-color-brown: #ba856f;
 
-  --#{$prefix}-background-base: var(--#{$prefix}-color-black);
-  --#{$prefix}-background-white: var(--#{$prefix}-color-white);
-  --#{$prefix}-background-black: var(--#{$prefix}-color-black);
-  --#{$prefix}-background-purple: rgba(60, 45, 73, 1);
-  --#{$prefix}-background-red: rgba(82, 46, 42, 1);
-  --#{$prefix}-background-yellow: rgba(86, 67, 40, 1);
-  --#{$prefix}-background-blue: rgba(20, 58, 78, 1);
-  --#{$prefix}-background-green: rgba(36, 61, 48, 1);
-  --#{$prefix}-background-orange: rgba(92, 59, 35, 1);
-  --#{$prefix}-background-pink: rgba(78, 44, 60, 1);
-  --#{$prefix}-background-gray: rgba(47, 47, 47, 1);
-  --#{$prefix}-background-brown: rgba(74, 50, 40, 1);
+  --#{$prefix}-bg-base: var(--#{$prefix}-color-black);
+  --#{$prefix}-bg-white: var(--#{$prefix}-color-white);
+  --#{$prefix}-bg-black: var(--#{$prefix}-color-black);
+  --#{$prefix}-bg-purple: rgba(60, 45, 73, 1);
+  --#{$prefix}-bg-red: rgba(82, 46, 42, 1);
+  --#{$prefix}-bg-yellow: rgba(86, 67, 40, 1);
+  --#{$prefix}-bg-blue: rgba(20, 58, 78, 1);
+  --#{$prefix}-bg-green: rgba(36, 61, 48, 1);
+  --#{$prefix}-bg-orange: rgba(92, 59, 35, 1);
+  --#{$prefix}-bg-pink: rgba(78, 44, 60, 1);
+  --#{$prefix}-bg-gray: rgba(47, 47, 47, 1);
+  --#{$prefix}-bg-brown: rgba(74, 50, 40, 1);
 
   --#{$prefix}-border-color-val: 39, 39, 42;
   --#{$prefix}-border-color: rgba(39, 39, 42, 1);
@@ -90,10 +92,12 @@
   --#{$prefix}-text-color-3: rgba(161, 161, 170, 1);
   --#{$prefix}-text-color-inverse: var(--#{$prefix}-color-black);
 
-  --#{$prefix}-background-color: var(--#{$prefix}-color-black);
-  --#{$prefix}-background-color-1: rgba(39, 39, 42, 1);
-  --#{$prefix}-background-color-2: rgba(55, 55, 65, 1);
-  --#{$prefix}-background-color-inverse: var(--#{$prefix}-color-white);
+  --#{$prefix}-bg-color: var(--#{$prefix}-color-black);
+  --#{$prefix}-bg-color-1: rgba(39, 39, 42, 1);
+  --#{$prefix}-bg-color-2: rgba(55, 55, 65, 1);
+  --#{$prefix}-bg-color-inverse: var(--#{$prefix}-color-white);
+  --#{$prefix}-bg-color-inverse-1: rgba(247, 247, 247, 1);
+  --#{$prefix}-bg-color-inverse-2: rgba(239, 239, 239, 1);
 
   --#{$prefix}-shadow-color: rgba(255, 255, 255, 0.5);
 }

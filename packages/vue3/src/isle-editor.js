@@ -1,4 +1,4 @@
-import { prefixClass } from "@isle-editor/core";
+import { prefixClass, changeLocale } from "@isle-editor/core";
 import {
   defineComponent,
   ref,
@@ -6,7 +6,9 @@ import {
   shallowRef,
   onMounted,
   getCurrentInstance,
+  watch,
 } from "vue";
+import { changeTheme } from "@/utils";
 import { v4 as uuidv4 } from "uuid";
 import { Editor } from "./editor.js";
 import "./styles/index.scss";
@@ -22,6 +24,18 @@ export default defineComponent({
     extensions: {
       type: Array,
       default: () => [],
+    },
+    locale: {
+      type: String,
+      default: "en",
+    },
+    theme: {
+      type: String,
+      default: "light",
+    },
+    output: {
+      type: String,
+      default: "html",
     },
     // 自动获焦
     autofocus: {
@@ -103,6 +117,26 @@ export default defineComponent({
     const isFocused = ref(false);
     // 是否为空
     const isEmpty = ref(false);
+
+    watch(
+      () => props.locale,
+      (locale) => {
+        if (locale) {
+          changeLocale(locale);
+        }
+      },
+      { immediate: true },
+    );
+
+    watch(
+      () => props.theme,
+      (theme) => {
+        if (theme) {
+          changeTheme(theme);
+        }
+      },
+      { immediate: true },
+    );
 
     // props.extensions.some(
     //   (v) => v.name == "color" || v.name == "fontFamily",

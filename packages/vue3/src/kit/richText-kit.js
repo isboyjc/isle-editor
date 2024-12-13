@@ -2,8 +2,6 @@ import BasicKit from "./basic-kit.js";
 import {
   UniqueID,
   Toc,
-  CommandSlash,
-  DragHandle,
   Color,
   TextAlign,
   FontFamily,
@@ -27,10 +25,10 @@ import {
   TextStyle,
   CodeBlock,
   Table,
-} from "@/extensions";
+} from "@isle-editor/core";
 
 export default BasicKit.extend({
-  name: "notionKit",
+  name: "richTextKit",
 
   addOptions() {
     return {
@@ -93,14 +91,6 @@ export default BasicKit.extend({
       extensions.push(Toc.configure(this.options?.toc));
     }
 
-    if (this.options.commandSlash !== false) {
-      extensions.push(CommandSlash.configure(this.options?.commandSlash));
-    }
-
-    if (this.options.dragHandle !== false) {
-      extensions.push(DragHandle.configure(this.options?.dragHandle));
-    }
-
     if (this.options.orderedList !== false) {
       extensions.push(OrderedList.configure(this.options?.orderedList));
     }
@@ -118,7 +108,13 @@ export default BasicKit.extend({
     }
 
     if (this.options.color !== false) {
-      extensions.push(Color.configure(this.options?.color));
+      extensions.push(
+        Color.configure(
+          this.options?.color || {
+            type: "picker",
+          },
+        ),
+      );
     }
 
     if (this.options.textAlign !== false) {
@@ -138,7 +134,13 @@ export default BasicKit.extend({
     }
 
     if (this.options.background !== false) {
-      extensions.push(Background.configure(this.options?.background));
+      extensions.push(
+        Background.configure(
+          this.options?.background || {
+            type: "picker",
+          },
+        ),
+      );
     }
 
     if (this.options.codeBlock !== false) {

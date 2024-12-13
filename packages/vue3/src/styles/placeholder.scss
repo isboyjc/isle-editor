@@ -1,7 +1,7 @@
 @use "config" as *;
 
 .#{$prefix}.ProseMirror {
-  .#{$prefix}-empty:first-child::before {
+  p.#{$prefix}-empty:first-child::before {
     content: attr(data-placeholder);
     float: left;
     color: var(--#{$prefix}-text-color-2);
