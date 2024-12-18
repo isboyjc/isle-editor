@@ -44,9 +44,19 @@ const props = defineProps({
     type: String,
     default: "light",
   },
+  placeholder: {
+    type: String,
+    default: "",
+  },
 });
 
 const editorEl = ref(null);
 const content = ref("");
-const extensions = [RichTextKit.configure({})];
+const extensions = [
+  RichTextKit.configure({
+    placeholder: {
+      placeholder: props.placeholder,
+    },
+  }),
+];
 </script>

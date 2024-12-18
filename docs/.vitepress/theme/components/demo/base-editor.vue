@@ -49,12 +49,20 @@ const props = defineProps({
     type: String,
     default: "light",
   },
+  placeholder: {
+    type: String,
+    default: "",
+  },
 });
 
 const editorEl = ref(null);
 const content = ref("");
 const extensions = [
-  BasicKit.configure({}),
+  BasicKit.configure({
+    placeholder: {
+      placeholder: props.placeholder,
+    },
+  }),
   Bold,
   Italic,
   Underline,

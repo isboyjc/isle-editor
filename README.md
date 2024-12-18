@@ -19,15 +19,15 @@ Considering the extensibility, you can use our built-in combo extensions to buil
 
 ## Why choose isle-editor
 
-`prosemirror` is a powerful and flexible open source rich text editor framework, it provides a set of core tools and `API` for building highly customizable rich text editor. `tiptap` is based on `prosemirror` implementation of an open source modern rich text editor framework, it `prosemirror` provides a higher level of encapsulation and default implementation, making it easier to use.
+`prosemirror` is a powerful and flexible open-source rich text editing framework that provides a set of core tools and `API`s for building highly customizable rich text editors. `tiptap` is a modern rich text editor framework built on top of `prosemirror`, providing higher-level abstractions and default implementations that make it more user-friendly.
 
-Both `prosemirror` and `tiptap` are headless, i.e., they don't depend on any frameworks, and while you can use `tiptap` to greatly simplify the development of your editor, it is still complex because `tiptap` doesn't provide a `UI` view, and there is a lot of processing that needs to be done for the editor when developing it, including implementation of the extensions, and view-layer processing.
+Both `prosemirror` and `tiptap` are headless, meaning they don't depend on any specific framework. While `tiptap` greatly simplifies editor development, it remains complex because it doesn't provide a `UI` view. When developing with it, you need to handle many aspects, including implementing various extensions and managing the view layer.
 
-The goal of `isle-editor` is to provide developers with a fully out-of-the-box rich text editor that can be quickly integrated into existing projects without complex configuration. We reuse the core implementation of `tiptap` because it is relatively reliable, and we provide multiple versions of the `UI` view and more core extensions that allow users to use it out-of-the-box based on configuration.
+`isle-editor`'s goal is to provide developers with a completely out-of-the-box rich text editor that can be quickly integrated into existing projects without complex configuration. We leverage `tiptap`'s core implementation for its reliability while providing `UI` views and additional core extensions that enable out-of-the-box functionality through configuration.
 
-You can use `isle-editor` in any framework and quickly integrate it into existing projects without complex configuration. (Currently we only support `vue` views, more framework views are in the queue, or you can submit your code on [GitHub](https://github.com/isboyjc/isle-editor) to help us implement view support for more frameworks).
+You can use `isle-editor` in any framework and quickly integrate it into existing projects without complex configuration. (We prioritize support for `Vue` views, with more framework views in development. You can also contribute your code on [GitHub](https://github.com/isboyjc/isle-editor) to help us implement view support for additional frameworks.)
 
-Although `isle-editor` currently only supports `Vue` views, its core extensions are fully integrated with `tiptap`, so if you are developing a project using `tiptap`, you can use our core extensions seamlessly. You can also refer to the `isle-editor` source code as we expect it to be a best practice for `tiptap`.
+`isle-editor`'s core extensions are fully compatible with `tiptap`. If you're developing a project using `tiptap`, you can seamlessly use our core extensions. You can also reference the `isle-editor` source code, as we aim for it to be a best practice implementation of `tiptap`.
 
 ## Features
 

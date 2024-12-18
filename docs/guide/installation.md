@@ -18,10 +18,7 @@ yarn add @isle-editor/core @isle-editor/vue3
 pnpm add @isle-editor/core @isle-editor/vue3
 ```
 
-## Vue (In Progress)
+## TODO...
 
-TODO...
-
-## React (Planned)
-
-TODO...
+- Vue2 (In Progress)
+- React (Planned)

@@ -120,13 +120,54 @@
         </div>
       </div>
     </section>
-    <section class="w-full mt-40">
+    <section class="w-full mt-40 grid gap-5">
       <div class="w-full min-h-250px grid grid-cols-12 gap-5">
-        <div class="col-span-12" uno-md="col-span-4">
-          <BaseEditor :locale="locale" :theme="isDark ? 'dark' : 'light'" />
+        <div
+          class="col-span-12"
+          uno-md="col-span-4"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :enter="{ opacity: 1, y: 0, scale: 1 }"
+          :delay="450"
+          :duration="300"
+        >
+          <BaseEditor
+            :locale="locale"
+            :theme="isDark ? 'dark' : 'light'"
+            :placeholder="t(locale, 'baseEditor.placeholder')"
+          />
         </div>
-        <div class="col-span-12" uno-md="col-span-8">
-          <RichTextEditor :locale="locale" :theme="isDark ? 'dark' : 'light'" />
+        <div
+          class="col-span-12"
+          uno-md="col-span-8"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :enter="{ opacity: 1, y: 0, scale: 1 }"
+          :delay="480"
+          :duration="300"
+        >
+          <RichTextEditor
+            :locale="locale"
+            :theme="isDark ? 'dark' : 'light'"
+            :placeholder="t(locale, 'richTextEditor.placeholder')"
+          />
+        </div>
+      </div>
+      <div class="w-full min-h-250px grid grid-cols-12 gap-5">
+        <div
+          class="col-span-12"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :enter="{ opacity: 1, y: 0, scale: 1 }"
+          :delay="500"
+          :duration="300"
+        >
+          <NotionStyleEditor
+            :locale="locale"
+            :theme="isDark ? 'dark' : 'light'"
+            :placeholder="t(locale, 'notionEditor.placeholder')"
+            :defaultContent="t(locale, 'notionEditor.defaultContent')"
+          />
         </div>
       </div>
     </section>

@@ -57,51 +57,51 @@ export const DEFAULT_COLORS = [
   {
     name: "base",
     color: `var(--${prefixClass}-color-base)`,
-    background: `var(--${prefixClass}-background-base)`,
+    background: `var(--${prefixClass}-bg-base)`,
   },
   {
     name: "gray",
     color: `var(--${prefixClass}-color-gray)`,
-    background: `var(--${prefixClass}-background-gray)`,
+    background: `var(--${prefixClass}-bg-gray)`,
   },
   {
     name: "purple",
     color: `var(--${prefixClass}-color-purple)`,
-    background: `var(--${prefixClass}-background-purple)`,
+    background: `var(--${prefixClass}-bg-purple)`,
   },
   {
     name: "red",
     color: `var(--${prefixClass}-color-red)`,
-    background: `var(--${prefixClass}-background-red)`,
+    background: `var(--${prefixClass}-bg-red)`,
   },
   {
     name: "yellow",
     color: `var(--${prefixClass}-color-yellow)`,
-    background: `var(--${prefixClass}-background-yellow)`,
+    background: `var(--${prefixClass}-bg-yellow)`,
   },
   {
     name: "blue",
     color: `var(--${prefixClass}-color-blue)`,
-    background: `var(--${prefixClass}-background-blue)`,
+    background: `var(--${prefixClass}-bg-blue)`,
   },
   {
     name: "green",
     color: `var(--${prefixClass}-color-green)`,
-    background: `var(--${prefixClass}-background-green)`,
+    background: `var(--${prefixClass}-bg-green)`,
   },
   {
     name: "orange",
     color: `var(--${prefixClass}-color-orange)`,
-    background: `var(--${prefixClass}-background-orange)`,
+    background: `var(--${prefixClass}-bg-orange)`,
   },
   {
     name: "pink",
     color: `var(--${prefixClass}-color-pink)`,
-    background: `var(--${prefixClass}-background-pink)`,
+    background: `var(--${prefixClass}-bg-pink)`,
   },
   {
     name: "brown",
     color: `var(--${prefixClass}-color-brown)`,
-    background: `var(--${prefixClass}-background-brown)`,
+    background: `var(--${prefixClass}-bg-brown)`,
   },
 ];

@@ -18,10 +18,7 @@ yarn add @isle-editor/core @isle-editor/vue3
 pnpm add @isle-editor/core @isle-editor/vue3
 ```
 
-## Vue（实现中）
+## TODO...
 
-TODO...
-
-## React（计划中）
-
-TODO...
+- Vue2（实现中）
+- React（计划中）
