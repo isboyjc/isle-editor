@@ -6,7 +6,7 @@
     <div
       class="w-full border-b border-b-solid border-b-[var(--isle-editor-border-color)] box-border"
     >
-      <div
+      <!-- <div
         class="w-full h-52px px-1rem flex justify-between border-b border-b-solid border-b-[var(--isle-editor-border-color)] box-border"
       >
         <div></div>
@@ -18,7 +18,7 @@
             <span>{{ characters || 0 }} characters</span>
           </div>
         </div>
-      </div>
+      </div> -->
       <IsleEditorToolbar v-if="editorEl?.editor" :editor="editorEl?.editor" />
     </div>
     <div class="w-full flex-1">
@@ -32,7 +32,6 @@
           :locale="locale"
           :theme="theme"
           :extensions="extensions"
-          @update="editorUpdate"
         ></IsleEditor>
       </div>
     </div>
@@ -76,17 +75,4 @@ const extensions = [
     },
   }),
 ];
-
-const characters = ref(0);
-const words = ref(0);
-function charactersCount(editor) {
-  const characterObj = editor.getCharacters();
-  characters.value = characterObj.characters;
-  words.value = characterObj.words;
-}
-
-function editorUpdate({ editor, output }) {
-  console.log(output);
-  charactersCount(editor);
-}
 </script>
