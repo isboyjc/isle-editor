@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-100vh flex">
+  <div class="w-full h-100vh flex overflow-hidden">
     <div
       class="w-320px h-full border-r-1 border-r-[var(--color-border-1)] border-r-solid box-border overflow-hidden transition-all duration-300"
       :class="{ 'w-0px!': !showSidebar }"

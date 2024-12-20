@@ -23,7 +23,7 @@
     </div>
     <div class="w-full flex-1">
       <IsleEditorBubble v-if="editorEl?.editor" :editor="editorEl?.editor" />
-      <div class="max-w-full w-screen-md mx-auto">
+      <div class="w-full max-w-screen-md mx-auto">
         <IsleEditor
           class="px-2rem py-1rem"
           ref="editorEl"

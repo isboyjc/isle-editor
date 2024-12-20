@@ -121,7 +121,7 @@
       </div>
     </section>
     <section class="w-full mt-40 grid gap-5">
-      <div class="w-full min-h-250px grid grid-cols-12 gap-5">
+      <div class="w-full min-h-250px grid grid-cols-12 gap-5 relative z-1">
         <div
           class="col-span-12"
           uno-md="col-span-4"
@@ -153,7 +153,7 @@
           />
         </div>
       </div>
-      <div class="w-full min-h-250px grid grid-cols-12 gap-5">
+      <div class="w-full min-h-250px grid grid-cols-12 gap-5 relative z-0">
         <div
           class="col-span-12"
           v-motion

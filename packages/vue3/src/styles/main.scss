@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 0%;
+  // isolation: isolate;
+  // contain: content;
 }
 
 .#{$prefix}.ProseMirror {
@@ -15,6 +17,7 @@
   transition: all 0.3s;
   font-size: var(--#{$prefix}-font-size);
   line-height: var(--#{$prefix}-line-height);
+  color: var(--#{$prefix}-text-color);
   flex: 1 1 0%;
   word-wrap: break-word;
   white-space: pre-wrap;
