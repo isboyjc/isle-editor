@@ -21,8 +21,7 @@
     text-align: inherit;
   }
 
-  // pre.#{$prefix}-node-empty::before {
-  //   color: var(--#{$prefix}-text-color-3);
-  //   font-weight: 400;
-  // }
+  table .#{$prefix}-node-empty::before {
+    content: none;
+  }
 }
