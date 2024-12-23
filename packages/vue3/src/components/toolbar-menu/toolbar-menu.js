@@ -8,6 +8,7 @@ import ButtonColor from "@/components/special-button/button-color";
 import ButtonBackground from "@/components/special-button/button-background";
 import ButtonFontFamily from "@/components/special-button/button-font-family";
 import ButtonFontSize from "@/components/special-button/button-font-size";
+import ButtonTable from "@/components/special-button/button-table";
 
 const TOOLBAR_MENU_SORT = [
   "history",
@@ -28,6 +29,7 @@ const TOOLBAR_MENU_SORT = [
   "color",
   "background",
   "textAlign",
+  "table",
   "link",
   "codeBlock",
   "|",
@@ -182,6 +184,13 @@ export default defineComponent({
 
           if (menu.name === "fontSize") {
             return h(ButtonFontSize, {
+              editor: props.editor,
+              menu,
+            });
+          }
+
+          if (menu.name === "table") {
+            return h(ButtonTable, {
               editor: props.editor,
               menu,
             });

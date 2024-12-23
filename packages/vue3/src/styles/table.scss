@@ -23,15 +23,19 @@
     table-layout: fixed;
     width: 100%;
 
+    tr {
+      all: revert;
+    }
+
     td,
     th {
+      all: revert;
       border: 1px solid rgba(var(--#{$prefix}-border-color-val), 1);
       box-sizing: border-box;
       min-width: 1em;
       padding: 3px 5px;
       position: relative;
       vertical-align: top;
-      background-color: var(--#{$prefix}-bg-color);
 
       > * {
         margin-bottom: 0;

@@ -25,7 +25,8 @@
   &__background,
   &__text-align,
   &__font-family,
-  &__font-size {
+  &__font-size,
+  &__table {
     width: auto;
     height: auto;
     padding: 0.2rem;
@@ -133,5 +134,47 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+  }
+
+  &__table {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 20px);
+      border: 1px solid var(--#{$prefix}-border-color);
+      border-radius: 0.25rem;
+
+      &-cell {
+        cursor: pointer;
+        width: 20px;
+        height: 18.5px;
+        border-right: 1px solid var(--#{$prefix}-border-color);
+        border-bottom: 1px solid var(--#{$prefix}-border-color);
+
+        &:nth-child(10n) {
+          border-right: none;
+        }
+
+        &:nth-last-child(-n + 10) {
+          border-bottom: none;
+        }
+
+        &.is-highlighted {
+          background-color: rgba(var(--#{$prefix}-border-color-val), 0.4);
+        }
+      }
+    }
+
+    &-size-text {
+      margin-top: 0.5rem;
+      font-size: 12px;
+      color: var(--#{$prefix}-text-color-2);
+      text-align: center;
+    }
   }
 }
