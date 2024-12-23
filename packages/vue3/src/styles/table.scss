@@ -1,20 +1,24 @@
 @use "config" as *;
 
 .#{$prefix}.ProseMirror {
+  isolation: isolate;
+
   &.resize-cursor {
     cursor: col-resize;
   }
 
   .#{$prefix}__table-wrapper {
-    margin: 1.5rem 0;
+    all: revert;
+    margin: 0;
+    margin-top: var(--#{$prefix}-margin);
     width: 100%;
     overflow-x: auto;
   }
 
   table {
+    all: revert;
     border-collapse: collapse;
     margin: 0;
-    margin-top: var(--#{$prefix}-margin);
     overflow: hidden;
     table-layout: fixed;
     width: 100%;
@@ -27,6 +31,7 @@
       padding: 3px 5px;
       position: relative;
       vertical-align: top;
+      background-color: var(--#{$prefix}-bg-color);
 
       > * {
         margin-bottom: 0;

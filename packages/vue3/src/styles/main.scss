@@ -34,14 +34,10 @@
     outline: none !important;
   }
 
-  :first-child {
-    margin-top: 0;
-  }
-
   p {
     line-height: inherit;
     margin: 0;
-    margin: var(--#{$prefix}-margin-mini) 0;
+    margin-top: var(--#{$prefix}-margin);
   }
 
   .ProseMirror-selectednode {
