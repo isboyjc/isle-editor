@@ -34,6 +34,10 @@
     outline: none !important;
   }
 
+  :first-child {
+    margin-top: 0;
+  }
+
   p {
     line-height: inherit;
     margin: 0;

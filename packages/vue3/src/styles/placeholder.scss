@@ -1,7 +1,7 @@
 @use "config" as *;
 
 .#{$prefix}.ProseMirror {
-  p.#{$prefix}-empty:first-child::before {
+  .#{$prefix}-empty:first-child::before {
     content: attr(data-placeholder);
     float: left;
     color: var(--#{$prefix}-text-color-2);
@@ -11,7 +11,6 @@
     text-align: inherit;
   }
 
-  pre.#{$prefix}-node-empty::before,
   p.#{$prefix}-node-empty::before {
     content: attr(data-placeholder);
     float: left;
@@ -22,8 +21,8 @@
     text-align: inherit;
   }
 
-  pre.#{$prefix}-node-empty::before {
-    color: var(--#{$prefix}-text-color-3);
-    font-weight: 400;
-  }
+  // pre.#{$prefix}-node-empty::before {
+  //   color: var(--#{$prefix}-text-color-3);
+  //   font-weight: 400;
+  // }
 }

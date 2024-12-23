@@ -148,7 +148,13 @@ export default BasicKit.extend({
     }
 
     if (this.options.table !== false) {
-      extensions.push(Table.configure(this.options?.table));
+      extensions.push(
+        Table.configure(
+          this.options?.table || {
+            resizable: true,
+          },
+        ),
+      );
     }
 
     return extensions;
