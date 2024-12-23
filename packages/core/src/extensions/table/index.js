@@ -2,11 +2,14 @@ import Table from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
 import TableHeader from "@tiptap/extension-table-header";
 import TableCell from "@tiptap/extension-table-cell";
+import { prefixClass } from "@/utils";
+import { TableView } from "./table-view.js";
 
 export default Table.extend({
   addOptions() {
     return {
       ...this.parent?.(),
+      View: TableView,
       slash: true,
       name: "table",
       resizable: true,
@@ -32,7 +35,7 @@ export default Table.extend({
       isActive: ({ editor }) => editor.isActive("table"),
       isDisabled: ({ editor }) => !editor.can().insertTable(),
       HTMLAttributes: {
-        class: "table",
+        class: `${prefixClass}__table`,
       },
     };
   },
