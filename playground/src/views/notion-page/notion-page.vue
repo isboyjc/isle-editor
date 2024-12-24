@@ -95,31 +95,6 @@
 
 <script setup>
 import {
-  Heading,
-  OrderedList,
-  BulletList,
-  TaskList,
-  Blockquote,
-  Divider,
-  Bold,
-  Italic,
-  Strike,
-  Underline,
-  Subscript,
-  Superscript,
-  Code,
-  Link,
-  Color,
-  Background,
-  TextAlign,
-  UniqueID,
-  Toc,
-  CommandSlash,
-  DragHandle,
-  Placeholder,
-  t
-} from '@isle-editor/core'
-import {
   BasicKit,
   NotionKit,
   IsleEditor,
@@ -199,7 +174,8 @@ function charactersCount(editor) {
   words.value = characterObj.words
 }
 
-function editorUpdate({ editor }) {
+function editorUpdate({ editor, output }) {
+  console.log(output)
   charactersCount(editor)
 }
 
