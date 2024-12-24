@@ -1,5 +1,14 @@
 # @isle-editor/core
 
+## 0.0.8
+
+### Patch Changes
+
+- c7d041a: feat: ✨ add table toolbar
+- 4b9595a: feat: ✨ add table bubble and icon components
+- 31eab75: feat: ✨ add table
+- e2f8dea: style: 💄 update table view
+
 ## 0.0.7
 
 ### Patch Changes

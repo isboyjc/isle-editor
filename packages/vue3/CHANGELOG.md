@@ -1,5 +1,20 @@
 # @isle-editor/vue3
 
+## 0.0.8
+
+### Patch Changes
+
+- 65be7f8: fix: 🐛 update placeholder style for table
+- c7d041a: feat: ✨ add table toolbar
+- 4b9595a: feat: ✨ add table bubble and icon components
+- 31eab75: feat: ✨ add table
+- e2f8dea: style: 💄 update table view
+- Updated dependencies [c7d041a]
+- Updated dependencies [4b9595a]
+- Updated dependencies [31eab75]
+- Updated dependencies [e2f8dea]
+  - @isle-editor/core@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes
