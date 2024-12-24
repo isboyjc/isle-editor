@@ -89,9 +89,6 @@ export default defineComponent({
         ? false
         : /CellSelection$/.test(props.editor.state.selection.constructor.name),
     );
-    watch(isTable, () => {
-      console.log("isTable", isTable.value);
-    });
     // Determine whether the current selection is text
     // Why not use the TextSelection or AllSelection classes to determine if a selection instance belongs to that class?
     // Because the TextSelection and AllSelection classes were prefixed with module private prefixes during the rollup packaging,

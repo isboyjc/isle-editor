@@ -1,6 +1,5 @@
 import { defineComponent, h } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon } from "@/utils";
 import { ITooltip, IDivider, IButton } from "@/components/ui";
 import DeleteTable from "~icons/tabler/table-minus";
 import HeaderRow from "~icons/tabler/table-row";
