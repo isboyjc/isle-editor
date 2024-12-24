@@ -17,5 +17,5 @@ export function t(locale, key, params = {}) {
 }
 
 export function routerPath(locale, path) {
-  return (locale == "en" ? "/en" : "") + path;
+  return (locale.split("-")[0] == "zh" ? "/zh" : "") + path;
 }
