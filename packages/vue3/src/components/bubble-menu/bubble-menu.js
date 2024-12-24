@@ -84,13 +84,9 @@ export default defineComponent({
       !props.editor ? false : props.editor.isActive("link"),
     );
     // Determine whether the current selection is table
-    const isTable = computed(() => {
-      console.log(props.editor.state.selection);
-      console.log(props.editor.state.selection.constructor.name);
-      return !props.editor
-        ? false
-        : /CellSelection$/.test(props.editor.state.selection.constructor.name);
-    });
+    const isTable = computed(() =>
+      !props.editor ? false : props.editor.isActive("table"),
+    );
     // Determine whether the current selection is text
     // Why not use the TextSelection or AllSelection classes to determine if a selection instance belongs to that class?
     // Because the TextSelection and AllSelection classes were prefixed with module private prefixes during the rollup packaging,
@@ -207,14 +203,6 @@ export default defineComponent({
       registered.value = false;
     });
 
-    watch(
-      [() => isText.value, () => isLink.value, () => isTable.value],
-      ([isText, isLink, isTable]) => {
-        console.log("isText", isText);
-        console.log("isLink", isLink);
-        console.log("isTable", isTable);
-      },
-    );
     return () =>
       h("div", { ref: root }, [
         // 渲染基础气泡菜单
