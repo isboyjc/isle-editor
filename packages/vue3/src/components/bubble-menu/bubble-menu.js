@@ -205,6 +205,14 @@ export default defineComponent({
       registered.value = false;
     });
 
+    watch(
+      [() => isText.value, () => isLink.value, () => isTable.value],
+      ([isText, isLink, isTable]) => {
+        console.log("isText", isText);
+        console.log("isLink", isLink);
+        console.log("isTable", isTable);
+      },
+    );
     return () =>
       h("div", { ref: root }, [
         // 渲染基础气泡菜单
