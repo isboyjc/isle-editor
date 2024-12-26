@@ -1,7 +1,7 @@
 import { defineComponent, computed, h } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { IButton, IDivider, ITooltip } from "@/components/ui";
-import { getIcon, isString, isObject } from "@/utils";
+import { IButton, IDivider, ITooltip, IIcon } from "@/components/ui";
+import { isString, isObject } from "@/utils";
 import ButtonLink from "@/components/special-button/button-link";
 import ButtonTextAlign from "@/components/special-button/button-text-align";
 import ButtonColor from "@/components/special-button/button-color";
@@ -136,8 +136,9 @@ export default defineComponent({
                       },
                       {
                         icon: () =>
-                          h(getIcon(item.name), {
-                            style: { fontSize: "13px" },
+                          h(IIcon, {
+                            name: item.name,
+                            size: 14,
                           }),
                       },
                     ),
@@ -214,7 +215,10 @@ export default defineComponent({
                   },
                   {
                     icon: () =>
-                      h(getIcon(menu.name), { style: { fontSize: "13px" } }),
+                      h(IIcon, {
+                        name: menu.name,
+                        size: 14,
+                      }),
                   },
                 ),
             },

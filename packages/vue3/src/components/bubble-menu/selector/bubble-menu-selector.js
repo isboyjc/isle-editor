@@ -1,13 +1,12 @@
 import { defineComponent, h } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon } from "@/utils/icon";
 import ButtonLink from "@/components/special-button/button-link";
 import ButtonColor from "@/components/special-button/button-color";
 import ButtonBackground from "@/components/special-button/button-background";
 import ButtonTextAlign from "@/components/special-button/button-text-align";
 import ButtonFontFamily from "@/components/special-button/button-font-family";
 import ButtonFontSize from "@/components/special-button/button-font-size";
-import { ITooltip, IButton, IDivider } from "@/components/ui";
+import { ITooltip, IButton, IDivider, IIcon } from "@/components/ui";
 
 export default defineComponent({
   name: "BubbleSelector",
@@ -108,8 +107,7 @@ export default defineComponent({
                     onClick: () => menu.command({ editor: props.editor }),
                   },
                   {
-                    icon: () =>
-                      h(getIcon(menu.name), { style: { fontSize: "13px" } }),
+                    icon: () => h(IIcon, { name: menu.name, size: 14 }),
                   },
                 ),
             },

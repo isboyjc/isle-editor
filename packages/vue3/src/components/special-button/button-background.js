@@ -1,7 +1,13 @@
 import { defineComponent, ref, h, computed } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon, getDefaultColors } from "@/utils";
-import { ITooltip, IButton, ITrigger, IColorPicker } from "@/components/ui";
+import { getDefaultColors } from "@/utils";
+import {
+  ITooltip,
+  IButton,
+  ITrigger,
+  IColorPicker,
+  IIcon,
+} from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonBackground",
@@ -135,13 +141,15 @@ export default defineComponent({
                             },
                           },
                           [
-                            h(getIcon(props.menu.name || "background"), {
-                              style: { fontSize: "12px" },
+                            h(IIcon, {
+                              name: props.menu.name || "background",
+                              size: 13,
                             }),
                           ],
                         ),
                       default: () =>
-                        h(getIcon("down"), {
+                        h(IIcon, {
+                          name: "down",
                           style: {
                             marginLeft: "0.1rem",
                             marginTop: "0.1rem",

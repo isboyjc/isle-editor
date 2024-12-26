@@ -1,7 +1,13 @@
 import { defineComponent, ref, h, computed } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon, getDefaultColors } from "@/utils";
-import { ITooltip, IButton, ITrigger, IColorPicker } from "@/components/ui";
+import { getDefaultColors } from "@/utils";
+import {
+  ITooltip,
+  IButton,
+  ITrigger,
+  IColorPicker,
+  IIcon,
+} from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonColor",
@@ -51,9 +57,10 @@ export default defineComponent({
                   }),
               },
               [
-                h(getIcon(props.menu.name), {
+                h(IIcon, {
+                  name: props.menu.name,
                   class: `${prefixClass}-special-button__color-box-item-icon`,
-                  style: { fontSize: "12px" },
+                  size: 13,
                 }),
               ],
             ),
@@ -126,13 +133,15 @@ export default defineComponent({
                             style: { color: activeColor.value },
                           },
                           [
-                            h(getIcon(props.menu.name || "color"), {
-                              style: { fontSize: "12px" },
+                            h(IIcon, {
+                              name: props.menu.name || "color",
+                              size: 13,
                             }),
                           ],
                         ),
                       default: () =>
-                        h(getIcon("down"), {
+                        h(IIcon, {
+                          name: "down",
                           style: {
                             marginLeft: "0.1rem",
                             marginTop: "0.1rem",

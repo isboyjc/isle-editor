@@ -1,8 +1,7 @@
 import { defineComponent, h, computed, ref } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon } from "@/utils/icon";
 import { convertShortcutKeys } from "@/utils/shortcutkey";
-
+import { IIcon } from "@/components/ui";
 export default defineComponent({
   name: "IsleEditorSlash",
   props: {
@@ -140,9 +139,10 @@ export default defineComponent({
                       "div",
                       { class: `${prefixClass}-slash-menu__item-left` },
                       [
-                        h(getIcon(item.name), {
+                        h(IIcon, {
+                          name: item.name,
                           class: `${prefixClass}-slash-menu__item-left-icon`,
-                          style: { fontSize: "13px" },
+                          size: 14.5,
                         }),
                         h(
                           "span",

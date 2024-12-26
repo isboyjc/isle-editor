@@ -1,8 +1,7 @@
 import { defineComponent, ref, watchEffect, h } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon } from "@/utils/icon";
 import ButtonLink from "@/components/special-button/button-link";
-import { ITooltip, IDivider, IButton } from "@/components/ui";
+import { ITooltip, IDivider, IButton, IIcon } from "@/components/ui";
 
 export default defineComponent({
   name: "BubbleLinkSelector",
@@ -58,8 +57,7 @@ export default defineComponent({
                   onClick: openLink,
                 },
                 {
-                  icon: () =>
-                    h(getIcon("openRight"), { style: { fontSize: "12px" } }),
+                  icon: () => h(IIcon, { name: "openRight", size: 14 }),
                   default: () =>
                     h(
                       "span",
@@ -85,8 +83,9 @@ export default defineComponent({
                 },
                 {
                   icon: () =>
-                    h(getIcon(copyOk.value ? "check" : "copy"), {
-                      style: { fontSize: "12px" },
+                    h(IIcon, {
+                      name: copyOk.value ? "check" : "copy",
+                      size: 13.5,
                     }),
                 },
               ),
@@ -105,8 +104,7 @@ export default defineComponent({
                   onClick: unLink,
                 },
                 {
-                  icon: () =>
-                    h(getIcon("unlink"), { style: { fontSize: "12px" } }),
+                  icon: () => h(IIcon, { name: "unlink", size: 14 }),
                 },
               ),
           },

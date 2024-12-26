@@ -12,6 +12,7 @@ import { changeTheme } from "@/utils";
 import { v4 as uuidv4 } from "uuid";
 import { Editor } from "./editor.js";
 import "./styles/index.scss";
+import "@/utils/preload-icons";
 
 export default defineComponent({
   name: "IsleEditor",

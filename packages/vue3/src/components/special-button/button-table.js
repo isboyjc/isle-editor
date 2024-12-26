@@ -1,7 +1,6 @@
 import { defineComponent, ref, h, computed } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon } from "@/utils";
-import { ITooltip, IButton, ITrigger } from "@/components/ui";
+import { ITooltip, IButton, ITrigger, IIcon } from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonTable",
@@ -135,11 +134,13 @@ export default defineComponent({
                     },
                     {
                       icon: () =>
-                        h(getIcon(props.menu.name), {
-                          style: { fontSize: "12px" },
+                        h(IIcon, {
+                          name: props.menu.name,
+                          size: 13,
                         }),
                       default: () =>
-                        h(getIcon("down"), {
+                        h(IIcon, {
+                          name: "down",
                           style: {
                             marginLeft: "0.1rem",
                             marginTop: "0.1rem",

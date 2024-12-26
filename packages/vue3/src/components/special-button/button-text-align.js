@@ -1,7 +1,6 @@
 import { defineComponent, ref, h, computed } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon } from "@/utils/icon";
-import { ITooltip, IButton, ITrigger } from "@/components/ui";
+import { ITooltip, IButton, ITrigger, IIcon } from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonTextAlign",
@@ -50,11 +49,13 @@ export default defineComponent({
                     },
                     {
                       icon: () =>
-                        h(getIcon(activeAlign.value?.name || "alignLeft"), {
-                          style: { fontSize: "13px" },
+                        h(IIcon, {
+                          name: activeAlign.value?.name || "alignLeft",
+                          size: 14,
                         }),
                       default: () =>
-                        h(getIcon("down"), {
+                        h(IIcon, {
+                          name: "down",
                           style: {
                             marginLeft: "0.1rem",
                             marginTop: "0.1rem",
@@ -81,8 +82,9 @@ export default defineComponent({
                         },
                         {
                           icon: () =>
-                            h(getIcon(item?.name), {
-                              style: { fontSize: "13px" },
+                            h(IIcon, {
+                              name: item?.name,
+                              size: 14,
                             }),
                         },
                       ),

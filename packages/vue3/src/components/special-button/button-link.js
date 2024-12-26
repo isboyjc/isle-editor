@@ -1,7 +1,6 @@
 import { defineComponent, nextTick, watchEffect, h, ref } from "vue";
 import { prefixClass, t } from "@isle-editor/core";
-import { getIcon } from "@/utils/icon";
-import { ITooltip, IButton, ITrigger } from "@/components/ui";
+import { ITooltip, IButton, ITrigger, IIcon } from "@/components/ui";
 
 export default defineComponent({
   name: "ButtonLink",
@@ -107,11 +106,13 @@ export default defineComponent({
                     {
                       icon: () =>
                         props.isEdit
-                          ? h(getIcon("edit"), {
-                              style: { fontSize: "13px" },
+                          ? h(IIcon, {
+                              name: "edit",
+                              size: 13,
                             })
-                          : h(getIcon(props.menu.name), {
-                              style: { fontSize: "12px" },
+                          : h(IIcon, {
+                              name: props.menu.name,
+                              size: 13,
                             }),
                     },
                   ),
@@ -120,9 +121,10 @@ export default defineComponent({
           content: () =>
             h("div", { class: `${prefixClass}-special-button__link` }, [
               h("div", { class: `${prefixClass}-special-button__link-input` }, [
-                h(getIcon(props.menu.name || "link"), {
+                h(IIcon, {
+                  name: props.menu.name || "link",
                   class: `${prefixClass}-special-button__link-input-icon`,
-                  style: { fontSize: "13px" },
+                  size: 13,
                 }),
                 h("input", {
                   ref: linkInputRef,
