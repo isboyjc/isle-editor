@@ -77,9 +77,12 @@ export default defineConfig({
                 text: "Getting Started",
                 items: [
                   { text: "Introduction", link: "/guide/introduction" },
-                  { text: "Installation", link: "/guide/installation" },
                   { text: "Quick Start", link: "/guide/quick-start" },
                 ],
+              },
+              {
+                text: "Used in Vue3",
+                link: "/vue3/quick-start",
               },
             ],
           },
@@ -100,7 +103,6 @@ export default defineConfig({
             text: "Getting Started",
             items: [
               { text: "Introduction", link: "/guide/introduction" },
-              { text: "Installation", link: "/guide/installation" },
               { text: "Quick Start", link: "/guide/quick-start" },
             ],
           },
@@ -193,10 +195,7 @@ export default defineConfig({
                 text: "Vue3",
                 collapsed: true,
                 collapsible: true,
-                items: [
-                  { text: "Installation", link: "" },
-                  { text: "Quick Start", link: "" },
-                ],
+                items: [{ text: "Quick Start", link: "/vue3/quick-start" }],
               },
             ],
           },
@@ -284,9 +283,12 @@ export default defineConfig({
                 text: "开始",
                 items: [
                   { text: "介绍", link: "/zh/guide/introduction" },
-                  { text: "安装", link: "/zh/guide/installation" },
                   { text: "快速开始", link: "/zh/guide/quick-start" },
                 ],
+              },
+              {
+                text: "Vue3 中使用",
+                link: "/zh/vue3/quick-start",
               },
             ],
           },
@@ -306,7 +308,6 @@ export default defineConfig({
             text: "指南",
             items: [
               { text: "介绍", link: "/zh/guide/introduction" },
-              { text: "安装", link: "/zh/guide/installation" },
               { text: "快速开始", link: "/zh/guide/quick-start" },
             ],
           },
@@ -399,10 +400,7 @@ export default defineConfig({
                 text: "Vue3",
                 collapsed: true,
                 collapsible: true,
-                items: [
-                  { text: "安装", link: "" },
-                  { text: "快速开始", link: "" },
-                ],
+                items: [{ text: "快速开始", link: "/zh/vue3/quick-start" }],
               },
             ],
           },

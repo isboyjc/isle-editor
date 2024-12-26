@@ -1,33 +1,7 @@
 # 快速开始
 
-<!-- ## 基础使用
+使用 `isle-editor` 非常快捷简单，安装所需的软件包并将对应的组件添加到您的应用程序即可。`isle-editor` 支持多个前端框架的集成，除了核心的 `@isle-editor/core` 包之外，针对不同的框架，您可以选择安装对应的扩展包，请根据您的项目框架选择对应的使用指南：
 
-### 引入样式
-
-建议在您的入口文件（如 `main.js` 或 `main.ts`）中引入编辑器的样式
-
-```js
-import "@isle-editor/[view package]/dist/style.css";
-```
-
-以 `Vue3` 视图为例：
-
-```js
-import "@isle-editor/vue3/dist/style.css";
-```
-
-### 注册组件
-
-不建议您全局注册，建议您在需要使用的地方单独导入组件
-
-以 `Vue3` 视图为例：
-
-```js
-import { IsleEditor } from "@isle-editor/vue3";
-```
-
-
-### 使用组件
-
-## 进阶使用
- -->
+- [Vue3](../vue3/quick-start.md)
+- Vue2（实现中）
+- React（计划中）
