@@ -1,6 +1,6 @@
 {
   "name": "@isle-editor/vue3",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "isle-editor view for vue3",
   "main": "dist/index.cjs",
   "module": "dist/index.js",

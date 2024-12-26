@@ -1,5 +1,13 @@
 # @isle-editor/vue3
 
+## 0.0.9
+
+### Patch Changes
+
+- 9951adf: fix: 🐛 update icon #1
+- 740eda5: fix: 🐛 update table bubble menu does not display
+  - @isle-editor/core@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes
