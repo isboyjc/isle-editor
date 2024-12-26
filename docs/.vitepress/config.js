@@ -189,6 +189,14 @@ export default defineConfig({
             ],
           },
           {
+            text: "Kit",
+            items: [
+              { text: "Basic Kit", link: "/kit/basic-kit" },
+              { text: "Rich Text Kit", link: "/kit/richText-kit" },
+              { text: "Notion Kit", link: "/kit/notion-kit" },
+            ],
+          },
+          {
             text: "View",
             items: [
               {
@@ -391,6 +399,14 @@ export default defineConfig({
                 collapsible: true,
                 items: [{ text: "如何自定义扩展", link: "" }],
               },
+            ],
+          },
+          {
+            text: "套件",
+            items: [
+              { text: "基础套件", link: "/zh/kit/basic-kit" },
+              { text: "富文本套件", link: "/zh/kit/richText-kit" },
+              { text: "Notion 套件", link: "/zh/kit/notion-kit" },
             ],
           },
           {
