@@ -1,5 +1,12 @@
 # @isle-editor/vue3
 
+## 0.0.11
+
+### Patch Changes
+
+- Updated dependencies [d813903]
+  - @isle-editor/core@0.0.11
+
 ## 0.0.10
 
 ### Patch Changes

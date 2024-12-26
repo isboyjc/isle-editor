@@ -1,5 +1,11 @@
 # @isle-editor/core
 
+## 0.0.11
+
+### Patch Changes
+
+- d813903: fix: 🐛 update link
+
 ## 0.0.10
 
 ### Patch Changes
