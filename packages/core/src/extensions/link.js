@@ -24,7 +24,7 @@ export default Link.extend({
           })
           .run();
       },
-      isDisabled: ({ editor }) => !editor.can().setLink(),
+      isDisabled: ({ editor }) => !editor.can().toggleLink(),
       isActive: ({ editor }) => editor.isActive("link"),
     };
   },
