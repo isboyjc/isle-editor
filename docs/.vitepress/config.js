@@ -109,9 +109,9 @@ export default defineConfig({
           {
             text: "Core",
             items: [
-              { text: "Instance", link: "" },
-              { text: "Events", link: "" },
-              { text: "Commands", link: "" },
+              { text: "Instance", link: "/core/instance" },
+              { text: "Events", link: "/core/events" },
+              { text: "Commands", link: "/core/commands" },
             ],
           },
           {
@@ -191,9 +191,9 @@ export default defineConfig({
           {
             text: "Kit",
             items: [
-              { text: "Basic Kit", link: "/kit/basic-kit" },
-              { text: "Rich Text Kit", link: "/kit/richText-kit" },
-              { text: "Notion Kit", link: "/kit/notion-kit" },
+              { text: "Basic Kit", link: "/kit/basic" },
+              { text: "Rich Text Kit", link: "/kit/richtext" },
+              { text: "Notion Kit", link: "/kit/notion" },
             ],
           },
           {
@@ -322,9 +322,9 @@ export default defineConfig({
           {
             text: "核心",
             items: [
-              { text: "实例", link: "" },
-              { text: "事件", link: "" },
-              { text: "命令", link: "" },
+              { text: "实例", link: "/zh/core/instance" },
+              { text: "事件", link: "/zh/core/events" },
+              { text: "命令", link: "/zh/core/commands" },
             ],
           },
           {
@@ -404,9 +404,9 @@ export default defineConfig({
           {
             text: "套件",
             items: [
-              { text: "基础套件", link: "/zh/kit/basic-kit" },
-              { text: "富文本套件", link: "/zh/kit/richText-kit" },
-              { text: "Notion 套件", link: "/zh/kit/notion-kit" },
+              { text: "基础套件", link: "/zh/kit/basic" },
+              { text: "富文本套件", link: "/zh/kit/richtext" },
+              { text: "Notion 套件", link: "/zh/kit/notion" },
             ],
           },
           {
