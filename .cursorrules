@@ -1,0 +1,210 @@
+# Isle Editor Cursor Rules
+# Version: 1.0.0
+# Description: 基于 Cursor AI 的项目开发规范配置
+
+# ======================
+# 项目基础信息
+# ======================
+project:
+  name: "isle-editor"
+  type: "monorepo"
+  description: >-
+    基于 ProseMirror 和 TipTap 的开源现代富文本编辑器，
+    支持富文本、块编辑、markdown 等多种编辑模式
+  core_tech:
+    - "ProseMirror"
+    - "TipTap"
+    - "Vue3"
+
+# ======================
+# AI 交互配置
+# ======================
+ai_interaction:
+  # 问答模式配置
+  qa_pattern:
+    understanding_confirmation:
+      enabled: true
+      steps:
+        - name: "需求理解"
+          required: true
+          template: "让我理解一下您的需求："
+        
+        - name: "关键点分析"
+          required: true
+          format: "numbered_list"
+        
+        - name: "确认问题"
+          required: true
+          template: "是这样理解正确吗？"
+    
+    response_format:
+      - name: "解决方案"
+        required: true
+      - name: "代码示例"
+        required: false
+        condition: "when_needed"
+      - name: "解释说明"
+        required: true
+      - name: "优化建议"
+        required: false
+
+  # 上下文处理
+  context:
+    consider:
+      - "项目结构"
+      - "技术栈"
+      - "开发规范"
+      - "已有代码"
+    
+    reference:
+      - "相关文件"
+      - "类似实现"
+      - "最佳实践"
+
+# ======================
+# 开发规范
+# ======================
+development:
+  # JavaScript 规范
+  javascript:
+    style: "standard"
+    module_system: "esm"
+    features:
+      - "async/await"
+      - "destructuring"
+      - "arrow_functions"
+      - "optional_chaining"
+  
+  # Vue 开发规范
+  vue:
+    version: 3
+    api_style: "composition"
+    template_style: "jsx"
+    features:
+      - "setup_sugar"
+      - "script_setup"
+      - "defineProps"
+      - "defineEmits"
+
+# ======================
+# Monorepo 包结构
+# ======================
+packages:
+  # 核心包配置
+  core:
+    path: "packages/core"
+    type: "library"
+    description: "编辑器核心功能实现"
+    rules:
+      - id: "tiptap_compatibility"
+        description: "保持与 TipTap 接口兼容"
+        severity: "error"
+      
+      - id: "extension_interface"
+        description: "扩展必须实现标准接口"
+        severity: "error"
+    
+    structure:
+      src:
+        - "extensions/"  # 扩展功能
+        - "utils/"     # 工具函数
+        - "locales/"   # 多语言文件
+  
+  # Vue3 视图包配置
+  vue3:
+    path: "packages/vue3"
+    type: "library"
+    description: "Vue3 视图层实现"
+    rules:
+      - id: "jsx_components"
+        description: "组件使用 JSX 语法"
+        severity: "error"
+      
+      - id: "props_typing"
+        description: "Props 必须类型声明"
+        severity: "error"
+      
+      - id: "documentation"
+        description: "组件必须文档化"
+        severity: "error"
+    
+    structure:
+      src:
+        - "components/" # UI组件
+        - "kit/"         # 扩展组合套件
+        - "styles/"    # 样式文件
+        - "utils/"     # 工具函数
+
+# ======================
+# 命名规范
+# ======================
+naming:
+  components:
+    pattern: "PascalCase"
+    examples: ["IsleEditor", "RichTextEditor"]
+  
+  composables:
+    pattern: "camelCase"
+    prefix: "use"
+    examples: ["useEditor", "useTheme"]
+  
+  utils:
+    pattern: "camelCase"
+    examples: ["createEditor", "parseContent"]
+
+# ======================
+# 质量要求
+# ======================
+quality:
+  # 测试要求
+  testing:
+    coverage:
+      core: 80
+      vue3: 70
+    types:
+      - "unit"
+      - "integration"
+      - "e2e"
+  
+  # 性能要求
+  performance:
+    bundle_size:
+      core:
+        max: 50
+        unit: "kb"
+      vue3:
+        max: 80
+        unit: "kb"
+    
+    optimization:
+      - "tree_shaking"
+      - "code_splitting"
+      - "lazy_loading"
+
+# ======================
+# Cursor AI 提示优化
+# ======================
+cursor_hints:
+  # 代码补全
+  completion:
+    contexts:
+      - "editor_extensions"
+      - "vue_components"
+      - "i18n_keys"
+      - "theme_tokens"
+  
+  # 代码生成
+  generation:
+    templates:
+      - "extension"
+      - "component"
+      - "test"
+      - "documentation"
+  
+  # 代码分析
+  analysis:
+    focus:
+      - "performance"
+      - "security"
+      - "best_practices"
+      - "compatibility"
