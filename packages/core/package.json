@@ -7,7 +7,7 @@
   "umd": "dist/index.umd.js",
   "type": "module",
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "build": "pnpm clean && rollup -c"
   },
   "dependencies": {

@@ -6,9 +6,17 @@
   "module": "dist/index.js",
   "umd": "dist/index.umd.js",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "style": "dist/style.css",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "npm run clean && rollup -c"
+    "clean": "rimraf dist",
+    "build": "pnpm clean && rollup -c"
   },
   "files": [
     "dist",
